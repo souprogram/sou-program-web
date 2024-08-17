@@ -13,7 +13,7 @@ export default function JoinForm() {
             type="text"
             name="name"
             id="name"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="Name"
           />
         </div>
@@ -29,7 +29,7 @@ export default function JoinForm() {
             type="email"
             name="email"
             id="email"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="Email"
           />
         </div>
@@ -46,7 +46,7 @@ export default function JoinForm() {
             type="text"
             name="oib"
             id="oib"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="OIB"
           />
         </div>
@@ -63,7 +63,7 @@ export default function JoinForm() {
             type="date"
             name="dateOfBirth"
             id="dateOfBirth"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="Datum rodenja"
           />
         </div>
@@ -75,7 +75,7 @@ export default function JoinForm() {
               id="isStudent"
               name="isStudent"
               type="checkbox"
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
             />
             <label
               htmlFor="isStudent"
@@ -100,24 +100,10 @@ export default function JoinForm() {
           <div className="mt-1 flex flex-wrap items-center gap-2">
             <div className="flex items-center">
               <input
-                id="role-1"
-                name="role"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label
-                htmlFor="role-1"
-                className="ml-2 block text-sm text-gray-700"
-              >
-                Izbornik
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
                 id="role-2"
                 name="role"
                 type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
               />
               <label
                 htmlFor="role-2"
@@ -131,7 +117,7 @@ export default function JoinForm() {
                 id="role-3"
                 name="role"
                 type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
               />
               <label
                 htmlFor="role-3"
@@ -145,7 +131,7 @@ export default function JoinForm() {
                 id="role-4"
                 name="role"
                 type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
               />
               <label
                 htmlFor="role-4"
@@ -159,7 +145,7 @@ export default function JoinForm() {
                 id="role-5"
                 name="role"
                 type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
               />
               <label
                 htmlFor="role-5"
@@ -183,7 +169,7 @@ export default function JoinForm() {
             type="text"
             name="discordUsername"
             id="discordUsername"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="Discord username"
           />
         </div>
@@ -200,7 +186,7 @@ export default function JoinForm() {
             type="text"
             name="phoneNumber"
             id="phoneNumber"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="Broj mobitela"
           />
         </div>
@@ -217,7 +203,7 @@ export default function JoinForm() {
             type="text"
             name="whereDoYouWork"
             id="whereDoYouWork"
-            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+            className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
             placeholder="Gdje stanuju/presjedavaju"
           />
         </div>
@@ -228,7 +214,7 @@ export default function JoinForm() {
               id="terms"
               name="terms"
               type="checkbox"
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
             />
             <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
               I am completely sure that I want to join the community.
@@ -239,7 +225,7 @@ export default function JoinForm() {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
           >
             Submit
           </button>
