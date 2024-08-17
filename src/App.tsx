@@ -6,6 +6,7 @@ import SectionJoin from './components/SectionJoin';
 import SectionRobotics from './components/SectionRobotics';
 import SectionWhatWeDo from './components/SectionWhatWeDo';
 import SectionSponsors from './components/SectionSponsors';
+import SplashScreen from './components/SplashScreen';
 
 function App() {
   const [animate, setAnimate] = useState(false);
@@ -30,13 +31,7 @@ function App() {
 
   return (
     <div className={`relative min-h-screen ${animate && 'overflow-hidden'}`}>
-      {animate && (
-        <div
-          className={`fixed inset-0 z-50 flex min-h-screen items-center justify-center bg-black text-white opacity-50`}
-        >
-          Loading...
-        </div>
-      )}
+      {animate && <SplashScreen />}
       <NavBar />
       <SectionHero />
       <SectionWhatWeDo />
