@@ -2,7 +2,7 @@ export default function SectionHero() {
   return (
     <section className="relative flex flex-col items-center justify-center gap-4 py-16 md:py-32 lg:py-48">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        <h1 className="text-5xl font-bold font-brioni tracking-tight text-gray-900 sm:text-6xl">
           <span className="block">
             <span className="text-gray-500">Još</span> jedna
           </span>

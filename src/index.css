@@ -1,3 +1,109 @@
 @tailwind base;
 @tailwind components;
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-Light.eot');
+  src: local('Brioni Text Pro Light'), local('BrioniTextPro-Light'),
+    url('./assets/fonts/BrioniTextPro-Light.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-Light.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-Light.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-Light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-Italic.eot');
+  src: local('Brioni Text Pro Italic'), local('BrioniTextPro-Italic'),
+    url('./assets/fonts/BrioniTextPro-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-Italic.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-Italic.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-Regular.eot');
+  src: local('Brioni Text Pro Regular'), local('BrioniTextPro-Regular'),
+    url('./assets/fonts/BrioniTextPro-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-Regular.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-Regular.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-BoldItalic.eot');
+  src: local('Brioni Text Pro Bold Italic'), local('BrioniTextPro-BoldItalic'),
+    url('./assets/fonts/BrioniTextPro-BoldItalic.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-BoldItalic.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-BoldItalic.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-LightItalic.eot');
+  src: local('Brioni Text Pro Light Italic'), local('BrioniTextPro-LightItalic'),
+    url('./assets/fonts/BrioniTextPro-LightItalic.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-LightItalic.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-LightItalic.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-LightItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-Medium.eot');
+  src: local('Brioni Text Pro Medium'), local('BrioniTextPro-Medium'),
+    url('./assets/fonts/BrioniTextPro-Medium.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-Medium.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-Medium.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-MediumItalic.eot');
+  src: local('Brioni Text Pro Medium Italic'),
+    local('BrioniTextPro-MediumItalic'),
+    url('./assets/fonts/BrioniTextPro-MediumItalic.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-MediumItalic.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-MediumItalic.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brioni Text Pro';
+  src: url('./assets/fonts/BrioniTextPro-Bold.eot');
+  src: local('Brioni Text Pro Bold'), local('BrioniTextPro-Bold'),
+    url('./assets/fonts/BrioniTextPro-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/BrioniTextPro-Bold.woff2') format('woff2'),
+    url('./assets/fonts/BrioniTextPro-Bold.woff') format('woff'),
+    url('./assets/fonts/BrioniTextPro-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 @tailwind utilities;
