@@ -17,13 +17,13 @@ export default function Checkbox({
 }: CheckboxProps) {
   return (
     <div className="flex items-start">
-      <div className="flex items-center h-5">
+      <div className="flex h-5 items-center">
         <input
           id={id}
           aria-describedby={`${name}-error`}
           name={name}
           type="checkbox"
-          className="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
+          className="focus:ring-primary-500 h-4 w-4 rounded border-gray-300 text-primary-600"
           required={required}
         />
       </div>

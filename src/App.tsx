@@ -29,10 +29,10 @@ function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen relative ${animate && 'overflow-hidden'}`}>
+    <div className={`relative min-h-screen ${animate && 'overflow-hidden'}`}>
       {animate && (
         <div
-          className={`fixed inset-0 flex items-center justify-center z-50 min-h-screen bg-black opacity-50 text-white`}
+          className={`fixed inset-0 z-50 flex min-h-screen items-center justify-center bg-black text-white opacity-50`}
         >
           Loading...
         </div>

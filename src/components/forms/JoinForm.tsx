@@ -46,7 +46,7 @@ export default function JoinForm() {
 
   return (
     <form
-      className="w-full max-w-screen-xl mx-auto"
+      className="mx-auto w-full max-w-screen-xl"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col space-y-8">
@@ -103,7 +103,7 @@ export default function JoinForm() {
             <div className="flex flex-col gap-1">
               <label className="block text-sm font-medium text-gray-700">
                 Uloga{' '}
-                <span className="text-gray-500 font-normal">
+                <span className="font-normal text-gray-500">
                   (izaberite barem jednu)
                 </span>
                 <span className="text-red-600">*</span>
@@ -180,7 +180,7 @@ export default function JoinForm() {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+            className="focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Submit
           </button>

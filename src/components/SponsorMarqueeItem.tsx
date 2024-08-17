@@ -4,7 +4,7 @@ export default function SponsorMarqueeItem({
   sponsor: { name: string };
 }) {
   return (
-    <li className="text-white bg-primary-600 rounded py-4 px-8 text-center grow-0 shrink-0 basis-auto flex justify-center items-center">
+    <li className="flex shrink-0 grow-0 basis-auto items-center justify-center rounded bg-primary-600 px-8 py-4 text-center text-white">
       <p>{sponsor.name}</p>
     </li>
     // <li className="marquee__item">

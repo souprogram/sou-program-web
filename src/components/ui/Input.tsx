@@ -33,7 +33,7 @@ export default function Input({
       <input
         id={id}
         type={type ?? 'text'}
-        className="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md px-4 py-2"
+        className="focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border-gray-300 px-4 py-2 shadow-sm sm:text-sm"
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
