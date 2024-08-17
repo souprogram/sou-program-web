@@ -4,7 +4,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-Light.eot');
-  src: local('Brioni Text Pro Light'), local('BrioniTextPro-Light'),
+  src:
+    local('Brioni Text Pro Light'),
+    local('BrioniTextPro-Light'),
     url('./assets/fonts/BrioniTextPro-Light.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-Light.woff2') format('woff2'),
@@ -17,7 +19,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-Italic.eot');
-  src: local('Brioni Text Pro Italic'), local('BrioniTextPro-Italic'),
+  src:
+    local('Brioni Text Pro Italic'),
+    local('BrioniTextPro-Italic'),
     url('./assets/fonts/BrioniTextPro-Italic.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-Italic.woff2') format('woff2'),
@@ -30,7 +34,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-Regular.eot');
-  src: local('Brioni Text Pro Regular'), local('BrioniTextPro-Regular'),
+  src:
+    local('Brioni Text Pro Regular'),
+    local('BrioniTextPro-Regular'),
     url('./assets/fonts/BrioniTextPro-Regular.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-Regular.woff2') format('woff2'),
@@ -43,7 +49,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-BoldItalic.eot');
-  src: local('Brioni Text Pro Bold Italic'), local('BrioniTextPro-BoldItalic'),
+  src:
+    local('Brioni Text Pro Bold Italic'),
+    local('BrioniTextPro-BoldItalic'),
     url('./assets/fonts/BrioniTextPro-BoldItalic.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-BoldItalic.woff2') format('woff2'),
@@ -56,7 +64,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-LightItalic.eot');
-  src: local('Brioni Text Pro Light Italic'), local('BrioniTextPro-LightItalic'),
+  src:
+    local('Brioni Text Pro Light Italic'),
+    local('BrioniTextPro-LightItalic'),
     url('./assets/fonts/BrioniTextPro-LightItalic.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-LightItalic.woff2') format('woff2'),
@@ -69,7 +79,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-Medium.eot');
-  src: local('Brioni Text Pro Medium'), local('BrioniTextPro-Medium'),
+  src:
+    local('Brioni Text Pro Medium'),
+    local('BrioniTextPro-Medium'),
     url('./assets/fonts/BrioniTextPro-Medium.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-Medium.woff2') format('woff2'),
@@ -82,7 +94,8 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-MediumItalic.eot');
-  src: local('Brioni Text Pro Medium Italic'),
+  src:
+    local('Brioni Text Pro Medium Italic'),
     local('BrioniTextPro-MediumItalic'),
     url('./assets/fonts/BrioniTextPro-MediumItalic.eot?#iefix')
       format('embedded-opentype'),
@@ -96,7 +109,9 @@
 @font-face {
   font-family: 'Brioni Text Pro';
   src: url('./assets/fonts/BrioniTextPro-Bold.eot');
-  src: local('Brioni Text Pro Bold'), local('BrioniTextPro-Bold'),
+  src:
+    local('Brioni Text Pro Bold'),
+    local('BrioniTextPro-Bold'),
     url('./assets/fonts/BrioniTextPro-Bold.eot?#iefix')
       format('embedded-opentype'),
     url('./assets/fonts/BrioniTextPro-Bold.woff2') format('woff2'),
