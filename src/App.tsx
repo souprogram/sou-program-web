@@ -5,6 +5,7 @@ import SectionHero from './components/SectionHero';
 import SectionJoin from './components/SectionJoin';
 import SectionRobotics from './components/SectionRobotics';
 import SectionWhatWeDo from './components/SectionWhatWeDo';
+import SectionSponsors from './components/SectionSponsors';
 
 function App() {
   const [animate, setAnimate] = useState(false);
@@ -40,6 +41,7 @@ function App() {
       <SectionHero />
       <SectionWhatWeDo />
       <SectionRobotics />
+      <SectionSponsors />
       <SectionJoin />
       <Footer />
     </div>

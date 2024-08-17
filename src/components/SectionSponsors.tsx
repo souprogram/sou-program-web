@@ -1,17 +1,17 @@
-import JoinForm from './forms/JoinForm';
+import SponsorMarqueeList from './SponsorMarqueeList';
 
-export default function SectionJoin() {
+export default function SectionSponsors() {
   return (
     <section className="py-16 md:py-24">
       <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-4">
         <h2 className="text-4xl mb-4 font-brioni font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
-          <span className="md:block">Postani član udruge</span>
+          Sponsors
         </h2>
         <p className="text-lg leading-relaxed text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          We would like to thank our sponsors for their support.
         </p>
-        <JoinForm />
       </div>
+      <SponsorMarqueeList />
     </section>
   );
 }

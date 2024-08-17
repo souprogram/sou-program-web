@@ -11,6 +11,15 @@ export default {
         'primary-700': '#60b8e2',
         black: '#1c1c1c',
       },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-100% - 1rem))' },
+        },
+      },
+      animation: {
+        'marquee-scroll': 'scroll 15s linear infinite',
+      },
     },
   },
   plugins: [],
