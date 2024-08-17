@@ -14,7 +14,11 @@ const roleOptions = [
 ];
 
 export default function JoinForm() {
-  const { handleSubmit, control } = useForm<JoinSchemaType>({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<JoinSchemaType>({
     defaultValues: {
       name: '',
       email: '',
@@ -36,11 +40,11 @@ export default function JoinForm() {
 
     if (validatedData.success) {
       console.log(validatedData.data);
-      return;
     } else {
       console.log(validatedData.error.message);
-      return;
     }
+
+    console.log('Something went wrong');
     // console.log(data);
   };
 
@@ -54,7 +58,13 @@ export default function JoinForm() {
           name="name"
           control={control}
           render={({ field }) => (
-            <Input id="name" label="Name" required {...field} />
+            <Input
+              id="name"
+              label="Name"
+              required
+              {...field}
+              error={errors.name}
+            />
           )}
         />
 
@@ -62,7 +72,14 @@ export default function JoinForm() {
           name="email"
           control={control}
           render={({ field }) => (
-            <Input id="email" label="Email" type="email" required {...field} />
+            <Input
+              id="email"
+              label="Email"
+              type="email"
+              required
+              {...field}
+              error={errors.email}
+            />
           )}
         />
 
@@ -70,7 +87,13 @@ export default function JoinForm() {
           name="oib"
           control={control}
           render={({ field }) => (
-            <Input id="oib" label="OIB" required {...field} />
+            <Input
+              id="oib"
+              label="OIB"
+              required
+              {...field}
+              error={errors.oib}
+            />
           )}
         />
 
@@ -84,6 +107,7 @@ export default function JoinForm() {
               label="Datum rođenja"
               type="date"
               required
+              error={errors.dob}
             />
           )}
         />
@@ -133,6 +157,7 @@ export default function JoinForm() {
               label="Discord username"
               required
               {...field}
+              error={errors.discordUsername}
             />
           )}
         />
@@ -147,6 +172,7 @@ export default function JoinForm() {
               type="phone"
               required
               {...field}
+              error={errors.phoneNumber}
             />
           )}
         />
@@ -160,6 +186,7 @@ export default function JoinForm() {
               label="Gdje stanuju/presjedavaju"
               required
               {...field}
+              error={errors.whereDoYouWork}
             />
           )}
         />
@@ -173,6 +200,7 @@ export default function JoinForm() {
               label="I am completely sure that I want to join the community."
               required
               {...field}
+              error={errors.terms}
             />
           )}
         />
