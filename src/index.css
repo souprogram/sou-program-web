@@ -121,39 +121,6 @@
   font-style: normal;
 }
 
-/* Marquee styles */
-.marquee {
-  --gap: 1rem;
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  gap: var(--gap);
-}
-
-.marquee__content {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-around;
-  gap: var(--gap);
-  min-width: 100%;
-}
-
-.marquee__content > * {
-  flex: 0 0 auto;
-  color: white;
-  margin: 2px;
-  padding: 1rem 2rem;
-  border-radius: 0.25rem;
-  text-align: center;
-}
-
-.marquee__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @keyframes scroll {
   from {
     transform: translateX(0);

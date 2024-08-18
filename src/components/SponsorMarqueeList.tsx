@@ -21,8 +21,8 @@ const sponsors = [
 export default function SponsorMarqueeList() {
   return (
     <div className="mt-12">
-      <div className="enable-animation marquee group">
-        <ul className="marquee__content animation-marquee-scroll group-hover:pause">
+      <div className="enable-animation marquee group relative flex select-none gap-4 overflow-hidden">
+        <ul className="marquee__content animation-marquee-scroll group-hover:pause flex min-w-full shrink-0 justify-around gap-4">
           {sponsors.map((_, index) => (
             <SponsorMarqueeItem key={index} />
           ))}
@@ -30,7 +30,7 @@ export default function SponsorMarqueeList() {
 
         <ul
           aria-hidden="true"
-          className="marquee__content animation-marquee-scroll group-hover:pause"
+          className="marquee__content animation-marquee-scroll group-hover:pause flex min-w-full shrink-0 justify-around gap-4"
         >
           {sponsors.map((_, index) => (
             <SponsorMarqueeItem key={index} />
