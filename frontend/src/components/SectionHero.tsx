@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function SectionHero() {
   return (
     <section className="relative flex flex-col items-center justify-center gap-4 py-16 md:py-32 lg:py-48">
@@ -14,12 +16,12 @@ export default function SectionHero() {
           The best developer tools for your next project.
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
-          <a
-            href="#"
+          <Link
+            to="/join"
             className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-base font-medium text-black shadow-sm duration-300 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
           >
             Učlani se
-          </a>
+          </Link>
           <a
             href="#"
             className="hover:bg-primary-50 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-primary-500 shadow-sm duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"

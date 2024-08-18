@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
-import Footer from './components/Footer';
-import NavBar from './components/NavBar';
-import SectionHero from './components/SectionHero';
-import SectionJoin from './components/SectionJoin';
-import SectionRobotics from './components/SectionRobotics';
-import SectionWhatWeDo from './components/SectionWhatWeDo';
-import SectionSponsors from './components/SectionSponsors';
 import SplashScreen from './components/SplashScreen';
-import SectionCompetitions from './components/SectionCompetitions';
+import Footer from './components/Footer';
+import { MainRouter } from './router';
 
 function App() {
   const [animate, setAnimate] = useState(false);
@@ -33,13 +27,7 @@ function App() {
   return (
     <div className={`relative min-h-screen ${animate && 'overflow-hidden'}`}>
       {animate && <SplashScreen />}
-      <NavBar />
-      <SectionHero />
-      <SectionWhatWeDo />
-      <SectionRobotics />
-      <SectionCompetitions />
-      <SectionSponsors />
-      <SectionJoin />
+      <MainRouter />
       <Footer />
     </div>
   );
