@@ -142,7 +142,6 @@
 .marquee__content > * {
   flex: 0 0 auto;
   color: white;
-  background: #e8daef;
   margin: 2px;
   padding: 1rem 2rem;
   border-radius: 0.25rem;

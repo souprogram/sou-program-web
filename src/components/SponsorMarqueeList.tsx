@@ -23,8 +23,8 @@ export default function SponsorMarqueeList() {
     <div className="mt-12">
       <div className="enable-animation marquee group">
         <ul className="marquee__content animation-marquee-scroll group-hover:pause">
-          {sponsors.map((sponsor, index) => (
-            <SponsorMarqueeItem sponsor={sponsor} key={index} />
+          {sponsors.map((_, index) => (
+            <SponsorMarqueeItem key={index} />
           ))}
         </ul>
 
@@ -32,8 +32,8 @@ export default function SponsorMarqueeList() {
           aria-hidden="true"
           className="marquee__content animation-marquee-scroll group-hover:pause"
         >
-          {sponsors.map((sponsor, index) => (
-            <SponsorMarqueeItem sponsor={sponsor} key={index} />
+          {sponsors.map((_, index) => (
+            <SponsorMarqueeItem key={index} />
           ))}
         </ul>
       </div>
