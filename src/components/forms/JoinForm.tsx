@@ -1,10 +1,10 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
-import Select from 'react-select';
 import Input from '../ui/Input';
 import Checkbox from '../ui/Checkbox';
 import { Role } from '../../Role';
+import Select from '../ui/Select';
 
 const roleOptions = [
   { value: Role.PROGRAMER, label: 'Programer' },
@@ -36,16 +36,9 @@ export default function JoinForm() {
   });
 
   const onSubmit: SubmitHandler<JoinSchemaType> = (data) => {
-    const validatedData = JoinSchema.safeParse(data);
+    alert(JSON.stringify(data, null, 2));
 
-    if (validatedData.success) {
-      console.log(validatedData.data);
-    } else {
-      console.log(validatedData.error.message);
-    }
-
-    console.log('Something went wrong');
-    // console.log(data);
+    // Send data to backend
   };
 
   return (
@@ -59,10 +52,10 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
+              {...field}
               id="name"
               label="Name"
               required
-              {...field}
               error={errors.name}
             />
           )}
@@ -73,11 +66,11 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
+              {...field}
               id="email"
               label="Email"
               type="email"
               required
-              {...field}
               error={errors.email}
             />
           )}
@@ -88,10 +81,10 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
+              {...field}
               id="oib"
               label="OIB"
               required
-              {...field}
               error={errors.oib}
             />
           )}
@@ -123,28 +116,16 @@ export default function JoinForm() {
         <Controller
           name="role"
           control={control}
-          render={({ field: { onChange, value } }) => (
-            <div className="flex flex-col gap-1">
-              <label className="block text-sm font-medium text-gray-700">
-                Uloga{' '}
-                <span className="font-normal text-gray-500">
-                  (izaberite barem jednu)
-                </span>
-                <span className="text-red-600">*</span>
-              </label>
-              <Select
-                id="role"
-                required
-                isMulti
-                aria-label="Select role"
-                options={roleOptions}
-                value={roleOptions.filter((c) => value.includes(c.value))}
-                defaultValue={roleOptions.find(
-                  (c) => c.value === Role.PROGRAMER,
-                )}
-                onChange={(e) => onChange(e.map((c) => c.value))}
-              />
-            </div>
+          render={({ field }) => (
+            <Select
+              name={field.name}
+              label="Uloga"
+              required
+              options={roleOptions}
+              value={field.value}
+              onChange={field.onChange}
+              error={errors.role?.message}
+            />
           )}
         />
 
@@ -153,10 +134,10 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
+              {...field}
               id="discordUsername"
               label="Discord username"
               required
-              {...field}
               error={errors.discordUsername}
             />
           )}
@@ -167,11 +148,11 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
+              {...field}
               id="phoneNumber"
               label="Broj mobitela"
               type="phone"
               required
-              {...field}
               error={errors.phoneNumber}
             />
           )}
@@ -182,10 +163,10 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
+              {...field}
               id="whereDoYouWork"
               label="Gdje stanuju/presjedavaju"
               required
-              {...field}
               error={errors.whereDoYouWork}
             />
           )}
@@ -196,10 +177,10 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Checkbox
+              {...field}
               id="terms"
               label="I am completely sure that I want to join the community."
               required
-              {...field}
               error={errors.terms}
             />
           )}

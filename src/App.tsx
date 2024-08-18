@@ -7,6 +7,7 @@ import SectionRobotics from './components/SectionRobotics';
 import SectionWhatWeDo from './components/SectionWhatWeDo';
 import SectionSponsors from './components/SectionSponsors';
 import SplashScreen from './components/SplashScreen';
+import SectionCompetitions from './components/SectionCompetitions';
 
 function App() {
   const [animate, setAnimate] = useState(false);
@@ -36,6 +37,7 @@ function App() {
       <SectionHero />
       <SectionWhatWeDo />
       <SectionRobotics />
+      <SectionCompetitions />
       <SectionSponsors />
       <SectionJoin />
       <Footer />

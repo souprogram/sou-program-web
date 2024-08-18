@@ -10,6 +10,7 @@ interface InputProps {
   placeholder?: string;
   required?: boolean;
   error?: FieldError;
+  disabled?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
@@ -21,6 +22,7 @@ const Input = forwardRef(function Input(
     name,
     type,
     required,
+    disabled,
     onChange,
     onBlur,
     placeholder,
@@ -41,13 +43,15 @@ const Input = forwardRef(function Input(
         type={type ?? 'text'}
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
         className={twMerge(
-          'focus:ring-primary-500 focus:border-primary-500 mt-1 block w-full rounded-md border-gray-300 px-4 py-2 shadow-sm sm:text-sm',
-          error && 'focus:border-red-600 focus:ring-red-600',
+          'mt-1 block w-full rounded-md px-4 py-2 shadow-sm outline-none duration-300 focus:ring-2 focus:ring-primary-600 sm:text-sm',
+          error && 'focus:ring-red-600',
+          disabled && 'pointer-events-none opacity-50',
         )}
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
         aria-describedby={`${name}-error`}
+        aria-disabled={disabled}
       />
       {error?.message && (
         <p className="mt-2 text-sm text-red-600" id={`${name}-error`}>

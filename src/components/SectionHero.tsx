@@ -16,13 +16,13 @@ export default function SectionHero() {
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
           <a
             href="#"
-            className="focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="focus:ring-primary-500 hover:bg-primary-500 inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-base font-medium text-black shadow-sm duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Učlani se
           </a>
           <a
             href="#"
-            className="hover:bg-primary-50 focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-primary-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="hover:bg-primary-50 focus:ring-primary-500 text-primary-500 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium shadow-sm duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Learn more
           </a>

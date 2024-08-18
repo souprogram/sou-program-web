@@ -56,7 +56,9 @@ export const JoinSchema = z.object({
     .string({ required_error: 'You must enter where you work' })
     .min(2, 'You must enter at least 2 characters')
     .max(50, 'You must enter at most 50 characters'),
-  terms: z.boolean({ required_error: 'You must accept the terms' }),
+  terms: z
+    .boolean()
+    .refine((value) => value === true, 'You must accept the terms'),
 });
 
 export type JoinSchemaType = z.infer<typeof JoinSchema>;
