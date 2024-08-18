@@ -5,6 +5,7 @@ import Input from '../ui/Input';
 import Checkbox from '../ui/Checkbox';
 import { Role } from '../../Role';
 import Select from '../ui/Select';
+import PhoneNumber from '../ui/PhoneNumber';
 
 const roleOptions = [
   { value: Role.PROGRAMER, label: 'Programer' },
@@ -55,6 +56,7 @@ export default function JoinForm() {
               {...field}
               id="name"
               label="Name"
+              placeholder="Ime"
               required
               error={errors.name}
             />
@@ -70,6 +72,7 @@ export default function JoinForm() {
               id="email"
               label="Email"
               type="email"
+              placeholder="Email"
               required
               error={errors.email}
             />
@@ -85,6 +88,7 @@ export default function JoinForm() {
               id="oib"
               label="OIB"
               required
+              placeholder="OIB"
               error={errors.oib}
             />
           )}
@@ -99,6 +103,7 @@ export default function JoinForm() {
               id="dob"
               label="Datum rođenja"
               type="date"
+              placeholder="Datum rođenja"
               required
               error={errors.dob}
             />
@@ -137,6 +142,7 @@ export default function JoinForm() {
               {...field}
               id="discordUsername"
               label="Discord username"
+              placeholder="Discord username"
               required
               error={errors.discordUsername}
             />
@@ -147,11 +153,11 @@ export default function JoinForm() {
           name="phoneNumber"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="phoneNumber"
-              label="Broj mobitela"
-              type="phone"
+            <PhoneNumber
+              label="Telefonski broj"
+              placeholder="Telefonski broj"
+              value={field.value}
+              onChange={field.onChange}
               required
               error={errors.phoneNumber}
             />
@@ -166,6 +172,7 @@ export default function JoinForm() {
               {...field}
               id="whereDoYouWork"
               label="Gdje stanuju/presjedavaju"
+              placeholder="Gdje stanuju/presjedavaju"
               required
               error={errors.whereDoYouWork}
             />
@@ -189,7 +196,7 @@ export default function JoinForm() {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
           >
             Submit
           </button>

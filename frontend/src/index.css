@@ -138,6 +138,28 @@
   animation-play-state: paused;
 }
 
+.PhoneInput {
+  @apply flex w-full flex-row gap-2;
+}
+
+.PhoneInputInput {
+  @apply ms-1 block w-full rounded-md px-4 py-2 outline-none duration-300 focus:ring-2 focus:ring-primary-600 sm:text-sm;
+}
+
+.PhoneInputCountry {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputCountrySelect {
+  display: none;
+}
+
+.PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1rem;
+}
+
 @tailwind utilities;
 
 @layer utilities {

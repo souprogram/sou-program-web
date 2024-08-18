@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { FieldError } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
 
 interface CheckboxProps {
   id?: string;
@@ -39,7 +40,11 @@ const Checkbox = forwardRef(function Checkbox(
           type="checkbox"
           onChange={onChange}
           onBlur={onBlur}
-          className="focus:ring-primary-500 h-4 w-4 rounded text-primary-600 outline-none duration-300 focus:ring-2"
+          className={twMerge(
+            'h-4 w-4 rounded text-primary-600 outline-none duration-300 focus:ring-2 focus:ring-primary-500',
+            disabled && 'pointer-events-none opacity-50',
+            error && 'focus:ring-red-600',
+          )}
           aria-disabled={disabled}
         />
       </div>

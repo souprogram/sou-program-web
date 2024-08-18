@@ -1,5 +1,6 @@
 import * as z from 'zod';
 import { Role } from '../Role';
+import { isValidPhoneNumber } from 'react-phone-number-input';
 
 function isOibValid(oib: string) {
   if (/\d{11}/.exec(oib) === null) {
@@ -50,8 +51,7 @@ export const JoinSchema = z.object({
     .max(50, 'You must enter at most 50 characters'),
   phoneNumber: z
     .string({ required_error: 'You must enter your phone number' })
-    .min(10, 'You must enter at least 10 characters')
-    .max(15, 'You must enter at most 15 characters'),
+    .refine(isValidPhoneNumber, 'Invalid phone number'),
   whereDoYouWork: z
     .string({ required_error: 'You must enter where you work' })
     .min(2, 'You must enter at least 2 characters')
