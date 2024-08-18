@@ -41,7 +41,6 @@ const Input = forwardRef(function Input(
         id={id}
         ref={ref}
         type={type ?? 'text'}
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
         className={twMerge(
           'mt-1 block w-full rounded-md px-4 py-2 shadow-sm outline-none duration-300 focus:ring-2 focus:ring-primary-600 sm:text-sm',
           error && 'focus:ring-red-600',
