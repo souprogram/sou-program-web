@@ -165,7 +165,7 @@ export default function JoinForm() {
         />
 
         <Controller
-          name="whereDoYouWork"
+          name="placeOfResidence"
           control={control}
           render={({ field }) => (
             <Input
@@ -174,7 +174,7 @@ export default function JoinForm() {
               label="Mjesto stanovanja"
               placeholder="Mjesto stanovanja"
               required
-              error={errors.whereDoYouWork}
+              error={errors.placeOfResidence}
             />
           )}
         />
