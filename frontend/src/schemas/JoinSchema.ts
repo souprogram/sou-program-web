@@ -52,7 +52,7 @@ export const JoinSchema = z.object({
   phoneNumber: z
     .string({ required_error: 'You must enter your phone number' })
     .refine(isValidPhoneNumber, 'Invalid phone number'),
-  whereDoYouWork: z
+  placeOfResidence: z
     .string({ required_error: 'You must enter where you work' })
     .min(2, 'You must enter at least 2 characters')
     .max(50, 'You must enter at most 50 characters'),

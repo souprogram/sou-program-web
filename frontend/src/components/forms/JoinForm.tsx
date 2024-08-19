@@ -29,7 +29,7 @@ export default function JoinForm() {
       role: [],
       discordUsername: '',
       phoneNumber: '',
-      whereDoYouWork: '',
+      placeOfResidence: '',
       terms: false,
     },
     reValidateMode: 'onSubmit',
