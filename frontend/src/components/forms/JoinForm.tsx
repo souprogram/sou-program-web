@@ -154,8 +154,8 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <PhoneNumber
-              label="Telefonski broj"
-              placeholder="Telefonski broj"
+              label="Broj mobitela"
+              placeholder="Broj mobitela"
               value={field.value}
               onChange={field.onChange}
               required
