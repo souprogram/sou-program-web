@@ -170,9 +170,9 @@ export default function JoinForm() {
           render={({ field }) => (
             <Input
               {...field}
-              id="whereDoYouWork"
-              label="Gdje stanuju/presjedavaju"
-              placeholder="Gdje stanuju/presjedavaju"
+              id="placeOfResidence"
+              label="Mjesto stanovanja"
+              placeholder="Mjesto stanovanja"
               required
               error={errors.whereDoYouWork}
             />
