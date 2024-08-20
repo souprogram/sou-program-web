@@ -1,6 +1,9 @@
 import * as z from 'zod';
 import { Role } from '../Role';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+
+function isValidPhoneNumber(phoneNumber: string) {
+  return /^\+3859[125789]\d.{5,6}$/.test(phoneNumber);
+}
 
 function isOibValid(oib: string) {
   if (/\d{11}/.exec(oib) === null) {
