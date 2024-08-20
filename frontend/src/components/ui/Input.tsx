@@ -7,6 +7,7 @@ interface InputProps {
   label?: string;
   name?: string;
   type?: string;
+  value?: string;
   placeholder?: string;
   required?: boolean;
   error?: FieldError;
@@ -23,6 +24,7 @@ const Input = forwardRef(function Input(
     type,
     required,
     disabled,
+    value,
     onChange,
     onBlur,
     placeholder,
@@ -46,6 +48,7 @@ const Input = forwardRef(function Input(
           error && 'focus:ring-red-600',
           disabled && 'pointer-events-none opacity-50',
         )}
+        value={value}
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}

@@ -5,7 +5,6 @@ import Input from '../ui/Input';
 import Checkbox from '../ui/Checkbox';
 import { Role } from '../../Role';
 import Select from '../ui/Select';
-import PhoneNumber from '../ui/PhoneNumber';
 
 const roleOptions = [
   { value: Role.PROGRAMER, label: 'Programer' },
@@ -153,13 +152,16 @@ export default function JoinForm() {
           name="phoneNumber"
           control={control}
           render={({ field }) => (
-            <PhoneNumber
+            <Input
+              id="phoneNumber"
+              name={field.name}
+              value={field.value}
+              type="tel"
               label="Broj mobitela"
               placeholder="Broj mobitela"
-              value={field.value}
-              onChange={field.onChange}
               required
               error={errors.phoneNumber}
+              onChange={({ target }) => field.onChange(target.value)}
             />
           )}
         />

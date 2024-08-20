@@ -1,46 +1,10 @@
-import ReactSelect, {
-  ControlProps,
-  GroupBase,
-  MultiValueProps,
-  OptionProps,
-} from 'react-select';
+import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
-
-type MultiValueState = MultiValueProps<
-  {
-    value: string;
-    label: string;
-  },
-  true,
-  GroupBase<{
-    value: string;
-    label: string;
-  }>
->;
-
-type ControlState = ControlProps<
-  {
-    value: string;
-    label: string;
-  },
-  true,
-  GroupBase<{
-    value: string;
-    label: string;
-  }>
->;
-
-type OptionState = OptionProps<
-  {
-    value: string;
-    label: string;
-  },
-  true,
-  GroupBase<{
-    value: string;
-    label: string;
-  }>
->;
+import {
+  ControlState,
+  MultiValueState,
+  OptionState,
+} from '../../types/selectTypes';
 
 interface SelectProps {
   name: string;
@@ -87,7 +51,7 @@ export default function Select({
 
   return (
     <div className="flex flex-col gap-1">
-      <label className="block text-sm font-medium text-gray-700">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
         {label}{' '}
         {required && (
           <>

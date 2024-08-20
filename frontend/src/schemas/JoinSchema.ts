@@ -1,6 +1,6 @@
 import * as z from 'zod';
 import { Role } from '../Role';
-import { isValidPhoneNumber } from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 function isOibValid(oib: string) {
   if (/\d{11}/.exec(oib) === null) {
@@ -11,7 +11,6 @@ function isOibValid(oib: string) {
 
   for (const digit of oib.substring(0, 10)) {
     calculated += parseInt(digit);
-
     calculated %= 10;
 
     if (calculated === 0) {
@@ -19,12 +18,10 @@ function isOibValid(oib: string) {
     }
 
     calculated *= 2;
-
     calculated %= 11;
   }
 
   const check = 11 - calculated === 10 ? 0 : 11 - calculated;
-
   return check === parseInt(oib[10]);
 }
 
