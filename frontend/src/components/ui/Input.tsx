@@ -33,7 +33,7 @@ const Input = forwardRef(function Input(
   ref: React.Ref<HTMLInputElement>,
 ) {
   return (
-    <div>
+    <div className="w-full">
       {label && (
         <label htmlFor={id} className="block text-sm font-medium text-gray-700">
           {label} {required && <span className="text-red-600">*</span>}

@@ -3,6 +3,7 @@ import SectionRobotics from '../components/SectionRobotics';
 import SectionWhatWeDo from '../components/SectionWhatWeDo';
 import SectionSponsors from '../components/SectionSponsors';
 import SectionCompetitions from '../components/SectionCompetitions';
+import { SectionContact } from '../components/SectionContact';
 
 function HomePage() {
   return (
@@ -12,6 +13,7 @@ function HomePage() {
       <SectionRobotics />
       <SectionCompetitions />
       <SectionSponsors />
+      <SectionContact />
     </>
   );
 }

@@ -7,7 +7,7 @@ export default function Footer() {
             href="https://github.com/0xHashstack"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-500"
+            className="text-gray-400 transition-all duration-300 hover:text-primary-500"
           >
             <span className="sr-only">GitHub</span>
             GitHub
@@ -16,7 +16,7 @@ export default function Footer() {
             href="https://discord.gg/0xHashstack"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-500"
+            className="text-gray-400 transition-all duration-300 hover:text-primary-500"
           >
             <span className="sr-only">Discord</span>
             Discord
@@ -25,7 +25,7 @@ export default function Footer() {
             href="https://www.facebook.com/0xHashstack/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-500"
+            className="text-gray-400 transition-all duration-300 hover:text-primary-500"
           >
             <span className="sr-only">Facebook</span>
             Facebook
@@ -34,15 +34,24 @@ export default function Footer() {
             href="https://www.instagram.com/0xHashstack/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-500"
+            className="text-gray-400 transition-all duration-300 hover:text-primary-500"
           >
             <span className="sr-only">Instagram</span>
             Instagram
           </a>
+          <a
+            href="https://www.linkedin.com/0xHashstack/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 transition-all duration-300 hover:text-primary-500"
+          >
+            <span className="sr-only">LinkedIn</span>
+            LinkedIn
+          </a>
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-base text-gray-400">
-            &copy; 2024 Šou program.
+            &copy; 2024 <span className="font-brioni">Šou program</span>
           </p>
         </div>
       </div>
