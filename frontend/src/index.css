@@ -131,3 +131,9 @@
     transform: translateX(calc(-100% - 1rem));
   }
 }
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+  }
+}

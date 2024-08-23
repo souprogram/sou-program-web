@@ -5,9 +5,13 @@ export default {
     extend: {
       fontFamily: {
         brioni: ['Brioni Text Pro', 'sans-serif'],
+        poppins: ['Poppins', 'sans'],
+        roboto: ['Roboto', 'sans'],
+        lato: ['Lato', 'sans'],
       },
       colors: {
-        'primary-500': '#7fd8ff',
+        'primary-400': '#7cecff',
+        'primary-500': '#7ee0ff',
         'primary-600': '#70c8f2',
         'primary-700': '#60b8e2',
         black: '#1c1c1c',

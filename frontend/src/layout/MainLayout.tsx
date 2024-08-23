@@ -26,7 +26,9 @@ export default function MainLayout() {
   }, []);
 
   return (
-    <div className={`relative min-h-screen ${animate && 'overflow-hidden'}`}>
+    <div
+      className={`relative min-h-screen font-poppins ${animate && 'overflow-hidden'}`}
+    >
       {animate && <SplashScreen />}
       <NavBar />
       <Outlet />

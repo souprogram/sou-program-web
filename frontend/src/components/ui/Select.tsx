@@ -1,10 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
-import {
-  ControlState,
-  MultiValueState,
-  OptionState,
-} from '../../types/selectTypes';
 
 interface SelectProps {
   name: string;
@@ -27,31 +25,46 @@ export default function Select({
   onChange,
 }: SelectProps) {
   const classNames = {
-    control: (state: ControlState) =>
+    control: (state: any) =>
       twMerge(
         state.className,
-        '!border-0 !shadow-sm !outline-none !duration-300 !sm:text-sm',
-        state.isFocused && '!ring-primary-600 !ring-2',
-        error && state.isFocused && '!ring-red-600 !ring-2',
+        '!ps-1 !border-0 !bg-gray-600/30 !outline-none !duration-300 !sm:text-sm !text-white',
+        state.isFocused && '!border-transparent !bg-primary-600/30',
+        error && state.isFocused && '!bg-red-600/30',
       ),
-    multiValueLabel: (state: MultiValueState) =>
+    placeholder: (state: any) =>
       twMerge(
         state.className,
-        '!px-2 !py-1 !text-sm !bg-primary-600 !text-white !rounded-r-none',
+        '!text-gray-400 !text-sm !font-normal !leading-none',
       ),
-    multiValueRemove: (state: MultiValueState) =>
-      twMerge(state.className, '!rounded-l-none bg-primary-600 text-white'),
-    option: (state: OptionState) =>
+    multiValue: (state: any) => twMerge(state.className, '!rounded-full'),
+    input: (state: any) => twMerge(state.className, '!sm:text-sm !text-white'),
+    multiValueLabel: (state: any) =>
       twMerge(
-        '!px-4 !py-2 !text-sm !border-e-0',
-        state.isSelected && '!bg-primary-600 !text-white',
-        state.isFocused && '!bg-primary-600 !text-white',
+        state.className,
+        '!px-2 !py-1 !text-sm !bg-primary-600 !text-black !rounded-s-full',
+      ),
+    menu: (state: any) =>
+      twMerge(
+        state.className,
+        '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800',
+      ),
+    multiValueRemove: (state: any) =>
+      twMerge(
+        state.className,
+        '!rounded-l-none bg-primary-600 !rounded-e-full text-black',
+      ),
+    option: (state: any) =>
+      twMerge(
+        '!px-4 !py-2 !text-sm',
+        state.isSelected && '!bg-primary-600/30 !text-white',
+        state.isFocused && '!bg-primary-600/30 !text-white',
       ),
   };
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-200">
         {label}{' '}
         {required && (
           <>

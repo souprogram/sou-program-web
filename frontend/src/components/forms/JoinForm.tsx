@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Input from '../ui/Input';
 import Checkbox from '../ui/Checkbox';
-import { Role } from '../../Role';
+import { Role } from '../../enums/Role';
 import Select from '../ui/Select';
 
 const roleOptions = [
@@ -31,7 +31,6 @@ export default function JoinForm() {
       placeOfResidence: '',
       terms: false,
     },
-    reValidateMode: 'onSubmit',
     resolver: zodResolver(JoinSchema),
   });
 
@@ -54,9 +53,8 @@ export default function JoinForm() {
             <Input
               {...field}
               id="name"
-              label="Name"
-              placeholder="Ime"
-              required
+              label="Ime"
+              placeholder="Ime i prezime"
               error={errors.name}
             />
           )}
@@ -70,9 +68,7 @@ export default function JoinForm() {
               {...field}
               id="email"
               label="Email"
-              type="email"
               placeholder="Email"
-              required
               error={errors.email}
             />
           )}
@@ -86,7 +82,6 @@ export default function JoinForm() {
               {...field}
               id="oib"
               label="OIB"
-              required
               placeholder="OIB"
               error={errors.oib}
             />
@@ -103,7 +98,6 @@ export default function JoinForm() {
               label="Datum rođenja"
               type="date"
               placeholder="Datum rođenja"
-              required
               error={errors.dob}
             />
           )}
@@ -124,7 +118,6 @@ export default function JoinForm() {
             <Select
               name={field.name}
               label="Uloga"
-              required
               options={roleOptions}
               value={field.value}
               onChange={field.onChange}
@@ -142,8 +135,8 @@ export default function JoinForm() {
               id="discordUsername"
               label="Discord username"
               placeholder="Discord username"
-              required
               error={errors.discordUsername}
+              tooltip="Novi username bez # (hashtag) znaka"
             />
           )}
         />
@@ -159,9 +152,9 @@ export default function JoinForm() {
               type="tel"
               label="Broj mobitela"
               placeholder="Broj mobitela"
-              required
               error={errors.phoneNumber}
               onChange={({ target }) => field.onChange(target.value)}
+              tooltip="Mora sadrzati medunarodni zapis broja bez razmaka (+3859... za HR)"
             />
           )}
         />
@@ -175,8 +168,8 @@ export default function JoinForm() {
               id="placeOfResidence"
               label="Mjesto stanovanja"
               placeholder="Mjesto stanovanja"
-              required
               error={errors.placeOfResidence}
+              tooltip="Naziv grada i drzava"
             />
           )}
         />
@@ -188,8 +181,7 @@ export default function JoinForm() {
             <Checkbox
               {...field}
               id="terms"
-              label="I am completely sure that I want to join the community."
-              required
+              label="Prihvačam sve uvjete i odredbe Statuta."
               error={errors.terms}
             />
           )}

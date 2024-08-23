@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { Role } from '../Role';
+import { Role } from '../enums/Role';
 
 function isValidPhoneNumber(phoneNumber: string) {
   return /^\+3859[125789]\d.{5,6}$/.test(phoneNumber);

@@ -6,10 +6,10 @@ export default function SectionRobotics() {
           <span className="md:block">Robotics</span>{' '}
           <span className="opacity-50 md:block">We build</span>
         </h2>
-        <p className="text-lg leading-relaxed text-gray-300">
+        <p className="text-lg leading-relaxed text-gray-200">
           We build the best products and services for the world.
         </p>
-        <p className="text-lg leading-relaxed text-gray-300">
+        <p className="text-lg leading-relaxed text-gray-200">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
           condimentum nulla vitae elit sodales facilisis. Morbi sed urna
           tincidunt, aliquet orci a, volutpat mauris. Sed nec purus et tortor

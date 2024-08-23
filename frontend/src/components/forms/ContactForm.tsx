@@ -6,6 +6,7 @@ import {
 } from '../../schemas/ContactSchema';
 import Input from '../ui/Input';
 import { twMerge } from 'tailwind-merge';
+import Button from '../ui/Button';
 
 export default function ContactForm() {
   const {
@@ -41,7 +42,7 @@ export default function ContactForm() {
             <Input
               {...field}
               id="name"
-              label="Name"
+              label="Ime"
               placeholder="Ime"
               error={errors.name}
             />
@@ -69,16 +70,16 @@ export default function ContactForm() {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-gray-200"
               >
-                Message <span className="text-red-600">*</span>
+                Poruka
               </label>
               <textarea
                 id="message"
-                placeholder="Message"
+                placeholder="Poruka"
                 className={twMerge(
-                  'mt-1 block w-full rounded-md px-4 py-2 shadow-sm outline-none duration-300 focus:ring-2 focus:ring-primary-600 sm:text-sm',
-                  errors.message && 'focus:ring-red-600',
+                  'mt-1 block w-full rounded-md bg-gray-600/30 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30 sm:text-sm',
+                  errors.message && 'focus:bg-red-600/30',
                   field.disabled && 'pointer-events-none opacity-50',
                 )}
                 value={field.value}
@@ -97,12 +98,7 @@ export default function ContactForm() {
         />
 
         <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 font-medium text-black shadow-sm duration-300 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-          >
-            Send
-          </button>
+          <Button type="submit">Pošalji</Button>
         </div>
       </div>
     </form>

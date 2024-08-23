@@ -41,15 +41,15 @@ const Checkbox = forwardRef(function Checkbox(
           onChange={onChange}
           onBlur={onBlur}
           className={twMerge(
-            'h-4 w-4 rounded text-primary-600 outline-none duration-300 focus:ring-2 focus:ring-primary-500',
+            'size-4 cursor-pointer appearance-none rounded border border-gray-600 outline-none duration-300 checked:bg-primary-600 focus:border-primary-600',
             disabled && 'pointer-events-none opacity-50',
-            error && 'focus:ring-red-600',
+            error && 'focus:borders-red-600',
           )}
           aria-disabled={disabled}
         />
       </div>
       <div className="ml-3 text-sm">
-        <label htmlFor={id} className="font-medium text-gray-700">
+        <label htmlFor={id} className="font-medium text-gray-200">
           {label} {required && <span className="text-red-600">*</span>}
         </label>
         {error?.message && (
