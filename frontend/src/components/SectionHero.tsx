@@ -14,9 +14,9 @@ export default function SectionHero() {
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
           <Button to="/join">Učlani se</Button>
-          <Button to="#what-we-do" transparent>
-            Learn more
-          </Button>
+          <a href="#what-we-do">
+            <Button transparent>Doznaj više</Button>
+          </a>
         </div>
       </div>
     </section>

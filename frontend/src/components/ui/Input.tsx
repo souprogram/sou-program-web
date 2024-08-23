@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import { FieldError } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
-import { Tooltip } from './Tooltip';
 
 interface InputProps {
   className?: string;
@@ -12,9 +11,9 @@ interface InputProps {
   value?: string;
   placeholder?: string;
   required?: boolean;
+  description?: string;
   error?: FieldError;
   disabled?: boolean;
-  tooltip?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
@@ -26,10 +25,10 @@ const Input = forwardRef(function Input(
     label,
     name,
     type,
-    tooltip,
     required,
     disabled,
     value,
+    description,
     onChange,
     onBlur,
     placeholder,
@@ -42,7 +41,6 @@ const Input = forwardRef(function Input(
       {label && (
         <label htmlFor={id} className="flex text-sm font-medium text-gray-200">
           {label} {required && <span className="text-red-600">*</span>}
-          {tooltip && <Tooltip text={tooltip} />}
         </label>
       )}
       <input
@@ -62,6 +60,9 @@ const Input = forwardRef(function Input(
         aria-describedby={`${name}-error`}
         aria-disabled={disabled}
       />
+      {description && (
+        <p className="mt-2 text-sm text-gray-400">{description}</p>
+      )}
       {error?.message && (
         <p className="mt-2 text-sm text-red-600" id={`${name}-error`}>
           {error.message}

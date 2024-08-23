@@ -136,4 +136,7 @@
   body {
     @apply bg-black text-white;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 }

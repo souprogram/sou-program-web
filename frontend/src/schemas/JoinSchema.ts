@@ -37,28 +37,31 @@ const roleArray = [
 
 export const JoinSchema = z.object({
   name: z
-    .string({ required_error: 'You must enter your name' })
-    .min(2, 'You must enter at least 2 characters')
-    .max(50, 'You must enter at most 50 characters'),
-  email: z.string().email('Invalid email'),
-  oib: z.string().refine(isOibValid, 'Invalid OIB'),
-  dob: z.string().date('Invalid date'),
+    .string({ required_error: 'Moraš upisati ime i prezime' })
+    .min(2, 'Moraš upisati najmanje 2 znaka')
+    .max(50, 'Moraš upisati najviše 50 znakova'),
+  email: z.string().email('Neispravan email'),
+  oib: z.string().refine(isOibValid, 'Neispravan OIB'),
+  dob: z.string().date('Neispravan datum rođenja'),
   isStudent: z.boolean(),
-  role: z.enum(roleArray).array().nonempty('You must select at least one role'),
+  role: z.enum(roleArray).array().nonempty('Moraš odabrati barem jednu ulogu'),
   discordUsername: z
-    .string({ required_error: 'You must enter your discord username' })
-    .min(2, 'You must enter at least 2 characters')
-    .max(50, 'You must enter at most 50 characters'),
+    .string({ required_error: 'Moraš upisati svoj discord username' })
+    .min(2, 'Moraš upisati najmanje 2 znaka')
+    .max(50, 'Moraš upisati najviše 50 znakova'),
   phoneNumber: z
-    .string({ required_error: 'You must enter your phone number' })
-    .refine(isValidPhoneNumber, 'Invalid phone number'),
+    .string({ required_error: 'Moraš upisati svoj broj mobitela' })
+    .refine(isValidPhoneNumber, 'Neispravan broj mobitela'),
   placeOfResidence: z
-    .string({ required_error: 'You must enter where you work' })
-    .min(2, 'You must enter at least 2 characters')
-    .max(50, 'You must enter at most 50 characters'),
+    .string({ required_error: 'Moraš unijeti svoje mjesto stanovanja' })
+    .min(2, 'Moraš upisati najmanje 2 znaka')
+    .max(50, 'Moraš upisati najviše 50 znakova'),
   terms: z
     .boolean()
-    .refine((value) => value === true, 'You must accept the terms'),
+    .refine(
+      (value) => value === true,
+      'Moraš prihvatiti sve uvjete i odredbe Statuta',
+    ),
 });
 
 export type JoinSchemaType = z.infer<typeof JoinSchema>;

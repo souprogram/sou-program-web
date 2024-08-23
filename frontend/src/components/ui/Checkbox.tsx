@@ -49,14 +49,15 @@ const Checkbox = forwardRef(function Checkbox(
         />
       </div>
       <div className="ml-3 text-sm">
-        <label htmlFor={id} className="font-medium text-gray-200">
+        <label
+          htmlFor={id}
+          className={twMerge(
+            'font-medium text-gray-200',
+            error && 'text-red-600',
+          )}
+        >
           {label} {required && <span className="text-red-600">*</span>}
         </label>
-        {error?.message && (
-          <p className="mt-2 text-sm text-red-600" id={`${name}-error`}>
-            {error.message}
-          </p>
-        )}
       </div>
     </div>
   );

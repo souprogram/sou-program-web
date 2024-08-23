@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-// import spLogo from '/sp-logo.png';
 import spLogo from '/sou-program-logo-black.svg';
+
 export default function NavBar() {
   return (
     <nav className="absolute left-0 right-0 top-0 z-10">
@@ -15,10 +15,10 @@ export default function NavBar() {
               />
             </Link>
           </div>
-          <div className="hidden w-fit sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+          <div className="hidden w-fit py-8 sm:flex sm:space-x-8">
             <Link
               to="/"
-              className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 font-brioni font-medium leading-5 text-white transition duration-150 ease-in-out hover:text-primary-500 focus:text-primary-700 focus:outline-none"
+              className="px-4 text-white transition-all duration-300 hover:text-primary-500"
             >
               Home
             </Link>

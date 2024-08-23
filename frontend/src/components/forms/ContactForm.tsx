@@ -19,7 +19,6 @@ export default function ContactForm() {
       email: '',
       message: '',
     },
-    reValidateMode: 'onSubmit',
     resolver: zodResolver(ContactSchema),
   });
 
@@ -78,7 +77,7 @@ export default function ContactForm() {
                 id="message"
                 placeholder="Poruka"
                 className={twMerge(
-                  'mt-1 block w-full rounded-md bg-gray-600/30 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30 sm:text-sm',
+                  'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30 sm:text-sm',
                   errors.message && 'focus:bg-red-600/30',
                   field.disabled && 'pointer-events-none opacity-50',
                 )}

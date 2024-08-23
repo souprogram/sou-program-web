@@ -28,8 +28,8 @@ export default function Select({
     control: (state: any) =>
       twMerge(
         state.className,
-        '!ps-1 !border-0 !bg-gray-600/30 !outline-none !duration-300 !sm:text-sm !text-white',
-        state.isFocused && '!border-transparent !bg-primary-600/30',
+        '!ps-1 !border-0 !bg-gray-600/50 !outline-none !duration-300 !sm:text-sm !text-white',
+        state.isFocused && '!border-transparent !bg-primary-600/30 !ring-0',
         error && state.isFocused && '!bg-red-600/30',
       ),
     placeholder: (state: any) =>

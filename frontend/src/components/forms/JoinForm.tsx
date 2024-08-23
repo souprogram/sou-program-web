@@ -136,7 +136,7 @@ export default function JoinForm() {
               label="Discord username"
               placeholder="Discord username"
               error={errors.discordUsername}
-              tooltip="Novi username bez # (hashtag) znaka"
+              description="Username bez # (hashtag) znaka (kopiraj iz Discorda)"
             />
           )}
         />
@@ -154,7 +154,7 @@ export default function JoinForm() {
               placeholder="Broj mobitela"
               error={errors.phoneNumber}
               onChange={({ target }) => field.onChange(target.value)}
-              tooltip="Mora sadrzati medunarodni zapis broja bez razmaka (+3859... za HR)"
+              description="Mora sadržati međunarodni zapis broja bez razmaka (+3859... za HR)"
             />
           )}
         />
@@ -169,7 +169,7 @@ export default function JoinForm() {
               label="Mjesto stanovanja"
               placeholder="Mjesto stanovanja"
               error={errors.placeOfResidence}
-              tooltip="Naziv grada i drzava"
+              description="Naziv grada i država"
             />
           )}
         />
