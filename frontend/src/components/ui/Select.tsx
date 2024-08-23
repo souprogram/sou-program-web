@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+import React from 'react';
 import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
 
 interface SelectProps {
   name: string;
-  label: string;
+  label: string | React.JSX.Element;
   required?: boolean;
   options: { value: string; label: string }[];
   isMulti?: boolean;
@@ -65,15 +66,7 @@ export default function Select({
   return (
     <div className="flex flex-col gap-1">
       <label htmlFor={name} className="block text-sm font-medium text-gray-200">
-        {label}{' '}
-        {required && (
-          <>
-            <span className="font-normal text-gray-500">
-              (izaberite barem jednu)
-            </span>
-            <span className="text-red-600">*</span>
-          </>
-        )}
+        {label} {required && <span className="text-red-600">*</span>}
       </label>
       <ReactSelect
         name={name}

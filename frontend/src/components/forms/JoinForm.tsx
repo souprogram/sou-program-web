@@ -117,7 +117,14 @@ export default function JoinForm() {
           render={({ field }) => (
             <Select
               name={field.name}
-              label="Uloga"
+              label={
+                <>
+                  Uloga{' '}
+                  <span className="font-normal text-gray-400">
+                    (izaberite barem jednu)
+                  </span>
+                </>
+              }
               options={roleOptions}
               value={field.value}
               onChange={field.onChange}

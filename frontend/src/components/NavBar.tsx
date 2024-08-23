@@ -18,7 +18,7 @@ export default function NavBar() {
           <div className="hidden w-fit py-8 sm:flex sm:space-x-8">
             <Link
               to="/"
-              className="px-4 text-white transition-all duration-300 hover:text-primary-500"
+              className="px-4 text-gray-400 transition-all duration-300 hover:text-primary-500"
             >
               Home
             </Link>

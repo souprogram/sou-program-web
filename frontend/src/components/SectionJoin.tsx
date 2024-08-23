@@ -12,7 +12,7 @@ export default function SectionJoin() {
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
           <span className="md:block">Postani član udruge</span>
         </h2>
-        <p className="mb-8 text-lg leading-relaxed text-gray-200">
+        <p className="mb-8 leading-relaxed text-gray-200">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
         <div className="max-w-screen-sm">

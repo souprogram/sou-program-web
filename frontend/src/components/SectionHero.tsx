@@ -6,10 +6,10 @@ export default function SectionHero() {
       <div className="absolute inset-0 top-40 h-[20rem] max-w-7xl -rotate-12 rounded-full bg-primary-600 opacity-30"></div>
       <div className="absolute bottom-1/4 left-1/3 size-[28rem] animate-[spin_4s_linear_infinite] rounded-[13rem] bg-white opacity-30"></div>
       <div className="z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <h1 className="font-brioni text-5xl font-bold tracking-tight text-gray-100 sm:text-6xl">
+        <h1 className="font-brioni text-5xl font-bold tracking-tight text-white sm:text-6xl">
           Još jedna studentska udruga.
         </h1>
-        <p className="mt-3 font-poppins text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+        <p className="mt-3 font-poppins text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
           The best developer tools for your next project.
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">

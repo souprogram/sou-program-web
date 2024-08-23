@@ -2,7 +2,7 @@ import ContactForm from './forms/ContactForm';
 
 export const SectionContact = () => {
   return (
-    <section className="relative overflow-hidden bg-black py-16 md:py-24">
+    <section className="relative overflow-hidden bg-black py-16 text-gray-200 md:py-24">
       <div className="absolute left-2/3 top-[-25rem] z-10 size-[70rem] rounded-full bg-primary-600 opacity-50"></div>
       <div className="absolute left-[72s%] top-[-25rem] z-20 size-[60rem] animate-[spin_11s_linear_infinite] rounded-[29rem] bg-white opacity-50 md:left-[68.5%]"></div>
       <div className="absolute left-2/3 top-[-33rem] z-30 size-[60rem] rounded-full bg-black"></div>
@@ -11,7 +11,7 @@ export const SectionContact = () => {
           <span className="md:block">Contact us</span>{' '}
           <span className="opacity-50 md:block">Get in touch</span>
         </h2>
-        <p className="mb-8 max-w-screen-sm leading-relaxed text-gray-200">
+        <p className="mb-8 max-w-screen-sm text-lg leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
           condimentum nulla vitae elit sodales facilisis.
         </p>
