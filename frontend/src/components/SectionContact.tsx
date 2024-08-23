@@ -1,6 +1,6 @@
 import ContactForm from './forms/ContactForm';
 
-export const SectionContact = () => {
+const SectionContact = () => {
   return (
     <section className="relative overflow-hidden bg-black py-16 text-gray-200 md:py-24">
       <div className="absolute left-2/3 top-[-25rem] z-10 size-[70rem] rounded-full bg-primary-600 opacity-50"></div>
@@ -22,3 +22,5 @@ export const SectionContact = () => {
     </section>
   );
 };
+
+export default SectionContact;
