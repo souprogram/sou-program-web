@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Input from '../ui/Input';
 import Checkbox from '../ui/Checkbox';
-import { Role } from '../../Role';
+import { Role } from '../../enums/Role';
 import Select from '../ui/Select';
 
 const roleOptions = [
@@ -28,10 +28,9 @@ export default function JoinForm() {
       role: [],
       discordUsername: '',
       phoneNumber: '',
-      whereDoYouWork: '',
+      placeOfResidence: '',
       terms: false,
     },
-    reValidateMode: 'onSubmit',
     resolver: zodResolver(JoinSchema),
   });
 
@@ -54,8 +53,8 @@ export default function JoinForm() {
             <Input
               {...field}
               id="name"
-              label="Name"
-              required
+              label="Ime"
+              placeholder="Ime i prezime"
               error={errors.name}
             />
           )}
@@ -69,8 +68,7 @@ export default function JoinForm() {
               {...field}
               id="email"
               label="Email"
-              type="email"
-              required
+              placeholder="Email"
               error={errors.email}
             />
           )}
@@ -84,7 +82,7 @@ export default function JoinForm() {
               {...field}
               id="oib"
               label="OIB"
-              required
+              placeholder="OIB"
               error={errors.oib}
             />
           )}
@@ -99,7 +97,7 @@ export default function JoinForm() {
               id="dob"
               label="Datum rođenja"
               type="date"
-              required
+              placeholder="Datum rođenja"
               error={errors.dob}
             />
           )}
@@ -119,8 +117,14 @@ export default function JoinForm() {
           render={({ field }) => (
             <Select
               name={field.name}
-              label="Uloga"
-              required
+              label={
+                <>
+                  Uloga{' '}
+                  <span className="font-normal text-gray-400">
+                    (izaberite barem jednu)
+                  </span>
+                </>
+              }
               options={roleOptions}
               value={field.value}
               onChange={field.onChange}
@@ -137,8 +141,9 @@ export default function JoinForm() {
               {...field}
               id="discordUsername"
               label="Discord username"
-              required
+              placeholder="Discord username"
               error={errors.discordUsername}
+              description="Username bez # (hashtag) znaka (kopiraj iz Discorda)"
             />
           )}
         />
@@ -148,26 +153,30 @@ export default function JoinForm() {
           control={control}
           render={({ field }) => (
             <Input
-              {...field}
               id="phoneNumber"
+              name={field.name}
+              value={field.value}
+              type="tel"
               label="Broj mobitela"
-              type="phone"
-              required
+              placeholder="Broj mobitela"
               error={errors.phoneNumber}
+              onChange={({ target }) => field.onChange(target.value)}
+              description="Mora sadržati međunarodni zapis broja bez razmaka (+3859... za HR)"
             />
           )}
         />
 
         <Controller
-          name="whereDoYouWork"
+          name="placeOfResidence"
           control={control}
           render={({ field }) => (
             <Input
               {...field}
-              id="whereDoYouWork"
-              label="Gdje stanuju/presjedavaju"
-              required
-              error={errors.whereDoYouWork}
+              id="placeOfResidence"
+              label="Mjesto stanovanja"
+              placeholder="Mjesto stanovanja"
+              error={errors.placeOfResidence}
+              description="Naziv grada i država"
             />
           )}
         />
@@ -179,8 +188,7 @@ export default function JoinForm() {
             <Checkbox
               {...field}
               id="terms"
-              label="I am completely sure that I want to join the community."
-              required
+              label="Prihvačam sve uvjete i odredbe Statuta."
               error={errors.terms}
             />
           )}
@@ -189,7 +197,7 @@ export default function JoinForm() {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 font-medium text-black shadow-sm duration-300 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
           >
             Submit
           </button>

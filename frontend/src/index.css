@@ -121,6 +121,8 @@
   font-style: normal;
 }
 
+@tailwind utilities;
+
 @keyframes scroll {
   from {
     transform: translateX(0);
@@ -130,18 +132,11 @@
   }
 }
 
-.enable-animation .marquee__content {
-  animation: scroll 15s linear infinite;
-}
-
-.marquee:hover .marquee__content {
-  animation-play-state: paused;
-}
-
-@tailwind utilities;
-
-@layer utilities {
-  .pause {
-    animation-play-state: paused;
+@layer base {
+  body {
+    @apply bg-black text-white;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }

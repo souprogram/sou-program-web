@@ -1,72 +1,13 @@
-import ReactSelect, {
-  ControlProps,
-  GroupBase,
-  MultiValueProps,
-  OptionProps,
-} from 'react-select';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import React from 'react';
+import ReactSelect from 'react-select';
 import { twMerge } from 'tailwind-merge';
-
-type MultiValueState = MultiValueProps<
-  {
-    value: string;
-    label: string;
-  },
-  true,
-  GroupBase<{
-    value: string;
-    label: string;
-  }>
->;
-
-type ControlState = ControlProps<
-  {
-    value: string;
-    label: string;
-  },
-  true,
-  GroupBase<{
-    value: string;
-    label: string;
-  }>
->;
-
-type OptionState = OptionProps<
-  {
-    value: string;
-    label: string;
-  },
-  true,
-  GroupBase<{
-    value: string;
-    label: string;
-  }>
->;
-
-const classNames = {
-  control: (state: ControlState) =>
-    twMerge(
-      state.className,
-      '!border-0 !shadow-sm !outline-none !duration-300 !sm:text-sm',
-      state.isFocused && '!ring-primary-600 !ring-2',
-    ),
-  multiValueLabel: (state: MultiValueState) =>
-    twMerge(
-      state.className,
-      '!px-2 !py-1 !text-sm !bg-primary-600 !text-white !rounded-r-none',
-    ),
-  multiValueRemove: (state: MultiValueState) =>
-    twMerge(state.className, '!rounded-l-none bg-primary-600 text-white'),
-  option: (state: OptionState) =>
-    twMerge(
-      '!px-4 !py-2 !text-sm !border-e-0',
-      state.isSelected && '!bg-primary-600 !text-white',
-      state.isFocused && '!bg-primary-600 !text-white',
-    ),
-};
 
 interface SelectProps {
   name: string;
-  label: string;
+  label: string | React.JSX.Element;
   required?: boolean;
   options: { value: string; label: string }[];
   isMulti?: boolean;
@@ -84,18 +25,48 @@ export default function Select({
   error,
   onChange,
 }: SelectProps) {
+  const classNames = {
+    control: (state: any) =>
+      twMerge(
+        state.className,
+        '!ps-1 !border-0 !bg-gray-600/50 !outline-none !duration-300 !sm:text-sm !text-white',
+        state.isFocused && '!border-transparent !bg-primary-600/30 !ring-0',
+        error && state.isFocused && '!bg-red-600/30',
+      ),
+    placeholder: (state: any) =>
+      twMerge(
+        state.className,
+        '!text-gray-400 !text-sm !font-normal !leading-none',
+      ),
+    multiValue: (state: any) => twMerge(state.className, '!rounded-full'),
+    input: (state: any) => twMerge(state.className, '!sm:text-sm !text-white'),
+    multiValueLabel: (state: any) =>
+      twMerge(
+        state.className,
+        '!px-2 !py-1 !text-sm !bg-primary-600 !text-black !rounded-s-full',
+      ),
+    menu: (state: any) =>
+      twMerge(
+        state.className,
+        '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800',
+      ),
+    multiValueRemove: (state: any) =>
+      twMerge(
+        state.className,
+        '!rounded-l-none bg-primary-600 !rounded-e-full text-black',
+      ),
+    option: (state: any) =>
+      twMerge(
+        '!px-4 !py-2 !text-sm',
+        state.isSelected && '!bg-primary-600/30 !text-white',
+        state.isFocused && '!bg-primary-600/30 !text-white',
+      ),
+  };
+
   return (
     <div className="flex flex-col gap-1">
-      <label className="block text-sm font-medium text-gray-700">
-        {label}{' '}
-        {required && (
-          <>
-            <span className="font-normal text-gray-500">
-              (izaberite barem jednu)
-            </span>
-            <span className="text-red-600">*</span>
-          </>
-        )}
+      <label htmlFor={name} className="block text-sm font-medium text-gray-200">
+        {label} {required && <span className="text-red-600">*</span>}
       </label>
       <ReactSelect
         name={name}
