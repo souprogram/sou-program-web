@@ -4,7 +4,7 @@ const SectionContact = () => {
   return (
     <section className="relative overflow-hidden bg-black py-16 text-gray-200 md:py-24">
       <div className="absolute left-2/3 top-[-25rem] z-10 size-[70rem] rounded-full bg-primary-600 opacity-50"></div>
-      <div className="absolute left-[72s%] top-[-25rem] z-20 size-[60rem] animate-[spin_11s_linear_infinite] rounded-[29rem] bg-white opacity-50 md:left-[68.5%]"></div>
+      <div className="absolute left-[71%] top-[-25rem] z-20 size-[60rem] animate-[spin_11s_linear_infinite] rounded-[29rem] bg-white opacity-50 md:left-[68.5%]"></div>
       <div className="absolute left-2/3 top-[-33rem] z-30 size-[60rem] rounded-full bg-black"></div>
       <div className="relative z-50 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-primary-600 md:text-5xl lg:text-6xl">
