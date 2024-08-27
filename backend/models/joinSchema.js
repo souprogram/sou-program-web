@@ -1,4 +1,4 @@
-const z = require('zod');
+import z from 'zod';
 
 const Role = {
   PROGRAMER: 'programer',
@@ -40,7 +40,7 @@ const roleArray = [
   Role.TESTER,
 ];
 
-const JoinSchema = z.object({
+export const JoinSchema = z.object({
 	body: z.object({
 		name: z
 			.string({ required_error: 'You must enter your name' })
@@ -68,5 +68,3 @@ const JoinSchema = z.object({
 			.refine((value) => value === true, 'You must accept the terms')
 	})
 });
-
-module.exports = JoinSchema;
