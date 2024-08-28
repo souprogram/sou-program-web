@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import spLogo from '/sou-program-logo-black.svg';
+import spLogo from '/sou-program-logo-bez-pozadine.png';
 
 export default function NavBar() {
   return (
