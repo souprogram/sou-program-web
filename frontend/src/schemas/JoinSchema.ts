@@ -69,6 +69,6 @@ export const JoinSchema = z.object({
     return data.study !== undefined;
   }
   return true;
-}, 'Moraš odabrati studij');
+}, { message: 'Moraš odabrati studij', path: ['study'] });
 
 export type JoinSchemaType = z.infer<typeof JoinSchema>;

@@ -30,7 +30,7 @@ const studyOptions = [
   },
   { value: Study.FFPU, label: 'FFPU - Filozofski fakultet u Puli' },
   { value: Study.MFPU, label: 'MFPU - Medicinski fakultet u Puli' },
-  { value: Study.DAK, label: 'Dizajn i audiovizualne komunikacije' },
+  { value: Study.DAK, label: 'DAK - Dizajn i audiovizualne komunikacije' },
 ];
 
 export default function JoinForm() {
@@ -58,6 +58,10 @@ export default function JoinForm() {
   });
 
   const onSubmit: SubmitHandler<JoinSchemaType> = (data) => {
+    if (!data.isUNIPUStudent) {
+      data.study = undefined;
+    }
+
     alert(JSON.stringify(data, null, 2));
 
     // Send data to backend
@@ -68,7 +72,7 @@ export default function JoinForm() {
       className="mx-auto w-full max-w-screen-xl"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col space-y-8">
+      <div className="flex flex-col gap-8">
         <Controller
           name="name"
           control={control}
@@ -142,11 +146,11 @@ export default function JoinForm() {
           )}
         />
 
-        <Controller
-          name="study"
-          control={control}
-          render={({ field }) =>
-            isStudent ? (
+        <div className={`transition-all w-full duration-500 ${isStudent ? 'max-h-24 opacity-100' : '-mt-8 max-h-0 opacity-0' }`}>
+          <Controller
+            name="study"
+            control={control}
+            render={({ field }) => (
               <SingleSelect
                 name={field.name}
                 label="Studija"
@@ -155,11 +159,10 @@ export default function JoinForm() {
                 onChange={field.onChange}
                 error={errors.study?.message}
               />
-            ) : (
-              <></>
-            )
-          }
-        />
+            )}
+          />
+        </div>
+      
 
         <Controller
           name="role"
