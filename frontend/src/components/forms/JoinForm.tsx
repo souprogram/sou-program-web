@@ -4,16 +4,38 @@ import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Input from '../ui/Input';
 import Checkbox from '../ui/Checkbox';
 import { Role } from '../../enums/Role';
-import Select from '../ui/Select';
+import { SingleSelect, MultiSelect } from '../ui/Select';
+import { useState } from 'react';
+import { Study } from '../../enums/Study';
 
 const roleOptions = [
-  { value: Role.PROGRAMER, label: 'Programer' },
-  { value: Role.WEB_DEVELOPER, label: 'Web developer' },
+  { value: Role.SOU_LAB, label: 'Šou lab' },
+  { value: Role.SOU_PODCAST, label: 'Šou podcast' },
+  { value: Role.MARKETING, label: 'Marketing' },
   { value: Role.DESIGNER, label: 'Designer' },
-  { value: Role.TESTER, label: 'Tester' },
+];
+
+const studyOptions = [
+  { value: Study.FIPU, label: 'FIPU - Fakultet informatike u Puli' },
+  { value: Study.TFPU, label: 'TFPU - Tehnički fakultet u Puli' },
+  { value: Study.MAPU, label: 'MAPU - Muzička akademija u Puli' },
+  {
+    value: Study.FET,
+    label: 'FET - Fakultet ekonomije i turizma "Dr. Mijo Mirković" u Puli',
+  },
+  { value: Study.FPZ, label: 'FPZ - Fakultet prirodne znanosti u Puli' },
+  {
+    value: Study.FOOZ,
+    label: 'FOOZ - Fakultet za odgojne i obrazovne znanosti u Puli',
+  },
+  { value: Study.FFPU, label: 'FFPU - Filozofski fakultet u Puli' },
+  { value: Study.MFPU, label: 'MFPU - Medicinski fakultet u Puli' },
+  { value: Study.DAK, label: 'Dizajn i audiovizualne komunikacije' },
 ];
 
 export default function JoinForm() {
+  const [isStudent, setIsStudent] = useState(false);
+
   const {
     handleSubmit,
     control,
@@ -24,7 +46,8 @@ export default function JoinForm() {
       email: '',
       oib: '',
       dob: '',
-      isStudent: false,
+      isUNIPUStudent: false,
+      study: undefined,
       role: [],
       discordUsername: '',
       phoneNumber: '',
@@ -104,18 +127,45 @@ export default function JoinForm() {
         />
 
         <Controller
-          name="isStudent"
+          name="isUNIPUStudent"
           control={control}
           render={({ field }) => (
-            <Checkbox {...field} id="isStudent" label="Ja sam student" />
+            <Checkbox
+              {...field}
+              id="isUNIPUStudent"
+              label="Ja sam student"
+              onChange={(event) => {
+                field.onChange(event.target.checked);
+                setIsStudent(event.target.checked);
+              }}
+            />
           )}
+        />
+
+        <Controller
+          name="study"
+          control={control}
+          render={({ field }) =>
+            isStudent ? (
+              <SingleSelect
+                name={field.name}
+                label="Studija"
+                options={studyOptions}
+                value={[field.value]}
+                onChange={field.onChange}
+                error={errors.study?.message}
+              />
+            ) : (
+              <></>
+            )
+          }
         />
 
         <Controller
           name="role"
           control={control}
           render={({ field }) => (
-            <Select
+            <MultiSelect
               name={field.name}
               label={
                 <>

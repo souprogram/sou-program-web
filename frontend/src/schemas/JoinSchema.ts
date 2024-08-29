@@ -1,5 +1,6 @@
 import * as z from 'zod';
 import { Role } from '../enums/Role';
+import { Study } from '../enums/Study';
 
 function isValidPhoneNumber(phoneNumber: string) {
   return /^\+3859[125789]\d.{5,6}$/.test(phoneNumber);
@@ -29,10 +30,10 @@ function isOibValid(oib: string) {
 }
 
 const roleArray = [
-  Role.PROGRAMER,
-  Role.WEB_DEVELOPER,
+  Role.SOU_LAB,
+  Role.SOU_PODCAST,
+  Role.MARKETING,
   Role.DESIGNER,
-  Role.TESTER,
 ] as const;
 
 export const JoinSchema = z.object({
@@ -43,7 +44,8 @@ export const JoinSchema = z.object({
   email: z.string().email('Neispravan email'),
   oib: z.string().refine(isOibValid, 'Neispravan OIB'),
   dob: z.string().date('Neispravan datum rođenja'),
-  isStudent: z.boolean(),
+  isUNIPUStudent: z.boolean(),
+  study: z.nativeEnum(Study).optional(),
   role: z.enum(roleArray).array().nonempty('Moraš odabrati barem jednu ulogu'),
   discordUsername: z
     .string({ required_error: 'Moraš upisati svoj discord username' })
@@ -62,6 +64,11 @@ export const JoinSchema = z.object({
       (value) => value === true,
       'Moraš prihvatiti sve uvjete i odredbe Statuta',
     ),
-});
+}).refine((data) => {
+  if (data.isUNIPUStudent) {
+    return data.study !== undefined;
+  }
+  return true;
+}, 'Moraš odabrati studij');
 
 export type JoinSchemaType = z.infer<typeof JoinSchema>;

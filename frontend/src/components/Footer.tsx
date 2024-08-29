@@ -42,7 +42,7 @@ export default function Footer() {
   return (
     <footer className="bg-black">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-        <div className="hidden md:flex md:justify-center md:gap-6 md:order-2">
+        <div className="hidden md:order-2 md:flex md:justify-center md:gap-6">
           {socials.map(({ href, label }) => (
             <a
               key={label}
@@ -56,7 +56,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <div className="md:hidden flex justify-center gap-6 order-2">
+        <div className="order-2 flex justify-center gap-6 md:hidden">
           {socials.map(({ href, label, icon }) => (
             <a
               key={label}
