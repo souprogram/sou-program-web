@@ -1,8 +1,8 @@
 export const Role = {
-  PROGRAMER: 'programer',
-  WEB_DEVELOPER: 'web-developer',
+  SOU_LAB: 'sou-lab',
+  SOU_PODCAST: 'sou-podcast',
+  MARKETING: 'marketing',
   DESIGNER: 'designer',
-  TESTER: 'tester',
 } as const;
 
 export type RoleType = (typeof Role)[keyof typeof Role];

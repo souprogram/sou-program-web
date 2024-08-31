@@ -5,8 +5,8 @@ import {
   type ContactSchemaType,
 } from '../../schemas/ContactSchema';
 import Input from '../ui/Input';
-import { twMerge } from 'tailwind-merge';
 import Button from '../ui/Button';
+import { TextArea } from '../ui/TextArea';
 
 export default function ContactForm() {
   const {
@@ -66,33 +66,13 @@ export default function ContactForm() {
           name="message"
           control={control}
           render={({ field }) => (
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-200"
-              >
-                Poruka
-              </label>
-              <textarea
-                id="message"
-                placeholder="Poruka"
-                className={twMerge(
-                  'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30 sm:text-sm',
-                  errors.message && 'focus:bg-red-600/30',
-                  field.disabled && 'pointer-events-none opacity-50',
-                )}
-                value={field.value}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-                aria-describedby={`message-error`}
-                aria-disabled={field.disabled}
-              ></textarea>
-              {errors.message?.message && (
-                <p className="mt-2 text-sm text-red-600">
-                  {errors.message?.message}
-                </p>
-              )}
-            </div>
+            <TextArea
+              id="message"
+              {...field}
+              label="Poruka"
+              placeholder="Poruka"
+              error={errors.message}
+            />
           )}
         />
 
