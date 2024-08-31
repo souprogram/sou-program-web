@@ -8,7 +8,7 @@ import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
 import Input from '../ui/Input';
 import { SingleSelect, MultiSelect } from '../ui/Select';
-import axios from 'axios';
+// import axios from 'axios';
 
 const roleOptions = [
   { value: Role.SOU_LAB, label: 'Šou lab' },
@@ -60,7 +60,7 @@ export default function JoinForm() {
     resolver: zodResolver(JoinSchema),
   });
 
-  const onSubmit: SubmitHandler<JoinSchemaType> = async (data) => {
+  const onSubmit: SubmitHandler<JoinSchemaType> = (data) => {
     if (!areTermsAccepted) {
       alert('Moraš prihvatiti sve uvjete i odredbe Statuta.');
       return;
