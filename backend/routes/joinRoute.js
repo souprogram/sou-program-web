@@ -1,35 +1,19 @@
-const express = require('express');
-const { createClient } = require('@supabase/supabase-js');
-const validate = require('../middlewares/joinSchemaValidation');
-const JoinSchema = require('../models/joinSchema');
+import express from 'express';
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+import { validate } from '../middlewares/joinSchemaValidation.js';
+import { JoinSchema } from '../models/joinSchema.js';
 
 const router = express.Router();
-require('dotenv').config()
+dotenv.config()
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
-
-async function getUsers() {
-  const users = await sql`select * from "test-clanovi"`
-  console.log(users);
-  return users;
-}
-
-router.get('/', async (req, res) => {
-  try {
-    const {data, error} = await supabase.from("test-clanovi").select("*");
-    console.log('data:', data);
-    res.send('<h1>BOOOOK</h1>');
-  } catch (e) {
-    console.error(e);
-    res.json()
-  }
-});
 
 router.post('/', validate(JoinSchema), async (req, res) => {
   try {
     const body = req.body;
 
-    const {error} = await supabase.from("test-clanovi").insert({
+    const {error} = await supabase.from(process.env.SUPABASE_TABLE_NAME).insert({
       name: body.name,
       email: body.email,
       oib: body.oib,
@@ -42,24 +26,18 @@ router.post('/', validate(JoinSchema), async (req, res) => {
       terms_accepted: body.terms
     })
 
-    if (!error) {
-      res.json({
-        completed: true
-      })
-    } else {
-      console.log('error:', error);
-      res.json({
-        completed: false,
-        message: 'Something went wrong'
-      })
-    }
+    if (error) throw error;
+    res.status(201).json({
+      completed: true
+    })
   } catch(error) {
     console.error(error);
-    res.send({
+    res.status(500).send({
       completed: false,
-      message: 'Something went wrong'
+      message: 'Something went wrong.',
+      error
     })
   }
 });
 
-module.exports = router;
+export { router as joinRoute};
