@@ -47,6 +47,7 @@ const Input = forwardRef(function Input(
         id={id}
         ref={ref}
         type={type ?? 'text'}
+        name={name}
         className={twMerge(
           'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 text-white shadow-sm outline-none transition duration-300 focus:bg-primary-600/50 sm:text-sm',
           error && 'focus:bg-red-600/50',
@@ -63,7 +64,7 @@ const Input = forwardRef(function Input(
       {description && (
         <p className="mt-2 text-sm text-gray-400">{description}</p>
       )}
-      {error?.message && (
+      {error && (
         <p className="mt-2 text-sm text-red-600" id={`${name}-error`}>
           {error.message}
         </p>

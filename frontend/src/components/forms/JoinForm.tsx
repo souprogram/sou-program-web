@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
-import Input from '../ui/Input';
-import Checkbox from '../ui/Checkbox';
 import { Role } from '../../enums/Role';
-import { SingleSelect, MultiSelect } from '../ui/Select';
-import { useState } from 'react';
 import { Study } from '../../enums/Study';
+import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
+import Button from '../ui/Button';
+import Checkbox from '../ui/Checkbox';
+import Input from '../ui/Input';
+import { SingleSelect, MultiSelect } from '../ui/Select';
+import axios from 'axios';
 
 const roleOptions = [
   { value: Role.SOU_LAB, label: 'Šou lab' },
@@ -35,6 +37,7 @@ const studyOptions = [
 
 export default function JoinForm() {
   const [isStudent, setIsStudent] = useState(false);
+  const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
   const {
     handleSubmit,
@@ -51,20 +54,35 @@ export default function JoinForm() {
       role: [],
       discordUsername: '',
       phoneNumber: '',
-      placeOfResidence: '',
-      terms: false,
+      zipCode: '',
+      city: '',
     },
     resolver: zodResolver(JoinSchema),
   });
 
-  const onSubmit: SubmitHandler<JoinSchemaType> = (data) => {
+  const onSubmit: SubmitHandler<JoinSchemaType> = async (data) => {
+    if (!areTermsAccepted) {
+      alert('Moraš prihvatiti sve uvjete i odredbe Statuta.');
+      return;
+    }
+
     if (!data.isUNIPUStudent) {
       data.study = undefined;
     }
 
     alert(JSON.stringify(data, null, 2));
 
-    // Send data to backend
+    // const response = await axios.post(
+    //   `${import.meta.env.VITE_BACKEND_URL}/join`,
+    //   data,
+    // );
+    // console.log(response);
+
+    // if (response.status === 200) {
+    //   alert('Registracija uspješno završena.');
+    // } else {
+    //   alert('Registracija nije uspjela.');
+    // }
   };
 
   return (
@@ -137,7 +155,7 @@ export default function JoinForm() {
             <Checkbox
               {...field}
               id="isUNIPUStudent"
-              label="Ja sam student"
+              label="Ja sam UNIPU student (Sveučilište Jurja Dobrile u Puli)"
               onChange={(event) => {
                 field.onChange(event.target.checked);
                 setIsStudent(event.target.checked);
@@ -146,7 +164,9 @@ export default function JoinForm() {
           )}
         />
 
-        <div className={`transition-all w-full duration-500 ${isStudent ? 'max-h-24 opacity-100' : '-mt-8 max-h-0 opacity-0' }`}>
+        <div
+          className={`w-full transition-all duration-500 ${isStudent ? 'max-h-24 opacity-100' : '-mt-8 max-h-0 opacity-0'}`}
+        >
           <Controller
             name="study"
             control={control}
@@ -162,7 +182,6 @@ export default function JoinForm() {
             )}
           />
         </div>
-      
 
         <Controller
           name="role"
@@ -214,46 +233,52 @@ export default function JoinForm() {
               placeholder="Broj mobitela"
               error={errors.phoneNumber}
               onChange={({ target }) => field.onChange(target.value)}
-              description="Mora sadržati međunarodni zapis broja bez razmaka (+3859... za HR)"
+              description="Format: +3859..."
             />
           )}
         />
 
-        <Controller
-          name="placeOfResidence"
-          control={control}
-          render={({ field }) => (
-            <Input
-              {...field}
-              id="placeOfResidence"
-              label="Mjesto stanovanja"
-              placeholder="Mjesto stanovanja"
-              error={errors.placeOfResidence}
-              description="Naziv grada i država"
-            />
-          )}
+        <div className="flex flex-col gap-8 sm:flex-row">
+          <Controller
+            name="zipCode"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                id="zipCode"
+                label="Poštanski broj"
+                placeholder="Poštanski broj"
+                error={errors.zipCode}
+              />
+            )}
+          />
+
+          <Controller
+            name="city"
+            control={control}
+            render={({ field }) => (
+              <Input
+                {...field}
+                id="city"
+                label="Grad"
+                placeholder="Grad"
+                error={errors.city}
+              />
+            )}
+          />
+        </div>
+
+        <Checkbox
+          id="terms"
+          value={areTermsAccepted}
+          onChange={({ target }) => setAreTermsAccepted(target.checked)}
+          label="Prihvačam sve uvjete i odredbe Statuta."
         />
 
-        <Controller
-          name="terms"
-          control={control}
-          render={({ field }) => (
-            <Checkbox
-              {...field}
-              id="terms"
-              label="Prihvačam sve uvjete i odredbe Statuta."
-              error={errors.terms}
-            />
-          )}
-        />
-
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="inline-flex items-center rounded-md border border-transparent bg-primary-600 px-4 py-2 font-medium text-black shadow-sm duration-300 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-          >
+        <div className="flex">
+          <Button type="submit" disabled={!areTermsAccepted}>
             Submit
-          </button>
+          </Button>
         </div>
       </div>
     </form>

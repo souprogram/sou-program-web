@@ -3,10 +3,10 @@ import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 const SectionContact = () => {
   return (
-    <section className="relative overflow-hidden bg-black py-16 text-gray-200 md:py-32">
-      {/* <div className="absolute left-2/3 top-[-25rem] z-10 size-[70rem] rounded-full bg-primary-600 opacity-50"></div> */}
-      {/* <div className="absolute left-[71%] top-[-25rem] z-20 size-[60rem] animate-[spin_11s_linear_infinite] rounded-[29rem] bg-white opacity-50 md:left-[68.5%]"></div> */}
-      {/* <div className="absolute left-2/3 top-[-33rem] z-30 size-[60rem] rounded-full bg-black"></div> */}
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-black py-16 text-gray-200 md:py-32"
+    >
       <div className="opacity-5">
         <img
           src={SPLogoTransparent}

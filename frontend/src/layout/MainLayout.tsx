@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import SplashScreen from '../components/SplashScreen';
 import { useLayoutEffect, useState } from 'react';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function MainLayout() {
   const [animate, setAnimate] = useState(false);
@@ -16,7 +17,7 @@ export default function MainLayout() {
       setAnimate(true);
       timer = setTimeout(() => {
         setAnimate(false);
-      }, 3000);
+      }, 2000);
     } else {
       console.log('not first visit');
     }
@@ -30,6 +31,7 @@ export default function MainLayout() {
     <div
       className={`relative min-h-screen font-poppins ${animate && 'overflow-hidden'}`}
     >
+      <ScrollToTop />
       {animate && <SplashScreen />}
       <NavBar />
       <Outlet />

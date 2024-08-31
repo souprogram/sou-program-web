@@ -5,9 +5,7 @@ import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 export default function SectionHero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden bg-black py-16 md:py-32 lg:py-48">
-      {/* <div className="absolute inset-0 top-40 h-[20rem] max-w-7xl -rotate-12 rounded-full bg-primary-600 opacity-30"></div> */}
-      {/* <div className="absolute bottom-1/4 left-1/3 size-[28rem] animate-[spin_4s_linear_infinite] rounded-[13rem] bg-white opacity-30"></div> */}
-      <div className="opacity-40">
+      <div className="opacity-10">
         <img
           src={SPLogo}
           alt="Sou program logo"

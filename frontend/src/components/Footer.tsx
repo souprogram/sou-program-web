@@ -40,7 +40,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black">
+    <footer id="footer" className="bg-black">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="hidden md:order-2 md:flex md:justify-center md:gap-6">
           {socials.map(({ href, label }) => (

@@ -2,17 +2,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from 'react';
-import ReactSelect, { GroupBase, OptionsOrGroups } from 'react-select';
+import ReactSelect from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { twMerge } from 'tailwind-merge';
 import { StudyType } from '../../enums/Study';
 
 const animatedComponents = makeAnimated();
 
-interface SelectProps<
-  Option,
-  IsMulti extends boolean = false,
-> {
+interface SelectProps<Option, IsMulti extends boolean = false> {
   name: string;
   label: string | React.JSX.Element;
   required?: boolean;
@@ -21,7 +18,8 @@ interface SelectProps<
   error?: string;
 }
 
-interface MultiSelectProps<Option, IsMulti extends boolean = true> extends SelectProps<Option, IsMulti> {
+interface MultiSelectProps<Option, IsMulti extends boolean = true>
+  extends SelectProps<Option, IsMulti> {
   value: readonly Option[];
   onChange: (value: Option[]) => void;
 }
@@ -94,12 +92,16 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
   );
 }
 
-interface SingleSelectProps<Option, IsMulti extends boolean = false> extends SelectProps<Option, IsMulti> {
+interface SingleSelectProps<Option, IsMulti extends boolean = false>
+  extends SelectProps<Option, IsMulti> {
   value: Option;
   onChange: (value: Option) => void;
 }
 
-export function SingleSelect<Option extends StudyType, IsMulti extends boolean = false>({
+export function SingleSelect<
+  Option extends StudyType,
+  IsMulti extends boolean = false,
+>({
   name,
   label,
   required,
@@ -150,15 +152,12 @@ export function SingleSelect<Option extends StudyType, IsMulti extends boolean =
         id="single-role"
         isMulti={false}
         aria-label="Select role"
-        options={options as OptionsOrGroups<{
-              value: Option;
-              label: string;
-          }, GroupBase<{
-              value: Option;
-              label: string;
-          }>> | undefined}
+        options={options}
         value={options.find((c) => c.value === value)}
-        onChange={(e) => {onChange(e ? e.value : "" as Option); console.log(e)}}
+        onChange={(e) => {
+          onChange(e ? e.value : ('' as Option));
+          console.log(e);
+        }}
         classNames={classNames}
         components={animatedComponents}
       />
