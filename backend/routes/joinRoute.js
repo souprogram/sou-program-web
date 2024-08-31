@@ -26,16 +26,10 @@ router.post('/', validate(JoinSchema), async (req, res) => {
       terms_accepted: body.terms
     })
 
-    if (!error) {
-      res.status(201).json({
-        completed: true
-      })
-    } else {
-      res.status(400).json({
-        completed: false,
-        message: error
-      })
-    }
+    if (error) throw new Error('Something error');
+    res.status(201).json({
+      completed: true
+    })
   } catch(error) {
     console.error(error);
     res.status(500).send({
