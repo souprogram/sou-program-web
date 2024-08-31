@@ -7,6 +7,7 @@ interface ButtonProps {
   type?: 'submit' | 'reset' | 'button';
   to?: string;
   transparent?: boolean;
+  disabled?: boolean;
 }
 
 export const Button = ({
@@ -15,14 +16,15 @@ export const Button = ({
   type = 'button',
   to,
   transparent,
+  disabled = false,
 }: ButtonProps) => {
   return to ? (
     <Link
       to={to}
       className={twMerge(
-        'hover:bg-primary-400 inline-flex items-center rounded-md bg-primary-600 px-5 py-2.5 font-medium text-black duration-300 focus:outline-none',
+        'inline-flex items-center rounded-md bg-primary-600 px-5 py-2.5 font-medium text-black duration-300 hover:bg-primary-400 focus:outline-none',
         transparent &&
-          'bg-transparent text-primary-600 hover:bg-primary-600/30',
+          'bg-transparent text-primary-600 hover:bg-primary-600/20',
         className,
       )}
     >
@@ -32,11 +34,13 @@ export const Button = ({
     <button
       type={type}
       className={twMerge(
-        'hover:bg-primary-400 inline-flex items-center rounded-md bg-primary-600 px-5 py-2.5 font-medium text-black duration-300 focus:outline-none',
+        'inline-flex items-center rounded-md bg-primary-600 px-5 py-2.5 font-medium text-black duration-300 hover:bg-primary-400 focus:outline-none',
         transparent &&
-          'bg-transparent text-primary-600 hover:bg-primary-600/30',
+          'bg-transparent text-primary-600 hover:bg-primary-600/20',
+        disabled && 'pointer-events-none cursor-not-allowed opacity-50',
         className,
       )}
+      disabled={disabled}
     >
       {children}
     </button>

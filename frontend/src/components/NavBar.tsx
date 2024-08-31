@@ -1,5 +1,14 @@
 import { Link } from 'react-router-dom';
-import spLogo from '/sou-program-logo-black.svg';
+import spLogo from '/sou-program-logo-bez-pozadine.png';
+
+const links = [
+  { label: 'Home', to: '/' },
+  { label: 'What we do', to: '/#what-we-do' },
+  { label: 'Competitions', to: '/#competitions' },
+  { label: 'Robotics', to: '/#robotics' },
+  { label: 'Contact', to: '/#contact' },
+  { label: 'Join', to: '/join' },
+];
 
 export default function NavBar() {
   return (
@@ -15,13 +24,16 @@ export default function NavBar() {
               />
             </Link>
           </div>
-          <div className="hidden w-fit py-8 sm:flex sm:space-x-8">
-            <Link
-              to="/"
-              className="px-4 text-gray-400 transition-all duration-300 hover:text-primary-500"
-            >
-              Home
-            </Link>
+          <div className="hidden w-fit py-8 sm:flex sm:gap-8">
+            {links.map(({ label, to }) => (
+              <Link
+                key={label}
+                to={to}
+                className="text-gray-400 transition-all duration-300 hover:text-primary-500"
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

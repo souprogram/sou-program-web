@@ -1,25 +1,26 @@
 export default function SectionCompetitions() {
   return (
-    <section className="bg-white py-16 text-gray-800 md:py-24">
+    <section
+      id="competitions"
+      className="bg-white py-16 text-gray-800 md:py-32"
+    >
       <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl">
-          <span className="md:block">Competitions</span>{' '}
-          <span className="opacity-50 md:block">We compete</span>
+          <div>Natjecanja</div>
+          <div className="opacity-50">Competitions</div>
         </h2>
         <p className="text-lg leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          elementum, nulla sed elementum tincidunt, nisi risus tincidunt sapien,
-          vel aliquet nisi nisl quis nisl. Sed elementum, nulla sed.
+          Sudjelovanje na natjecanjima kao što su ICPC i Central Europe Regional
+          Contest (CERC) u Ljubljani, te STEM games, vrhunac su naših godišnjih
+          aktivnosti. Naši timovi su pokazali izvrsnost na ovim prestižnim
+          natjecanjima, gdje osim što unapređuju svoje programerske vještine,
+          također uživaju u zabavnim i društvenim aspektima ovih događaja.
         </p>
         <p className="text-lg leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          condimentum nulla vitae elit sodales facilisis. Morbi sed urna
-          tincidunt, aliquet orci a, volutpat mauris. Sed nec purus et tortor
-          sodales aliquet. Fusce eget arcu at libero ultrices ultricies. Sed
-          euismod nisi eu dolor sodales pellentesque. Morbi bibendum, nisi eget
-          commodo vehicula, metus nisl adipiscing nisi, sed molestie nunc tellus
-          id orci. Phasellus quis ex ac leo condimentum ultricies. Etiam eget ex
-          ac urna suscipit dignissim.
+          Motiviramo sve studente da se prijave, ne samo radi programiranja, već
+          i da iskuse nezaboravne trenutke i steknu nova prijateljstva.
+          Pridružite nam se i vi u ovoj avanturi, gdje učenje i zabava idu ruku
+          pod ruku!
         </p>
       </div>
     </section>
