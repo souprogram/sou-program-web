@@ -8,7 +8,7 @@ import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
 import Input from '../ui/Input';
 import { SingleSelect, MultiSelect } from '../ui/Select';
-// import axios from 'axios';
+import axios from 'axios';
 
 const roleOptions = [
   { value: Role.SOU_LAB, label: 'Šou lab' },
@@ -60,7 +60,7 @@ export default function JoinForm() {
     resolver: zodResolver(JoinSchema),
   });
 
-  const onSubmit: SubmitHandler<JoinSchemaType> = (data) => {
+  const onSubmit: SubmitHandler<JoinSchemaType> = async (data) => {
     if (!areTermsAccepted) {
       alert('Moraš prihvatiti sve uvjete i odredbe Statuta.');
       return;
@@ -70,19 +70,17 @@ export default function JoinForm() {
       data.study = undefined;
     }
 
-    alert(JSON.stringify(data, null, 2));
+    const response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/join`,
+      data,
+    );
+    console.log(response);
 
-    // const response = await axios.post(
-    //   `${import.meta.env.VITE_BACKEND_URL}/join`,
-    //   data,
-    // );
-    // console.log(response);
-
-    // if (response.status === 200) {
-    //   alert('Registracija uspješno završena.');
-    // } else {
-    //   alert('Registracija nije uspjela.');
-    // }
+    if (response.status === 200) {
+      alert('Registracija uspješno završena.');
+    } else {
+      alert('Registracija nije uspjela.');
+    }
   };
 
   return (
