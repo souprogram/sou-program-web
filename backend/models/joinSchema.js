@@ -1,70 +1,93 @@
-import z from 'zod';
+import * as z from 'zod';
+import { Role } from '../enums/Role';
+import { Study } from '../enums/Study';
 
-const Role = {
-  PROGRAMER: 'programer',
-  WEB_DEVELOPER: 'web-developer',
-  DESIGNER: 'designer',
-  TESTER: 'tester',
+function isValidPhoneNumber(phoneNumber) {
+  return /^\+3859[125789]\d.{5,6}$/.test(phoneNumber);
 }
 
 function isOibValid(oib) {
   if (/\d{11}/.exec(oib) === null) {
     return false;
   }
-	return true;
-  // let calculated = 10;
 
-  // for (const digit of oib.substring(0, 10)) {
-  //   calculated += parseInt(digit);
+  let calculated = 10;
 
-  //   calculated %= 10;
+  for (const digit of oib.substring(0, 10)) {
+    calculated += parseInt(digit);
+    calculated %= 10;
 
-  //   if (calculated === 0) {
-  //     calculated = 10;
-  //   }
+    if (calculated === 0) {
+      calculated = 10;
+    }
 
-  //   calculated *= 2;
+    calculated *= 2;
+    calculated %= 11;
+  }
 
-  //   calculated %= 11;
-  // }
-
-  // const check = 11 - calculated === 10 ? 0 : 11 - calculated;
-
-  // return check === parseInt(oib[10]);
+  const check = 11 - calculated === 10 ? 0 : 11 - calculated;
+  return check === parseInt(oib[10]);
 }
 
+export const Role = {
+  SOU_LAB: 'sou-lab',
+  SOU_PODCAST: 'sou-podcast',
+  MARKETING: 'marketing',
+  DESIGNER: 'designer',
+};
+
 const roleArray = [
-  Role.PROGRAMER,
-  Role.WEB_DEVELOPER,
+  Role.SOU_LAB,
+  Role.SOU_PODCAST,
+  Role.MARKETING,
   Role.DESIGNER,
-  Role.TESTER,
 ];
 
+export const Study = {
+  FIPU: 'fipu',
+  TFPU: 'tfpu',
+  MAPU: 'mapu',
+  FET: 'fet',
+  FPZ: 'fpz',
+  FOOZ: 'fooz',
+  FFPU: 'ffpu',
+  MFPU: 'mfpu',
+  DAK: 'dak',
+};
+
 export const JoinSchema = z.object({
-	body: z.object({
-		name: z
-			.string({ required_error: 'You must enter your name' })
-			.min(2, 'You must enter at least 2 characters')
-			.max(50, 'You must enter at most 50 characters'),
-		email: z.string().email('Invalid email'),
-		oib: z.string().refine(isOibValid, 'Invalid OIB'),
-		dob: z.string().date('Invalid date'),
-		isStudent: z.boolean(),
-		role: z.enum(roleArray).array().nonempty('You must select at least one role'),
-		discordUsername: z
-			.string({ required_error: 'You must enter your discord username' })
-			.min(2, 'You must enter at least 2 characters')
-			.max(50, 'You must enter at most 50 characters'),
-		phoneNumber: z
-			.string({ required_error: 'You must enter your phone number' })
-			.min(10, 'You must enter at least 10 characters')
-			.max(15, 'You must enter at most 15 characters'),
-		placeOfResidence: z
-			.string({ required_error: 'You must enter where you work' })
-			.min(2, 'You must enter at least 2 characters')
-			.max(50, 'You must enter at most 50 characters'),
-		terms: z
-			.boolean()
-			.refine((value) => value === true, 'You must accept the terms')
-	})
-});
+  name: z
+    .string({ required_error: 'Moraš upisati ime i prezime' })
+    .min(2, 'Moraš upisati najmanje 2 znaka')
+    .max(50, 'Moraš upisati najviše 50 znakova'),
+  email: z.string().email('Neispravan email'),
+  oib: z.string().refine(isOibValid, 'Neispravan OIB'),
+  dob: z.string().date('Neispravan datum rođenja'),
+  isUNIPUStudent: z.boolean(),
+  study: z.nativeEnum(Study).optional(),
+  role: z.enum(roleArray).array().nonempty('Moraš odabrati barem jednu ulogu'),
+  discordUsername: z
+    .string({ required_error: 'Moraš upisati svoj discord username' })
+    .min(2, 'Moraš upisati najmanje 2 znaka')
+    .max(50, 'Moraš upisati najviše 50 znakova'),
+  phoneNumber: z
+    .string({ required_error: 'Moraš upisati svoj broj mobitela' })
+    .refine(isValidPhoneNumber, 'Neispravan broj mobitela'),
+  placeOfResidence: z
+    .string({ required_error: 'Moraš unijeti svoje mjesto stanovanja' })
+    .min(2, 'Moraš upisati najmanje 2 znaka')
+    .max(50, 'Moraš upisati najviše 50 znakova'),
+  terms: z
+    .boolean()
+    .refine(
+      (value) => value === true,
+      'Moraš prihvatiti sve uvjete i odredbe Statuta',
+    ),
+}).refine((data) => {
+  if (data.isUNIPUStudent) {
+    return data.study !== undefined;
+  }
+  return true;
+}, { message: 'Moraš odabrati studij', path: ['study'] });
+
+export { JoinSchema };
