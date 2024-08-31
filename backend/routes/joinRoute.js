@@ -26,7 +26,7 @@ router.post('/', validate(JoinSchema), async (req, res) => {
       terms_accepted: body.terms
     })
 
-    if (error) throw new Error('Something error');
+    if (error) throw error;
     res.status(201).json({
       completed: true
     })
@@ -34,7 +34,8 @@ router.post('/', validate(JoinSchema), async (req, res) => {
     console.error(error);
     res.status(500).send({
       completed: false,
-      message: 'Something went wrong.'
+      message: 'Something went wrong.',
+      error
     })
   }
 });
