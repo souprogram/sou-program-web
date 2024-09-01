@@ -21,7 +21,7 @@ export default function SectionHero() {
         <h1 className="font-brioni text-5xl font-bold tracking-tight text-white sm:text-6xl">
           Još jedna studentska udruga.
         </h1>
-        <p className="mt-3 font-poppins text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+        <p className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
           Još jedan korak u proširenju naših projekata.
         </p>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
