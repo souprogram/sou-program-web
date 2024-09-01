@@ -1,4 +1,4 @@
-import { Button } from './ui/Button';
+import Button from './ui/Button';
 import SPLogo from '/sou-program-icon.svg';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 

@@ -1,6 +1,6 @@
 import Button from './ui/Button';
 
-const SectionCTA = () => {
+export default function SectionCTA() {
   return (
     <section className="bg-primary-600 py-16 text-gray-200 md:py-32">
       <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
@@ -19,6 +19,4 @@ const SectionCTA = () => {
       </div>
     </section>
   );
-};
-
-export default SectionCTA;
+}

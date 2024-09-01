@@ -10,14 +10,14 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button = ({
+export default function Button({
   children,
   className,
   type = 'button',
   to,
   transparent,
   disabled = false,
-}: ButtonProps) => {
+}: ButtonProps) {
   return to ? (
     <Link
       to={to}
@@ -45,6 +45,4 @@ export const Button = ({
       {children}
     </button>
   );
-};
-
-export default Button;
+}

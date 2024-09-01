@@ -3,12 +3,10 @@ import { MainRouter } from './router';
 
 const queryClient = new QueryClient();
 
-function App() {
+export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <MainRouter />
     </QueryClientProvider>
   );
 }
-
-export default App;

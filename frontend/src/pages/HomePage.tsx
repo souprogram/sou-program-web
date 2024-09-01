@@ -6,7 +6,7 @@ import SectionRobotics from '../components/SectionRobotics';
 import SectionSponsors from '../components/SectionSponsors';
 import SectionWhatWeDo from '../components/SectionWhatWeDo';
 
-function HomePage() {
+export default function HomePage() {
   return (
     <>
       <SectionHero />
@@ -19,5 +19,3 @@ function HomePage() {
     </>
   );
 }
-
-export default HomePage;

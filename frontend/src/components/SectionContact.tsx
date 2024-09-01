@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { type ContactSchemaType } from '../schemas/ContactSchema';
 
-const SectionContact = () => {
+export default function SectionContact() {
   const mutation = useMutation({
     mutationFn: async (data: ContactSchemaType) => {
       const response = await axios.post(
@@ -56,6 +56,4 @@ const SectionContact = () => {
       </div>
     </section>
   );
-};
-
-export default SectionContact;
+}
