@@ -85,7 +85,7 @@ export default function ContactForm({
         />
 
         <div className="flex items-center justify-between">
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" loading={isSubmitting}>
             Pošalji
           </Button>
         </div>
