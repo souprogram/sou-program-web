@@ -1,7 +1,30 @@
 import JoinForm from './forms/JoinForm';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { type JoinSchemaType } from '../schemas/JoinSchema';
 
 export default function SectionJoin() {
+  const mutation = useMutation({
+    mutationFn: async (data: JoinSchemaType) => {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/join`,
+        data,
+      );
+
+      if (response.status !== 201) {
+        throw new Error('Učlanjivanje nije uspjelo.');
+      }
+    },
+    onSuccess: () => {
+      alert('Uspješno ste se učlanili!');
+    },
+    onError: (error) => {
+      alert('Greška prilikom učlanjanja.');
+      console.error(error);
+    },
+  });
+
   return (
     <section className="relative overflow-hidden bg-black py-16 md:py-32">
       <div className="opacity-5">
@@ -20,7 +43,10 @@ export default function SectionJoin() {
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>
         <div className="max-w-screen-sm">
-          <JoinForm />
+          <JoinForm
+            onSubmit={mutation.mutate}
+            isSubmitting={mutation.isPending}
+          />
         </div>
       </div>
     </section>
