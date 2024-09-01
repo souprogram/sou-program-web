@@ -8,7 +8,7 @@ export default function SectionJoin() {
   const mutation = useMutation({
     mutationFn: async (data: JoinSchemaType) => {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/join`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/join`,
         data,
       );
 
