@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import {
   ContactSchema,
   type ContactSchemaType,
@@ -30,7 +30,7 @@ export default function ContactForm({
     resolver: zodResolver(ContactSchema),
   });
 
-  const submit: SubmitHandler<ContactSchemaType> = (data) => {
+  const submit = (data: ContactSchemaType) => {
     alert(JSON.stringify(data, null, 2));
 
     onSubmit(data);
