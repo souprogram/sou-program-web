@@ -29,11 +29,7 @@ export default function MainLayout() {
 
   return (
     <div
-      className={`relative min-h-screen ${animate && 'overflow-hidden'}`}
-      style={{
-        fontFamily:
-          'ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol',
-      }}
+      className={`relative min-h-screen font-poppins ${animate && 'overflow-hidden'}`}
     >
       <ScrollToTop />
       {animate && <SplashScreen />}

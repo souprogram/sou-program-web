@@ -9,7 +9,9 @@ export const RoboticsEventSchema = z.object({
     .max(50, 'Moraš upisati najviše 50 znakova'),
   dobStudent: z.string().date('Neispravan datum rođenja'),
   schoolName: z.string().min(2, 'Moraš upisati najmanje 2 znaka'),
-  schoolGrade: z.nativeEnum(SchoolGrade, { required_error: 'Moraš odabrati razred' }),
+  schoolGrade: z.nativeEnum(SchoolGrade, {
+    required_error: 'Moraš odabrati razred',
+  }),
   fullNameCaretaker: z
     .string({ required_error: 'Moraš upisati svoje ime i prezime skrbnika' })
     .min(2, 'Moraš upisati najmanje 2 znaka')
