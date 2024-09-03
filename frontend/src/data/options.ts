@@ -1,5 +1,6 @@
 import { Role } from '../enums/Role';
 import { Study } from '../enums/Study';
+import { SchoolGrade } from '../enums/SchoolGrade';
 
 export const roleOptions = [
   { value: Role.SOU_LAB, label: 'Šou lab' },
@@ -24,4 +25,12 @@ export const studyOptions = [
   { value: Study.FFPU, label: 'FFPU - Filozofski fakultet u Puli' },
   { value: Study.MFPU, label: 'MFPU - Medicinski fakultet u Puli' },
   { value: Study.DAK, label: 'DAK - Dizajn i audiovizualne komunikacije' },
+];
+
+export const schoolGradeOptions = [
+  { value: SchoolGrade.GRADE_4, label: '4. razred' },
+  { value: SchoolGrade.GRADE_5, label: '5. razred' },
+  { value: SchoolGrade.GRADE_6, label: '6. razred' },
+  { value: SchoolGrade.GRADE_7, label: '7. razred' },
+  { value: SchoolGrade.GRADE_8, label: '8. razred' },
 ];

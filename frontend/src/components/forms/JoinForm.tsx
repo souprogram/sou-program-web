@@ -242,7 +242,11 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
         />
 
         <div className="flex">
-          <Button type="submit" disabled={!areTermsAccepted || isSubmitting} loading={isSubmitting}>
+          <Button
+            type="submit"
+            disabled={!areTermsAccepted || isSubmitting}
+            loading={isSubmitting}
+          >
             Submit
           </Button>
         </div>

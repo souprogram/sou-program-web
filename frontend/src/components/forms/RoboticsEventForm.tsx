@@ -6,6 +6,8 @@ import {
 } from '../../schemas/RoboticsEventSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
+import { SingleSelect } from '../ui/Select';
+import { schoolGradeOptions } from '../../data/options';
 
 interface RoboticsEventFormProps {
   onSubmit: (data: RoboticsEventSchemaType) => void;
@@ -16,15 +18,19 @@ export default function RoboticsEventForm({
   onSubmit,
   isSubmitting,
 }: RoboticsEventFormProps) {
-  const { handleSubmit, control, formState: { errors } } = useForm<RoboticsEventSchemaType>({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<RoboticsEventSchemaType>({
     defaultValues: {
-      name: '',
+      fullNameStudent: '',
+      dobStudent: undefined,
+      schoolName: '',
+      schoolGrade: undefined,
+      fullNameCaretaker: '',
       email: '',
-      age: undefined,
-      school: '',
       phoneNumber: '',
-      zipCode: '',
-      city: '',
     },
     resolver: zodResolver(RoboticsEventSchema),
   });
@@ -39,106 +45,106 @@ export default function RoboticsEventForm({
     <form onSubmit={handleSubmit(submit)}>
       <div className="flex flex-col gap-8">
         <Controller
-          name="name"
+          name="fullNameStudent"
           control={control}
           render={({ field }) => (
             <Input
               {...field}
-              id="name"
-              label="Ime"
-              placeholder="Ime"
-              error={errors.name}
+              id="fullNameStudent"
+              label="Ime i prezime polaznika"
+              placeholder="Ime i prezime polaznika"
+              error={errors.fullNameStudent}
             />
           )}
         />
 
         <Controller
-          name="email"
+          name="dobStudent"
           control={control}
           render={({ field }) => (
             <Input
               {...field}
-              id="emaail"
-              label="Email"
-              placeholder="Email roditelja"
-              error={errors.email}
+              id="dob"
+              label="Datum rođenja polaznika"
+              type="date"
+              placeholder="Datum rođenja polaznika"
+              error={errors.dobStudent}
             />
           )}
         />
 
         <Controller
-          name="age"
-          control={control}
-          render={({ field }) => (
-            <Input
-              id="age"
-              label="Godina"
-              placeholder="Godina"
-              value={String(field.value)}
-              type='number'
-              error={errors.age}
-              onChange={({ target }) => field.onChange(Number(target.value))}
-            />
-          )}
-        />
-
-        <Controller
-          name="school"
+          name="schoolName"
           control={control}
           render={({ field }) => (
             <Input
               {...field}
               id="school"
-              label="Škola"
-              placeholder="Škola"
-              error={errors.school}
+              label="Naziv škole"
+              placeholder="Naziv škole"
+              error={errors.schoolName}
             />
           )}
         />
 
         <Controller
-          name="phoneNumber"
+          name="schoolGrade"
+          control={control}
+          render={({ field }) => (
+            <SingleSelect
+              name={field.name}
+              label="Razred"
+              options={schoolGradeOptions}
+              value={[field.value]}
+              onChange={field.onChange}
+              error={errors.schoolGrade?.message}
+            />
+          )}
+        />
+
+        <Controller
+          name="fullNameCaretaker"
           control={control}
           render={({ field }) => (
             <Input
-              id="phoneNumber"
-              name={field.name}
-              value={field.value}
-              type="tel"
-              label="Broj mobitela"
-              placeholder="Broj mobitela"
-              error={errors.phoneNumber}
-              onChange={({ target }) => field.onChange(target.value)}
-              description="Format: +3859..."
+              {...field}
+              id="fullNameCaretaker"
+              label="Ime i prezime skrbnika"
+              placeholder="Ime i prezime skrbnika"
+              error={errors.fullNameCaretaker}
             />
           )}
         />
 
         <div className="flex flex-col gap-8 sm:flex-row">
           <Controller
-            name="zipCode"
+            name="email"
             control={control}
             render={({ field }) => (
               <Input
                 {...field}
-                id="zipCode"
-                label="Poštanski broj"
-                placeholder="Poštanski broj"
-                error={errors.zipCode}
+                id="email"
+                label="Email skrbnika"
+                placeholder="Email skrbnika"
+                error={errors.email}
               />
             )}
           />
 
           <Controller
-            name="city"
+            name="phoneNumber"
             control={control}
             render={({ field }) => (
               <Input
-                {...field}
-                id="city"
-                label="Grad"
-                placeholder="Grad"
-                error={errors.city}
+                id="phoneNumber"
+                name={field.name}
+                value={field.value}
+                type="tel"
+                label="Broj mobitela skrbnika"
+                placeholder="Broj mobitela skrbnika"
+                error={errors.phoneNumber}
+                onChange={({ target }) => field.onChange(target.value)}
+                description="Format: +3859..."
               />
             )}
           />
