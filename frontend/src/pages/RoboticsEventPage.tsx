@@ -1,14 +1,14 @@
-import JoinForm from './forms/JoinForm';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import { type JoinSchemaType } from '../schemas/JoinSchema';
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import RoboticsEventForm from '../components/forms/RoboticsEventForm';
+import { type RoboticsEventSchemaType } from '../schemas/RoboticsEventSchema';
 
-export default function SectionJoin() {
+export default function RoboticsEventPage() {
   const mutation = useMutation({
-    mutationFn: async (data: JoinSchemaType) => {
+    mutationFn: async (data: RoboticsEventSchemaType) => {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/join`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/event/robotics`,
         data,
       );
 
@@ -31,19 +31,19 @@ export default function SectionJoin() {
         <img
           src={SPLogoTrasparent}
           alt="Sou program logo"
-          className="absolute inset-0 top-[15%] z-20 sm:left-[20%] sm:top-[-10%] sm:h-[100rem] sm:w-[100rem]"
+          className="absolute inset-0 top-[15%] z-20 sm:left-[20%] sm:top-[-20%] sm:h-[100rem] sm:w-[100rem]"
         />
       </div>
 
       <div className="relative z-50 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-24 sm:px-6 lg:px-8">
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
-          Postani član udruge
+          Učlani se u Robotiku
         </h2>
         <p className="mb-8 leading-relaxed text-gray-200">
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>
         <div className="max-w-screen-sm">
-          <JoinForm
+          <RoboticsEventForm
             onSubmit={mutation.mutate}
             isSubmitting={mutation.isPending}
           />

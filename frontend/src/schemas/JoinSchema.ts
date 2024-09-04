@@ -1,37 +1,9 @@
 import * as z from 'zod';
 import { Role } from '../enums/Role';
 import { Study } from '../enums/Study';
-
-function isValidPhoneNumber(phoneNumber: string) {
-  return /^\+3859[125789]\d.{5,6}$/.test(phoneNumber);
-}
-
-function isOibValid(oib: string) {
-  if (/\d{11}/.exec(oib) === null) {
-    return false;
-  }
-
-  let calculated = 10;
-
-  for (const digit of oib.substring(0, 10)) {
-    calculated += parseInt(digit);
-    calculated %= 10;
-
-    if (calculated === 0) {
-      calculated = 10;
-    }
-
-    calculated *= 2;
-    calculated %= 11;
-  }
-
-  const check = 11 - calculated === 10 ? 0 : 11 - calculated;
-  return check === parseInt(oib[10]);
-}
-
-function isValidZipCode(zipCode: string) {
-  return /^\d{5}$/.test(zipCode);
-}
+import { isValidPhoneNumber } from '../utils/isValidPhoneNumber';
+import { isValidZipCode } from '../utils/isValidZipCode';
+import { isValidOib } from '../utils/isValidOib';
 
 const roleArray = [
   Role.SOU_LAB,
@@ -47,7 +19,7 @@ export const JoinSchema = z
       .min(2, 'Moraš upisati najmanje 2 znaka')
       .max(50, 'Moraš upisati najviše 50 znakova'),
     email: z.string().email('Neispravan email'),
-    oib: z.string().refine(isOibValid, 'Neispravan OIB'),
+    oib: z.string().refine(isValidOib, 'Neispravan OIB'),
     dob: z.string().date('Neispravan datum rođenja'),
     isUNIPUStudent: z.boolean(),
     study: z.nativeEnum(Study).optional(),
