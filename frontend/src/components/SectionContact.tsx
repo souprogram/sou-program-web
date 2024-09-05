@@ -1,7 +1,30 @@
 import ContactForm from './forms/ContactForm';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { type ContactSchemaType } from '../schemas/ContactSchema';
 
-const SectionContact = () => {
+export default function SectionContact() {
+  const mutation = useMutation({
+    mutationFn: async (data: ContactSchemaType) => {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/contact`,
+        data,
+      );
+
+      if (response.status !== 201) {
+        throw new Error('Učlanjivanje nije uspjelo.');
+      }
+    },
+    onSuccess: () => {
+      alert('Uspješno ste se učlanili!');
+    },
+    onError: (error) => {
+      alert('Greška prilikom učlanjanja.');
+      console.error(error);
+    },
+  });
+
   return (
     <section
       id="contact"
@@ -25,11 +48,12 @@ const SectionContact = () => {
             Javi nam se za bilo kakva pitanja koje imaš. Glupa pitanja ne
             postoje, samo glupi odgovori.
           </p>
-          <ContactForm />
+          <ContactForm
+            onSubmit={mutation.mutate}
+            isSubmitting={mutation.isPending}
+          />
         </div>
       </div>
     </section>
   );
-};
-
-export default SectionContact;
+}

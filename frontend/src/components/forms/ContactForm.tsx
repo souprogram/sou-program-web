@@ -1,14 +1,22 @@
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
 import {
   ContactSchema,
   type ContactSchemaType,
 } from '../../schemas/ContactSchema';
-import Input from '../ui/Input';
 import Button from '../ui/Button';
+import Input from '../ui/Input';
 import { TextArea } from '../ui/TextArea';
 
-export default function ContactForm() {
+interface ContactFormProps {
+  onSubmit: (data: ContactSchemaType) => void;
+  isSubmitting?: boolean;
+}
+
+export default function ContactForm({
+  onSubmit,
+  isSubmitting,
+}: ContactFormProps) {
   const {
     handleSubmit,
     control,
@@ -22,15 +30,15 @@ export default function ContactForm() {
     resolver: zodResolver(ContactSchema),
   });
 
-  const onSubmit: SubmitHandler<ContactSchemaType> = (data) => {
+  const submit = (data: ContactSchemaType) => {
     alert(JSON.stringify(data, null, 2));
 
-    // Send data to backend
+    onSubmit(data);
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(submit)}
       className="mx-auto w-full max-w-screen-xl"
     >
       <div className="flex flex-col space-y-8">
@@ -77,7 +85,9 @@ export default function ContactForm() {
         />
 
         <div className="flex items-center justify-between">
-          <Button type="submit">Pošalji</Button>
+          <Button type="submit" loading={isSubmitting}>
+            Pošalji
+          </Button>
         </div>
       </div>
     </form>

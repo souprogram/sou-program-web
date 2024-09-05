@@ -1,41 +1,19 @@
-import { useState } from 'react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Role } from '../../enums/Role';
-import { Study } from '../../enums/Study';
+import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
 import Input from '../ui/Input';
-import { SingleSelect, MultiSelect } from '../ui/Select';
-// import axios from 'axios';
+import { MultiSelect, SingleSelect } from '../ui/Select';
+import { roleOptions, studyOptions } from '../../data/options';
 
-const roleOptions = [
-  { value: Role.SOU_LAB, label: 'Šou lab' },
-  { value: Role.SOU_PODCAST, label: 'Šou podcast' },
-  { value: Role.MARKETING, label: 'Marketing' },
-  { value: Role.DESIGNER, label: 'Designer' },
-];
+interface JoinFormProps {
+  onSubmit: (data: JoinSchemaType) => void;
+  isSubmitting?: boolean;
+}
 
-const studyOptions = [
-  { value: Study.FIPU, label: 'FIPU - Fakultet informatike u Puli' },
-  { value: Study.TFPU, label: 'TFPU - Tehnički fakultet u Puli' },
-  { value: Study.MAPU, label: 'MAPU - Muzička akademija u Puli' },
-  {
-    value: Study.FET,
-    label: 'FET - Fakultet ekonomije i turizma "Dr. Mijo Mirković" u Puli',
-  },
-  { value: Study.FPZ, label: 'FPZ - Fakultet prirodne znanosti u Puli' },
-  {
-    value: Study.FOOZ,
-    label: 'FOOZ - Fakultet za odgojne i obrazovne znanosti u Puli',
-  },
-  { value: Study.FFPU, label: 'FFPU - Filozofski fakultet u Puli' },
-  { value: Study.MFPU, label: 'MFPU - Medicinski fakultet u Puli' },
-  { value: Study.DAK, label: 'DAK - Dizajn i audiovizualne komunikacije' },
-];
-
-export default function JoinForm() {
+export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
   const [isStudent, setIsStudent] = useState(false);
   const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
@@ -60,7 +38,7 @@ export default function JoinForm() {
     resolver: zodResolver(JoinSchema),
   });
 
-  const onSubmit: SubmitHandler<JoinSchemaType> = (data) => {
+  const submit = (data: JoinSchemaType) => {
     if (!areTermsAccepted) {
       alert('Moraš prihvatiti sve uvjete i odredbe Statuta.');
       return;
@@ -70,25 +48,13 @@ export default function JoinForm() {
       data.study = undefined;
     }
 
-    alert(JSON.stringify(data, null, 2));
-
-    // const response = await axios.post(
-    //   `${import.meta.env.VITE_BACKEND_URL}/join`,
-    //   data,
-    // );
-    // console.log(response);
-
-    // if (response.status === 200) {
-    //   alert('Registracija uspješno završena.');
-    // } else {
-    //   alert('Registracija nije uspjela.');
-    // }
+    onSubmit(data);
   };
 
   return (
     <form
       className="mx-auto w-full max-w-screen-xl"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(submit)}
     >
       <div className="flex flex-col gap-8">
         <Controller
@@ -276,7 +242,11 @@ export default function JoinForm() {
         />
 
         <div className="flex">
-          <Button type="submit" disabled={!areTermsAccepted}>
+          <Button
+            type="submit"
+            disabled={!areTermsAccepted || isSubmitting}
+            loading={isSubmitting}
+          >
             Submit
           </Button>
         </div>

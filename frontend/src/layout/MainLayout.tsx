@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import SplashScreen from '../components/SplashScreen';
 import { useLayoutEffect, useState } from 'react';
+import { Outlet } from 'react-router';
+import Footer from '../components/Footer';
+import NavBar from '../components/NavBar';
 import ScrollToTop from '../components/ScrollToTop';
+import SplashScreen from '../components/SplashScreen';
 
 export default function MainLayout() {
   const [animate, setAnimate] = useState(false);
