@@ -22,6 +22,15 @@ export default {
         },
         black: '#1c1c1c',
       },
+      animation: {
+        rotate: 'rotate 2.1s infinite'
+      },
+      keyframes: {
+        rotate: {
+          '0%': { transform: 'rotate(0deg)', opacity: 1},
+          '100%': { transform: 'rotate(720deg)', opacity: 0}
+        }
+      }
     },
   },
   plugins: [],
