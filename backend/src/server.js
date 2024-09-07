@@ -28,8 +28,8 @@ app.use(helmet());
 // limiting number of requests for each IP address
 app.use(
   rateLimit({
-    windowMs: 60 * 60 * 1000, // 60 minutes
-    limit: 10, // Limit each IP to 10 requests per `window` (here, per 60 minutes).
+    windowMs: 5 * 60 * 1000, // 5 minutes
+    limit: 50, // Limit each IP to 50 requests per `window` (here, per 5 minutes).
     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
   }),
