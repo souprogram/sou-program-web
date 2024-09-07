@@ -1,26 +1,24 @@
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express from 'express';
-import { rateLimit } from 'express-rate-limit';
-import helmet from 'helmet';
-import { emailRouter } from './routes/emailRouter.js';
-import { joinRouter } from './routes/joinRouter.js';
-import { roboticsEventRouter } from './routes/roboticsEventRouter.js';
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const express = require('express');
+const rateLimit = require('express-rate-limit').rateLimit;
+const helmet = require('helmet');
+const emailRouter = require('./routes/emailRouter').emailRouter;
+const joinRouter = require('./routes/joinRouter').joinRouter;
+const roboticsEventRouter =
+  require('./routes/roboticsEventRouter').roboticsEventRouter;
 
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT || 3000;
+
+const app = express();
 
 // TO-DO: Enable CORS for same-origin requests
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'https://souprogram.hr:443',
-    ],
+    origin: process.env.FRONTEND_URL,
     credentials: false,
   }),
 );
@@ -39,7 +37,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.get('/api', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     res.status(200).json({
       completed: true,
@@ -55,17 +53,11 @@ app.get('/api', async (req, res) => {
   }
 });
 
+app.use('', emailRouter);
 app.use('/api/join', joinRouter);
 app.use('/api/email', emailRouter);
 app.use('/api/event/robotics', roboticsEventRouter);
 
-(function start() {
-  try {
-    app.listen(PORT, () => {
-      console.log('Server started running on port 3000.');
-    });
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
-})();
+app.listen(PORT, () => {
+  console.log('Server started running on port 3000.');
+});

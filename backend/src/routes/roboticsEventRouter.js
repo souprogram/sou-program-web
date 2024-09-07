@@ -1,15 +1,19 @@
-import express from 'express';
-import { createClient } from '@supabase/supabase-js';
-import dotenv from 'dotenv';
-import { validate } from '../middlewares/schemaValidation.js';
-import { RoboticsEventSchema } from '../models/roboticsEventSchema.js';
+const express = require('express');
+const { createClient } = require('@supabase/supabase-js');
+const dotenv = require('dotenv');
+const { validate } = require('../middlewares/schemaValidation');
+const { RoboticsEventSchema } = require('../models/roboticsEventSchema');
 
 const router = express.Router();
 dotenv.config();
 
+const supabaseUrl = process.env.SUPABASE_URL ?? '';
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY ?? '';
+const supabaseRoboticsEventTableName = process.env.SUPABASE_ROBOTICS_EVENT_TABLE_NAME ?? '';
+
 const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY,
+  supabaseUrl,
+  supabaseAnonKey,
 );
 
 router.post('/', validate(RoboticsEventSchema), async (req, res) => {
@@ -17,7 +21,7 @@ router.post('/', validate(RoboticsEventSchema), async (req, res) => {
     const body = req.body;
 
     const supabaseRequest = await supabase
-      .from(process.env.SUPABASE_ROBOTICS_EVENT_TABLE_NAME)
+      .from(supabaseRoboticsEventTableName)
       .insert({
         full_name_student: body.fullNameStudent,
         dob_student: body.dobStudent,
@@ -28,7 +32,7 @@ router.post('/', validate(RoboticsEventSchema), async (req, res) => {
         phone_number_caretaker: body.phoneNumber,
       });
 
-    if (supabaseRequest.error) throw supabaseRequest;
+    if (supabaseRequest.error) throw supabaseRequest.error;
 
     res.status(201).json({
       completed: true,
@@ -38,9 +42,9 @@ router.post('/', validate(RoboticsEventSchema), async (req, res) => {
     res.status(500).json({
       completed: false,
       message: 'Something went wrong.',
-      error: error.error,
+      error,
     });
   }
 });
 
-export { router as roboticsEventRouter };
+module.exports = { roboticsEventRouter: router };
