@@ -8,19 +8,19 @@ export default function SectionContact() {
   const mutation = useMutation({
     mutationFn: async (data: ContactSchemaType) => {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/contact`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/send-email`,
         data,
       );
 
       if (response.status !== 201) {
-        throw new Error('Učlanjivanje nije uspjelo.');
+        throw new Error('Greška prilikom slanja maila.');
       }
     },
     onSuccess: () => {
-      alert('Uspješno ste se učlanili!');
+      alert('Uspješno ste poslali mail!');
     },
     onError: (error) => {
-      alert('Greška prilikom učlanjanja.');
+      alert('Greška prilikom slanja maila.');
       console.error(error);
     },
   });

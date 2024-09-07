@@ -1,8 +1,9 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  RouteObject,
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
-import HomePage from '../pages/HomePage';
-import JoinPage from '../pages/JoinPage';
-import RoboticsEventPage from '../pages/RoboticsEventPage';
 
 export const MainRouter = () => {
   return (
@@ -12,12 +13,39 @@ export const MainRouter = () => {
           path: '/',
           element: <MainLayout />,
           children: [
-            { index: true, element: <HomePage /> },
-            { path: '/join', element: <JoinPage /> },
-            { path: '/robotics-event', element: <RoboticsEventPage /> },
+            {
+              path: '/',
+              async lazy() {
+                const { HomePage } = await import('../pages/HomePage');
+                return { Component: HomePage };
+              },
+            },
+            {
+              path: '/join',
+              async lazy() {
+                const { JoinPage } = await import('../pages/JoinPage');
+                return { Component: JoinPage };
+              },
+            },
+            {
+              path: '/events/robotics',
+              async lazy() {
+                const { RoboticsEventPage } = await import(
+                  '../pages/RoboticsEventPage'
+                );
+                return { Component: RoboticsEventPage };
+              },
+            },
+            {
+              path: '/feedback',
+              async lazy() {
+                const { ThankYouPage } = await import('../pages/ThankYouPage');
+                return { Component: ThankYouPage };
+              },
+            },
           ],
         },
-      ])}
+      ] as const satisfies RouteObject[])}
     />
   );
 };

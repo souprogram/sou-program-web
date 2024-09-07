@@ -1,3 +1,5 @@
+import Button from "./ui/Button";
+
 export default function SectionRobotics() {
   return (
     <section id="robotics" className="bg-black py-16 text-gray-200 md:py-32">
@@ -15,6 +17,7 @@ export default function SectionRobotics() {
           razvijaju vještine rješavanja problema i kreativnog mišljenja, a sve
           to u zabavnom i poticajnom okruženju.
         </p>
+        <Button to="/events/robotics">Učlani se u robotiku</Button>
       </div>
     </section>
   );

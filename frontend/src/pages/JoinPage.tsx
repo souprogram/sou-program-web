@@ -1,6 +1,6 @@
 import SectionJoin from '../components/SectionJoin';
 
-export default function JoinPage() {
+export const JoinPage = () => {
   return (
     <>
       <SectionJoin />
