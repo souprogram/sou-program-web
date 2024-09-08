@@ -37,7 +37,7 @@ export const MainRouter = () => {
               },
             },
             {
-              path: '/feedback',
+              path: '/thank-you',
               async lazy() {
                 const { ThankYouPage } = await import('../pages/ThankYouPage');
                 return { Component: ThankYouPage };
