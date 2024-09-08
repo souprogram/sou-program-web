@@ -6,7 +6,7 @@ import SectionRobotics from '../components/SectionRobotics';
 import SectionSponsors from '../components/SectionSponsors';
 import SectionWhatWeDo from '../components/SectionWhatWeDo';
 
-export default function HomePage() {
+export const HomePage = () => {
   return (
     <>
       <SectionHero />

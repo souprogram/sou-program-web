@@ -4,7 +4,7 @@ import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import RoboticsEventForm from '../components/forms/RoboticsEventForm';
 import { type RoboticsEventSchemaType } from '../schemas/RoboticsEventSchema';
 
-export default function RoboticsEventPage() {
+export const RoboticsEventPage = () => {
   const mutation = useMutation({
     mutationFn: async (data: RoboticsEventSchemaType) => {
       const response = await axios.post(
