@@ -1,7 +1,7 @@
-import { z } from 'zod';
-import { isValidPhoneNumber } from '../utils/isValidPhoneNumber.js';
+const { z } = require('zod');
+const { isValidPhoneNumber } = require('../utils/isValidPhoneNumber');
 
-export const SchoolGrade = {
+const SchoolGrade = {
   GRADE_4: '4. razred',
   GRADE_5: '5. razred',
   GRADE_6: '6. razred',
@@ -9,7 +9,7 @@ export const SchoolGrade = {
   GRADE_8: '8. razred',
 };
 
-export const RoboticsEventSchema = z.object({
+const RoboticsEventSchema = z.object({
   fullNameStudent: z
     .string({ required_error: 'Moraš upisati svoje ime i prezime polaznika' })
     .min(2, 'Moraš upisati najmanje 2 znaka')
@@ -28,3 +28,5 @@ export const RoboticsEventSchema = z.object({
     .string({ required_error: 'Moraš upisati svoj broj mobitela' })
     .refine(isValidPhoneNumber, 'Neispravan broj mobitela'),
 });
+
+module.exports = { SchoolGrade, RoboticsEventSchema };

@@ -1,6 +1,6 @@
-import { z } from 'zod';
+const { z } = require('zod');
 
-export const EmailSchema = z.object({
+const EmailSchema = z.object({
   name: z
     .string({ required_error: 'Moraš upisati svoje ime' })
     .min(2, 'Moraš upisati najmanje 2 znaka')
@@ -11,3 +11,5 @@ export const EmailSchema = z.object({
     .min(2, 'Moraš upisati najmanje 2 znaka')
     .max(512, 'Moraš upisati najviše 512 znakova'),
 });
+
+module.exports = { EmailSchema };

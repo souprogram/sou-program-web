@@ -1,5 +1,5 @@
-import * as z from 'zod';
-import { isValidPhoneNumber } from '../utils/isValidPhoneNumber.js';
+const z = require('zod');
+const { isValidPhoneNumber } = require('../utils/isValidPhoneNumber');
 
 function isValidZipCode(zipCode) {
   return /^\d{5}$/.test(zipCode);
@@ -28,7 +28,7 @@ function isOibValid(oib) {
   return check === parseInt(oib[10]);
 }
 
-export const Role = {
+const Role = {
   SOU_LAB: 'sou-lab',
   SOU_PODCAST: 'sou-podcast',
   MARKETING: 'marketing',
@@ -42,7 +42,7 @@ const roleArray = [
   Role.DESIGNER,
 ];
 
-export const Study = {
+const Study = {
   FIPU: 'fipu',
   TFPU: 'tfpu',
   MAPU: 'mapu',
@@ -54,7 +54,7 @@ export const Study = {
   DAK: 'dak',
 };
 
-export const JoinSchema = z
+const JoinSchema = z
   .object({
     name: z
       .string({ required_error: 'Moraš upisati ime i prezime' })
@@ -91,3 +91,5 @@ export const JoinSchema = z
     },
     { message: 'Moraš odabrati studij', path: ['study'] },
   );
+
+module.exports = { Role, Study, JoinSchema };
