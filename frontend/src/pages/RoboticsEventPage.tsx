@@ -3,8 +3,11 @@ import axios from 'axios';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import RoboticsEventForm from '../components/forms/RoboticsEventForm';
 import { type RoboticsEventSchemaType } from '../schemas/RoboticsEventSchema';
+import { useNavigate } from 'react-router';
 
 export const RoboticsEventPage = () => {
+  const navigate = useNavigate();
+
   const mutation = useMutation({
     mutationFn: async (data: RoboticsEventSchemaType) => {
       const response = await axios.post(
@@ -17,10 +20,9 @@ export const RoboticsEventPage = () => {
       }
     },
     onSuccess: () => {
-      alert('Uspješno ste se učlanili!');
+      navigate('/thank-you');
     },
     onError: (error) => {
-      alert('Greška prilikom učlanjanja.');
       console.error(error);
     },
   });
@@ -47,6 +49,7 @@ export const RoboticsEventPage = () => {
             onSubmit={mutation.mutate}
             isSubmitting={mutation.isPending}
           />
+
         </div>
       </div>
     </section>

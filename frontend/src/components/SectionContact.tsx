@@ -20,7 +20,6 @@ export default function SectionContact() {
       alert('Uspješno ste poslali mail!');
     },
     onError: (error) => {
-      alert('Greška prilikom slanja maila.');
       console.error(error);
     },
   });
@@ -48,6 +47,7 @@ export default function SectionContact() {
             Javi nam se za bilo kakva pitanja koje imaš. Glupa pitanja ne
             postoje, samo glupi odgovori.
           </p>
+          <p className="mb-8 leading-relaxed text-gray-400">Naš email: info@souprogram.hr</p>
           <ContactForm
             onSubmit={mutation.mutate}
             isSubmitting={mutation.isPending}

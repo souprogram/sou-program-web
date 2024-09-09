@@ -17,7 +17,9 @@ export default function SectionRobotics() {
           razvijaju vještine rješavanja problema i kreativnog mišljenja, a sve
           to u zabavnom i poticajnom okruženju.
         </p>
-        <Button to="/events/robotics">Učlani se u robotiku</Button>
+        <div className="w-fit mt-6">
+          <Button to="/events/robotics">Učlani se u robotiku</Button>
+        </div>
       </div>
     </section>
   );

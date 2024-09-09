@@ -46,7 +46,7 @@ export default function Button({
       )}
       disabled={disabled || loading}
     >
-      <span className={twMerge(loading && 'invisible')}>{children}</span>
+      <span className={twMerge('flex items-center gap-2', loading && 'invisible')}>{children}</span>
       {loading && (
         <div className="absolute right-1/2 top-1/2 -translate-y-1/2 translate-x-1/2">
           <LoadingSpinner />

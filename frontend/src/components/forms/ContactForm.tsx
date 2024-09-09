@@ -31,8 +31,6 @@ export default function ContactForm({
   });
 
   const submit = (data: ContactSchemaType) => {
-    alert(JSON.stringify(data, null, 2));
-
     onSubmit(data);
   };
 
