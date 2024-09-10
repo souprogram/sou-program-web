@@ -18,7 +18,10 @@ const app = express();
 // TO-DO: Enable CORS for same-origin requests
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin:
+      process.env.NODE_ENV === 'development'
+        ? ['http://localhost:5173', process.env.FRONTEND_URL]
+        : process.env.FRONTEND_URL,
     credentials: false,
   }),
 );
@@ -28,8 +31,8 @@ app.use(helmet());
 // limiting number of requests for each IP address
 app.use(
   rateLimit({
-    windowMs: 5 * 60 * 1000, // 5 minutes
-    limit: 50, // Limit each IP to 50 requests per `window` (here, per 5 minutes).
+    windowMs: 5 * 60 * 1000,
+    limit: 100,
     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
   }),

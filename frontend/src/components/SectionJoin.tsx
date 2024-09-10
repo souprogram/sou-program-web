@@ -3,8 +3,11 @@ import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { type JoinSchemaType } from '../schemas/JoinSchema';
+import { useNavigate } from "react-router-dom";
 
 export default function SectionJoin() {
+  const navigate = useNavigate();
+
   const mutation = useMutation({
     mutationFn: async (data: JoinSchemaType) => {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/join`, data);
@@ -14,10 +17,9 @@ export default function SectionJoin() {
       }
     },
     onSuccess: () => {
-      alert('Uspješno ste se učlanili!');
+      navigate('/thank-you');
     },
     onError: (error) => {
-      alert('Greška prilikom učlanjanja.');
       console.error(error);
     },
   });

@@ -33,8 +33,6 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
   });
 
   const submit = (data: RoboticsEventSchemaType) => {
-    alert(JSON.stringify(data, null, 2));
-
     onSubmit(data);
   };
 

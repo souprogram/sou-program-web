@@ -17,7 +17,6 @@ export default function SectionContact() {
       alert('Uspješno ste poslali mail!');
     },
     onError: (error) => {
-      alert('Greška prilikom slanja maila.');
       console.error(error);
     },
   });

@@ -30,14 +30,14 @@ export const MainRouter = () => {
                 return { Component: RoboticsEventPage };
               },
             },
-            {
-              path: '/thank-you',
-              async lazy() {
-                const { ThankYouPage } = await import('../pages/ThankYouPage');
-                return { Component: ThankYouPage };
-              },
-            },
           ],
+        },
+        {
+          path: '/thank-you',
+          async lazy() {
+            const { ThankYouPage } = await import('../layout/ThankYouPage');
+            return { Component: ThankYouPage };
+          },
         },
       ] as const satisfies RouteObject[])}
     />
