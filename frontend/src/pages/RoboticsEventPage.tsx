@@ -43,12 +43,9 @@ export const RoboticsEventPage = () => {
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>
         <div className="max-w-screen-sm">
-          <RoboticsEventForm
-            onSubmit={mutation.mutate}
-            isSubmitting={mutation.isPending}
-          />
+          <RoboticsEventForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>
     </section>
   );
-}
+};

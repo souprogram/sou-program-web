@@ -1,4 +1,4 @@
-import Button from "./ui/Button";
+import Button from './ui/Button';
 
 export default function SectionRobotics() {
   return (
@@ -9,15 +9,16 @@ export default function SectionRobotics() {
           <div className="opacity-50">Pravimo autiće</div>
         </h2>
         <p className="text-lg leading-relaxed">
-          Naša sekcija robotike nudi jedinstvene radionice namijenjene učenicima
-          osnovnih škola s ciljem upoznavanja s osnovama robotike. Sudionici
-          radionica uče kako programirati robote, upravljati autićima na
-          daljinski, te se bave kako hardverskim, tako i softverskim aspektima
-          izrade i programiranja robota. Kroz interaktivne sesije, djeca
-          razvijaju vještine rješavanja problema i kreativnog mišljenja, a sve
-          to u zabavnom i poticajnom okruženju.
+          Naša sekcija robotike nudi jedinstvene radionice namijenjene učenicima osnovnih škola s
+          ciljem upoznavanja s osnovama robotike. Sudionici radionica uče kako programirati robote,
+          upravljati autićima na daljinski, te se bave kako hardverskim, tako i softverskim
+          aspektima izrade i programiranja robota. Kroz interaktivne sesije, djeca razvijaju
+          vještine rješavanja problema i kreativnog mišljenja, a sve to u zabavnom i poticajnom
+          okruženju.
         </p>
-        <Button to="/events/robotics">Učlani se u robotiku</Button>
+        <div className="mt-6 w-fit">
+          <Button to="/events/robotics">Učlani se u robotiku</Button>
+        </div>
       </div>
     </section>
   );

@@ -7,19 +7,16 @@ export default function SectionWhatWeDo() {
           <div className="opacity-50">Tko smo mi?</div>
         </h2>
         <p className="text-lg leading-relaxed">
-          U Šou programu, naša misija je okupiti strastvene informatičare kako
-          bi zajedno učili, družili se i napredovali. Sve je počelo od dvojice
-          studenata čija je inicijativa za sudjelovanje u natjecanjima prerasla
-          u ideju o osnivanju udruge. Ubrzo smo proširili naše djelovanje,
-          usmjeravajući se na organiziranje specijaliziranih radionica poput
-          Software Engineering, Data Science, SPA (strukture podataka i
-          algoritmi) i Cybersecurity.
+          U Šou programu, naša misija je okupiti strastvene informatičare kako bi zajedno učili,
+          družili se i napredovali. Sve je počelo od dvojice studenata čija je inicijativa za
+          sudjelovanje u natjecanjima prerasla u ideju o osnivanju udruge. Ubrzo smo proširili naše
+          djelovanje, usmjeravajući se na organiziranje specijaliziranih radionica poput Software
+          Engineering, Data Science, SPA (strukture podataka i algoritmi) i Cybersecurity.
         </p>
         <p className="text-lg leading-relaxed">
-          Dosad su naši članovi sudjelovali u kompetitivnom programiranju,
-          informatičkim radionicama i konferencijama, gdje su testirali svoje
-          vještine i proširiti znanja. Uz te aktivnosti, stvaramo prilike za
-          osobni i profesionalni razvoj naših članova, promičući zajedništvo i
+          Dosad su naši članovi sudjelovali u kompetitivnom programiranju, informatičkim radionicama
+          i konferencijama, gdje su testirali svoje vještine i proširiti znanja. Uz te aktivnosti,
+          stvaramo prilike za osobni i profesionalni razvoj naših članova, promičući zajedništvo i
           timski duh unutar udruge.
         </p>
       </div>

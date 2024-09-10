@@ -8,8 +8,8 @@ export default function SectionSponsors() {
           Sponzori
         </h2>
         <p className="text-lg leading-relaxed">
-          Htjeli bismo se zahvaliti našim dragim sponzorima koji nam pomažu u
-          razvoju i proširenju projekata.
+          Htjeli bismo se zahvaliti našim dragim sponzorima koji nam pomažu u razvoju i proširenju
+          projekata.
         </p>
       </div>
       <SponsorMarqueeList />

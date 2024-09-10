@@ -7,10 +7,7 @@ import { type JoinSchemaType } from '../schemas/JoinSchema';
 export default function SectionJoin() {
   const mutation = useMutation({
     mutationFn: async (data: JoinSchemaType) => {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/join`,
-        data,
-      );
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/join`, data);
 
       if (response.status !== 201) {
         throw new Error('Učlanjivanje nije uspjelo.');
@@ -43,10 +40,7 @@ export default function SectionJoin() {
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>
         <div className="max-w-screen-sm">
-          <JoinForm
-            onSubmit={mutation.mutate}
-            isSubmitting={mutation.isPending}
-          />
+          <JoinForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>
     </section>

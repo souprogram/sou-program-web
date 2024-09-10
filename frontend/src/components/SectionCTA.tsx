@@ -9,10 +9,7 @@ export default function SectionCTA() {
           <div className="opacity-50">Are you ready?</div>
         </h2>
         <div className="flex">
-          <Button
-            to="/join"
-            className="bg-black px-8 py-4 text-lg text-white hover:bg-gray-700"
-          >
+          <Button to="/join" className="bg-black px-8 py-4 text-lg text-white hover:bg-gray-700">
             Učlani se
           </Button>
         </div>

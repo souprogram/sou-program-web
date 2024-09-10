@@ -61,9 +61,7 @@ const Input = forwardRef(function Input(
         aria-describedby={`${name}-error`}
         aria-disabled={disabled}
       />
-      {description && (
-        <p className="mt-2 text-sm text-gray-400">{description}</p>
-      )}
+      {description && <p className="mt-2 text-sm text-gray-400">{description}</p>}
       {error && (
         <p className="mt-2 text-sm text-red-600" id={`${name}-error`}>
           {error.message}

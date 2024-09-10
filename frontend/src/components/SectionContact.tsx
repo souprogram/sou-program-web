@@ -7,10 +7,7 @@ import { type ContactSchemaType } from '../schemas/ContactSchema';
 export default function SectionContact() {
   const mutation = useMutation({
     mutationFn: async (data: ContactSchemaType) => {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/send-email`,
-        data,
-      );
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, data);
 
       if (response.status !== 201) {
         throw new Error('Greška prilikom slanja maila.');
@@ -45,13 +42,11 @@ export default function SectionContact() {
             <div className="opacity-50">Budi u dodiru</div>
           </h2>
           <p className="mb-8 text-lg leading-relaxed">
-            Javi nam se za bilo kakva pitanja koje imaš. Glupa pitanja ne
-            postoje, samo glupi odgovori.
+            Javi nam se za bilo kakva pitanja koje imaš. Glupa pitanja ne postoje, samo glupi
+            odgovori.
           </p>
-          <ContactForm
-            onSubmit={mutation.mutate}
-            isSubmitting={mutation.isPending}
-          />
+          <p className="mb-8 leading-relaxed text-gray-400">Naš email: info@souprogram.hr</p>
+          <ContactForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>
     </section>

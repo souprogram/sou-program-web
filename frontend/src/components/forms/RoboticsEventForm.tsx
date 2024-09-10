@@ -14,10 +14,7 @@ interface RoboticsEventFormProps {
   isSubmitting?: boolean;
 }
 
-export default function RoboticsEventForm({
-  onSubmit,
-  isSubmitting,
-}: RoboticsEventFormProps) {
+export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEventFormProps) {
   const {
     handleSubmit,
     control,

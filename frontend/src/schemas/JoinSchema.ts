@@ -5,12 +5,7 @@ import { isValidPhoneNumber } from '../utils/isValidPhoneNumber';
 import { isValidZipCode } from '../utils/isValidZipCode';
 import { isValidOib } from '../utils/isValidOib';
 
-const roleArray = [
-  Role.SOU_LAB,
-  Role.SOU_PODCAST,
-  Role.MARKETING,
-  Role.DESIGNER,
-] as const;
+const roleArray = [Role.SOU_LAB, Role.SOU_PODCAST, Role.MARKETING, Role.DESIGNER] as const;
 
 export const JoinSchema = z
   .object({
@@ -23,10 +18,7 @@ export const JoinSchema = z
     dob: z.string().date('Neispravan datum rođenja'),
     isUNIPUStudent: z.boolean(),
     study: z.nativeEnum(Study).optional(),
-    role: z
-      .enum(roleArray)
-      .array()
-      .nonempty('Moraš odabrati barem jednu ulogu'),
+    role: z.enum(roleArray).array().nonempty('Moraš odabrati barem jednu ulogu'),
     discordUsername: z
       .string({ required_error: 'Moraš upisati svoj discord username' })
       .min(2, 'Moraš upisati najmanje 2 znaka')
@@ -41,10 +33,7 @@ export const JoinSchema = z
       .max(50, 'Moraš upisati najviše 50 znakova'),
     terms: z
       .boolean()
-      .refine(
-        (value) => value === true,
-        'Moraš prihvatiti sve uvjete i odredbe Statuta',
-      ),
+      .refine((value) => value === true, 'Moraš prihvatiti sve uvjete i odredbe Statuta'),
   })
   .refine(
     (data) => {

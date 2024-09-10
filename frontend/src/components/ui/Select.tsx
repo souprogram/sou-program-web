@@ -42,27 +42,18 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
         error && state.isFocused && '!bg-red-600/30',
       ),
     placeholder: (state: any) =>
-      twMerge(
-        state.className,
-        '!text-gray-400 !text-sm !font-normal !leading-none',
-      ),
+      twMerge(state.className, '!text-gray-400 !text-sm !font-normal !leading-none'),
     multiValue: (state: any) => twMerge(state.className, '!rounded-full'),
     input: (state: any) => twMerge(state.className, '!sm:text-sm !text-white'),
     menu: (state: any) =>
-      twMerge(
-        state.className,
-        '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800',
-      ),
+      twMerge(state.className, '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800'),
     multiValueLabel: (state: any) =>
       twMerge(
         state.className,
         '!px-3 !pe-2 !py-1 !text-sm !bg-primary-600 !text-black !rounded-s-full !w-fit',
       ),
     multiValueRemove: (state: any) =>
-      twMerge(
-        state.className,
-        '!rounded-l-none bg-primary-600 !rounded-e-full text-black',
-      ),
+      twMerge(state.className, '!rounded-l-none bg-primary-600 !rounded-e-full text-black'),
     option: (state: any) =>
       twMerge(
         '!px-4 !py-2 !text-sm',
@@ -98,10 +89,7 @@ interface SingleSelectProps<Option, IsMulti extends boolean = false>
   onChange: (value: Option) => void;
 }
 
-export function SingleSelect<
-  Option extends StudyType,
-  IsMulti extends boolean = false,
->({
+export function SingleSelect<Option extends StudyType, IsMulti extends boolean = false>({
   name,
   label,
   required,
@@ -119,10 +107,7 @@ export function SingleSelect<
         error && state.isFocused && '!bg-red-600/30',
       ),
     placeholder: (state: any) =>
-      twMerge(
-        state.className,
-        '!text-gray-400 !text-sm !font-normal !leading-none',
-      ),
+      twMerge(state.className, '!text-gray-400 !text-sm !font-normal !leading-none'),
     input: (state: any) => twMerge(state.className, '!sm:text-sm !text-white'),
     singleValue: (state: any) =>
       twMerge(
@@ -130,10 +115,7 @@ export function SingleSelect<
         '!px-3 !py-1 !text-sm !bg-primary-600 !text-black !rounded-full !w-fit',
       ),
     menu: (state: any) =>
-      twMerge(
-        state.className,
-        '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800',
-      ),
+      twMerge(state.className, '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800'),
     option: (state: any) =>
       twMerge(
         '!px-4 !py-2 !text-sm',

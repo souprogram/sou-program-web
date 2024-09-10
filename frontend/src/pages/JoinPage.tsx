@@ -6,4 +6,4 @@ export const JoinPage = () => {
       <SectionJoin />
     </>
   );
-}
+};

@@ -17,11 +17,7 @@ export default function NavBar() {
         <div className="flex h-20 w-full gap-24">
           <div className="flex-shrink-0">
             <Link to="/" className="h-full">
-              <img
-                className="block h-full w-auto"
-                src={spLogo}
-                alt="Sou program"
-              />
+              <img className="block h-full w-auto" src={spLogo} alt="Sou program" />
             </Link>
           </div>
           <div className="hidden w-fit py-8 sm:flex sm:gap-8">
