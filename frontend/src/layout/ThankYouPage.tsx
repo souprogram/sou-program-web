@@ -1,9 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, Navigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 import { HiArrowLeft } from 'react-icons/hi';
 
 export const ThankYouPage = () => {
+  const location = useLocation();
+
+  const state = location.state as { isSubmitted: boolean } | undefined;
+
+  if (!state?.isSubmitted) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <section className="relative min-h-screen bg-black py-[9vh] text-center font-poppins text-gray-200">
       <div className="opacity-5">

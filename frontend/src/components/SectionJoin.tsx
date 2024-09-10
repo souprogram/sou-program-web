@@ -3,7 +3,7 @@ import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { type JoinSchemaType } from '../schemas/JoinSchema';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export default function SectionJoin() {
   const navigate = useNavigate();
