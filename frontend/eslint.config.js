@@ -30,6 +30,13 @@ export default tseslint.config({
     '@tanstack/query': pluginQuery,
   },
   rules: {
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+      },
+    ],
     ...react.configs.recommended.rules,
     ...react.configs['jsx-runtime'].rules,
     ...reactHooks.configs.recommended.rules,
