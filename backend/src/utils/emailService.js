@@ -28,4 +28,19 @@ async function sendEmailToSou(email, name, message) {
   });
 }
 
-module.exports = { transporter, sendEmailToSou };
+async function sendEmailToUser(email, subject, message) {
+  const text = `
+      Bok, zovem iz Šou programa i šaljem Vam ovu poruku sa web stranice.
+
+      ${message}
+    `;
+
+  return await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: subject,
+    text,
+  });
+}
+
+module.exports = { transporter, sendEmailToSou, sendEmailToUser };
