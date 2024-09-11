@@ -15,17 +15,7 @@ interface CheckboxProps {
 }
 
 const Checkbox = forwardRef(function Checkbox(
-  {
-    id,
-    label,
-    value,
-    name,
-    required,
-    disabled,
-    error,
-    onChange,
-    onBlur,
-  }: CheckboxProps,
+  { id, label, value, name, required, disabled, error, onChange, onBlur }: CheckboxProps,
   ref: React.Ref<HTMLInputElement>,
 ) {
   return (
@@ -51,10 +41,7 @@ const Checkbox = forwardRef(function Checkbox(
       <div className="ml-3 text-sm">
         <label
           htmlFor={id}
-          className={twMerge(
-            'font-medium text-gray-200',
-            error && 'text-red-600',
-          )}
+          className={twMerge('font-medium text-gray-200', error && 'text-red-600')}
         >
           {label} {required && <span className="text-red-600">*</span>}
         </label>

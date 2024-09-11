@@ -1,8 +1,4 @@
-import {
-  RouteObject,
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
+import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
 
 export const MainRouter = () => {
@@ -30,20 +26,18 @@ export const MainRouter = () => {
             {
               path: '/events/robotics',
               async lazy() {
-                const { RoboticsEventPage } = await import(
-                  '../pages/RoboticsEventPage'
-                );
+                const { RoboticsEventPage } = await import('../pages/RoboticsEventPage');
                 return { Component: RoboticsEventPage };
               },
             },
-            {
-              path: '/thank-you',
-              async lazy() {
-                const { ThankYouPage } = await import('../pages/ThankYouPage');
-                return { Component: ThankYouPage };
-              },
-            },
           ],
+        },
+        {
+          path: '/thank-you',
+          async lazy() {
+            const { ThankYouPage } = await import('../layout/ThankYouPage');
+            return { Component: ThankYouPage };
+          },
         },
       ] as const satisfies RouteObject[])}
     />

@@ -1,29 +1,10 @@
-import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import RoboticsEventForm from '../components/forms/RoboticsEventForm';
+import { useEventRegistration } from '../hooks/useEventRegistration';
 import { type RoboticsEventSchemaType } from '../schemas/RoboticsEventSchema';
 
 export const RoboticsEventPage = () => {
-  const mutation = useMutation({
-    mutationFn: async (data: RoboticsEventSchemaType) => {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/event/robotics`,
-        data,
-      );
-
-      if (response.status !== 201) {
-        throw new Error('Učlanjivanje nije uspjelo.');
-      }
-    },
-    onSuccess: () => {
-      alert('Uspješno ste se učlanili!');
-    },
-    onError: (error) => {
-      alert('Greška prilikom učlanjanja.');
-      console.error(error);
-    },
-  });
+  const { submit, isSubmitting } = useEventRegistration<RoboticsEventSchemaType>('robotics');
 
   return (
     <section className="relative overflow-hidden bg-black py-16 md:py-32">
@@ -43,12 +24,9 @@ export const RoboticsEventPage = () => {
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>
         <div className="max-w-screen-sm">
-          <RoboticsEventForm
-            onSubmit={mutation.mutate}
-            isSubmitting={mutation.isPending}
-          />
+          <RoboticsEventForm onSubmit={submit} isSubmitting={isSubmitting} />
         </div>
       </div>
     </section>
   );
-}
+};

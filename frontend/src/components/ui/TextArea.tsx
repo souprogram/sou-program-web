@@ -51,9 +51,7 @@ export const TextArea = ({
         aria-describedby={`message-error`}
         aria-disabled={disabled}
       ></textarea>
-      {description && (
-        <p className="mt-2 text-sm text-gray-400">{description}</p>
-      )}
+      {description && <p className="mt-2 text-sm text-gray-400">{description}</p>}
       {error && <p className="mt-2 text-sm text-red-600">{error.message}</p>}
     </div>
   );

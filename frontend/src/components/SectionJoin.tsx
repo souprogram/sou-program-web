@@ -3,24 +3,24 @@ import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { type JoinSchemaType } from '../schemas/JoinSchema';
+import { useNavigate } from 'react-router-dom';
+import SouHeader from './SouHeader';
 
 export default function SectionJoin() {
+  const navigate = useNavigate();
+
   const mutation = useMutation({
     mutationFn: async (data: JoinSchemaType) => {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/join`,
-        data,
-      );
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/join`, data);
 
       if (response.status !== 201) {
         throw new Error('Učlanjivanje nije uspjelo.');
       }
     },
     onSuccess: () => {
-      alert('Uspješno ste se učlanili!');
+      navigate('/thank-you');
     },
     onError: (error) => {
-      alert('Greška prilikom učlanjanja.');
       console.error(error);
     },
   });
@@ -36,17 +36,13 @@ export default function SectionJoin() {
       </div>
 
       <div className="relative z-50 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-24 sm:px-6 lg:px-8">
-        <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
-          Postani član udruge
-        </h2>
+        <SouHeader heading="Postani član udruge" />
+
         <p className="mb-8 leading-relaxed text-gray-200">
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>
         <div className="max-w-screen-sm">
-          <JoinForm
-            onSubmit={mutation.mutate}
-            isSubmitting={mutation.isPending}
-          />
+          <JoinForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, Controller } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import {
   RoboticsEventSchema,
   type RoboticsEventSchemaType,
@@ -14,10 +14,7 @@ interface RoboticsEventFormProps {
   isSubmitting?: boolean;
 }
 
-export default function RoboticsEventForm({
-  onSubmit,
-  isSubmitting,
-}: RoboticsEventFormProps) {
+export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEventFormProps) {
   const {
     handleSubmit,
     control,
@@ -36,8 +33,6 @@ export default function RoboticsEventForm({
   });
 
   const submit = (data: RoboticsEventSchemaType) => {
-    alert(JSON.stringify(data, null, 2));
-
     onSubmit(data);
   };
 
