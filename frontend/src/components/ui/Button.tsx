@@ -10,6 +10,7 @@ interface ButtonProps {
   transparent?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  onClick?: () => void;
 }
 
 export default function Button({
@@ -20,6 +21,7 @@ export default function Button({
   transparent,
   disabled = false,
   loading = false,
+  onClick,
 }: ButtonProps) {
   return to ? (
     <Link
@@ -42,6 +44,7 @@ export default function Button({
         className,
       )}
       disabled={disabled || loading}
+      onClick={onClick}
     >
       <span className={twMerge('flex items-center gap-2', loading && 'invisible')}>{children}</span>
       {loading && (

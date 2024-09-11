@@ -4,8 +4,16 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { type ContactSchemaType } from '../schemas/ContactSchema';
 import SouHeader from './SouHeader';
+import { useState } from 'react';
+import EmailSentSuccessModal from './EmailSentSuccessModal';
 
 export default function SectionContact() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const mutation = useMutation({
     mutationFn: async (data: ContactSchemaType) => {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, data);
@@ -15,7 +23,7 @@ export default function SectionContact() {
       }
     },
     onSuccess: () => {
-      alert('Uspješno ste poslali mail!');
+      setIsModalOpen(true);
     },
     onError: (error) => {
       console.error(error);
@@ -50,6 +58,8 @@ export default function SectionContact() {
           <ContactForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>
+
+      <EmailSentSuccessModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </section>
   );
 }
