@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { type JoinSchemaType } from '../schemas/JoinSchema';
 import { useNavigate } from 'react-router-dom';
+import SouHeader from './SouHeader';
 
 export default function SectionJoin() {
   const navigate = useNavigate();
@@ -35,9 +36,8 @@ export default function SectionJoin() {
       </div>
 
       <div className="relative z-50 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-24 sm:px-6 lg:px-8">
-        <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
-          Postani član udruge
-        </h2>
+        <SouHeader heading="Postani član udruge" />
+
         <p className="mb-8 leading-relaxed text-gray-200">
           Ispuni formu i čekaj naš znak za ostale korake (članarina).
         </p>

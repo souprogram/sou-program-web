@@ -1,11 +1,11 @@
+import SouHeader from './SouHeader';
+
 export default function SectionCompetitions() {
   return (
     <section id="competitions" className="bg-white py-16 text-gray-800 md:py-32">
       <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl">
-          <div>Natjecanja</div>
-          <div className="opacity-50">Competitions</div>
-        </h2>
+        <SouHeader heading="Natjecanja" subheading="Competitions" />
+
         <p className="text-lg leading-relaxed">
           Sudjelovanje na natjecanjima kao što su ICPC i Central Europe Regional Contest (CERC) u
           Ljubljani, te STEM games, vrhunac su naših godišnjih aktivnosti. Naši timovi su pokazali
