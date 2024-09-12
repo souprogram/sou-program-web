@@ -15,11 +15,10 @@ export default function NavBar() {
     <nav className="absolute left-0 right-0 top-0 z-10">
       <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 w-full gap-24">
-          <div className="flex-shrink-0">
-            <Link to="/" className="h-full">
-              <img className="block h-full w-auto" src={spLogo} alt="Sou program" />
-            </Link>
-          </div>
+          <Link to="/" className="h-full">
+            <img className="block h-full w-auto" src={spLogo} alt="Sou program" />
+          </Link>
+
           <div className="hidden w-fit py-8 sm:flex sm:gap-8">
             {links.map(({ label, to }) => (
               <Link
