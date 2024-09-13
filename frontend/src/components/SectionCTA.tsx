@@ -12,14 +12,18 @@ export default function SectionCTA() {
         <img
           src={SPLogoTransparent}
           alt="Sou program logo"
-          className="absolute left-[45%] top-0 z-20 size-[40rem] lg:top-[5%] lg:size-[50rem]"
+          className="absolute right-[-15%] top-0 z-20 size-[40rem] lg:right-[0%] lg:top-[-15%] lg:size-[50rem]"
           style={{
             transform: `translateY(${(offsetY - 950) * 0.8}px)`,
           }}
         />
       </div>
-      <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
-        <SouHeader className="text-black" heading="Jesi li spreman?" subheading="Are you ready?" />
+      <div className="relative z-30 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
+        <SouHeader
+          className="text-black"
+          heading="Jesi li spreman?"
+          subheading="Postani dio Šou program ekipe!"
+        />
 
         <div className="flex">
           <Button to="/join" className="bg-black px-8 py-4 text-lg text-white hover:bg-gray-700">

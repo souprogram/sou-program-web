@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
+import { schoolGradeOptions } from '../../data/options';
 import {
   RoboticsEventSchema,
   type RoboticsEventSchemaType,
@@ -7,7 +8,6 @@ import {
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { SingleSelect } from '../ui/Select';
-import { schoolGradeOptions } from '../../data/options';
 
 interface RoboticsEventFormProps {
   onSubmit: (data: RoboticsEventSchemaType) => void;

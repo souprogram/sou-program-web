@@ -1,7 +1,7 @@
-import Button from './ui/Button';
-import SPLogo from '/sou-program-icon.svg';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import { useParallax } from '../hooks/useParallax';
+import Button from './ui/Button';
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import SPLogo from '/sou-program-icon.svg';
 
 export default function SectionHero() {
   const offsetY = useParallax();

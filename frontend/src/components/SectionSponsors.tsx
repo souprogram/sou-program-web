@@ -8,10 +8,10 @@ export default function SectionSponsors() {
         <SouHeader className="text-white" heading="Sponzori" />
 
         <p className="lg:text-lg lg:leading-relaxed">
-          Htjeli bismo se zahvaliti našim dragim sponzorima koji nam pomažu u razvoju i proširenju
-          projekata.
+          Hvala našim sponzorima na podršci i povjerenju!
         </p>
       </div>
+
       <SponsorMarqueeList />
     </section>
   );

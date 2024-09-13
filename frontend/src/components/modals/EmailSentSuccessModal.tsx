@@ -1,6 +1,6 @@
-import SouHeader from '../SouHeader';
 import { HiArrowLeft } from 'react-icons/hi';
 import Modal from '../Modal';
+import SouHeader from '../SouHeader';
 import Button from '../ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 

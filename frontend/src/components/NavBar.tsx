@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import spLogo from '/sou-program-logo-bez-pozadine.png';
+import { Link } from 'react-router-dom';
+import { useParallax } from '../hooks/useParallax';
 import Button from './ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
-import { useParallax } from '../hooks/useParallax';
+import spLogo from '/sou-program-logo-bez-pozadine.png';
 
 const links = [
-  { label: 'What we do', to: '/#what-we-do' },
-  { label: 'Robotics', to: '/#robotics' },
-  { label: 'Competitions', to: '/#competitions' },
-  { label: 'Contact', to: '/#contact' },
+  { label: 'Tko smo mi?', to: '/#what-we-do' },
+  { label: 'Robotika', to: '/#robotics' },
+  { label: 'Natjecanja', to: '/#competitions' },
+  { label: 'Kontakt', to: '/#contact' },
 ];
 
 export default function NavBar() {
@@ -28,7 +28,6 @@ export default function NavBar() {
       document.body.style.overflow = '';
     }
 
-    // Clean up on component unmount
     return () => {
       document.body.style.overflow = '';
     };
@@ -43,7 +42,7 @@ export default function NavBar() {
         <div className="flex h-16 items-center justify-between sm:h-20">
           <div className="flex gap-4 xl:gap-24">
             <Link to="/">
-              <img className="h-16 w-auto" src={spLogo} alt="Sou program" />
+              <img className="h-16 w-auto px-4 sm:px-0" src={spLogo} alt="Sou program" />
             </Link>
 
             <div className="hidden lg:flex lg:items-center lg:gap-8">
@@ -107,15 +106,15 @@ export default function NavBar() {
             key={label}
             to={to}
             onClick={toggleMenu}
-            className="text-xl text-gray-400 transition-all duration-300 hover:text-primary-500"
+            className="z-30 text-xl text-gray-400 transition-all duration-300 hover:text-primary-500"
           >
             {label}
           </Link>
         ))}
-        <Link to="/join" onClick={toggleMenu}>
+        <Link to="/join" onClick={toggleMenu} className="z-30">
           <Button className="mt-8 truncate">Učlani se</Button>
         </Link>
-        <Link to="/events/robotics" onClick={toggleMenu}>
+        <Link to="/events/robotics" onClick={toggleMenu} className="z-30">
           <Button className="truncate bg-gray-200 hover:bg-white">Prijavi se na robotiku</Button>
         </Link>
       </div>
