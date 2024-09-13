@@ -32,7 +32,7 @@ export const TextArea = ({
 }: TextAreaProps) => {
   return (
     <div className="w-full">
-      <label htmlFor={id} className="block text-sm font-medium text-gray-200">
+      <label htmlFor={id} className="text-gray-200">
         {label} {required && <span className="text-red-600">*</span>}
       </label>
       <textarea
@@ -40,7 +40,7 @@ export const TextArea = ({
         name={name}
         placeholder={placeholder}
         className={twMerge(
-          'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30 sm:text-sm',
+          'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30',
           error && 'focus:bg-red-600/30',
           disabled && 'pointer-events-none opacity-50',
           className,

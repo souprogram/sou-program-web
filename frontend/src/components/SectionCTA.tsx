@@ -12,9 +12,9 @@ export default function SectionCTA() {
         <img
           src={SPLogoTransparent}
           alt="Sou program logo"
-          className="absolute left-[45%] top-[-10%] z-20 h-[50rem] w-[50rem]"
+          className="absolute left-[45%] top-0 z-20 size-[40rem] lg:top-[5%] lg:size-[50rem]"
           style={{
-            transform: `translateY(${(offsetY - 900) * 0.8}px)`,
+            transform: `translateY(${(offsetY - 950) * 0.8}px)`,
           }}
         />
       </div>

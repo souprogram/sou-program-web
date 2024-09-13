@@ -1,7 +1,7 @@
-import SouHeader from './SouHeader';
+import SouHeader from '../SouHeader';
 import { HiArrowLeft } from 'react-icons/hi';
-import Modal from './Modal';
-import Button from './ui/Button';
+import Modal from '../Modal';
+import Button from '../ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 interface EmailSentSuccessModalProps {

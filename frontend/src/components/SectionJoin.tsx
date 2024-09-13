@@ -26,7 +26,7 @@ export default function SectionJoin() {
   });
 
   return (
-    <section className="relative overflow-hidden bg-black py-16 md:py-32">
+    <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
       <div className="opacity-5">
         <img
           src={SPLogoTrasparent}

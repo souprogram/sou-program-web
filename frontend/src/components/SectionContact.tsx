@@ -5,7 +5,7 @@ import axios from 'axios';
 import { type ContactSchemaType } from '../schemas/ContactSchema';
 import SouHeader from './SouHeader';
 import { useState } from 'react';
-import EmailSentSuccessModal from './EmailSentSuccessModal';
+import EmailSentSuccessModal from './modals/EmailSentSuccessModal';
 
 export default function SectionContact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,11 +50,13 @@ export default function SectionContact() {
             heading="Kontaktiraj nas"
             subheading="Budi u dodiru"
           />
-          <p className="mb-8 text-lg leading-relaxed">
+          <p className="mb-2 mt-4 lg:text-lg lg:leading-relaxed">
             Javi nam se za bilo kakva pitanja koje imaš. Glupa pitanja ne postoje, samo glupi
             odgovori.
           </p>
-          <p className="mb-8 leading-relaxed text-gray-400">Naš email: info@souprogram.hr</p>
+          <p className="mb-8 text-sm text-gray-400 md:text-base lg:leading-relaxed">
+            Naš email: info@souprogram.hr
+          </p>
           <ContactForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>

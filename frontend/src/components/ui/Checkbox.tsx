@@ -19,8 +19,8 @@ const Checkbox = forwardRef(function Checkbox(
   ref: React.Ref<HTMLInputElement>,
 ) {
   return (
-    <div className="flex items-start">
-      <div className="flex h-5 items-center">
+    <div className="flex items-center">
+      <div className="h-5">
         <input
           ref={ref}
           id={id}
@@ -38,11 +38,8 @@ const Checkbox = forwardRef(function Checkbox(
           aria-disabled={disabled}
         />
       </div>
-      <div className="ml-3 text-sm">
-        <label
-          htmlFor={id}
-          className={twMerge('font-medium text-gray-200', error && 'text-red-600')}
-        >
+      <div className="ml-3">
+        <label htmlFor={id} className={twMerge('text-gray-200', error && 'text-red-600')}>
           {label} {required && <span className="text-red-600">*</span>}
         </label>
       </div>

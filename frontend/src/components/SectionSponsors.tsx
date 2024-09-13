@@ -7,7 +7,7 @@ export default function SectionSponsors() {
       <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
         <SouHeader className="text-white" heading="Sponzori" />
 
-        <p className="text-lg leading-relaxed">
+        <p className="lg:text-lg lg:leading-relaxed">
           Htjeli bismo se zahvaliti našim dragim sponzorima koji nam pomažu u razvoju i proširenju
           projekata.
         </p>

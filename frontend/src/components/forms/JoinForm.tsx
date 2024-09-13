@@ -126,6 +126,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
                 name={field.name}
                 label="Studija"
                 options={studyOptions}
+                placeholder="Izaberite studiju"
                 value={[field.value]}
                 onChange={field.onChange}
                 error={errors.study?.message}

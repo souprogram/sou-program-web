@@ -4,6 +4,7 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import spLogo from '/sou-program-logo-bez-pozadine.png';
 import Button from './ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
+import { useParallax } from '../hooks/useParallax';
 
 const links = [
   { label: 'What we do', to: '/#what-we-do' },
@@ -14,6 +15,7 @@ const links = [
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const offsetY = useParallax();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -33,23 +35,28 @@ export default function NavBar() {
   }, [isOpen]);
 
   return (
-    <nav className="sticky left-0 right-0 top-0 z-[100] bg-black">
+    <nav
+      className="sticky left-0 right-0 top-0 z-[100]"
+      style={{ backgroundColor: `rgba(28,28, 28, ${offsetY > 100 ? 1 : offsetY / 100})` }}
+    >
       <div className="relative z-10 mx-auto max-w-screen-2xl px-0 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between sm:h-20">
-          <Link to="/" className="h-fit px-4">
-            <img className="h-16 w-auto" src={spLogo} alt="Sou program" />
-          </Link>
+          <div className="flex gap-4 xl:gap-24">
+            <Link to="/">
+              <img className="h-16 w-auto" src={spLogo} alt="Sou program" />
+            </Link>
 
-          <div className="hidden lg:flex lg:items-center lg:gap-8">
-            {links.map(({ label, to }) => (
-              <Link
-                key={label}
-                to={to}
-                className="text-gray-400 transition-all duration-300 hover:text-primary-500"
-              >
-                {label}
-              </Link>
-            ))}
+            <div className="hidden lg:flex lg:items-center lg:gap-8">
+              {links.map(({ label, to }) => (
+                <Link
+                  key={label}
+                  to={to}
+                  className="text-gray-400 transition-all duration-300 hover:text-primary-500"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div className="hidden items-center gap-2 sm:flex">

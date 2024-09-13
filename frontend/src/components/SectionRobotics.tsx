@@ -7,7 +7,7 @@ export default function SectionRobotics() {
       <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
         <SouHeader className="text-primary-600" heading="Robotika" subheading="Pravimo autiće" />
 
-        <p className="text-lg leading-relaxed">
+        <p className="lg:text-lg lg:leading-relaxed">
           Naša sekcija robotike nudi jedinstvene radionice namijenjene učenicima osnovnih škola s
           ciljem upoznavanja s osnovama robotike. Sudionici radionica uče kako programirati robote,
           upravljati autićima na daljinski, te se bave kako hardverskim, tako i softverskim
