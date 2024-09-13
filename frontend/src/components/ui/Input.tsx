@@ -39,7 +39,7 @@ const Input = forwardRef(function Input(
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="flex text-sm font-medium text-gray-200">
+        <label htmlFor={id} className="flex text-gray-200">
           {label} {required && <span className="text-red-600">*</span>}
         </label>
       )}
@@ -49,7 +49,7 @@ const Input = forwardRef(function Input(
         type={type ?? 'text'}
         name={name}
         className={twMerge(
-          'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 text-white shadow-sm outline-none transition duration-300 focus:bg-primary-600/50 sm:text-sm',
+          'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 text-white shadow-sm outline-none transition duration-300 focus:bg-primary-600/50',
           error && 'focus:bg-red-600/50',
           disabled && 'pointer-events-none opacity-50',
           className,

@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 export const useEventRegistration = <T>(endpoint: string) => {
   const navigate = useNavigate();

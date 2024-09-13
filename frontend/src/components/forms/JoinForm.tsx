@@ -1,12 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { roleOptions, studyOptions } from '../../data/options';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
 import Input from '../ui/Input';
 import { MultiSelect, SingleSelect } from '../ui/Select';
-import { roleOptions, studyOptions } from '../../data/options';
 
 interface JoinFormProps {
   onSubmit: (data: JoinSchemaType) => void;
@@ -126,6 +126,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
                 name={field.name}
                 label="Studija"
                 options={studyOptions}
+                placeholder="Izaberite studiju"
                 value={[field.value]}
                 onChange={field.onChange}
                 error={errors.study?.message}

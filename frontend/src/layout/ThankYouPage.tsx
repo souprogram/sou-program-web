@@ -1,7 +1,7 @@
+import { HiArrowLeft } from 'react-icons/hi';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
-import { HiArrowLeft } from 'react-icons/hi';
 
 export const ThankYouPage = () => {
   const location = useLocation();

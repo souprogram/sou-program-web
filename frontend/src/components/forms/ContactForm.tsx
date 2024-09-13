@@ -53,7 +53,10 @@ export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps
           render={({ field }) => (
             <TextArea
               id="message"
-              {...field}
+              onChange={field.onChange}
+              value={field.value}
+              name={field.name}
+              onBlur={field.onBlur}
               label="Poruka"
               placeholder="Poruka"
               error={errors.message}

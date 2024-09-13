@@ -1,11 +1,11 @@
-import ContactForm from './forms/ContactForm';
-import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import { type ContactSchemaType } from '../schemas/ContactSchema';
-import SouHeader from './SouHeader';
 import { useState } from 'react';
-import EmailSentSuccessModal from './EmailSentSuccessModal';
+import { type ContactSchemaType } from '../schemas/ContactSchema';
+import ContactForm from './forms/ContactForm';
+import EmailSentSuccessModal from './modals/EmailSentSuccessModal';
+import SouHeader from './SouHeader';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 export default function SectionContact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,11 +50,18 @@ export default function SectionContact() {
             heading="Kontaktiraj nas"
             subheading="Budi u dodiru"
           />
-          <p className="mb-8 text-lg leading-relaxed">
+
+          <p className="mb-2 mt-4 lg:text-lg lg:leading-relaxed">
             Javi nam se za bilo kakva pitanja koje imaš. Glupa pitanja ne postoje, samo glupi
             odgovori.
           </p>
-          <p className="mb-8 leading-relaxed text-gray-400">Naš email: info@souprogram.hr</p>
+
+          <p className="mb-8 text-sm text-gray-400 md:text-base lg:leading-relaxed">
+            Naš email:{' '}
+            <a href="mailto:info@souprogram.hr" className="text-primary-400 hover:text-primary-200">
+              info@souprogram.hr
+            </a>
+          </p>
           <ContactForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
         </div>
       </div>
