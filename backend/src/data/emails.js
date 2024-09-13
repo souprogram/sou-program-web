@@ -1,6 +1,8 @@
 const env = require('../environment');
 
 function getEmailRoboticsRegistationFirstFew(body) {
+  const fullNameStudentUnderscored = body.fullNameStudent.replace(' ', '_');
+
   return {
     from: env.emailUser,
     to: String(body.email),
@@ -8,6 +10,7 @@ function getEmailRoboticsRegistationFirstFew(body) {
     text: `Poštovani/a ${body.fullNameCaretaker},\n\ns veseljem Vas obavještavamo da je ${body.fullNameStudent} primljen/a na radionicu robotike udruge Šou program. \n\nU privitku maila Vam šaljemo program koji objašnjava koji je cilj svake od devet radionica koje će biti održane. Po završetku radionice, svako dijete će imati vlastiti autić na daljinsko upravljanje koji zatim nosi sa sobom kući. U slučaju da iz nekog razloga autići na daljinsko upravljanje ne budu gotovi unutar devet termina, predviđen je i 10. termin nadoknade. Prva radionica bit će održana 19. listopada 2024. godine od 10:00 do 11:30 sati, na lokaciji u Rovinjskoj ulici 14. \n\nUz to, u privitku maila šaljemo dokumentaciju (Suglasnost o sudjelovanju i fotografiranju) koja je potrebna kako bi Vaše dijete moglo sudjelovati na radionici. Molimo Vas da navedeni dokument ispunite te najkasnije do 12. listopada 2024. 00:00 povratno pošaljete na ovu e-mail adresu. \n\nU slučaju spriječenosti djeteta da sudjeluje u radionici, molimo Vas da nas na vrijeme obavijestite putem e-mail pošte. Na taj način, pružit ćemo priliku drugom polazniku da sudjeluje u radionici te izradi vlastiti autić. \n\nUkoliko imate dodatnih pitanja slobodno nas kontaktirajte!\n\nSrdačan pozdrav!`,
     attachments: [
       {
+        filename: `Suglasnost_o_sudjelovanju_i_fotografiranju_${fullNameStudentUnderscored}.pdf`,
         path: './src/data/Suglasnost_o_sudjelovanju_i_fotografiranju.pdf',
       },
     ],
