@@ -1,34 +1,29 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const dotenv = require('dotenv');
 const express = require('express');
-const rateLimit = require('express-rate-limit').rateLimit;
+const { rateLimit } = require('express-rate-limit');
 const helmet = require('helmet');
+
+const env = require('./environment');
 const emailRouter = require('./routes/emailRouter').emailRouter;
 const joinRouter = require('./routes/joinRouter').joinRouter;
 const roboticsEventRouter =
   require('./routes/roboticsEventRouter').roboticsEventRouter;
 
-dotenv.config();
-
-const PORT = process.env.PORT || 3000;
-
 const app = express();
 
-// TO-DO: Enable CORS for same-origin requests
 app.use(
   cors({
     origin:
-      process.env.NODE_ENV === 'development'
-        ? ['http://localhost:5173', process.env.FRONTEND_URL]
-        : process.env.FRONTEND_URL,
+      env.nodeEnv === 'development'
+        ? ['http://localhost:5173', env.frontendUrl]
+        : env.frontendUrl,
     credentials: false,
   }),
 );
 
 app.use(helmet());
 
-// limiting number of requests for each IP address
 app.use(
   rateLimit({
     windowMs: 5 * 60 * 1000,
@@ -43,13 +38,12 @@ app.use(bodyParser.json());
 app.get('/', async (req, res) => {
   try {
     res.status(200).json({
-      completed: true,
+      message: 'Welcome to Sou program backend',
       version: process.versions.node,
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      completed: false,
       message: 'Something went wrong.',
       error,
     });
@@ -59,8 +53,10 @@ app.get('/', async (req, res) => {
 app.use('', emailRouter);
 app.use('/api/join', joinRouter);
 app.use('/api/email', emailRouter);
-app.use('/api/event/robotics', roboticsEventRouter);
+app.use('/api/events/robotics', roboticsEventRouter);
 
-app.listen(PORT, () => {
+server = app.listen(env.port || 3000, () => {
   console.log('Server started running on port 3000.');
 });
+
+module.exports = server;

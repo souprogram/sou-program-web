@@ -1,24 +1,49 @@
 const express = require('express');
+
+const env = require('../environment');
 const { validate } = require('../middlewares/schemaValidation');
 const { EmailSchema } = require('../models/emailSchema');
-const { sendEmailToSou } = require('../utils/emailService');
+const { transporter } = require('../utils/emailService');
 
 const router = express.Router();
+
+const supabase = createClient(env.supabaseUrl, env.supabaseAnonKey);
 
 router.post('/api/send-email', validate(EmailSchema), async (req, res) => {
   try {
     const { email, name, message } = req.body;
 
-    await sendEmailToSou(email, name, message);
+    const { error: insertError } = await supabase
+      .from(env.supabaseEmailsTableName)
+      .insert({
+        email: body.email,
+        name: body.name,
+        message: body.message,
+      });
 
-    res.status(200).json({
-      completed: true,
-      message: 'Email sent successfully.',
+    if (insertError) throw insertError;
+
+    const text = `
+      Bok, zovem se ${name} i šaljem Vam ovu poruku sa web stranice.
+
+      ${message}
+    `;
+
+    const mailOptions = {
+      from: String(email),
+      to: env.emailUser ?? 'info@souprogram.hr',
+      subject: `New email from ${name}`,
+      text,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(201).json({
+      message: 'Email stored and sent successfully.',
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      completed: false,
       message: 'Something went wrong.',
       error,
     });
