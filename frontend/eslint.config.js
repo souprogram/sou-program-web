@@ -30,13 +30,17 @@ export default tseslint.config({
     '@tanstack/query': pluginQuery,
   },
   rules: {
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+      },
+    ],
     ...react.configs.recommended.rules,
     ...react.configs['jsx-runtime'].rules,
     ...reactHooks.configs.recommended.rules,
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     '@typescript-eslint/no-misused-promises': [
       2,
       {

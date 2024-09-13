@@ -1,18 +1,32 @@
+import { useParallax } from '../hooks/useParallax';
+import SouHeader from './SouHeader';
 import Button from './ui/Button';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 export default function SectionCTA() {
+  const offsetY = useParallax();
+
   return (
-    <section className="bg-primary-600 py-16 text-gray-200 md:py-32">
-      <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl">
-          <div>Jesi li spreman?</div>
-          <div className="opacity-50">Are you ready?</div>
-        </h2>
+    <section className="relative overflow-hidden bg-primary-600 py-16 md:py-32">
+      <div className="opacity-50">
+        <img
+          src={SPLogoTransparent}
+          alt="Sou program logo"
+          className="absolute right-[-15%] top-0 z-20 size-[40rem] lg:right-[0%] lg:top-[-15%] lg:size-[50rem]"
+          style={{
+            transform: `translateY(${(offsetY - 950) * 0.8}px)`,
+          }}
+        />
+      </div>
+      <div className="relative z-30 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
+        <SouHeader
+          className="text-black"
+          heading="Jesi li spreman?"
+          subheading="Postani dio Šou program ekipe!"
+        />
+
         <div className="flex">
-          <Button
-            to="/join"
-            className="bg-black px-8 py-4 text-lg text-white hover:bg-gray-700"
-          >
+          <Button to="/join" className="bg-black px-8 py-4 text-lg text-white hover:bg-gray-700">
             Učlani se
           </Button>
         </div>

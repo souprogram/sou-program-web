@@ -1,12 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { roleOptions, studyOptions } from '../../data/options';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
 import Input from '../ui/Input';
 import { MultiSelect, SingleSelect } from '../ui/Select';
-import { roleOptions, studyOptions } from '../../data/options';
 
 interface JoinFormProps {
   onSubmit: (data: JoinSchemaType) => void;
@@ -52,10 +52,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
   };
 
   return (
-    <form
-      className="mx-auto w-full max-w-screen-xl"
-      onSubmit={handleSubmit(submit)}
-    >
+    <form className="mx-auto w-full max-w-screen-xl" onSubmit={handleSubmit(submit)}>
       <div className="flex flex-col gap-8">
         <Controller
           name="name"
@@ -75,13 +72,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
           name="email"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="email"
-              label="Email"
-              placeholder="Email"
-              error={errors.email}
-            />
+            <Input {...field} id="email" label="Email" placeholder="Email" error={errors.email} />
           )}
         />
 
@@ -89,13 +80,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
           name="oib"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="oib"
-              label="OIB"
-              placeholder="OIB"
-              error={errors.oib}
-            />
+            <Input {...field} id="oib" label="OIB" placeholder="OIB" error={errors.oib} />
           )}
         />
 
@@ -141,6 +126,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
                 name={field.name}
                 label="Studija"
                 options={studyOptions}
+                placeholder="Izaberite studiju"
                 value={[field.value]}
                 onChange={field.onChange}
                 error={errors.study?.message}
@@ -157,10 +143,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               name={field.name}
               label={
                 <>
-                  Uloga{' '}
-                  <span className="font-normal text-gray-400">
-                    (izaberite barem jednu)
-                  </span>
+                  Uloga <span className="font-normal text-gray-400">(izaberite barem jednu)</span>
                 </>
               }
               options={roleOptions}
@@ -223,13 +206,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
             name="city"
             control={control}
             render={({ field }) => (
-              <Input
-                {...field}
-                id="city"
-                label="Grad"
-                placeholder="Grad"
-                error={errors.city}
-              />
+              <Input {...field} id="city" label="Grad" placeholder="Grad" error={errors.city} />
             )}
           />
         </div>
@@ -242,11 +219,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
         />
 
         <div className="flex">
-          <Button
-            type="submit"
-            disabled={!areTermsAccepted || isSubmitting}
-            loading={isSubmitting}
-          >
+          <Button type="submit" disabled={!areTermsAccepted || isSubmitting} loading={isSubmitting}>
             Submit
           </Button>
         </div>

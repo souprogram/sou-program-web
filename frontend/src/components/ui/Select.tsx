@@ -13,6 +13,7 @@ interface SelectProps<Option, IsMulti extends boolean = false> {
   name: string;
   label: string | React.JSX.Element;
   required?: boolean;
+  placeholder?: string;
   options: { value: Option; label: string }[];
   isMulti?: IsMulti;
   error?: string;
@@ -28,6 +29,7 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
   name,
   label,
   required,
+  placeholder,
   options,
   value,
   error,
@@ -37,35 +39,26 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
     control: (state: any) =>
       twMerge(
         state.className,
-        '!ps-1 !border-0 !bg-gray-600/50 !outline-none !duration-300 !sm:text-sm !text-white',
+        '!ps-1 !border-0 !bg-gray-600/50 !outline-none !duration-300 !text-white',
         state.isFocused && '!border-transparent !bg-primary-600/30 !ring-0',
         error && state.isFocused && '!bg-red-600/30',
       ),
     placeholder: (state: any) =>
-      twMerge(
-        state.className,
-        '!text-gray-400 !text-sm !font-normal !leading-none',
-      ),
+      twMerge(state.className, '!text-gray-400 !font-normal !leading-none'),
     multiValue: (state: any) => twMerge(state.className, '!rounded-full'),
-    input: (state: any) => twMerge(state.className, '!sm:text-sm !text-white'),
+    input: (state: any) => twMerge(state.className, '!text-white'),
     menu: (state: any) =>
-      twMerge(
-        state.className,
-        '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800',
-      ),
+      twMerge(state.className, '!outline-none !duration-300 !text-white !bg-zinc-800'),
     multiValueLabel: (state: any) =>
       twMerge(
         state.className,
-        '!px-3 !pe-2 !py-1 !text-sm !bg-primary-600 !text-black !rounded-s-full !w-fit',
+        '!px-3 !pe-2 !py-1 !bg-primary-600 !text-black !rounded-s-full !w-fit',
       ),
     multiValueRemove: (state: any) =>
-      twMerge(
-        state.className,
-        '!rounded-l-none bg-primary-600 !rounded-e-full text-black',
-      ),
+      twMerge(state.className, '!rounded-l-none bg-primary-600 !rounded-e-full text-black'),
     option: (state: any) =>
       twMerge(
-        '!px-4 !py-2 !text-sm',
+        '!px-4 !py-2',
         state.isSelected && '!bg-primary-600/30 !text-white',
         state.isFocused && '!bg-primary-600/30 !text-white',
       ),
@@ -73,14 +66,14 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-200">
+      <label htmlFor={name} className="text-gray-200">
         {label} {required && <span className="text-red-600">*</span>}
       </label>
       <ReactSelect
         name={name}
-        id="multi-role"
+        id={name}
         isMulti={true}
-        aria-label="Select role"
+        placeholder={placeholder}
         options={options}
         value={options.filter((c) => value.includes(c.value))}
         onChange={(e) => onChange(e.map((c) => c.value))}
@@ -98,13 +91,11 @@ interface SingleSelectProps<Option, IsMulti extends boolean = false>
   onChange: (value: Option) => void;
 }
 
-export function SingleSelect<
-  Option extends StudyType,
-  IsMulti extends boolean = false,
->({
+export function SingleSelect<Option extends StudyType, IsMulti extends boolean = false>({
   name,
   label,
   required,
+  placeholder,
   options,
   value,
   error,
@@ -114,29 +105,23 @@ export function SingleSelect<
     control: (state: any) =>
       twMerge(
         state.className,
-        '!ps-1 !border-0 !bg-gray-600/50 !outline-none !duration-300 !sm:text-sm !text-white',
+        '!ps-1 !border-0 !bg-gray-600/50 !outline-none !duration-300 !text-white',
         state.isFocused && '!border-transparent !bg-primary-600/30 !ring-0',
         error && state.isFocused && '!bg-red-600/30',
       ),
     placeholder: (state: any) =>
-      twMerge(
-        state.className,
-        '!text-gray-400 !text-sm !font-normal !leading-none',
-      ),
-    input: (state: any) => twMerge(state.className, '!sm:text-sm !text-white'),
+      twMerge(state.className, '!text-gray-400 !font-normal !leading-none'),
+    input: (state: any) => twMerge(state.className, '!text-white'),
     singleValue: (state: any) =>
       twMerge(
         state.className,
         '!px-3 !py-1 !text-sm !bg-primary-600 !text-black !rounded-full !w-fit',
       ),
     menu: (state: any) =>
-      twMerge(
-        state.className,
-        '!outline-none !duration-300 !sm:text-sm !text-white !bg-zinc-800',
-      ),
+      twMerge(state.className, '!outline-none !duration-300 !text-white !bg-zinc-800'),
     option: (state: any) =>
       twMerge(
-        '!px-4 !py-2 !text-sm',
+        '!px-4 !py-2',
         state.isSelected && '!bg-primary-600/30 !text-white',
         state.isFocused && '!bg-primary-600/30 !text-white',
       ),
@@ -144,14 +129,14 @@ export function SingleSelect<
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-200">
+      <label htmlFor={name} className="text-gray-200">
         {label} {required && <span className="text-red-600">*</span>}
       </label>
       <ReactSelect
         name={name}
-        id="single-role"
+        id={name}
         isMulti={false}
-        aria-label="Select role"
+        placeholder={placeholder}
         options={options}
         value={options.find((c) => c.value === value)}
         onChange={(e) => {

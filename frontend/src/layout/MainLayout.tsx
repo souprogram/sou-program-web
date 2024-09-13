@@ -5,9 +5,7 @@ import ScrollToTop from '../components/ScrollToTop';
 
 export default function MainLayout() {
   return (
-    <div
-      className="relative min-h-screen font-poppins"
-    >
+    <div className="relative min-h-screen font-poppins">
       <ScrollToTop />
       <NavBar />
       <Outlet />

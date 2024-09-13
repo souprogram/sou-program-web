@@ -1,9 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import {
-  ContactSchema,
-  type ContactSchemaType,
-} from '../../schemas/ContactSchema';
+import { ContactSchema, type ContactSchemaType } from '../../schemas/ContactSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { TextArea } from '../ui/TextArea';
@@ -13,10 +10,7 @@ interface ContactFormProps {
   isSubmitting?: boolean;
 }
 
-export default function ContactForm({
-  onSubmit,
-  isSubmitting,
-}: ContactFormProps) {
+export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
   const {
     handleSubmit,
     control,
@@ -35,22 +29,13 @@ export default function ContactForm({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(submit)}
-      className="mx-auto w-full max-w-screen-xl"
-    >
+    <form onSubmit={handleSubmit(submit)} className="mx-auto w-full max-w-screen-xl">
       <div className="flex flex-col space-y-8">
         <Controller
           name="name"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="name"
-              label="Ime"
-              placeholder="Ime"
-              error={errors.name}
-            />
+            <Input {...field} id="name" label="Ime" placeholder="Ime" error={errors.name} />
           )}
         />
 
@@ -58,13 +43,7 @@ export default function ContactForm({
           name="email"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="email"
-              label="Email"
-              placeholder="Email"
-              error={errors.email}
-            />
+            <Input {...field} id="email" label="Email" placeholder="Email" error={errors.email} />
           )}
         />
 
@@ -74,7 +53,10 @@ export default function ContactForm({
           render={({ field }) => (
             <TextArea
               id="message"
-              {...field}
+              onChange={field.onChange}
+              value={field.value}
+              name={field.name}
+              onBlur={field.onBlur}
               label="Poruka"
               placeholder="Poruka"
               error={errors.message}
