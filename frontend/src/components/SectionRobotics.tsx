@@ -1,5 +1,6 @@
 import SouHeader from './SouHeader';
 import Button from './ui/Button';
+import RadionicaRobotikaPDF from '/Radionica_robotike_za_djecu_-_Sou_program_2024.pdf';
 
 export default function SectionRobotics() {
   return (
@@ -32,8 +33,10 @@ export default function SectionRobotics() {
         <p className="lg:text-lg lg:leading-relaxed">
           Detaljnijem programu radionice možete pristupiti{' '}
           <a
-            href="/Radionica_robotike_za_djecu_-_Šou_program_2024.pdf"
+            href={RadionicaRobotikaPDF}
+            target="_blank"
             className="text-primary-600 hover:text-primary-400"
+            rel="noreferrer"
           >
             ovdje
           </a>
