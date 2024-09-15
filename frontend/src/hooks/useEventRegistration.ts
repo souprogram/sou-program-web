@@ -8,7 +8,7 @@ export const useEventRegistration = <T>(endpoint: string) => {
   const mutation = useMutation({
     mutationFn: async (data: T) => {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/event/${endpoint}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/events/${endpoint}`,
         data,
       );
 
