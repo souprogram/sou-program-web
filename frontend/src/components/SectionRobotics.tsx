@@ -1,5 +1,6 @@
 import SouHeader from './SouHeader';
 import Button from './ui/Button';
+import RadionicaRobotikaPDF from '/Radionica_robotike_za_djecu_-_Sou_program_2024.pdf';
 
 export default function SectionRobotics() {
   return (
@@ -14,26 +15,29 @@ export default function SectionRobotics() {
         <p className="lg:text-lg lg:leading-relaxed">
           Radionica robotike je projekt Šou programa koji za glavni cilj ima upoznati osnovnoškolce
           od 4. do 8. razreda, s osnovama svijeta STEM-a. Klinci će ovim putem učiti osnove
-          programiranja, tehničkog crtanja i robotike, a na kraju će kući ponijeti vlastiti autić na
-          daljinsko upravljanje!
+          programiranja, tehničkog crtanja i robotike, a na kraju radionice će biti organizirano
+          druženje na kojem će imati priliku igrati se sa autićem koji su sami kreirali.
         </p>
 
         <p className="lg:text-lg lg:leading-relaxed">
           Kroz 9 interaktivnih termina koji će se održati tijekom listopada, studenog i prosinca
-          2024. godine, djeca će razvijati i vještine rješavanja problema te kreativnog mišljenja, a
-          sve to u zabavnoj i poticajnoj atmosferi.
+          2024. godine, djeca će razvijati i vještine rješavanja problema, kreativnog mišljenja te
+          rada u timu, a sve to u zabavnoj i poticajnoj atmosferi.
         </p>
 
         <p className="lg:text-lg lg:leading-relaxed">
-          Najbolji dio? Radionice su u potpunosti besplatne! Broj mjesta je ograničen na 30
-          polaznika, a prijave su otvorene do … . Zato požurite i osigurajte svoje mjesto!
+          Projekt je financiran od strane Sveučilišta Jurja Dobrile u Puli, što omogućava da je
+          radionica u potpunosti besplatna! Broj mjesta je ograničen na 30 polaznika, a prijave su
+          otvorene do 12. listopada 2024. godine. Zato požurite i osigurajte svoje mjesto!
         </p>
 
         <p className="lg:text-lg lg:leading-relaxed">
           Detaljnijem programu radionice možete pristupiti{' '}
           <a
-            href="/Radionica_robotike_za_djecu_-_Šou_program_2024.pdf"
+            href={RadionicaRobotikaPDF}
+            target="_blank"
             className="text-primary-600 hover:text-primary-400"
+            rel="noreferrer"
           >
             ovdje
           </a>
