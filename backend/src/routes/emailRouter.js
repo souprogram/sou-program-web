@@ -1,4 +1,5 @@
 const express = require('express');
+const { createClient } = require('@supabase/supabase-js');
 
 const env = require('../environment');
 const { validate } = require('../middlewares/schemaValidation');
@@ -16,9 +17,9 @@ router.post('/api/send-email', validate(EmailSchema), async (req, res) => {
     const { error: insertError } = await supabase
       .from(env.supabaseEmailsTableName)
       .insert({
-        email: body.email,
-        name: body.name,
-        message: body.message,
+        email: email,
+        name: name,
+        message: message,
       });
 
     if (insertError) throw insertError;

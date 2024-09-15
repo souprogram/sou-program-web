@@ -1,11 +1,19 @@
 const env = require('../environment');
 
 function getEmailRoboticsRegistationFirstFew(body) {
+  const fullNameStudentUnderscored = body.fullNameStudent.replace(' ', '_');
+
   return {
     from: env.emailUser,
     to: String(body.email),
     subject: 'POTVRDA PRIJAVE ZA RADIONICU ROBOTIKE',
     text: `Poštovani/a ${body.fullNameCaretaker},\n\ns veseljem Vas obavještavamo da je ${body.fullNameStudent} primljen/a na radionicu robotike udruge Šou program.\n\nU privitku maila Vam šaljemo program koji objašnjava koji je cilj svake od devet radionica koje će biti održane. Tijekom radionice polaznici će kreirati autić na daljinsko upravljanje, a za sam kraj radionice bit će organizirano druženje na kojem će moći testirati i igrati se autićem koji su sami izradili. U slučaju da iz nekog razloga autići na daljinsko upravljanje ne budu gotovi unutar devet termina, predviđen je i 10. termin nadoknade. Prva radionica bit će održana 19. listopada 2024. godine od 10:00 do 11:30 sati, na lokaciji Petra Preradovića 1 (zgrada FET-a, dvorana 402).\n\nUz to, u privitku maila šaljemo dokumentaciju (Suglasnost o sudjelovanju i fotografiranju) koja je potrebna kako bi Vaše dijete moglo sudjelovati na radionici. Molimo Vas da ispunjenu i potpisanu suglasnost povratno pošaljete na ovu e-mail adresu najkasnije do 12. listopada 2024. 00:00.\n\nU slučaju spriječenosti djeteta da sudjeluje u radionici, molimo Vas da nas na vrijeme obavijestite putem e-mail pošte. Na taj način, pružit ćemo priliku drugom polazniku da sudjeluje u radionici te izradi vlastiti autić.\n\Ukoliko imate dodatnih pitanja slobodno nas kontaktirajte!\n\nSrdačan pozdrav!`,
+    attachments: [
+      {
+        filename: `Suglasnost_o_sudjelovanju_i_fotografiranju_${fullNameStudentUnderscored}.pdf`,
+        path: './src/data/Suglasnost_o_sudjelovanju_i_fotografiranju.pdf',
+      },
+    ],
   };
 }
 
