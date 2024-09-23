@@ -139,10 +139,7 @@ export function SingleSelect<Option extends StudyType, IsMulti extends boolean =
         placeholder={placeholder}
         options={options}
         value={options.find((c) => c.value === value)}
-        onChange={(e) => {
-          onChange(e ? e.value : ('' as Option));
-          console.log(e);
-        }}
+        onChange={(e) => onChange(e ? e.value : ('' as Option))}
         classNames={classNames}
         components={animatedComponents}
       />
