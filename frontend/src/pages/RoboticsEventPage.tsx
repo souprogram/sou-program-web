@@ -20,8 +20,9 @@ export const RoboticsEventPage = () => {
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
           Prijavi se na Robotiku
         </h2>
-        <p className="mb-8 leading-relaxed text-gray-200">
-          Ispuni formu. Prijava je otvorena do 10. listopada 2024.
+        <p className="mb-8 max-w-screen-sm leading-relaxed text-gray-200">
+          Prijava je otvorena do <strong>12. listopada 2024. godine</strong>. Zato požurite i
+          osigurajte svoje mjesto! Broj mjesta je ograničen na <strong>30 polaznika</strong>.
         </p>
         <div className="max-w-screen-sm">
           <RoboticsEventForm onSubmit={submit} isSubmitting={isSubmitting} />
