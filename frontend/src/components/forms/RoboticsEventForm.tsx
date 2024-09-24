@@ -8,6 +8,7 @@ import {
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { SingleSelect } from '../ui/Select';
+import DateInput from '../ui/DateInput';
 
 interface RoboticsEventFormProps {
   onSubmit: (data: RoboticsEventSchemaType) => void;
@@ -57,12 +58,10 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
           name="dobStudent"
           control={control}
           render={({ field }) => (
-            <Input
+            <DateInput
               {...field}
               id="dob"
               label="Datum rođenja polaznika"
-              type="date"
-              placeholder="Datum rođenja polaznika"
               error={errors.dobStudent}
             />
           )}
