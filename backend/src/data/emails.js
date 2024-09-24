@@ -22,6 +22,10 @@ function getEmailRoboticsRegistationFirstFew(body) {
         filename: `Suglasnost_o_sudjelovanju_i_fotografiranju_${fullNameStudentUnderscored}.pdf`,
         path: './src/data/Suglasnost_o_sudjelovanju_i_fotografiranju.pdf',
       },
+      {
+        filename: `Radionica_robotike_za_djecu_-_Sou_program_2024.pdf`,
+        path: './src/data/Radionica_robotike_za_djecu_-_Sou_program_2024.pdf',
+      },
     ],
   };
 }
