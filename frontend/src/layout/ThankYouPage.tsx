@@ -1,38 +1,37 @@
 import { HiArrowLeft } from 'react-icons/hi';
-import { Link, Navigate, useLocation } from 'react-router-dom';
-import Button from '../components/ui/Button';
+import { Navigate, useLocation } from 'react-router-dom';
+import { TransparentLinkButton } from '../components/ui/LinkButton';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
+
+interface IThankYouStateProps {
+  isSubmitted: boolean;
+}
+
+const fallbackState: IThankYouStateProps = {
+  isSubmitted: false,
+};
 
 export const ThankYouPage = () => {
   const location = useLocation();
 
-  const state = location.state as { isSubmitted: boolean } | undefined;
+  const state = (location.state ?? fallbackState) as IThankYouStateProps;
 
-  if (!state?.isSubmitted) {
+  if (!state.isSubmitted) {
     return <Navigate to="/" replace />;
   }
 
   return (
-    <section className="relative min-h-screen bg-black py-[9vh] text-center font-poppins text-gray-200">
-      <div className="opacity-5">
-        <img
-          src={SPLogoTransparent}
-          alt="Sou program logo"
-          className="absolute left-[24%] top-[-10%] z-20 h-[45rem] w-[45rem]"
-        />
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center bg-black text-center font-poppins text-gray-200">
+      <div className="absolute flex size-full items-center justify-center opacity-5">
+        <img src={SPLogoTransparent} alt="Sou program logo" height={720} width={720} />
       </div>
-      <div className="mx-auto flex min-h-[82vh] max-w-screen-lg flex-col px-8 py-36 sm:px-6 lg:px-8">
-        <h1 className="font-brioni text-4xl">Hvala na prijavi za radionicu robotike!</h1>
-        <p className="mb-1 mt-8">
-          Uskoro ćete primiti e-mail s dodatnim informacijama i detaljima o programu.
+      <div className="z-10 flex h-full max-w-screen-sm flex-col items-center justify-center gap-6 p-4">
+        <h1 className="font-brioni text-4xl md:text-5xl">Hvala na prijavi!</h1>
+        <p>
+          Uskoro ćete primiti e-mail s dodatnim informacijama i detaljima o programu. Zahvaljujemo
+          na Vašem interesu!
         </p>
-        <p>Zahvaljujemo na Vašem interesu!</p>
-        <Link to="/" className="mt-6 text-white">
-          <Button transparent>
-            <HiArrowLeft />
-            Nazad na početnu stranicu
-          </Button>
-        </Link>
+        <TransparentLinkButton to="/" icon={<HiArrowLeft />} label="Nazad na početnu stranicu" />
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// Custom hook for parallax effect
 export function useParallax(multiplier = 0.3) {
   const [offsetY, setOffsetY] = useState(0);
 
@@ -10,6 +9,7 @@ export function useParallax(multiplier = 0.3) {
     };
 
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, [multiplier]);
 

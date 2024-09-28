@@ -5,10 +5,8 @@ const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <div>
-      <QueryClientProvider client={queryClient}>
-        <MainRouter />
-      </QueryClientProvider>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <MainRouter />
+    </QueryClientProvider>
   );
 }
