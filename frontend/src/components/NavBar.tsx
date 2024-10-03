@@ -16,7 +16,7 @@ const links = [
 
 export default function NavBar() {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
-  const offsetY = useParallax();
+  const { offsetY } = useParallax();
 
   const navigate = useNavigate();
 

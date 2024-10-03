@@ -4,13 +4,13 @@ import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import SPLogo from '/sou-program-icon.svg';
 
 export default function SectionHero() {
-  const offsetY = useParallax();
+  const { parentRef: souImageRef, offsetY } = useParallax();
 
   return (
     <section className="relative flex min-h-screen flex-col items-center gap-4 bg-black py-16 md:py-32 lg:py-48">
-      <div className="opacity-10">
+      <div ref={souImageRef} className="opacity-10">
         <div
-          className="absolute inset-0 z-20 sm:left-[-10%] sm:top-[-10%] sm:h-[60rem] sm:w-[60rem]"
+          className="absolute inset-0 top-[16%] z-20 sm:left-[-10%] sm:top-0 sm:h-[60rem] sm:w-[60rem]"
           style={{
             transform: `translateY(${offsetY}px)`,
           }}
