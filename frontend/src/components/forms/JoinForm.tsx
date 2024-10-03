@@ -5,6 +5,7 @@ import { roleOptions, studyOptions } from '../../data/options';
 import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
 import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
+import DateInput from '../ui/DateInput';
 import Input from '../ui/Input';
 import { MultiSelect, SingleSelect } from '../ui/Select';
 
@@ -58,44 +59,27 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
           name="name"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="name"
-              label="Ime"
-              placeholder="Ime i prezime"
-              error={errors.name}
-            />
+            <Input {...field} id="name" label="Ime i prezime" error={errors.name} />
           )}
         />
 
         <Controller
           name="email"
           control={control}
-          render={({ field }) => (
-            <Input {...field} id="email" label="Email" placeholder="Email" error={errors.email} />
-          )}
+          render={({ field }) => <Input {...field} id="email" label="Email" error={errors.email} />}
         />
 
         <Controller
           name="oib"
           control={control}
-          render={({ field }) => (
-            <Input {...field} id="oib" label="OIB" placeholder="OIB" error={errors.oib} />
-          )}
+          render={({ field }) => <Input {...field} id="oib" label="OIB" error={errors.oib} />}
         />
 
         <Controller
           name="dob"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="dob"
-              label="Datum rođenja"
-              type="date"
-              placeholder="Datum rođenja"
-              error={errors.dob}
-            />
+            <DateInput {...field} id="dob" label="Datum rođenja" error={errors.dob} />
           )}
         />
 
@@ -162,7 +146,6 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               {...field}
               id="discordUsername"
               label="Discord username"
-              placeholder="Discord username"
               error={errors.discordUsername}
               description="Username bez # (hashtag) znaka (kopiraj iz Discorda)"
             />
@@ -179,7 +162,6 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               value={field.value}
               type="tel"
               label="Broj mobitela"
-              placeholder="Broj mobitela"
               error={errors.phoneNumber}
               onChange={({ target }) => field.onChange(target.value)}
               description="Format: +3859..."
@@ -192,22 +174,14 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
             name="zipCode"
             control={control}
             render={({ field }) => (
-              <Input
-                {...field}
-                id="zipCode"
-                label="Poštanski broj"
-                placeholder="Poštanski broj"
-                error={errors.zipCode}
-              />
+              <Input {...field} id="zipCode" label="Poštanski broj" error={errors.zipCode} />
             )}
           />
 
           <Controller
             name="city"
             control={control}
-            render={({ field }) => (
-              <Input {...field} id="city" label="Grad" placeholder="Grad" error={errors.city} />
-            )}
+            render={({ field }) => <Input {...field} id="city" label="Grad" error={errors.city} />}
           />
         </div>
 
