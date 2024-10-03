@@ -92,4 +92,4 @@ const JoinSchema = z
     { message: 'Moraš odabrati studij', path: ['study'] },
   );
 
-module.exports = { Role, Study, JoinSchema };
+module.exports = JoinSchema;

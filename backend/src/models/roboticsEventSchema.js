@@ -29,4 +29,4 @@ const RoboticsEventSchema = z.object({
     .refine(isValidPhoneNumber, 'Neispravan broj mobitela'),
 });
 
-module.exports = { SchoolGrade, RoboticsEventSchema };
+module.exports = RoboticsEventSchema;
