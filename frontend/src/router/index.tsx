@@ -26,8 +26,17 @@ export const MainRouter = () => {
             {
               path: '/events/robotics',
               async lazy() {
-                const { RoboticsEventPage } = await import('../pages/RoboticsEventPage');
+                const { RoboticsEventPage } = await import(
+                  '../pages/events/robotics/RoboticsEventPage'
+                );
                 return { Component: RoboticsEventPage };
+              },
+            },
+            {
+              path: '/events/devops',
+              async lazy() {
+                const { DevOpsEventPage } = await import('../pages/events/devops/DevOpsEventPage');
+                return { Component: DevOpsEventPage };
               },
             },
           ],

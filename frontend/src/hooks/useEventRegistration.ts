@@ -2,11 +2,15 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 
-export const useEventRegistration = <T>(endpoint: string) => {
+interface EventRegistrationProps {
+  endpoint: string;
+}
+
+export const useEventRegistration = <EventData>({ endpoint }: EventRegistrationProps) => {
   const navigate = useNavigate();
 
   const mutation = useMutation({
-    mutationFn: async (data: T) => {
+    mutationFn: async (data: EventData) => {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/events/${endpoint}`,
         data,
@@ -17,7 +21,8 @@ export const useEventRegistration = <T>(endpoint: string) => {
       }
     },
     onSuccess: () => {
-      navigate('/thank-you', { state: { isSubmitted: true } });
+      const successState = { isSubmitted: true };
+      navigate('/thank-you', { state: successState });
     },
     onError: (error) => {
       console.error(error);

@@ -1,10 +1,12 @@
-import RoboticsEventForm from '../components/forms/RoboticsEventForm';
-import { useEventRegistration } from '../hooks/useEventRegistration';
-import { type RoboticsEventSchemaType } from '../schemas/RoboticsEventSchema';
+import RoboticsEventForm from '../../../components/forms/RoboticsEventForm';
+import { useEventRegistration } from '../../../hooks/useEventRegistration';
+import { type RoboticsEventSchemaType } from '../../../schemas/RoboticsEventSchema';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const RoboticsEventPage = () => {
-  const { submit, isSubmitting } = useEventRegistration<RoboticsEventSchemaType>('robotics');
+  const { submit, isSubmitting } = useEventRegistration<RoboticsEventSchemaType>({
+    endpoint: 'robotics',
+  });
 
   return (
     <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
