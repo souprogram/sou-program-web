@@ -32,13 +32,13 @@ export const MainRouter = () => {
                 return { Component: RoboticsEventPage };
               },
             },
-            // {
-            //   path: '/events/devops',
-            //   async lazy() {
-            //     const { DevOpsEventPage } = await import('../pages/events/devops/DevOpsEventPage');
-            //     return { Component: DevOpsEventPage };
-            //   },
-            // },
+            {
+              path: '/events/devops',
+              async lazy() {
+                const { DevOpsEventPage } = await import('../pages/events/devops/DevOpsEventPage');
+                return { Component: DevOpsEventPage };
+              },
+            },
           ],
         },
         {

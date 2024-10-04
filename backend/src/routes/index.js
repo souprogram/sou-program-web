@@ -19,6 +19,6 @@ router.post('/api/join', validate(JoinSchema), JoinCommunityController.join);
 router.post('/api/send-email', validate(EmailSchema), SendEmailController.send);
 
 router.post('/api/events/robotics', validate(RoboticsEventSchema), RoboticsEventController.post);
-// router.post('/api/events/devops', validate(DevOpsEventSchema), DevOpsEventController.post);
+router.post('/api/events/devops', validate(DevOpsEventSchema), DevOpsEventController.post);
 
 module.exports = router;
