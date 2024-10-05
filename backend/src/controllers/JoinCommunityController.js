@@ -4,6 +4,25 @@ const { getEmailJoinSouProgram } = require('../data/emails');
 const { transporter } = require('../utils/emailService');
 
 const JoinCommunityController = {
+  list: async (req, res) => {
+    try {
+      const { data, error } = await db
+        .from(env.supabaseTableName)
+        .select('*');
+
+      if (error) throw error;
+
+      res.status(200).json({
+        data,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        message: 'Something went wrong.',
+        error,
+      });
+    }
+  },
   join: async (req, res) => {
     try {
       const body = req.body;

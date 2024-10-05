@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
 import DevOpsEventForm from '../../components/forms/DevOpsEventForm';
-import { useEventRegistration } from '../../hooks/useEventRegistration';
-import { DevOpsEventSchemaType } from '../../schemas/DevOpsEventSchema';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 import EventSuccessModal from '../../components/modals/EventSuccessModal';
+import { useEventRegistration } from '../../hooks/useEventRegistration';
+import { type DevOpsEventSchemaType } from '../../schemas/DevOpsEventSchema';
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/events/devops')({
   component: DevOpsEventPage,

@@ -7,6 +7,25 @@ const {
 } = require('../data/emails');
 
 const RoboticsEventController = {
+  list: async (req, res) => {
+    try {
+      const { data, error } = await db
+        .from(env.supabaseRoboticsEventTableName)
+        .select('*');
+
+      if (error) throw error;
+
+      res.status(200).json({
+        data,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        message: 'Something went wrong.',
+        error,
+      });
+    }
+  },
   post: async (req, res) => {
     try {
       const body = req.body;
