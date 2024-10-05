@@ -7,6 +7,7 @@
     "watch-routes": "tsr watch",
     "generate-routes": "tsr generate",
     "dev": "vite",
+    "build:staging": "tsc -b && vite build --mode staging",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "prettier": "prettier . --check",
