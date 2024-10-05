@@ -1,12 +1,19 @@
-import RoboticsEventForm from '../../../components/forms/RoboticsEventForm';
-import { useEventRegistration } from '../../../hooks/useEventRegistration';
-import { type RoboticsEventSchemaType } from '../../../schemas/RoboticsEventSchema';
+import { createFileRoute } from '@tanstack/react-router';
+import RoboticsEventForm from '../../components/forms/RoboticsEventForm';
+import EventSuccessModal from '../../components/modals/EventSuccessModal';
+import { useEventRegistration } from '../../hooks/useEventRegistration';
+import { type RoboticsEventSchemaType } from '../../schemas/RoboticsEventSchema';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
-export const RoboticsEventPage = () => {
-  const { submit, isSubmitting } = useEventRegistration<RoboticsEventSchemaType>({
-    endpoint: 'robotics',
-  });
+export const Route = createFileRoute('/events/robotics')({
+  component: RoboticsEventPage,
+});
+
+function RoboticsEventPage() {
+  const { submit, isSubmitting, isModalOpen, closeModal } =
+    useEventRegistration<RoboticsEventSchemaType>({
+      endpoint: 'robotics',
+    });
 
   return (
     <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
@@ -18,7 +25,7 @@ export const RoboticsEventPage = () => {
         />
       </div>
 
-      <div className="relative z-50 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-24 lg:px-8">
+      <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-24 lg:px-8">
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
           Prijavi se na Robotiku
         </h2>
@@ -30,6 +37,8 @@ export const RoboticsEventPage = () => {
           <RoboticsEventForm onSubmit={submit} isSubmitting={isSubmitting} />
         </div>
       </div>
+
+      <EventSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
   );
-};
+}

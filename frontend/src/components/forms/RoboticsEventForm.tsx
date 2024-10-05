@@ -23,7 +23,7 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
   } = useForm<RoboticsEventSchemaType>({
     defaultValues: {
       fullNameStudent: '',
-      dobStudent: undefined,
+      dobStudent: '2024-01-01',
       schoolName: '',
       schoolGrade: undefined,
       fullNameCaretaker: '',
@@ -129,7 +129,7 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
           />
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex">
           <Button type="submit" loading={isSubmitting}>
             Pošalji
           </Button>

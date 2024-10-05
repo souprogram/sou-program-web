@@ -1,23 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
+import { JoinSchemaType } from '../schemas/JoinSchema';
 
-interface EventRegistrationProps {
-  endpoint: string;
-}
-
-export const useEventRegistration = <EventData>({ endpoint }: EventRegistrationProps) => {
+export function useJoin() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mutation = useMutation({
-    mutationFn: async (data: EventData) => {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/events/${endpoint}`,
-        data,
-      );
+    mutationFn: async (data: JoinSchemaType) => {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/join`, data);
 
       if (response.status !== 201) {
-        throw new Error('Registration failed.');
+        throw new Error('Učlanjivanje nije uspjelo.');
       }
     },
     onSuccess: () => {
@@ -35,4 +29,4 @@ export const useEventRegistration = <EventData>({ endpoint }: EventRegistrationP
     isModalOpen: isModalOpen,
     closeModal: () => setIsModalOpen(false),
   };
-};
+}

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 import LoadingSpinner from './LoadingSpinner';
+import { Link } from '@tanstack/react-router';
 
 interface ButtonProps {
   children: React.ReactNode;

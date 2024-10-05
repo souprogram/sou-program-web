@@ -1,5 +1,7 @@
 const env = require('../environment');
 const db = require('../database');
+const { getEmailJoinSouProgram } = require('../data/emails');
+const { transporter } = require('../utils/emailService');
 
 const JoinCommunityController = {
   join: async (req, res) => {

@@ -1,20 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { twMerge } from 'tailwind-merge';
 
-interface EmailSentSuccessModalProps {
+interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children?: React.ReactNode;
   className?: string;
 }
 
-export default function EmailSentSuccessModal({
-  isOpen,
-  onClose,
-  children,
-  className,
-}: EmailSentSuccessModalProps) {
+export default function Modal({ isOpen, onClose, children, className }: ModalProps) {
   useEffect(() => {
     const closeOnEscapeKey = (e: KeyboardEvent) => (e.key === 'Escape' ? onClose() : null);
     document.body.addEventListener('keydown', closeOnEscapeKey);
@@ -24,6 +19,14 @@ export default function EmailSentSuccessModal({
     };
   }, [onClose]);
 
+  useLayoutEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) {
     return null;
   }
@@ -31,7 +34,7 @@ export default function EmailSentSuccessModal({
   return createPortal(
     <div
       className={twMerge(
-        'fixed inset-0 z-50 flex min-h-screen flex-col items-center justify-center bg-black text-white',
+        'fixed inset-0 z-40 flex min-h-screen flex-col items-center justify-center bg-black text-white',
         className,
       )}
     >

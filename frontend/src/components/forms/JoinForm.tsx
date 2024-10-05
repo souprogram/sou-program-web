@@ -16,7 +16,6 @@ interface JoinFormProps {
 
 export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
   const [isStudent, setIsStudent] = useState(false);
-  const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
   const {
     handleSubmit,
@@ -27,7 +26,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
       name: '',
       email: '',
       oib: '',
-      dob: '',
+      dob: '2024-01-01',
       isUNIPUStudent: false,
       study: undefined,
       role: [],
@@ -35,22 +34,45 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
       phoneNumber: '',
       zipCode: '',
       city: '',
+      terms: false,
     },
     resolver: zodResolver(JoinSchema),
   });
 
   const submit = (data: JoinSchemaType) => {
-    if (!areTermsAccepted) {
-      alert('Moraš prihvatiti sve uvjete i odredbe Statuta.');
-      return;
-    }
-
     if (!data.isUNIPUStudent) {
       data.study = undefined;
     }
 
     onSubmit(data);
   };
+
+  // function submitTest(data: any) {
+  //   // const obj = {
+  //   //   name: 'admin',
+  //   //   email: 'alan.buba5@gmail.com',
+  //   //   oib: '09407657042',
+  //   //   dob: '01-01-2024',
+  //   //   isUNIPUStudent: true,
+  //   //   study: 'fipu',
+  //   //   role: ['sou-lab'],
+  //   //   discordUsername: 'fewf',
+  //   //   phoneNumber: '+385987654321',
+  //   //   zipCode: '52100',
+  //   //   city: 'Pula',
+  //   // };
+
+  //   const parsed = JoinSchema.safeParse(data);
+  //   if (!parsed.success) {
+  //     console.log(parsed.error);
+  //     console.log(data);
+  //     return;
+  //   } else {
+  //     console.log(parsed.data);
+  //   }
+
+  //   console.log(data);
+  // }
 
   return (
     <form className="mx-auto w-full max-w-screen-xl" onSubmit={handleSubmit(submit)}>
@@ -185,15 +207,23 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
           />
         </div>
 
-        <Checkbox
-          id="terms"
-          value={areTermsAccepted}
-          onChange={({ target }) => setAreTermsAccepted(target.checked)}
-          label="Prihvačam sve uvjete i odredbe Statuta."
+        <Controller
+          name="terms"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              {...field}
+              id="terms"
+              label="Prihvačam sve uvjete i odredbe Statuta."
+              onChange={(event) => {
+                field.onChange(event.target.checked);
+              }}
+            />
+          )}
         />
 
         <div className="flex">
-          <Button type="submit" disabled={!areTermsAccepted || isSubmitting} loading={isSubmitting}>
+          <Button type="submit" loading={isSubmitting}>
             Submit
           </Button>
         </div>

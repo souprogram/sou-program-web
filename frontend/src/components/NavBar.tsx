@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
 import { useParallax } from '../hooks/useParallax';
 import Button from './ui/Button';
 import { LinkButton } from './ui/LinkButton';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 import spLogo from '/sou-program-logo-bez-pozadine.png';
+import { Link, useNavigate } from '@tanstack/react-router';
 
 const links = [
   { label: 'Tko smo mi?', to: '/#what-we-do' },
@@ -34,7 +34,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="sticky left-0 right-0 top-0 z-[100]"
+      className="sticky left-0 right-0 top-0 z-20"
       style={{ backgroundColor: `rgba(28,28, 28, ${offsetY > 100 ? 1 : offsetY / 100})` }}
     >
       <div className="relative z-10 mx-auto max-w-screen-2xl px-0 sm:px-6 lg:px-8">
@@ -120,7 +120,7 @@ export default function NavBar() {
         <Button
           className="z-30 mt-8 truncate"
           onClick={() => {
-            navigate('/join');
+            navigate({ to: '/join' });
             toggleMenu();
           }}
         >
@@ -129,7 +129,7 @@ export default function NavBar() {
         <Button
           className="z-30 truncate bg-gray-200 hover:bg-white"
           onClick={() => {
-            navigate('/events/robotics');
+            navigate({ to: '/events/robotics' });
             toggleMenu();
           }}
         >

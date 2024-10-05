@@ -43,7 +43,7 @@ export default function SectionContact() {
         />
       </div>
 
-      <div className="relative z-50 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-sm">
           <SouHeader
             className="text-primary-600"
