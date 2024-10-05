@@ -27,20 +27,14 @@ function DevOpsEventPage() {
 
       <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-24 lg:px-8">
         <h2 className="mb-4 font-brioni text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">
-          Prijavi se na DevOps radionicu
+          DevOps radionica
         </h2>
         <p className="max-w-screen-sm leading-relaxed text-gray-200">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem aut ab totam eaque iste nemo
-          voluptate velit voluptatum repudiandae exercitationem quos similique aliquid, facere, sint
-          voluptas iure minus placeat sequi.
+          Prijavi se na DevOps radionicu i upoznaj se s terminima kao što su DevOp, CI/CD i GitHub
+          Actions.
         </p>
-        <p className="max-w-screen-sm leading-relaxed text-gray-200">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere aliquam labore molestiae,
-          libero esse autem consequuntur. Praesentium quis inventore iusto optio quaerat, veniam
-          eligendi architecto maiores nesciunt odit eius alias.
-        </p>
-        <div className="mt-8 flex max-w-screen-sm flex-col gap-6">
-          <h3 className="font-brioni text-3xl font-bold text-white">Šta čekaš? Prijavi se!</h3>
+        <div className="mt-8 flex max-w-screen-sm flex-col gap-4">
+          <h3 className="font-brioni text-2xl font-bold text-white sm:text-3xl">Prijavi se!</h3>
           <DevOpsEventForm onSubmit={submit} isSubmitting={isSubmitting} />
         </div>
       </div>
