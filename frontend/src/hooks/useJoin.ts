@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
-import { JoinSchemaType } from '../schemas/JoinSchema';
+import { JoinSchemaType } from '@/schemas/JoinSchema';
 
 export function useJoin() {
   const [isModalOpen, setIsModalOpen] = useState(false);

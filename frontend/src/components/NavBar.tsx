@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { useParallax } from '../hooks/useParallax';
+import { useParallax } from '@/hooks/useParallax';
 import Button from './ui/Button';
 import { LinkButton } from './ui/LinkButton';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';

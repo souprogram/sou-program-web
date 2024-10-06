@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import { ContactSchema, type ContactSchemaType } from '../../schemas/ContactSchema';
+import { ContactSchema, type ContactSchemaType } from '@/schemas/ContactSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { TextArea } from '../ui/TextArea';

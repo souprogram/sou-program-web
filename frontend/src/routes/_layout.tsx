@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router';
-import Footer from '../components/Footer';
-import NavBar from '../components/NavBar';
-import ScrollToTop from '../components/ScrollToTop';
+import Footer from '@/components/Footer';
+import NavBar from '@/components/NavBar';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const Route = createFileRoute('/_layout')({
   component: LayoutComponent,

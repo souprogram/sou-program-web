@@ -1,10 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import { schoolGradeOptions } from '../../data/options';
-import {
-  RoboticsEventSchema,
-  type RoboticsEventSchemaType,
-} from '../../schemas/RoboticsEventSchema';
+import { schoolGradeOptions } from '@/data/options';
+import { RoboticsEventSchema, type RoboticsEventSchemaType } from '@/schemas/RoboticsEventSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { SingleSelect } from '../ui/Select';

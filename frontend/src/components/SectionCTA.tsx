@@ -1,4 +1,4 @@
-import { useParallax } from '../hooks/useParallax';
+import { useParallax } from '@/hooks/useParallax';
 import SouHeader from './SouHeader';
 import Button from './ui/Button';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';

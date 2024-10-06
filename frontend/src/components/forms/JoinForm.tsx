@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { roleOptions, studyOptions } from '../../data/options';
-import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
+import { roleOptions, studyOptions } from '@/data/options';
+import { JoinSchema, type JoinSchemaType } from '@/schemas/JoinSchema';
 import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
 import DateInput from '../ui/DateInput';

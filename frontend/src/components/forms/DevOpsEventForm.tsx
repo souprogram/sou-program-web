@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import { DevOpsEventSchema, type DevOpsEventSchemaType } from '../../schemas/DevOpsEventSchema';
+import { DevOpsEventSchema, type DevOpsEventSchemaType } from '@/schemas/DevOpsEventSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 

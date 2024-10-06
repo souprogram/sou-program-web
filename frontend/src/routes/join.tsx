@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
-import JoinForm from '../components/forms/JoinForm';
-import EventSuccessModal from '../components/modals/EventSuccessModal';
-import SouHeader from '../components/SouHeader';
-import { useJoin } from '../hooks/useJoin';
+import JoinForm from '@/components/forms/JoinForm';
+import EventSuccessModal from '@/components/modals/EventSuccessModal';
+import SouHeader from '@/components/SouHeader';
+import { useJoin } from '@/hooks/useJoin';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/join')({

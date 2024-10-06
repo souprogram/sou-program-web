@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
-import { type ContactSchemaType } from '../schemas/ContactSchema';
+import { type ContactSchemaType } from '@/schemas/ContactSchema';
 import ContactForm from './forms/ContactForm';
 import EmailSentSuccessModal from './modals/EmailSentSuccessModal';
 import SouHeader from './SouHeader';

@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { zodSearchValidator } from '@tanstack/router-zod-adapter';
 import axios from 'axios';
-import { memberListSchema, memberListSearchSchema } from '../schemas/JoinSchema';
-import { formatDate, optionsWithoutWeekday } from '../utils/formatDate';
-import SouHeader from '../components/SouHeader';
+import { memberListSchema, memberListSearchSchema } from '@/schemas/JoinSchema';
+import { formatDate, optionsWithoutWeekday } from '@/utils/formatDate';
+import SouHeader from '@/components/SouHeader';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/join-view')({
