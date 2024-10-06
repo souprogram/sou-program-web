@@ -12,4 +12,4 @@ const EmailSchema = z.object({
     .max(512, 'Moraš upisati najviše 512 znakova'),
 });
 
-module.exports = { EmailSchema };
+module.exports = EmailSchema;

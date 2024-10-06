@@ -5,10 +5,8 @@ const { rateLimit } = require('express-rate-limit');
 const helmet = require('helmet');
 
 const env = require('./environment');
-const emailRouter = require('./routes/emailRouter').emailRouter;
-const joinRouter = require('./routes/joinRouter').joinRouter;
-const roboticsEventRouter =
-  require('./routes/roboticsEventRouter').roboticsEventRouter;
+
+const routes = require('./routes');
 
 const app = express();
 
@@ -50,13 +48,10 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.use('', emailRouter);
-app.use('/api/join', joinRouter);
-app.use('/api/email', emailRouter);
-app.use('/api/events/robotics', roboticsEventRouter);
+app.use('', routes);
 
-server = app.listen(env.port || 3000, () => {
-  console.log('Server started running on port 3000.');
+const port = env.port || 3000;
+
+app.listen(port, () => {
+  console.log(`Server started running on port ${port}.`);
 });
-
-module.exports = server;

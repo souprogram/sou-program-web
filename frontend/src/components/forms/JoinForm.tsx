@@ -1,10 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { roleOptions, studyOptions } from '../../data/options';
-import { JoinSchema, type JoinSchemaType } from '../../schemas/JoinSchema';
+import { roleOptions, studyOptions } from '@/data/options';
+import { JoinSchema, type JoinSchemaType } from '@/schemas/JoinSchema';
 import Button from '../ui/Button';
 import Checkbox from '../ui/Checkbox';
+import DateInput from '../ui/DateInput';
 import Input from '../ui/Input';
 import { MultiSelect, SingleSelect } from '../ui/Select';
 
@@ -15,7 +16,6 @@ interface JoinFormProps {
 
 export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
   const [isStudent, setIsStudent] = useState(false);
-  const [areTermsAccepted, setAreTermsAccepted] = useState(false);
 
   const {
     handleSubmit,
@@ -26,7 +26,7 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
       name: '',
       email: '',
       oib: '',
-      dob: '',
+      dob: '2024-01-01',
       isUNIPUStudent: false,
       study: undefined,
       role: [],
@@ -34,22 +34,45 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
       phoneNumber: '',
       zipCode: '',
       city: '',
+      terms: false,
     },
     resolver: zodResolver(JoinSchema),
   });
 
   const submit = (data: JoinSchemaType) => {
-    if (!areTermsAccepted) {
-      alert('Moraš prihvatiti sve uvjete i odredbe Statuta.');
-      return;
-    }
-
     if (!data.isUNIPUStudent) {
       data.study = undefined;
     }
 
     onSubmit(data);
   };
+
+  // function submitTest(data: any) {
+  //   // const obj = {
+  //   //   name: 'admin',
+  //   //   email: 'alan.buba5@gmail.com',
+  //   //   oib: '09407657042',
+  //   //   dob: '01-01-2024',
+  //   //   isUNIPUStudent: true,
+  //   //   study: 'fipu',
+  //   //   role: ['sou-lab'],
+  //   //   discordUsername: 'fewf',
+  //   //   phoneNumber: '+385987654321',
+  //   //   zipCode: '52100',
+  //   //   city: 'Pula',
+  //   // };
+
+  //   const parsed = JoinSchema.safeParse(data);
+  //   if (!parsed.success) {
+  //     console.log(parsed.error);
+  //     console.log(data);
+  //     return;
+  //   } else {
+  //     console.log(parsed.data);
+  //   }
+
+  //   console.log(data);
+  // }
 
   return (
     <form className="mx-auto w-full max-w-screen-xl" onSubmit={handleSubmit(submit)}>
@@ -58,44 +81,27 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
           name="name"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="name"
-              label="Ime"
-              placeholder="Ime i prezime"
-              error={errors.name}
-            />
+            <Input {...field} id="name" label="Ime i prezime" error={errors.name} />
           )}
         />
 
         <Controller
           name="email"
           control={control}
-          render={({ field }) => (
-            <Input {...field} id="email" label="Email" placeholder="Email" error={errors.email} />
-          )}
+          render={({ field }) => <Input {...field} id="email" label="Email" error={errors.email} />}
         />
 
         <Controller
           name="oib"
           control={control}
-          render={({ field }) => (
-            <Input {...field} id="oib" label="OIB" placeholder="OIB" error={errors.oib} />
-          )}
+          render={({ field }) => <Input {...field} id="oib" label="OIB" error={errors.oib} />}
         />
 
         <Controller
           name="dob"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="dob"
-              label="Datum rođenja"
-              type="date"
-              placeholder="Datum rođenja"
-              error={errors.dob}
-            />
+            <DateInput {...field} id="dob" label="Datum rođenja" error={errors.dob} />
           )}
         />
 
@@ -162,7 +168,6 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               {...field}
               id="discordUsername"
               label="Discord username"
-              placeholder="Discord username"
               error={errors.discordUsername}
               description="Username bez # (hashtag) znaka (kopiraj iz Discorda)"
             />
@@ -179,7 +184,6 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               value={field.value}
               type="tel"
               label="Broj mobitela"
-              placeholder="Broj mobitela"
               error={errors.phoneNumber}
               onChange={({ target }) => field.onChange(target.value)}
               description="Format: +3859..."
@@ -192,34 +196,34 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
             name="zipCode"
             control={control}
             render={({ field }) => (
-              <Input
-                {...field}
-                id="zipCode"
-                label="Poštanski broj"
-                placeholder="Poštanski broj"
-                error={errors.zipCode}
-              />
+              <Input {...field} id="zipCode" label="Poštanski broj" error={errors.zipCode} />
             )}
           />
 
           <Controller
             name="city"
             control={control}
-            render={({ field }) => (
-              <Input {...field} id="city" label="Grad" placeholder="Grad" error={errors.city} />
-            )}
+            render={({ field }) => <Input {...field} id="city" label="Grad" error={errors.city} />}
           />
         </div>
 
-        <Checkbox
-          id="terms"
-          value={areTermsAccepted}
-          onChange={({ target }) => setAreTermsAccepted(target.checked)}
-          label="Prihvačam sve uvjete i odredbe Statuta."
+        <Controller
+          name="terms"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              {...field}
+              id="terms"
+              label="Prihvačam sve uvjete i odredbe Statuta."
+              onChange={(event) => {
+                field.onChange(event.target.checked);
+              }}
+            />
+          )}
         />
 
         <div className="flex">
-          <Button type="submit" disabled={!areTermsAccepted || isSubmitting} loading={isSubmitting}>
+          <Button type="submit" loading={isSubmitting}>
             Submit
           </Button>
         </div>

@@ -12,6 +12,7 @@ export default tseslint.config({
     js.configs.recommended,
     ...tseslint.configs.recommendedTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
+    ...pluginRouter.configs['flat/recommended'],
   ],
   ignores: ['dist'],
   files: ['**/*.{ts,tsx}'],

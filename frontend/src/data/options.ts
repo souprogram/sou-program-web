@@ -1,6 +1,6 @@
-import { Role } from '../enums/Role';
-import { SchoolGrade } from '../enums/SchoolGrade';
-import { Study } from '../enums/Study';
+import { Role } from '@/enums/Role';
+import { SchoolGrade } from '@/enums/SchoolGrade';
+import { Study } from '@/enums/Study';
 
 export const roleOptions = [
   { value: Role.SOU_LAB, label: 'Šou lab' },

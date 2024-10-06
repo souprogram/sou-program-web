@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import { ContactSchema, type ContactSchemaType } from '../../schemas/ContactSchema';
+import { ContactSchema, type ContactSchemaType } from '@/schemas/ContactSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { TextArea } from '../ui/TextArea';
@@ -34,17 +34,13 @@ export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps
         <Controller
           name="name"
           control={control}
-          render={({ field }) => (
-            <Input {...field} id="name" label="Ime" placeholder="Ime" error={errors.name} />
-          )}
+          render={({ field }) => <Input {...field} id="name" label="Ime" error={errors.name} />}
         />
 
         <Controller
           name="email"
           control={control}
-          render={({ field }) => (
-            <Input {...field} id="email" label="Email" placeholder="Email" error={errors.email} />
-          )}
+          render={({ field }) => <Input {...field} id="email" label="Email" error={errors.email} />}
         />
 
         <Controller
@@ -58,7 +54,6 @@ export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps
               name={field.name}
               onBlur={field.onBlur}
               label="Poruka"
-              placeholder="Poruka"
               error={errors.message}
             />
           )}

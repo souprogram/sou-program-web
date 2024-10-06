@@ -1,10 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
-import { schoolGradeOptions } from '../../data/options';
-import {
-  RoboticsEventSchema,
-  type RoboticsEventSchemaType,
-} from '../../schemas/RoboticsEventSchema';
+import { schoolGradeOptions } from '@/data/options';
+import { RoboticsEventSchema, type RoboticsEventSchemaType } from '@/schemas/RoboticsEventSchema';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 import { SingleSelect } from '../ui/Select';
@@ -23,7 +20,7 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
   } = useForm<RoboticsEventSchemaType>({
     defaultValues: {
       fullNameStudent: '',
-      dobStudent: undefined,
+      dobStudent: '2024-01-01',
       schoolName: '',
       schoolGrade: undefined,
       fullNameCaretaker: '',
@@ -48,7 +45,6 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
               {...field}
               id="fullNameStudent"
               label="Ime i prezime polaznika"
-              placeholder="Ime i prezime polaznika"
               error={errors.fullNameStudent}
             />
           )}
@@ -71,13 +67,7 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
           name="schoolName"
           control={control}
           render={({ field }) => (
-            <Input
-              {...field}
-              id="school"
-              label="Naziv škole"
-              placeholder="Naziv škole"
-              error={errors.schoolName}
-            />
+            <Input {...field} id="school" label="Naziv škole" error={errors.schoolName} />
           )}
         />
 
@@ -104,7 +94,6 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
               {...field}
               id="fullNameCaretaker"
               label="Ime i prezime skrbnika"
-              placeholder="Ime i prezime skrbnika"
               error={errors.fullNameCaretaker}
             />
           )}
@@ -115,13 +104,7 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
             name="email"
             control={control}
             render={({ field }) => (
-              <Input
-                {...field}
-                id="email"
-                label="Email skrbnika"
-                placeholder="Email skrbnika"
-                error={errors.email}
-              />
+              <Input {...field} id="email" label="Email skrbnika" error={errors.email} />
             )}
           />
 
@@ -135,7 +118,6 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
                 value={field.value}
                 type="tel"
                 label="Broj mobitela skrbnika"
-                placeholder="Broj mobitela skrbnika"
                 error={errors.phoneNumber}
                 onChange={({ target }) => field.onChange(target.value)}
                 description="Format: +3859..."
@@ -144,7 +126,7 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
           />
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex">
           <Button type="submit" loading={isSubmitting}>
             Pošalji
           </Button>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { FieldError } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 
@@ -17,19 +17,22 @@ interface DateInputProps {
   onBlur: (...event: any[]) => void;
 }
 
-const DateInput = ({
-  id,
-  name,
-  value,
-  label,
-  error,
-  disabled,
-  className,
-  description,
-  required,
-  onChange,
-  onBlur,
-}: DateInputProps) => {
+const DateInput = forwardRef(function DateInput(
+  {
+    id,
+    name,
+    value,
+    label,
+    error,
+    disabled,
+    className,
+    description,
+    required,
+    onChange,
+    onBlur,
+  }: DateInputProps,
+  ref: React.Ref<HTMLDivElement>,
+) {
   const [day, setDay] = useState<string>(value ? value.split('-')[2] : '01');
   const [month, setMonth] = useState<string>(value ? value.split('-')[1] : '01');
   const [year, setYear] = useState<string>(value ? value.split('-')[0] : '2024');
@@ -66,7 +69,7 @@ const DateInput = ({
           {label} {required && <span className="text-red-600">*</span>}
         </label>
       )}
-      <div className="flex gap-4" id={id}>
+      <div className="flex gap-4" id={id} ref={ref}>
         <div className="w-full">
           <label className="text-sm text-gray-400">Dan</label>
           <input
@@ -138,6 +141,6 @@ const DateInput = ({
       )}
     </div>
   );
-};
+});
 
 export default DateInput;
