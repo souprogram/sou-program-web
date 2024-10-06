@@ -1,16 +1,16 @@
-import { createFileRoute } from '@tanstack/react-router';
-import JoinForm from '@/components/forms/JoinForm';
-import EventSuccessModal from '@/components/modals/EventSuccessModal';
-import SouHeader from '@/components/SouHeader';
-import { useJoin } from '@/hooks/useJoin';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import { createLazyFileRoute } from '@tanstack/react-router'
+import JoinForm from '@/components/forms/JoinForm'
+import EventSuccessModal from '@/components/modals/EventSuccessModal'
+import SouHeader from '@/components/SouHeader'
+import { useJoin } from '@/hooks/useJoin'
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
 
-export const Route = createFileRoute('/join')({
+export const Route = createLazyFileRoute('/join')({
   component: JoinPage,
-});
+})
 
 function JoinPage() {
-  const { submit, isSubmitting, isModalOpen, closeModal } = useJoin();
+  const { submit, isSubmitting, isModalOpen, closeModal } = useJoin()
 
   return (
     <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
@@ -35,5 +35,5 @@ function JoinPage() {
 
       <EventSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
-  );
+  )
 }

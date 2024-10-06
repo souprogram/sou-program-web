@@ -1,11 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createLazyFileRoute } from '@tanstack/react-router';
 import RoboticsEventForm from '@/components/forms/RoboticsEventForm';
 import EventSuccessModal from '@/components/modals/EventSuccessModal';
 import { useEventRegistration } from '@/hooks/useEventRegistration';
 import { type RoboticsEventSchemaType } from '@/schemas/RoboticsEventSchema';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
-export const Route = createFileRoute('/events/robotics')({
+export const Route = createLazyFileRoute('/events/robotics')({
   component: RoboticsEventPage,
 });
 

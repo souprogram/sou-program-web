@@ -1,19 +1,19 @@
-import { createFileRoute } from '@tanstack/react-router';
-import DevOpsEventForm from '@/components/forms/DevOpsEventForm';
-import EventSuccessModal from '@/components/modals/EventSuccessModal';
-import { useEventRegistration } from '@/hooks/useEventRegistration';
-import { type DevOpsEventSchemaType } from '@/schemas/DevOpsEventSchema';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import { createLazyFileRoute } from '@tanstack/react-router'
+import DevOpsEventForm from '@/components/forms/DevOpsEventForm'
+import EventSuccessModal from '@/components/modals/EventSuccessModal'
+import { useEventRegistration } from '@/hooks/useEventRegistration'
+import { type DevOpsEventSchemaType } from '@/schemas/DevOpsEventSchema'
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
 
-export const Route = createFileRoute('/events/devops')({
+export const Route = createLazyFileRoute('/events/devops')({
   component: DevOpsEventPage,
-});
+})
 
 function DevOpsEventPage() {
   const { submit, isSubmitting, isModalOpen, closeModal } =
     useEventRegistration<DevOpsEventSchemaType>({
       endpoint: 'devops',
-    });
+    })
 
   return (
     <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
@@ -30,16 +30,18 @@ function DevOpsEventPage() {
           DevOps radionica
         </h2>
         <p className="max-w-screen-sm leading-relaxed text-gray-200">
-          Prijavi se na DevOps radionicu i upoznaj se s terminima kao što su DevOp, CI/CD i GitHub
-          Actions.
+          Prijavi se na DevOps radionicu i upoznaj se s terminima kao što su
+          DevOp, CI/CD i GitHub Actions.
         </p>
         <div className="mt-8 flex max-w-screen-sm flex-col gap-4">
-          <h3 className="font-brioni text-2xl font-bold text-white sm:text-3xl">Prijavi se!</h3>
+          <h3 className="font-brioni text-2xl font-bold text-white sm:text-3xl">
+            Prijavi se!
+          </h3>
           <DevOpsEventForm onSubmit={submit} isSubmitting={isSubmitting} />
         </div>
       </div>
 
       <EventSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
-  );
+  )
 }
