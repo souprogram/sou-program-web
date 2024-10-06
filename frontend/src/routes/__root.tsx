@@ -21,10 +21,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootComponent() {
   return (
     <>
-      <div className="relative min-h-screen font-poppins">
+      <div className="relative flex min-h-dvh flex-col font-poppins">
         <ScrollToTop />
         <NavBar />
-        <Outlet />
+        <main className="flex flex-1 flex-col">
+          <Outlet />
+        </main>
         <Footer />
       </div>
       {/* <ReactQueryDevtools buttonPosition="top-right" /> */}

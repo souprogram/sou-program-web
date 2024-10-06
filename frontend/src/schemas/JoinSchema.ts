@@ -47,3 +47,35 @@ export const JoinSchema = z
   );
 
 export type JoinSchemaType = z.infer<typeof JoinSchema>;
+
+export const memberListSearchSchema = z.object({
+  table_view_access_key: z.string().nullish(),
+});
+
+export const memberSchema = z.object({
+  id: z.string().uuid(),
+  created_at: z.string().datetime({ offset: true }),
+  full_name: z.string(),
+  email: z.string().email(),
+  oib: z.string(),
+  dob: z.string().date(),
+  is_unipu_student: z.boolean(),
+  role: z.enum(Object.values(Role) as [string, ...string[]]).array(),
+  discord_username: z.string(),
+  phone_number: z.string(),
+  city: z.string(),
+  study: z.nativeEnum(Study).nullish(),
+  zip_code: z.string(),
+  confirmed_at: z.string().datetime({ offset: true }).nullish(),
+  payment_status: z.boolean().nullish(),
+  left_at: z.string().datetime({ offset: true }).nullish(),
+  payment_date_due: z.string().datetime({ offset: true }).nullish(),
+});
+
+export type Member = z.infer<typeof memberSchema>;
+
+export const memberListSchema = z.object({
+  data: z.array(memberSchema),
+});
+
+export type MemberList = z.infer<typeof memberListSchema>;

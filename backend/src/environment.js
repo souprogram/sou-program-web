@@ -20,5 +20,7 @@ module.exports = {
 
   frontendUrl: process.env.FRONTEND_URL ?? '',
 
+  tableViewAccessKey: process.env.TABLE_VIEW_ACCESS_KEY ?? '',
+
   nodeEnv: process.env.NODE_ENV ?? 'development',
 };

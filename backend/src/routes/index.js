@@ -1,5 +1,6 @@
 const express = require('express');
-const { validate } = require('../middlewares/schemaValidation');
+const SchemaValidation = require('../middlewares/schemaValidation');
+const TableViewValidation = require('../middlewares/tableViewValidation');
 
 // Controllers
 const JoinCommunityController = require('../controllers/JoinCommunityController');
@@ -16,18 +17,46 @@ const DevOpsEventSchema = require('../models/devOpsEventSchema');
 const router = express.Router();
 
 // Members
-router.get('/api/members', JoinCommunityController.list);
-router.post('/api/members', validate(JoinSchema), JoinCommunityController.join);
+router.get(
+  '/api/members',
+  TableViewValidation.validate(),
+  JoinCommunityController.list,
+);
+router.post(
+  '/api/members',
+  SchemaValidation.validate(JoinSchema),
+  JoinCommunityController.join,
+);
 
 // Send email
-router.post('/api/send-email', validate(EmailSchema), SendEmailController.send);
+router.post(
+  '/api/send-email',
+  SchemaValidation.validate(EmailSchema),
+  SendEmailController.send,
+);
 
 // Robotics event
-router.get('/api/events/robotics', RoboticsEventController.list);
-router.post('/api/events/robotics', validate(RoboticsEventSchema), RoboticsEventController.post);
+router.get(
+  '/api/events/robotics',
+  TableViewValidation.validate(),
+  RoboticsEventController.list,
+);
+router.post(
+  '/api/events/robotics',
+  SchemaValidation.validate(RoboticsEventSchema),
+  RoboticsEventController.post,
+);
 
 // DevOps event
-router.get('/api/events/devops', DevOpsEventController.list);
-router.post('/api/events/devops', validate(DevOpsEventSchema), DevOpsEventController.post);
+router.get(
+  '/api/events/devops',
+  TableViewValidation.validate(),
+  DevOpsEventController.list,
+);
+router.post(
+  '/api/events/devops',
+  SchemaValidation.validate(DevOpsEventSchema),
+  DevOpsEventController.post,
+);
 
 module.exports = router;
