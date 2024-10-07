@@ -23,3 +23,25 @@ export const RoboticsEventSchema = z.object({
 });
 
 export type RoboticsEventSchemaType = z.infer<typeof RoboticsEventSchema>;
+
+export const memberListSearchSchema = z.object({
+  table_view_access_key: z.string().nullish(),
+});
+
+export const roboticsMemberSchema = z.object({
+  id: z.string().uuid(),
+  created_at: z.string().datetime({ offset: true }),
+  full_name_student: z.string().min(2).max(50),
+  dob_student: z.string().date(),
+  school_name: z.string().min(2),
+  school_grade: z.nativeEnum(SchoolGrade),
+  full_name_caretaker: z.string().min(2).max(50),
+  email_caretaker: z.string().email(),
+  phone_number_caretaker: z.string().refine(isValidPhoneNumber),
+});
+
+export const roboticsMemberListSchema = z.object({
+  data: z.array(roboticsMemberSchema),
+});
+
+export type RoboticsMemberList = z.infer<typeof roboticsMemberListSchema>;
