@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /thank-you/
 Disallow: /join-view/
+Disallow: /events/robotics-view/
 Disallow: /*.pdf$
