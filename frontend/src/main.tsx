@@ -4,6 +4,7 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { routeTree } from './routeTree.gen';
+import { AxiosError } from 'axios';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const router = createRouter({
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router;
+    defaultError: AxiosError;
   }
 }
 
