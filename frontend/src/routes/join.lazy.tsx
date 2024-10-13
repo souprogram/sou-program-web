@@ -13,13 +13,13 @@ export const Route = createLazyFileRoute('/join')({
 function JoinPage() {
   const { submit, isSubmitting, isModalOpen, closeModal, error } = useJoin();
 
-  const oibExists = useMemo(() => {
+  const memberExists = useMemo(() => {
     if (!error) return false;
 
     const responseData = error.response?.data as any;
     const errorMessage = responseData.error.details as string;
 
-    if (!errorMessage.includes('Key (oib)=')) return false;
+    if (!errorMessage.includes('Key')) return false;
     if (!errorMessage.includes('already exists.')) return false;
 
     return true;
@@ -42,7 +42,7 @@ function JoinPage() {
         <div className="max-w-screen-sm">
           <JoinForm onSubmit={submit} isSubmitting={isSubmitting} />
 
-          {oibExists && <p className="mt-4 text-red-500">OIB već postoji u bazi.</p>}
+          {memberExists && <p className="mt-4 text-red-500">Već postoji član!</p>}
         </div>
       </div>
 
