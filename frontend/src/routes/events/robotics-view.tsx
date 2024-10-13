@@ -1,6 +1,6 @@
 import SouHeader from '@/components/SouHeader';
 import { TransparentLinkButton } from '@/components/ui/LinkButton';
-import { memberListSchema, memberListSearchSchema } from '@/schemas/JoinSchema';
+import { memberListSearchSchema, roboticsMemberListSchema } from '@/schemas/RoboticsEventSchema';
 import { formatDate, optionsWithoutWeekday } from '@/utils/formatDate';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
@@ -9,26 +9,26 @@ import axios from 'axios';
 import { HiArrowLeft } from 'react-icons/hi';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
-export const Route = createFileRoute('/join-view')({
-  component: MemberListPage,
+export const Route = createFileRoute('/events/robotics-view')({
+  component: RoboticsMemberListPage,
   validateSearch: zodSearchValidator(memberListSearchSchema),
 });
 
-function MemberListPage() {
+function RoboticsMemberListPage() {
   const { table_view_access_key } = Route.useSearch();
 
   const { data, isPending, isError } = useQuery({
-    queryKey: ['join'],
+    queryKey: ['robotics'],
     queryFn: async () => {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/members?table_view_access_key=${table_view_access_key ?? ''}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/events/robotics?table_view_access_key=${table_view_access_key ?? ''}`,
       );
 
       if (response.status !== 200) {
         throw new Error('Greška prilikom dohvaćanja podataka.');
       }
 
-      const validated = memberListSchema.safeParse(response.data);
+      const validated = roboticsMemberListSchema.safeParse(response.data);
 
       if (validated.error) {
         throw new Error(validated.error.message);
@@ -40,7 +40,7 @@ function MemberListPage() {
 
   const capitalize = (str?: string | null) => {
     if (!str) return '';
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 
   if (isPending) {
@@ -72,7 +72,7 @@ function MemberListPage() {
   return (
     <div className="p-4 sm:p-6 lg:p-8">
       <div className="mb-8 sm:mb-12">
-        <SouHeader heading="Upisani članovi" />
+        <SouHeader heading="Upisani klinci" />
       </div>
       {data.length === 0 ? (
         <div className="relative bg-black text-center text-gray-200">
@@ -99,19 +99,12 @@ function MemberListPage() {
                   </div>
                 </th>
                 <th className="truncate px-6 py-2 text-start">Kreiran (datum)</th>
-                <th className="truncate px-6 py-2 text-start">Email</th>
-                <th className="truncate px-6 py-2 text-start">OIB</th>
                 <th className="truncate px-6 py-2 text-start">Datum rođenja</th>
-                <th className="truncate px-6 py-2 text-start">Je li UNIPU Student</th>
-                <th className="truncate px-6 py-2 text-start">Sastavnica</th>
-                <th className="truncate px-6 py-2 text-start">Uloga</th>
-                <th className="truncate px-6 py-2 text-start">Discord username</th>
-                <th className="truncate px-6 py-2 text-start">Broj mobitela</th>
-                <th className="truncate px-6 py-2 text-start">Grad</th>
-                <th className="truncate px-6 py-2 text-start">Potvrđeno (datum)</th>
-                <th className="truncate px-6 py-2 text-start">Status članarine</th>
-                <th className="truncate px-6 py-2 text-start">Otišao (datum)</th>
-                <th className="truncate px-6 py-2 text-start">Datum do članarine</th>
+                <th className="truncate px-6 py-2 text-start">Škola</th>
+                <th className="truncate px-6 py-2 text-start">Razred</th>
+                <th className="truncate px-6 py-2 text-start">Puno ime skrbnika</th>
+                <th className="truncate px-6 py-2 text-start">Email skrbnika</th>
+                <th className="truncate px-6 py-2 text-start">Broj mobitela skrbnika</th>
               </tr>
             </thead>
             <tbody>
@@ -123,31 +116,18 @@ function MemberListPage() {
                   >
                     <td className="sticky left-0 z-10 p-0">
                       <div className="truncate bg-gray-800 px-4 py-2 shadow group-even:bg-gray-700 group-hover:bg-gray-600">
-                        {member.full_name}
+                        {member.full_name_student}
                       </div>
                     </td>
                     <td className="truncate px-6 py-2">{formatDate(member.created_at)}</td>
-                    <td className="truncate px-6 py-2">{member.email}</td>
-                    <td className="truncate px-6 py-2">{member.oib}</td>
                     <td className="truncate px-6 py-2">
-                      {formatDate(member.dob, optionsWithoutWeekday)}
+                      {formatDate(member.dob_student, optionsWithoutWeekday)}
                     </td>
-                    <td className="truncate px-6 py-2">{member.is_unipu_student ? 'Da' : 'Ne'}</td>
-                    <td className="truncate px-6 py-2">{member.study?.toUpperCase() ?? ''}</td>
-                    <td className="truncate px-6 py-2">
-                      {capitalize(member.role.join(', ').replace('-', ' '))}
-                    </td>
-                    <td className="truncate px-6 py-2">{member.discord_username}</td>
-                    <td className="truncate px-6 py-2">{member.phone_number}</td>
-                    <td className="truncate px-6 py-2">
-                      {member.zip_code}, {member.city}
-                    </td>
-                    <td className="truncate px-6 py-2">{formatDate(member.confirmed_at)}</td>
-                    <td className="truncate px-6 py-2">
-                      {member.payment_status ? 'Plačeno' : 'Nije plačeno'}
-                    </td>
-                    <td className="truncate px-6 py-2">{formatDate(member.left_at)}</td>
-                    <td className="truncate px-6 py-2">{formatDate(member.payment_date_due)}</td>
+                    <td className="truncate px-6 py-2">{capitalize(member.school_name)}</td>
+                    <td className="truncate px-6 py-2">{capitalize(member.school_grade)}</td>
+                    <td className="truncate px-6 py-2">{capitalize(member.full_name_caretaker)}</td>
+                    <td className="truncate px-6 py-2">{member.email_caretaker}</td>
+                    <td className="truncate px-6 py-2">{member.phone_number_caretaker}</td>
                   </tr>
                 ))}
             </tbody>

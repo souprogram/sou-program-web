@@ -41,12 +41,27 @@ function getEmailRoboticsRegistrationWaitingList(body) {
 }
 
 function getEmailJoinSouProgram(body) {
+  const fullNameUnderscored = body.name.replace(' ', '_');
+
+  const htmlText = `<p>Dragi/a ${body.name}</p> 
+<p>Zahvaljujemo se na tvojoj prijavi za članstvo u udruzi studenata informatike Šou program!</p>
+<p>Kako bi proces prijave bio dovršen, molimo te da ispuniš, potpišeš i povratno pošalješ pristupnicu koja se nalazi u privitku na email adresu <a href="mailto:info@souprogram.hr">info@souprogram.hr</a>.</p>
+<p>Po primitku pristupnice, tvoje članstvo bit će aktivirano, a o daljnjim koracima i aktivnostima bit ćeš pravovremeno obaviješten/a.</p>
+<p>Ako imaš bilo kakvih pitanja, slobodno nam se obrati.</p>
+<p>Srdačan pozdrav!</p>`;
+
   return {
     from: env.emailUser,
     to: String(body.email),
     cc: env.emailUser,
     subject: 'POTVRDA PRIJAVE ZA ČLANSTVO U UDRUZI ŠOU PROGRAM',
-    text: `Dragi Šou programeru,\n\nZahvaljujemo se na tvojoj prijavi za članstvo u udruzi studenata informatike Šou program!\n\nKako bi proces prijave bio dovršen, molimo te da uplatiš godišnju članarinu u iznosu od 10 eura do 15. studenog 2024. godine na sljedeći IBAN račun:\n\nIBAN: ${env.iban}\n\nPrimatelj: Udruga Šou program\n\nOpis plaćanja: Godišnja članarina - ${body.name}\n\nNakon što izvršiš uplatu, molimo te da nam povratno pošalješ potvrdu o uplati na ovaj e-mail. Po primitku potvrde, tvoje članstvo bit će aktivirano, a o daljnjim koracima i aktivnostima bit ćeš pravovremeno obaviješten.\n\nAko imaš bilo kakvih pitanja, slobodno nam se obrati.\n\nSrdačan pozdrav!`,
+    html: htmlText,
+    attachments: [
+      {
+        filename: `Zahtjev_za_clanstvo_u_udruzi_Sou_program_-_2024-25_${fullNameUnderscored}.pdf`,
+        path: './src/data/Zahtjev_za_clanstvo_u_udruzi_Sou_program_-_2024-25.pdf',
+      },
+    ],
   };
 }
 
