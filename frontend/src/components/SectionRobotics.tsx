@@ -1,5 +1,4 @@
 import SouHeader from './SouHeader';
-import Button from './ui/Button';
 import RadionicaRobotikaPDF from '/Radionica_robotike_za_djecu_-_Sou_program_2024.pdf';
 
 export default function SectionRobotics() {
@@ -27,8 +26,7 @@ export default function SectionRobotics() {
 
         <p className="lg:text-lg lg:leading-relaxed">
           Projekt je financiran od strane Sveučilišta Jurja Dobrile u Puli, što omogućava da je
-          radionica u potpunosti besplatna! Broj mjesta je ograničen na 30 polaznika, a prijave su
-          otvorene do 12. listopada 2024. godine. Zato požurite i osigurajte svoje mjesto!
+          radionica u potpunosti besplatna!
         </p>
 
         <p className="lg:text-lg lg:leading-relaxed">
@@ -41,15 +39,8 @@ export default function SectionRobotics() {
           >
             ovdje
           </a>
-          , a ukoliko imate dodatnih pitanja slobodno nas kontaktirajte na e-mail{' '}
-          <a href="mailto:info@souprogram.hr" className="text-primary-600 hover:text-primary-400">
-            info@souprogram.hr
-          </a>
+          .
         </p>
-
-        <div className="mt-6 w-fit">
-          <Button to="/events/robotics">Prijave za radionicu robotike</Button>
-        </div>
       </div>
     </section>
   );

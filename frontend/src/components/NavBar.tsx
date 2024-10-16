@@ -60,9 +60,9 @@ export default function NavBar() {
           <div className="hidden items-center gap-2 sm:flex">
             <LinkButton to="/join" label="Učlani se" />
             <LinkButton
-              to="/events/robotics"
+              to="/events/devops"
               className="bg-gray-200 hover:bg-white"
-              label="Prijavi se na robotiku"
+              label="Prijavi se na DevOps"
             />
           </div>
 
