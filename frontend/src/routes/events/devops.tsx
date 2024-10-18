@@ -34,9 +34,8 @@ function DevOpsEventPage() {
             Jesi li se ikad pitao kako velike tech kompanije uspijevaju tako brzo razvijati i
             isporučivati softver?
           </p>
-
           <p>
-            Saznaj i pridruži nam se na jednodnevnoj radionici koju vodi iskusni stručnjak Andrej
+            Saznaj i pridruži nam se na jednodnevnoj radionici koju vodi iskusni stručnjak Andrea
             Hrelja, Cloud inženjer iz Kern AI-a! Na radionici ćeš steći osnovna znanja o DevOps-u i
             imat ćeš priliku učiti izravno od profesionalca iz industrije.
           </p>
@@ -46,14 +45,13 @@ function DevOpsEventPage() {
             <p>🕓 16:00 - 18:00</p>
             <p>📍 FET - učionica 402</p>
           </div>
-
           <p>Sve što ti treba za sudjelovanje: </p>
           <div>
             <p>✔️ Prijavi se do 19.10.2024.</p>
             <p>✔️ Osiguraj si slobodno poslijepodne za 26-tog listopada.</p>
           </div>
           <p>
-            Nema potrebe ni za kakvim posebnim znanjima i vještinama – samo malo želje za učenjem i
+            Nema potrebe ni za kakvim posebnim znanjima i vještinama - samo malo želje za učenjem i
             dobra volja! Maksimalan broj polaznika je 30. stoga požuri, rezerviraj svoje mjesto i
             krenimo u akciju!
           </p>

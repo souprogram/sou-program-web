@@ -18,7 +18,7 @@ const eventsData = [
     title: 'Radionica robotike',
     description:
       'Glavni cilj radionice je upoznati buduće mlade inženjere/ke i znatiželjne mozgove s osnovama STEM-a. 💻Tijekom 9 interaktivnih termina, klinci će učiti osnove programiranja, tehničkog crtanja i robotike te ono najvažnije kako složiti vlastiti autić na daljinsko upravljanje! 🤓🛻',
-    date: '2024. 10. 18.',
+    date: '19. 10. 2024.',
     time: '10:00 - 11:30',
     location: 'FET, dvorana 402',
     link: '/events/robotics' as const,
@@ -27,8 +27,8 @@ const eventsData = [
     id: 2,
     title: 'DevOps radionica',
     description:
-      'Jesi li se ikad pitao kako velike tech kompanije uspijevaju tako brzo razvijati i isporučivati softver? Saznaj i pridruži nam se na jednodnevnoj radionici koju vodi iskusni stručnjak Andrej Hrelja, Cloud inženjer iz Kern AI-a!',
-    date: '2024. 10. 26.',
+      'Jesi li se ikad pitao kako velike tech kompanije uspijevaju tako brzo razvijati i isporučivati softver? Saznaj i pridruži nam se na jednodnevnoj radionici koju vodi iskusni stručnjak Andrea Hrelja, Cloud inženjer iz Kern AI-a!',
+    date: '26. 10. 2024.',
     time: '16:00 - 18:00',
     location: 'FET, dvorana 402',
     link: '/events/devops' as const,
