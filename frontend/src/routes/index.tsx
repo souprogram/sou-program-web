@@ -1,13 +1,13 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import SectionCompetitions from '@/components/SectionCompetitions'
 import SectionContact from '@/components/SectionContact'
 import SectionCTA from '@/components/SectionCTA'
 import SectionHero from '@/components/SectionHero'
-import SectionRobotics from '@/components/SectionRobotics'
+import SectionEvents from '@/components/SectionEvents'
 import SectionSponsors from '@/components/SectionSponsors'
 import SectionWhatWeDo from '@/components/SectionWhatWeDo'
 
-export const Route = createLazyFileRoute('/')({
+export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
@@ -16,7 +16,7 @@ function HomePage() {
     <>
       <SectionHero />
       <SectionWhatWeDo />
-      <SectionRobotics />
+      <SectionEvents />
       <SectionCompetitions />
       <SectionCTA />
       <SectionSponsors />

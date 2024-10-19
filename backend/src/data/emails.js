@@ -65,8 +65,19 @@ function getEmailJoinSouProgram(body) {
   };
 }
 
+function getEmailDevOpsRegistation(body) {
+  return {
+    from: env.emailUser,
+    to: String(body.email),
+    cc: env.emailUser,
+    subject: 'POTVRDA PRIJAVE ZA DEVOPS RADIONICU',
+    text: `Poštovani/a ${body.fullName},\n\nZahvaljujemo na vašoj prijavi za DevOps radionicu koja će se održati 26. listopada 2024. u 16:00 sati na Fakultetu ekonomije i turizma Dr. Mijo Mirković (FET), učionica 402.\n\nVeselimo se vašem dolasku! Ako imate bilo kakvih pitanja ili trebate dodatne informacije, slobodno nam se obratite.\n\nSrdačan pozdrav!`,
+  };
+}
+
 module.exports = {
   getEmailRoboticsRegistationFirstFew,
   getEmailRoboticsRegistrationWaitingList,
   getEmailJoinSouProgram,
+  getEmailDevOpsRegistation,
 };

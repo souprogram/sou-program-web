@@ -2,11 +2,11 @@ import JoinForm from '@/components/forms/JoinForm';
 import EventSuccessModal from '@/components/modals/EventSuccessModal';
 import SouHeader from '@/components/SouHeader';
 import { useJoin } from '@/hooks/useJoin';
-import { createLazyFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
-export const Route = createLazyFileRoute('/join')({
+export const Route = createFileRoute('/join')({
   component: JoinPage,
 });
 

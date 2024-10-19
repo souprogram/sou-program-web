@@ -1,36 +1,36 @@
-import { useEffect, useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { useParallax } from '@/hooks/useParallax';
-import Button from './ui/Button';
-import { LinkButton } from './ui/LinkButton';
-import SPLogoTransparent from '/sou-program-icon-transparent.svg';
-import spLogo from '/sou-program-logo-bez-pozadine.png';
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useEffect, useState } from 'react'
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
+import { useParallax } from '@/hooks/useParallax'
+import Button from './ui/Button'
+import { LinkButton } from './ui/LinkButton'
+import SPLogoTransparent from '/sou-program-icon-transparent.svg'
+import spLogo from '/sou-program-logo-bez-pozadine.png'
+import { Link, useNavigate } from '@tanstack/react-router'
 
 const links = [
   { label: 'Tko smo mi?', to: '/#what-we-do' },
-  { label: 'Robotika', to: '/#robotics' },
+  { label: 'Eventi', to: '/#events' },
   { label: 'Natjecanja', to: '/#competitions' },
   { label: 'Kontakt', to: '/#contact' },
-];
+]
 
 export default function NavBar() {
-  const [isMenuOpened, setIsMenuOpened] = useState(false);
-  const { offsetY } = useParallax();
+  const [isMenuOpened, setIsMenuOpened] = useState(false)
+  const { offsetY } = useParallax()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const toggleMenu = () => {
-    setIsMenuOpened((prev) => !prev);
-  };
+    setIsMenuOpened((prev) => !prev)
+  }
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpened ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpened ? 'hidden' : ''
 
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpened]);
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpened])
 
   return (
     <nav
@@ -60,9 +60,9 @@ export default function NavBar() {
           <div className="hidden items-center gap-2 sm:flex">
             <LinkButton to="/join" label="Učlani se" />
             <LinkButton
-              to="/events/robotics"
+              to="/events/devops"
               className="bg-gray-200 hover:bg-white"
-              label="Prijavi se na robotiku"
+              label="Prijavi se na DevOps"
             />
           </div>
 
@@ -120,8 +120,8 @@ export default function NavBar() {
         <Button
           className="z-30 mt-8 truncate"
           onClick={() => {
-            navigate({ to: '/join' });
-            toggleMenu();
+            navigate({ to: '/join' })
+            toggleMenu()
           }}
         >
           Učlani se
@@ -129,13 +129,13 @@ export default function NavBar() {
         <Button
           className="z-30 truncate bg-gray-200 hover:bg-white"
           onClick={() => {
-            navigate({ to: '/events/robotics' });
-            toggleMenu();
+            navigate({ to: '/events/devops' })
+            toggleMenu()
           }}
         >
-          Prijavi se na robotiku
+          Prijavi se na DevOps
         </Button>
       </div>
     </nav>
-  );
+  )
 }

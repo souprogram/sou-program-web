@@ -1,5 +1,9 @@
+const { transporter } = require('../utils/emailService');
 const env = require('../environment');
 const db = require('../database');
+const {
+  getEmailDevOpsRegistation,
+} = require('../data/emails');
 
 const DevOpsEventController = {
   list: async (req, res) => {
@@ -34,8 +38,10 @@ const DevOpsEventController = {
 
       if (insertError) throw insertError;
       
+      await transporter.sendMail(getEmailDevOpsRegistation(body));
+
       res.status(201).json({
-        message: 'Registration completed successfully.',
+        message: 'Registration completed and email sent successfully.',
       });
     } catch (error) {
       console.error(error);
