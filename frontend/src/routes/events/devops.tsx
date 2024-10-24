@@ -47,7 +47,6 @@ function DevOpsEventPage() {
           </div>
           <p>Sve što ti treba za sudjelovanje: </p>
           <div>
-            <p>✔️ Prijavi se do 19.10.2024.</p>
             <p>✔️ Osiguraj si slobodno poslijepodne za 26-tog listopada.</p>
           </div>
           <p>
