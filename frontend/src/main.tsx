@@ -10,7 +10,7 @@ const queryClient = new QueryClient()
 
 // Create a new router instance
 const router = createRouter({
-  routeTree,
+  routeTree: routeTree,
   context: {
     queryClient,
   },
