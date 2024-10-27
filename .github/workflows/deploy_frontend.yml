@@ -25,6 +25,10 @@ jobs:
       run: npm install
       working-directory: ./frontend
 
+    - name: Check Code
+      run: npm run check
+      working-directory: ./frontend
+
     - name: Build Project
       run: npm run build:staging
       working-directory: ./frontend
