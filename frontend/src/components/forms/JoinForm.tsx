@@ -52,7 +52,13 @@ export default function JoinForm() {
       return false
     }
 
+    // TODO: Fix typing
+    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+    /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const responseData = joinQuery.error.response?.data as any
+    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const errorMessage = responseData.error.details as string
 
     if (!errorMessage.includes('Key')) {

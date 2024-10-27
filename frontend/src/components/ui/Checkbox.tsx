@@ -1,17 +1,17 @@
-import { forwardRef } from 'react';
-import { FieldError } from 'react-hook-form';
-import { twMerge } from 'tailwind-merge';
+import { forwardRef } from 'react'
+import { FieldError } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 
 interface CheckboxProps {
-  id?: string;
-  label: string;
-  name?: string;
-  value?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  error?: FieldError;
+  id?: string
+  label: string
+  name?: string
+  value?: boolean
+  required?: boolean
+  disabled?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
+  error?: FieldError
 }
 
 const Checkbox = forwardRef(function Checkbox(
@@ -44,7 +44,7 @@ const Checkbox = forwardRef(function Checkbox(
         </label>
       </div>
     </div>
-  );
-});
+  )
+})
 
-export default Checkbox;
+export default Checkbox

@@ -2,7 +2,7 @@ import { TransparentLinkButton } from '@/components/ui/LinkButton'
 import { HiArrowRight } from 'react-icons/hi'
 import SouHeader from '../SouHeader'
 
-type TEvent = {
+interface TEvent {
   id: number
   title: string
   description: string

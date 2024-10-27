@@ -1,16 +1,16 @@
-import { twMerge } from 'tailwind-merge';
-import LoadingSpinner from './LoadingSpinner';
-import { Link } from '@tanstack/react-router';
+import { twMerge } from 'tailwind-merge'
+import LoadingSpinner from './LoadingSpinner'
+import { Link } from '@tanstack/react-router'
 
 interface ButtonProps {
-  children: React.ReactNode;
-  className?: string;
-  type?: 'submit' | 'reset' | 'button';
-  to?: string;
-  transparent?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
-  onClick?: () => void;
+  children: React.ReactNode
+  className?: string
+  type?: 'submit' | 'reset' | 'button'
+  to?: string
+  transparent?: boolean
+  disabled?: boolean
+  loading?: boolean
+  onClick?: () => void
 }
 
 export default function Button({
@@ -53,5 +53,5 @@ export default function Button({
         </div>
       )}
     </button>
-  );
+  )
 }

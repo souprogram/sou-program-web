@@ -1,34 +1,34 @@
-import { useEffect, useLayoutEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { twMerge } from 'tailwind-merge';
+import { useEffect, useLayoutEffect } from 'react'
+import { createPortal } from 'react-dom'
+import { twMerge } from 'tailwind-merge'
 
 interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children?: React.ReactNode;
-  className?: string;
+  isOpen: boolean
+  onClose: () => void
+  children?: React.ReactNode
+  className?: string
 }
 
 export default function Modal({ isOpen, onClose, children, className }: ModalProps) {
   useEffect(() => {
-    const closeOnEscapeKey = (e: KeyboardEvent) => (e.key === 'Escape' ? onClose() : null);
-    document.body.addEventListener('keydown', closeOnEscapeKey);
+    const closeOnEscapeKey = (e: KeyboardEvent) => (e.key === 'Escape' ? onClose() : null)
+    document.body.addEventListener('keydown', closeOnEscapeKey)
 
     return () => {
-      document.body.removeEventListener('keydown', closeOnEscapeKey);
-    };
-  }, [onClose]);
+      document.body.removeEventListener('keydown', closeOnEscapeKey)
+    }
+  }, [onClose])
 
   useLayoutEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : ''
 
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   if (!isOpen) {
-    return null;
+    return null
   }
 
   return createPortal(
@@ -41,5 +41,5 @@ export default function Modal({ isOpen, onClose, children, className }: ModalPro
       {children}
     </div>,
     document.getElementById('modal-root')!,
-  );
+  )
 }

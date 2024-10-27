@@ -1,10 +1,11 @@
-import js from '@eslint/js';
-import pluginQuery from '@tanstack/eslint-plugin-query';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import js from '@eslint/js'
+import pluginQuery from '@tanstack/eslint-plugin-query'
+import pluginRouter from '@tanstack/eslint-plugin-router'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config({
   settings: { react: { version: '18.3' } },
@@ -52,4 +53,4 @@ export default tseslint.config({
     ],
     '@tanstack/query/exhaustive-deps': 'error',
   },
-});
+})

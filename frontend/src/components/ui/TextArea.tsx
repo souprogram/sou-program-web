@@ -1,19 +1,19 @@
-import { FieldError } from 'react-hook-form';
-import { twMerge } from 'tailwind-merge';
+import { FieldError } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
 
 interface TextAreaProps {
-  className?: string;
-  id: string;
-  name?: string;
-  label?: string;
-  value?: string;
-  placeholder?: string;
-  required?: boolean;
-  description?: string;
-  error?: FieldError;
-  disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLTextAreaElement>) => void;
+  className?: string
+  id: string
+  name?: string
+  label?: string
+  value?: string
+  placeholder?: string
+  required?: boolean
+  description?: string
+  error?: FieldError
+  disabled?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+  onBlur?: (e: React.FocusEvent<HTMLTextAreaElement>) => void
 }
 
 export const TextArea = ({
@@ -54,5 +54,5 @@ export const TextArea = ({
       {description && <p className="mt-2 text-sm text-gray-400">{description}</p>}
       {error && <p className="mt-2 text-sm text-red-600">{error.message}</p>}
     </div>
-  );
-};
+  )
+}

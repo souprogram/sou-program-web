@@ -119,8 +119,8 @@ export default function NavBar() {
 
         <Button
           className="z-30 mt-8 truncate"
-          onClick={() => {
-            navigate({ to: '/join' })
+          onClick={async () => {
+            await navigate({ to: '/join' })
             toggleMenu()
           }}
         >

@@ -1,11 +1,9 @@
-import { Outlet, createRootRouteWithContext } from '@tanstack/react-router'
-// import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
 import NoFoundComponent from '@/components/NoFoundComponent'
 import ScrollToTop from '@/components/ScrollToTop'
 import type { QueryClient } from '@tanstack/react-query'
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   component: RootComponent,
@@ -15,7 +13,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootComponent() {
   return (
     <>
-      <div className="font-inter relative flex min-h-dvh flex-col text-gray-300">
+      <div className="relative flex min-h-dvh flex-col font-inter text-gray-300">
         <ScrollToTop />
         <NavBar />
 

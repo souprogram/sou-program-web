@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import React from 'react';
-import ReactSelect from 'react-select';
-import makeAnimated from 'react-select/animated';
-import { twMerge } from 'tailwind-merge';
-import { StudyType } from '../../enums/Study';
+import React from 'react'
+import ReactSelect from 'react-select'
+import makeAnimated from 'react-select/animated'
+import { twMerge } from 'tailwind-merge'
+import { StudyType } from '../../enums/Study'
 
-const animatedComponents = makeAnimated();
+const animatedComponents = makeAnimated()
 
 interface SelectProps<Option, IsMulti extends boolean = false> {
-  name: string;
-  label: string | React.JSX.Element;
-  required?: boolean;
-  placeholder?: string;
-  options: { value: Option; label: string }[];
-  isMulti?: IsMulti;
-  error?: string;
+  name: string
+  label: string | React.JSX.Element
+  required?: boolean
+  placeholder?: string
+  options: { value: Option; label: string }[]
+  isMulti?: IsMulti
+  error?: string
 }
 
 interface MultiSelectProps<Option, IsMulti extends boolean = true>
   extends SelectProps<Option, IsMulti> {
-  value: readonly Option[];
-  onChange: (value: Option[]) => void;
+  value: readonly Option[]
+  onChange: (value: Option[]) => void
 }
 
 export function MultiSelect<Option, IsMulti extends boolean = true>({
@@ -62,7 +62,7 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
         state.isSelected && '!bg-primary-600/30 !text-white',
         state.isFocused && '!bg-primary-600/30 !text-white',
       ),
-  };
+  }
 
   return (
     <div className="flex flex-col gap-1">
@@ -82,13 +82,13 @@ export function MultiSelect<Option, IsMulti extends boolean = true>({
       />
       {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
     </div>
-  );
+  )
 }
 
 interface SingleSelectProps<Option, IsMulti extends boolean = false>
   extends SelectProps<Option, IsMulti> {
-  value: Option;
-  onChange: (value: Option) => void;
+  value: Option
+  onChange: (value: Option) => void
 }
 
 export function SingleSelect<Option extends StudyType, IsMulti extends boolean = false>({
@@ -125,7 +125,7 @@ export function SingleSelect<Option extends StudyType, IsMulti extends boolean =
         state.isSelected && '!bg-primary-600/30 !text-white',
         state.isFocused && '!bg-primary-600/30 !text-white',
       ),
-  };
+  }
 
   return (
     <div className="flex flex-col gap-1">
@@ -145,5 +145,5 @@ export function SingleSelect<Option extends StudyType, IsMulti extends boolean =
       />
       {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
     </div>
-  );
+  )
 }

@@ -18,7 +18,7 @@ function RoboticsMemberListPage() {
   const { table_view_access_key } = Route.useSearch()
 
   const { data, isPending, isError } = useQuery({
-    queryKey: ['robotics'],
+    queryKey: ['robotics', table_view_access_key],
     queryFn: async () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/api/events/robotics?table_view_access_key=${table_view_access_key ?? ''}`,

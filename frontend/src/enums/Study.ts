@@ -8,6 +8,6 @@ export const Study = {
   FFPU: 'ffpu',
   MFPU: 'mfpu',
   DAK: 'dak',
-} as const;
+} as const
 
-export type StudyType = (typeof Study)[keyof typeof Study];
+export type StudyType = (typeof Study)[keyof typeof Study]

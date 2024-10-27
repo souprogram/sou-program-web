@@ -1,12 +1,12 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, useForm } from 'react-hook-form';
-import { DevOpsEventSchema, type DevOpsEventSchemaType } from '@/schemas/DevOpsEventSchema';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, useForm } from 'react-hook-form'
+import { DevOpsEventSchema, type DevOpsEventSchemaType } from '@/schemas/DevOpsEventSchema'
+import Button from '../ui/Button'
+import Input from '../ui/Input'
 
 interface RoboticsEventFormProps {
-  onSubmit: (data: DevOpsEventSchemaType) => void;
-  isSubmitting?: boolean;
+  onSubmit: (data: DevOpsEventSchemaType) => void
+  isSubmitting?: boolean
 }
 
 export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEventFormProps) {
@@ -20,11 +20,11 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
       email: '',
     },
     resolver: zodResolver(DevOpsEventSchema),
-  });
+  })
 
   const submit = (data: DevOpsEventSchemaType) => {
-    onSubmit(data);
-  };
+    onSubmit(data)
+  }
 
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -54,5 +54,5 @@ export default function RoboticsEventForm({ onSubmit, isSubmitting }: RoboticsEv
         </div>
       </div>
     </form>
-  );
+  )
 }

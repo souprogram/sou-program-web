@@ -5,5 +5,5 @@ export default function SplashScreen() {
     >
       <img className="w-[20%] animate-rotate" src="/sou-program-icon.svg" />
     </div>
-  );
+  )
 }

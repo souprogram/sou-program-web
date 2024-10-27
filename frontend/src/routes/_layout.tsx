@@ -9,7 +9,7 @@ export const Route = createFileRoute('/_layout')({
 
 function LayoutComponent() {
   return (
-    <div className="font-inter relative min-h-screen">
+    <div className="relative min-h-screen font-inter">
       <ScrollToTop />
       <NavBar />
       <Outlet />

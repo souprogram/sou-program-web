@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 export const ContactSchema = z.object({
   name: z
@@ -10,6 +10,6 @@ export const ContactSchema = z.object({
     .string()
     .min(2, 'Moraš upisati najmanje 2 znaka')
     .max(512, 'Moraš upisati najviše 512 znakova'),
-});
+})
 
-export type ContactSchemaType = z.infer<typeof ContactSchema>;
+export type ContactSchemaType = z.infer<typeof ContactSchema>
