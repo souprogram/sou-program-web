@@ -1,34 +1,11 @@
-import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
-import { useState } from 'react';
-import { type ContactSchemaType } from '@/schemas/ContactSchema';
-import ContactForm from './forms/ContactForm';
-import EmailSentSuccessModal from './modals/EmailSentSuccessModal';
-import SouHeader from './SouHeader';
-import SPLogoTransparent from '/sou-program-icon-transparent.svg';
+import ContactForm from '@/components/forms/ContactForm'
+import EmailSentSuccessModal from '@/components/modals/EmailSentSuccessModal'
+import SouHeader from '@/components/SouHeader'
+import { useContact } from '@/hooks/useContact'
+import SPLogoTransparent from '/sou-program-icon-transparent.svg'
 
 export default function SectionContact() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const mutation = useMutation({
-    mutationFn: async (data: ContactSchemaType) => {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, data);
-
-      if (response.status !== 201) {
-        throw new Error('Greška prilikom slanja maila.');
-      }
-    },
-    onSuccess: () => {
-      setIsModalOpen(true);
-    },
-    onError: (error) => {
-      console.error(error);
-    },
-  });
+  const { isModalOpen, closeModal } = useContact()
 
   return (
     <section
@@ -62,11 +39,11 @@ export default function SectionContact() {
               info@souprogram.hr
             </a>
           </p>
-          <ContactForm onSubmit={mutation.mutate} isSubmitting={mutation.isPending} />
+          <ContactForm />
         </div>
       </div>
 
-      <EmailSentSuccessModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <EmailSentSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
-  );
+  )
 }

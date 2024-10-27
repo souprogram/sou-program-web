@@ -1,10 +1,10 @@
-import { useParallax } from '../hooks/useParallax';
-import Button from './ui/Button';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
-import SPLogo from '/sou-program-icon.svg';
+import Button from '@/components/ui/Button'
+import { useParallax } from '@/hooks/useParallax'
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
+import SPLogo from '/sou-program-icon.svg'
 
 export default function SectionHero() {
-  const { parentRef: souImageRef, offsetY } = useParallax();
+  const { parentRef: souImageRef, offsetY } = useParallax()
 
   return (
     <section className="relative flex min-h-screen flex-col items-center gap-4 bg-black py-16 md:py-32 lg:py-48">
@@ -32,5 +32,5 @@ export default function SectionHero() {
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,18 +1,20 @@
-import PlusHostingLogo from '/plus_hosting_logo.svg';
+import PlusHostingLogo from '/plus_hosting_logo.svg'
 
 interface Sponsor {
-  name: string;
-  logo: string;
+  name: string
+  logo: string
+  link: string
 }
 
 const sponsorsArray = [
   {
     name: 'Plus hosting',
     logo: PlusHostingLogo,
+    link: 'https://plus.hr',
   } as Sponsor,
-];
+]
 
-const sponsors = Array<Sponsor[]>(4).fill(sponsorsArray).flat();
+const sponsors = Array<Sponsor[]>(4).fill(sponsorsArray).flat()
 
 export default function SponsorMarqueeList() {
   return (
@@ -34,15 +36,15 @@ export default function SponsorMarqueeList() {
         </ul>
       </div>
     </div>
-  );
+  )
 }
 
 function SponsorMarqueeItem({ sponsor }: { sponsor: Sponsor }) {
   return (
     <li className="rounded-full bg-white/90">
-      <a href="https://plus.hr" className="block px-12 py-6" tabIndex={-1}>
+      <a href={sponsor.link} className="block px-12 py-6" tabIndex={-1}>
         <img className="h-12 w-auto" src={sponsor.logo} alt={sponsor.name} />
       </a>
     </li>
-  );
+  )
 }

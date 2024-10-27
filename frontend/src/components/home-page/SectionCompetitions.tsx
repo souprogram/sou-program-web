@@ -1,4 +1,4 @@
-import SouHeader from './SouHeader';
+import SouHeader from '@/components/SouHeader'
 
 export default function SectionCompetitions() {
   return (
@@ -19,5 +19,5 @@ export default function SectionCompetitions() {
         </p>
       </div>
     </section>
-  );
+  )
 }

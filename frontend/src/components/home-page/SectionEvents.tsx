@@ -1,6 +1,6 @@
+import { TransparentLinkButton } from '@/components/ui/LinkButton'
 import { HiArrowRight } from 'react-icons/hi'
-import SouHeader from './SouHeader'
-import { TransparentLinkButton } from './ui/LinkButton'
+import SouHeader from '../SouHeader'
 
 type TEvent = {
   id: number

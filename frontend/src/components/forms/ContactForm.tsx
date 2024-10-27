@@ -1,16 +1,14 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, useForm } from 'react-hook-form';
-import { ContactSchema, type ContactSchemaType } from '@/schemas/ContactSchema';
-import Button from '../ui/Button';
-import Input from '../ui/Input';
-import { TextArea } from '../ui/TextArea';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, useForm } from 'react-hook-form'
+import { ContactSchema, type ContactSchemaType } from '@/schemas/ContactSchema'
+import Button from '../ui/Button'
+import Input from '../ui/Input'
+import { TextArea } from '../ui/TextArea'
+import { useContact } from '@/hooks/useContact'
 
-interface ContactFormProps {
-  onSubmit: (data: ContactSchemaType) => void;
-  isSubmitting?: boolean;
-}
+export default function ContactForm() {
+  const { submit: onSubmit, isSubmitting } = useContact()
 
-export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
   const {
     handleSubmit,
     control,
@@ -22,11 +20,11 @@ export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps
       message: '',
     },
     resolver: zodResolver(ContactSchema),
-  });
+  })
 
   const submit = (data: ContactSchemaType) => {
-    onSubmit(data);
-  };
+    onSubmit(data)
+  }
 
   return (
     <form onSubmit={handleSubmit(submit)} className="mx-auto w-full max-w-screen-xl">
@@ -66,5 +64,5 @@ export default function ContactForm({ onSubmit, isSubmitting }: ContactFormProps
         </div>
       </div>
     </form>
-  );
+  )
 }

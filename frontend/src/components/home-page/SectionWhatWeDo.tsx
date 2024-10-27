@@ -1,4 +1,4 @@
-import SouHeader from './SouHeader';
+import SouHeader from '@/components/SouHeader'
 
 export default function SectionWhatWeDo() {
   return (
@@ -31,5 +31,5 @@ export default function SectionWhatWeDo() {
         </p>
       </div>
     </section>
-  );
+  )
 }

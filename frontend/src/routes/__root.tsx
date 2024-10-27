@@ -18,9 +18,11 @@ function RootComponent() {
       <div className="relative flex min-h-dvh flex-col font-poppins">
         <ScrollToTop />
         <NavBar />
+
         <main className="flex flex-1 flex-col">
           <Outlet />
         </main>
+
         <Footer />
       </div>
       {/* <ReactQueryDevtools buttonPosition="top-right" /> */}
