@@ -20,11 +20,11 @@ export default function SectionHero() {
         </div>
       </div>
       <div className="z-10 mx-auto mt-24 max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <h1 className="font-brioni text-5xl font-bold tracking-tight text-white sm:text-6xl">
+        <h1 className="pb-8 font-brioni text-5xl font-bold tracking-tight text-white sm:text-6xl">
           Još jedna studentska udruga.
         </h1>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:gap-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
           <Button to="/join">Učlani se</Button>
           <a href="#what-we-do">
             <Button transparent>Doznaj više</Button>

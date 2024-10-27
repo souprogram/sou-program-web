@@ -5,9 +5,10 @@ import Button from '../ui/Button'
 import Input from '../ui/Input'
 import { TextArea } from '../ui/TextArea'
 import { useContact } from '@/hooks/useContact'
+import EmailSentSuccessModal from '../modals/EmailSentSuccessModal'
 
 export default function ContactForm() {
-  const { submit: onSubmit, isSubmitting } = useContact()
+  const contactQuery = useContact()
 
   const {
     handleSubmit,
@@ -23,23 +24,27 @@ export default function ContactForm() {
   })
 
   const submit = (data: ContactSchemaType) => {
-    onSubmit(data)
+    contactQuery.submit(data)
   }
 
   return (
     <form onSubmit={handleSubmit(submit)} className="mx-auto w-full max-w-screen-xl">
       <div className="flex flex-col space-y-8">
-        <Controller
-          name="name"
-          control={control}
-          render={({ field }) => <Input {...field} id="name" label="Ime" error={errors.name} />}
-        />
+        <div className="flex flex-col gap-8 sm:flex-row">
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => <Input {...field} id="name" label="Ime" error={errors.name} />}
+          />
 
-        <Controller
-          name="email"
-          control={control}
-          render={({ field }) => <Input {...field} id="email" label="Email" error={errors.email} />}
-        />
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <Input {...field} id="email" label="Email" error={errors.email} />
+            )}
+          />
+        </div>
 
         <Controller
           name="message"
@@ -58,11 +63,13 @@ export default function ContactForm() {
         />
 
         <div className="flex items-center justify-between">
-          <Button type="submit" loading={isSubmitting}>
+          <Button type="submit" loading={contactQuery.isSubmitting}>
             Pošalji
           </Button>
         </div>
       </div>
+
+      <EmailSentSuccessModal isOpen={contactQuery.isModalOpen} onClose={contactQuery.closeModal} />
     </form>
   )
 }

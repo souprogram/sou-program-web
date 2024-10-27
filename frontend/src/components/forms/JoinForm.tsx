@@ -1,78 +1,69 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { roleOptions, studyOptions } from '@/data/options';
-import { JoinSchema, type JoinSchemaType } from '@/schemas/JoinSchema';
-import Button from '../ui/Button';
-import Checkbox from '../ui/Checkbox';
-import DateInput from '../ui/DateInput';
-import Input from '../ui/Input';
-import { MultiSelect, SingleSelect } from '../ui/Select';
+import { roleOptions, studyOptions } from '@/data/options'
+import { useJoin } from '@/hooks/useJoin'
+import { JoinSchema, type JoinSchemaType } from '@/schemas/JoinSchema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useMemo, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import EventSuccessModal from '../modals/EventSuccessModal'
+import Button from '../ui/Button'
+import Checkbox from '../ui/Checkbox'
+import DateInput from '../ui/DateInput'
+import Input from '../ui/Input'
+import { MultiSelect, SingleSelect } from '../ui/Select'
 
-interface JoinFormProps {
-  onSubmit: (data: JoinSchemaType) => void;
-  isSubmitting?: boolean;
+const defaultJoinFormValues = {
+  name: '',
+  email: '',
+  oib: '',
+  dob: '2024-01-01',
+  isUNIPUStudent: false,
+  study: undefined,
+  role: [],
+  discordUsername: '',
+  phoneNumber: '',
+  zipCode: '',
+  city: '',
+  terms: false,
 }
 
-export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
-  const [isStudent, setIsStudent] = useState(false);
+export default function JoinForm() {
+  const joinQuery = useJoin()
+  const [isStudent, setIsStudent] = useState(false)
 
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<JoinSchemaType>({
-    defaultValues: {
-      name: '',
-      email: '',
-      oib: '',
-      dob: '2024-01-01',
-      isUNIPUStudent: false,
-      study: undefined,
-      role: [],
-      discordUsername: '',
-      phoneNumber: '',
-      zipCode: '',
-      city: '',
-      terms: false,
-    },
+    defaultValues: defaultJoinFormValues,
     resolver: zodResolver(JoinSchema),
-  });
+  })
 
   const submit = (data: JoinSchemaType) => {
     if (!data.isUNIPUStudent) {
-      data.study = undefined;
+      data.study = undefined
     }
 
-    onSubmit(data);
-  };
+    joinQuery.submit(data)
+  }
 
-  // function submitTest(data: any) {
-  //   // const obj = {
-  //   //   name: 'admin',
-  //   //   email: 'alan.buba5@gmail.com',
-  //   //   oib: '09407657042',
-  //   //   dob: '01-01-2024',
-  //   //   isUNIPUStudent: true,
-  //   //   study: 'fipu',
-  //   //   role: ['sou-lab'],
-  //   //   discordUsername: 'fewf',
-  //   //   phoneNumber: '+385987654321',
-  //   //   zipCode: '52100',
-  //   //   city: 'Pula',
-  //   // };
+  const memberExists = useMemo(() => {
+    if (!joinQuery.error) {
+      return false
+    }
 
-  //   const parsed = JoinSchema.safeParse(data);
-  //   if (!parsed.success) {
-  //     console.log(parsed.error);
-  //     console.log(data);
-  //     return;
-  //   } else {
-  //     console.log(parsed.data);
-  //   }
+    const responseData = joinQuery.error.response?.data as any
+    const errorMessage = responseData.error.details as string
 
-  //   console.log(data);
-  // }
+    if (!errorMessage.includes('Key')) {
+      return false
+    }
+    if (!errorMessage.includes('already exists.')) {
+      return false
+    }
+
+    return true
+  }, [joinQuery.error])
 
   return (
     <form className="mx-auto w-full max-w-screen-xl" onSubmit={handleSubmit(submit)}>
@@ -114,8 +105,8 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               id="isUNIPUStudent"
               label="Ja sam UNIPU student (Sveučilište Jurja Dobrile u Puli)"
               onChange={(event) => {
-                field.onChange(event.target.checked);
-                setIsStudent(event.target.checked);
+                field.onChange(event.target.checked)
+                setIsStudent(event.target.checked)
               }}
             />
           )}
@@ -216,18 +207,22 @@ export default function JoinForm({ onSubmit, isSubmitting }: JoinFormProps) {
               id="terms"
               label="Prihvačam sve uvjete i odredbe Statuta."
               onChange={(event) => {
-                field.onChange(event.target.checked);
+                field.onChange(event.target.checked)
               }}
             />
           )}
         />
 
         <div className="flex">
-          <Button type="submit" loading={isSubmitting}>
+          <Button type="submit" loading={joinQuery.isSubmitting}>
             Submit
           </Button>
         </div>
+
+        {memberExists && <p className="mt-4 text-red-500">Već postoji član!</p>}
       </div>
+
+      <EventSuccessModal isOpen={joinQuery.isModalOpen} onClose={joinQuery.closeModal} />
     </form>
-  );
+  )
 }

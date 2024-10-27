@@ -1,9 +1,9 @@
-import DiscordLogo from './icons/DiscordLogo';
-import FacebookLogo from './icons/FacebookLogo';
-import GitHubLogo from './icons/GitHubLogo';
-import InstagramLogo from './icons/InstagramLogo';
-import LinkedInLogo from './icons/LinkedInLogo';
-import YouTubeLogo from './icons/YouTubeLogo';
+import DiscordLogo from './icons/DiscordLogo'
+import FacebookLogo from './icons/FacebookLogo'
+import GitHubLogo from './icons/GitHubLogo'
+import InstagramLogo from './icons/InstagramLogo'
+import LinkedInLogo from './icons/LinkedInLogo'
+import YouTubeLogo from './icons/YouTubeLogo'
 
 const socials = [
   {
@@ -36,12 +36,12 @@ const socials = [
     icon: <YouTubeLogo height={24} width={24} />,
     label: 'YouTube',
   },
-];
+]
 
 export default function Footer() {
   return (
-    <footer id="footer" className="bg-black">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+    <footer id="footer" className="py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="hidden md:order-2 md:flex md:justify-center md:gap-6">
           {socials.map(({ href, label }) => (
             <a
@@ -77,5 +77,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

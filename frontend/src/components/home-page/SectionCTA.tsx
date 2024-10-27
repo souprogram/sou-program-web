@@ -17,7 +17,7 @@ export default function SectionCTA() {
           style={{ transform: `translateY(${offsetY}px)` }}
         />
       </div>
-      <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col px-4 sm:px-6 lg:px-8">
         <SouHeader
           className="text-black"
           heading="Jesi li spreman?"

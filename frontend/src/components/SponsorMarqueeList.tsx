@@ -20,7 +20,7 @@ export default function SponsorMarqueeList() {
   return (
     <div className="mt-12">
       <div className="relative flex select-none gap-4 overflow-hidden">
-        <ul className="group flex min-w-full shrink-0 justify-around gap-6 [animation:scroll_20s_linear_infinite]">
+        <ul className="group flex min-w-full shrink-0 justify-around gap-6 [animation:scroll_30s_linear_infinite]">
           {sponsors.map((sponsor, index) => (
             <SponsorMarqueeItem key={index} sponsor={sponsor} />
           ))}
@@ -28,7 +28,7 @@ export default function SponsorMarqueeList() {
 
         <ul
           aria-hidden="true"
-          className="group flex min-w-full shrink-0 justify-around gap-6 [animation:scroll_20s_linear_infinite]"
+          className="group flex min-w-full shrink-0 justify-around gap-6 [animation:scroll_30s_linear_infinite]"
         >
           {sponsors.map((sponsor, index) => (
             <SponsorMarqueeItem key={index} sponsor={sponsor} />
@@ -41,7 +41,7 @@ export default function SponsorMarqueeList() {
 
 function SponsorMarqueeItem({ sponsor }: { sponsor: Sponsor }) {
   return (
-    <li className="rounded-full bg-white/90">
+    <li className="rounded-full bg-gray-200">
       <a href={sponsor.link} className="block px-12 py-6" tabIndex={-1}>
         <img className="h-12 w-auto" src={sponsor.logo} alt={sponsor.name} />
       </a>
