@@ -31,7 +31,6 @@ function DevOpsEventPage() {
             Hrelja, Cloud inženjer iz Kern AI-a! Na radionici ćeš steći osnovna znanja o DevOps-u i
             imat ćeš priliku učiti izravno od profesionalca iz industrije.
           </p>
-
           <div className="pb-2 lg:text-lg">
             <p>📅 26.10.2024.</p>
             <p>🕓 16:00 - 18:00</p>
