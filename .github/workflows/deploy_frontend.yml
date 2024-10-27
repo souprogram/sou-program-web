@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         ref: develop
 
@@ -34,7 +34,7 @@ jobs:
       working-directory: ./frontend
 
     - name: Deploy to FTP Server
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
