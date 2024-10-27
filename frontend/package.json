@@ -13,7 +13,7 @@
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
     "preview": "vite preview",
-    "check": "npm run lint && npm run prettier"
+    "check": "npm run generate-routes && npm run lint && npm run prettier"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
