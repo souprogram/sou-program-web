@@ -59,11 +59,11 @@ export default function NavBar() {
 
           <div className="hidden items-center gap-2 sm:flex">
             <LinkButton to="/join" label="Učlani se" />
-            <LinkButton
+            {/* <LinkButton
               to="/events/devops"
               className="bg-gray-200 hover:bg-white"
               label="Prijavi se na DevOps"
-            />
+            /> */}
           </div>
 
           <div className="flex sm:hidden">
@@ -126,7 +126,7 @@ export default function NavBar() {
         >
           Učlani se
         </Button>
-        <Button
+        {/* <Button
           className="z-30 truncate bg-gray-200 hover:bg-white"
           onClick={() => {
             navigate({ to: '/events/devops' })
@@ -134,7 +134,7 @@ export default function NavBar() {
           }}
         >
           Prijavi se na DevOps
-        </Button>
+        </Button> */}
       </div>
     </nav>
   )
