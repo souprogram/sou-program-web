@@ -1,8 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import DevOpsEventForm from '@/components/forms/DevOpsEventForm'
-import EventSuccessModal from '@/components/modals/EventSuccessModal'
-import { useEventRegistration } from '@/hooks/useEventRegistration'
-import { type DevOpsEventSchemaType } from '@/schemas/DevOpsEventSchema'
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
 
 export const Route = createFileRoute('/events/devops')({
@@ -10,11 +6,6 @@ export const Route = createFileRoute('/events/devops')({
 })
 
 function DevOpsEventPage() {
-  const { submit, isSubmitting, isModalOpen, closeModal } =
-    useEventRegistration<DevOpsEventSchemaType>({
-      endpoint: 'devops',
-    })
-
   return (
     <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
       <div className="opacity-5">
@@ -55,14 +46,7 @@ function DevOpsEventPage() {
             krenimo u akciju!
           </p>
         </div>
-
-        <div className="mt-8 flex max-w-screen-sm flex-col gap-4">
-          <h3 className="font-brioni text-2xl font-bold text-white sm:text-3xl">Prijavi se!</h3>
-          <DevOpsEventForm onSubmit={submit} isSubmitting={isSubmitting} />
-        </div>
       </div>
-
-      <EventSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
   )
 }
