@@ -1,29 +1,35 @@
-import JoinForm from '@/components/forms/JoinForm';
-import EventSuccessModal from '@/components/modals/EventSuccessModal';
-import SouHeader from '@/components/SouHeader';
-import { useJoin } from '@/hooks/useJoin';
-import { createFileRoute } from '@tanstack/react-router';
-import { useMemo } from 'react';
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import JoinForm from '@/components/forms/JoinForm'
+import EventSuccessModal from '@/components/modals/EventSuccessModal'
+import SouHeader from '@/components/SouHeader'
+import { useJoin } from '@/hooks/useJoin'
+import { createFileRoute } from '@tanstack/react-router'
+import { useMemo } from 'react'
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
 
-export const Route = createFileRoute('/join')({
+export const Route = createFileRoute('/join/')({
   component: JoinPage,
-});
+})
 
 function JoinPage() {
-  const { submit, isSubmitting, isModalOpen, closeModal, error } = useJoin();
+  const { submit, isSubmitting, isModalOpen, closeModal, error } = useJoin()
 
   const memberExists = useMemo(() => {
-    if (!error) return false;
+    if (!error) {
+      return false
+    }
 
-    const responseData = error.response?.data as any;
-    const errorMessage = responseData.error.details as string;
+    const responseData = error.response?.data as any
+    const errorMessage = responseData.error.details as string
 
-    if (!errorMessage.includes('Key')) return false;
-    if (!errorMessage.includes('already exists.')) return false;
+    if (!errorMessage.includes('Key')) {
+      return false
+    }
+    if (!errorMessage.includes('already exists.')) {
+      return false
+    }
 
-    return true;
-  }, [error]);
+    return true
+  }, [error])
 
   return (
     <section className="relative overflow-hidden bg-black pb-16 md:pb-32">
@@ -48,5 +54,5 @@ function JoinPage() {
 
       <EventSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
-  );
+  )
 }
