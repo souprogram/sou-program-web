@@ -48,8 +48,8 @@ jobs:
     - name: Deploy
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 21
         source: "./frontend/dist/*"
