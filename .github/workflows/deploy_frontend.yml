@@ -34,13 +34,23 @@ jobs:
       run: npm run build:staging
       working-directory: ./frontend
 
-    - name: "Deploy"
-      uses: milanmk/actions-file-deployer@master
+    # - name: "Deploy"
+    #   uses: milanmk/actions-file-deployer@master
+    #   with:
+    #     remote-protocol: "sftp"
+    #     remote-host: ${{ secrets.FTP_SERVER }}
+    #     remote-port: 21
+    #     remote-user: ${{ secrets.FTP_USERNAME }}
+    #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    #     local-path: './frontend/dist'
+    #     remote-path: ${{ secrets.FTP_REMOTE_PATH }}
+
+    - name: Deploy
+      uses: appleboy/scp-action@v0.1.7
       with:
-        remote-protocol: "sftp"
-        remote-host: ${{ secrets.FTP_SERVER }}
-        remote-port: 21
-        remote-user: ${{ secrets.FTP_USERNAME }}
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        local-path: './frontend/dist'
-        remote-path: ${{ secrets.FTP_REMOTE_PATH }}
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 21
+        source: "./frontend/dist/*"
+        target: ${{ secrets.FTP_REMOTE_PATH }}
