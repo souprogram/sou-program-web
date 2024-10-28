@@ -34,12 +34,11 @@ jobs:
       working-directory: ./frontend
 
     - name: Deploy to FTP Server
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./frontend/dist/
-        server-dir: /home/souprogramhr/subdomains/test-web/frontend/
-        protocol: ftp
-        dry-run: false
+          username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          local_path: './frontend/dist/*' 
+          remote_path: ${{ secrets.FTP_REMOTE_PATH }}
+          sftp_only: true
