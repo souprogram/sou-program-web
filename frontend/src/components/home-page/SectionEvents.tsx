@@ -40,7 +40,6 @@ export default function SectionEvents() {
     <section id="events" className="bg-black py-16 text-gray-200 md:py-32">
       <div className="mx-auto flex max-w-screen-lg flex-col px-4 sm:px-6 lg:px-8">
         <SouHeader className="text-primary-600" heading="Naši eventi" subheading="i radionice" />
-
         <div className="grid gap-4 sm:grid-cols-2 md:gap-6">
           {eventsData.map((event) => (
             <EventCard key={event.id} event={event} />
