@@ -42,5 +42,5 @@ jobs:
         remote-port: 21
         remote-user: ${{ secrets.FTP_USERNAME }}
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        local-path: './frontend/dist/*'
+        local-path: './frontend/dist'
         remote-path: ${{ secrets.FTP_REMOTE_PATH }}
