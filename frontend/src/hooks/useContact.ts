@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { useState } from 'react'
 
-export function useContact() {
+export const useContact = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const mutation = useMutation({

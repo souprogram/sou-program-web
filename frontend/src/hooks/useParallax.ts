@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 
-export function useParallax(multiplier = 0.4) {
+export const useParallax = (multiplier = 0.4) => {
   const parentRef = useRef<HTMLDivElement>(null)
   const [offsetY, setOffsetY] = useState(0)
 

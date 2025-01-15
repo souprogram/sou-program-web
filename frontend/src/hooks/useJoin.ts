@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios'
 import { useState } from 'react'
 import { JoinSchemaType } from '@/schemas/JoinSchema'
 
-export function useJoin() {
+export const useJoin = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const mutation = useMutation<JoinSchemaType, AxiosError, JoinSchemaType>({
