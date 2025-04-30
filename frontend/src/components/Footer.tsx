@@ -40,8 +40,13 @@ const socials = [
 
 export default function Footer() {
   return (
+<<<<<<< Updated upstream
     <footer id="footer" className="py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+=======
+    <footer id="footer" className="bg-neutral-900">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+>>>>>>> Stashed changes
         <div className="hidden md:order-2 md:flex md:justify-center md:gap-6">
           {socials.map(({ href, label }) => (
             <a
@@ -49,7 +54,7 @@ export default function Footer() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-all duration-300 hover:text-primary-500"
+              className="hover:text-primary-500 text-gray-400 transition-all duration-300"
             >
               <span className="sr-only">{label}</span>
               {label}
@@ -63,7 +68,7 @@ export default function Footer() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-all duration-300 hover:text-primary-500"
+              className="hover:text-primary-500 text-gray-400 transition-all duration-300"
             >
               <span className="sr-only">{label}</span>
               {icon}

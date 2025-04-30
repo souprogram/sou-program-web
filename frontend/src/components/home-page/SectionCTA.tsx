@@ -7,7 +7,7 @@ export default function SectionCTA() {
   const { parentRef: souImageRef, offsetY } = useParallax(0.1)
 
   return (
-    <section className="relative overflow-hidden bg-primary-600 py-16 md:py-32">
+    <section className="bg-primary-600 relative overflow-hidden py-16 md:py-32">
       <div ref={souImageRef} className="absolute inset-0 flex items-center justify-end opacity-50">
         <img
           src={SPLogoTransparent}
@@ -25,7 +25,10 @@ export default function SectionCTA() {
         />
 
         <div className="flex">
-          <Button to="/join" className="bg-black px-8 py-4 text-lg text-white hover:bg-gray-700">
+          <Button
+            to="/join"
+            className="bg-neutral-900 px-8 py-4 text-lg text-white hover:bg-gray-700"
+          >
             Učlani se
           </Button>
         </div>

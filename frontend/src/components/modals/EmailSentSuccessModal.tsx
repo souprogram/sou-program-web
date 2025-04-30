@@ -13,12 +13,16 @@ interface EmailSentSuccessModalProps {
 export default function EmailSentSuccessModal({ isOpen, onClose }: EmailSentSuccessModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
+<<<<<<< Updated upstream
       <div className="relative min-h-screen bg-black py-[9vh] text-center text-gray-200">
+=======
+      <div className="font-poppins relative min-h-screen bg-neutral-900 py-[9vh] text-center text-gray-200">
+>>>>>>> Stashed changes
         <div className="opacity-5">
           <img
             src={SPLogoTransparent}
             alt="Sou program logo"
-            className="absolute left-[24%] top-[-10%] z-20 h-[45rem] w-[45rem]"
+            className="absolute top-[-10%] left-[24%] z-20 h-[45rem] w-[45rem]"
           />
         </div>
         <div className="mx-auto flex min-h-[82vh] max-w-screen-lg flex-col px-8 py-36 sm:px-6 lg:px-8">

@@ -1,40 +1,40 @@
-import { useEffect, useState } from 'react'
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
-import { useParallax } from '@/hooks/useParallax'
-import Button from './ui/Button'
-import { LinkButton } from './ui/LinkButton'
-import SPLogoTransparent from '/sou-program-icon-transparent.svg'
-import spLogo from '/sou-program-logo-bez-pozadine.png'
-import { Link, useNavigate } from '@tanstack/react-router'
+import { useEffect, useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useParallax } from '@/hooks/useParallax';
+import Button from './ui/Button';
+import { LinkButton } from './ui/LinkButton';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
+import spLogo from '/sou-program-logo-bez-pozadine.png';
+import { Link, useNavigate } from '@tanstack/react-router';
 
 const links = [
   { label: 'Tko smo mi?', to: '/#what-we-do' },
   { label: 'Eventi', to: '/#events' },
   { label: 'Natjecanja', to: '/#competitions' },
   { label: 'Kontakt', to: '/#contact' },
-]
+];
 
 export default function NavBar() {
-  const [isMenuOpened, setIsMenuOpened] = useState(false)
-  const { offsetY } = useParallax()
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const { offsetY } = useParallax();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
-    setIsMenuOpened((prev) => !prev)
-  }
+    setIsMenuOpened((prev) => !prev);
+  };
 
   useEffect(() => {
-    document.body.style.overflow = isMenuOpened ? 'hidden' : ''
+    document.body.style.overflow = isMenuOpened ? 'hidden' : '';
 
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [isMenuOpened])
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpened]);
 
   return (
     <nav
-      className="sticky left-0 right-0 top-0 z-20"
+      className="sticky top-0 right-0 left-0 z-20"
       style={{ backgroundColor: `rgba(28,28, 28, ${offsetY > 100 ? 1 : offsetY / 100})` }}
     >
       <div className="relative z-10 mx-auto max-w-screen-2xl px-0 sm:px-6 lg:px-8">
@@ -49,7 +49,7 @@ export default function NavBar() {
                 <Link
                   key={label}
                   to={to}
-                  className="text-gray-400 transition-all duration-300 hover:text-primary-500"
+                  className="hover:text-primary-500 text-gray-400 transition-all duration-300"
                 >
                   {label}
                 </Link>
@@ -59,11 +59,14 @@ export default function NavBar() {
 
           <div className="hidden items-center gap-2 sm:flex">
             <LinkButton to="/join" label="Učlani se" />
+<<<<<<< Updated upstream
             {/* <LinkButton
               to="/events/devops"
               className="bg-gray-200 hover:bg-white"
               label="Prijavi se na DevOps"
             /> */}
+=======
+>>>>>>> Stashed changes
           </div>
 
           <div className="flex sm:hidden">
@@ -80,11 +83,11 @@ export default function NavBar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed bottom-0 left-0 right-0 top-0 z-20 flex h-screen flex-col items-center justify-center space-y-6 bg-black transition-opacity duration-150 sm:hidden ${
+        className={`fixed top-0 right-0 bottom-0 left-0 z-20 flex h-screen flex-col items-center justify-center space-y-6 bg-neutral-900 transition-opacity duration-150 sm:hidden ${
           isMenuOpened ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
-        <div className="absolute left-0 right-0 top-0 z-30 flex items-center justify-between">
+        <div className="absolute top-0 right-0 left-0 z-30 flex items-center justify-between">
           <Link to="/" className="h-fit px-4" onClick={toggleMenu}>
             <img className="h-16 w-auto" src={spLogo} alt="Sou program" />
           </Link>
@@ -111,7 +114,7 @@ export default function NavBar() {
             key={label}
             to={to}
             onClick={toggleMenu}
-            className="z-30 text-xl text-gray-400 transition-all duration-300 hover:text-primary-500"
+            className="hover:text-primary-500 z-30 text-xl text-gray-400 transition-all duration-300"
           >
             {label}
           </Link>
@@ -120,12 +123,18 @@ export default function NavBar() {
         <Button
           className="z-30 mt-8 truncate"
           onClick={async () => {
+<<<<<<< Updated upstream
             await navigate({ to: '/join' })
             toggleMenu()
+=======
+            await navigate({ to: '/join' });
+            toggleMenu();
+>>>>>>> Stashed changes
           }}
         >
           Učlani se
         </Button>
+<<<<<<< Updated upstream
         {/* <Button
           className="z-30 truncate bg-gray-200 hover:bg-white"
           onClick={() => {
@@ -135,7 +144,9 @@ export default function NavBar() {
         >
           Prijavi se na DevOps
         </Button> */}
+=======
+>>>>>>> Stashed changes
       </div>
     </nav>
-  )
+  );
 }

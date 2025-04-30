@@ -49,7 +49,7 @@ const Input = forwardRef(function Input(
         type={type ?? 'text'}
         name={name}
         className={twMerge(
-          'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 text-white shadow-sm outline-none transition duration-300 focus:bg-primary-600/50',
+          'focus:bg-primary-600/50 mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 text-white shadow-sm transition duration-300 outline-none',
           error && 'focus:bg-red-600/50',
           disabled && 'pointer-events-none opacity-50',
           className,

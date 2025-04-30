@@ -34,7 +34,7 @@ export default function Modal({ isOpen, onClose, children, className }: ModalPro
   return createPortal(
     <div
       className={twMerge(
-        'fixed inset-0 z-40 flex min-h-screen flex-col items-center justify-center bg-black text-white',
+        'fixed inset-0 z-40 flex min-h-screen flex-col items-center justify-center bg-neutral-900 text-white',
         className,
       )}
     >

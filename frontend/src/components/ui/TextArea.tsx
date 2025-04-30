@@ -40,7 +40,7 @@ export const TextArea = ({
         name={name}
         placeholder={placeholder}
         className={twMerge(
-          'mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 outline-none duration-300 focus:bg-primary-600/30',
+          'focus:bg-primary-600/30 mt-1 block w-full rounded-md bg-gray-600/50 px-4 py-2 duration-300 outline-none',
           error && 'focus:bg-red-600/30',
           disabled && 'pointer-events-none opacity-50',
           className,

@@ -7,10 +7,10 @@ export default function SectionHero() {
   const { parentRef: souImageRef, offsetY } = useParallax()
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center gap-4 bg-black py-16 md:py-32 lg:py-48">
+    <section className="relative flex min-h-screen flex-col items-center gap-4 bg-neutral-900 py-16 md:py-32 lg:py-48">
       <div ref={souImageRef} className="opacity-10">
         <div
-          className="absolute inset-0 top-[16%] z-20 sm:left-[-10%] sm:top-0 sm:h-[60rem] sm:w-[60rem]"
+          className="absolute inset-0 top-[16%] z-20 sm:top-0 sm:left-[-10%] sm:h-[60rem] sm:w-[60rem]"
           style={{
             transform: `translateY(${offsetY}px)`,
           }}

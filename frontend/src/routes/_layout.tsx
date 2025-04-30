@@ -9,7 +9,11 @@ export const Route = createFileRoute('/_layout')({
 
 function LayoutComponent() {
   return (
+<<<<<<< Updated upstream
     <div className="relative min-h-screen font-inter">
+=======
+    <div className="font-poppins relative min-h-screen">
+>>>>>>> Stashed changes
       <ScrollToTop />
       <NavBar />
       <Outlet />

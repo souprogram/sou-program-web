@@ -15,7 +15,11 @@ export const Route = createFileRoute('/tables/members')({
 })
 
 function MemberListPage() {
+<<<<<<< Updated upstream:frontend/src/routes/tables/members.tsx
   const { table_view_access_key } = Route.useSearch()
+=======
+  const { table_view_access_key } = Route.useSearch() as { table_view_access_key: string };
+>>>>>>> Stashed changes:frontend/src/routes/join-view.tsx
 
   const { data, isPending, isError } = useQuery({
     queryKey: ['join', table_view_access_key],
@@ -44,7 +48,29 @@ function MemberListPage() {
   }
 
   if (isError) {
+<<<<<<< Updated upstream:frontend/src/routes/tables/members.tsx
     return <NoFoundComponent />
+=======
+    return (
+      <div className="flex flex-col justify-center">
+        <div className="relative bg-neutral-900 text-center text-gray-200">
+          <div className="absolute inset-0 flex items-center justify-center opacity-5">
+            <img src={SPLogoTransparent} alt="Sou program logo" className="h-[40rem] w-[40rem]" />
+          </div>
+          <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col px-8 py-36 sm:px-6 lg:px-8">
+            <h3 className="font-brioni pb-4 text-3xl text-white">Vrati se nazad.</h3>
+            <div className="flex justify-center">
+              <TransparentLinkButton
+                to="/"
+                icon={<HiArrowLeft />}
+                label="Nazad na početnu stranicu"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+>>>>>>> Stashed changes:frontend/src/routes/join-view.tsx
   }
 
   return (
@@ -53,12 +79,12 @@ function MemberListPage() {
         <SouHeader heading="Upisani članovi" />
       </div>
       {data.length === 0 ? (
-        <div className="relative bg-black text-center text-gray-200">
+        <div className="relative bg-neutral-900 text-center text-gray-200">
           <div className="absolute inset-0 flex items-center justify-center opacity-5">
             <img src={SPLogoTransparent} alt="Sou program logo" className="h-[40rem] w-[40rem]" />
           </div>
           <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col px-8 py-36 sm:px-6 lg:px-8">
-            <h3 className="pb-4 font-brioni text-3xl text-white">Nema članova?!</h3>
+            <h3 className="font-brioni pb-4 text-3xl text-white">Nema članova?!</h3>
           </div>
         </div>
       ) : (
@@ -68,11 +94,11 @@ function MemberListPage() {
               Trenutno su prijavljeni <span className="font-bold">{data.length} članova.</span>
             </p>
           </div>
-          <table className="min-w-full bg-black">
+          <table className="min-w-full bg-neutral-900">
             <thead>
               <tr className="bg-primary-600 text-black">
                 <th className="sticky left-0 z-10 p-0">
-                  <div className="truncate bg-primary-600 px-4 py-2 text-start shadow">
+                  <div className="bg-primary-600 truncate px-4 py-2 text-start shadow">
                     Ime i prezime
                   </div>
                 </th>

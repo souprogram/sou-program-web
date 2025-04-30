@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:frontend/src/components/home-page/SectionEvents.tsx
 import { TransparentLinkButton } from '@/components/ui/LinkButton'
 import { HiArrowRight } from 'react-icons/hi'
 import SouHeader from '../SouHeader'
@@ -11,6 +12,21 @@ interface TEvent {
   location?: string
   link: string
 }
+=======
+import { HiArrowRight } from 'react-icons/hi';
+import SouHeader from './SouHeader';
+import { TransparentLinkButton } from './ui/LinkButton';
+
+type TEvent = {
+  id: number;
+  title: string;
+  description: string;
+  date?: string;
+  time?: string;
+  location?: string;
+  link: string;
+};
+>>>>>>> Stashed changes:frontend/src/components/SectionEvents.tsx
 
 const eventsData = [
   {
@@ -33,12 +49,17 @@ const eventsData = [
     location: 'FET, dvorana 402',
     link: '/events/devops' as const,
   },
-] satisfies TEvent[]
+] satisfies TEvent[];
 
 export default function SectionEvents() {
   return (
+<<<<<<< Updated upstream:frontend/src/components/home-page/SectionEvents.tsx
     <section id="events" className="bg-black py-16 text-gray-200 md:py-32">
       <div className="mx-auto flex max-w-screen-lg flex-col px-4 sm:px-6 lg:px-8">
+=======
+    <section id="events" className="bg-neutral-900 py-16 text-gray-200 md:py-32">
+      <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
+>>>>>>> Stashed changes:frontend/src/components/SectionEvents.tsx
         <SouHeader className="text-primary-600" heading="Naši eventi" subheading="i radionice" />
         <div className="grid gap-4 sm:grid-cols-2 md:gap-6">
           {eventsData.map((event) => (
@@ -47,7 +68,7 @@ export default function SectionEvents() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function EventCard({ event }: { event: TEvent }) {
@@ -70,5 +91,5 @@ function EventCard({ event }: { event: TEvent }) {
         iconPosition="right"
       />
     </div>
-  )
+  );
 }

@@ -31,7 +31,7 @@ const Checkbox = forwardRef(function Checkbox(
           onChange={onChange}
           onBlur={onBlur}
           className={twMerge(
-            'size-4 cursor-pointer appearance-none rounded border border-gray-600 outline-none duration-300 checked:bg-primary-600 focus:border-primary-600',
+            'checked:bg-primary-600 focus:border-primary-600 size-4 cursor-pointer appearance-none rounded border border-gray-600 duration-300 outline-none',
             disabled && 'pointer-events-none opacity-50',
             error && 'focus:borders-red-600',
           )}
