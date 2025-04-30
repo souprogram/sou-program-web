@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from '@tanstack/react-router';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import Button from '../ui/Button';
@@ -14,6 +15,8 @@ const SignUpSchema = z.object({
 type SignUpSchemaType = z.infer<typeof SignUpSchema>;
 
 export default function ICTSignUpForm() {
+  const navigate = useNavigate();
+
   const {
     handleSubmit,
     control,
@@ -30,7 +33,7 @@ export default function ICTSignUpForm() {
 
   const submit = (data: SignUpSchemaType) => {
     console.log('Form submitted:', data);
-    alert(`Registration successful! Welcome ${data.username}`);
+    navigate({ to: '/ict-2025/competition' });
   };
 
   return (

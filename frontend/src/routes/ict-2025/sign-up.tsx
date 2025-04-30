@@ -23,7 +23,7 @@ function RouteComponent() {
         </h2>
         <div className="flex max-w-screen-sm flex-col gap-4 leading-relaxed text-gray-200">
           <p className="font-poppins pb-2 lg:text-lg">
-            Prijavi se za sudjelovanje u nadolazećem natjecanju ICT 2025!
+            Prijavi se da sudjeluješ u natjecanju ICT 2025!
           </p>
 
           <ICTSignUpForm />
