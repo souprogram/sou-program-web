@@ -1,23 +1,19 @@
-import { HiArrowLeft } from 'react-icons/hi'
-import Modal from '../Modal'
-import SouHeader from '../SouHeader'
-import Button from '../ui/Button'
-import SPLogoTransparent from '/sou-program-icon-transparent.svg'
+import { HiArrowLeft } from 'react-icons/hi';
+import Modal from '../Modal';
+import SouHeader from '../SouHeader';
+import Button from '../ui/Button';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 interface EmailSentSuccessModalProps {
-  isOpen: boolean
-  onClose: () => void
-  children?: React.ReactNode
+  isOpen: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
 }
 
 export default function EmailSentSuccessModal({ isOpen, onClose }: EmailSentSuccessModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-<<<<<<< Updated upstream
       <div className="relative min-h-screen bg-black py-[9vh] text-center text-gray-200">
-=======
-      <div className="font-poppins relative min-h-screen bg-neutral-900 py-[9vh] text-center text-gray-200">
->>>>>>> Stashed changes
         <div className="opacity-5">
           <img
             src={SPLogoTransparent}
@@ -38,5 +34,5 @@ export default function EmailSentSuccessModal({ isOpen, onClose }: EmailSentSucc
         </div>
       </div>
     </Modal>
-  )
+  );
 }

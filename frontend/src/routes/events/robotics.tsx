@@ -8,13 +8,8 @@ export const Route = createFileRoute('/events/robotics')({
 
 function SectionRobotics() {
   return (
-<<<<<<< Updated upstream
-    <section id="robotics" className="bg-black py-8 md:py-16">
-      <div className="mx-auto flex max-w-screen-lg flex-col px-4 sm:px-6 lg:px-8">
-=======
     <section id="robotics" className="bg-neutral-900 py-8 text-gray-200 md:py-16">
       <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 sm:px-6 lg:px-8">
->>>>>>> Stashed changes
         <SouHeader
           className="text-primary-600"
           heading="Radionica robotike"

@@ -1,26 +1,26 @@
-import { ContactSchemaType } from '@/schemas/ContactSchema'
-import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
-import { useState } from 'react'
+import { ContactSchemaType } from '@/schemas/ContactSchema';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useState } from 'react';
 
 export const useContact = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mutation = useMutation({
     mutationFn: async (data: ContactSchemaType) => {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, data)
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/send-email`, data);
 
       if (response.status !== 201) {
-        throw new Error('Greška prilikom slanja maila.')
+        throw new Error('Greška prilikom slanja maila.');
       }
     },
     onSuccess: () => {
-      setIsModalOpen(true)
+      setIsModalOpen(true);
     },
     onError: (error) => {
-      console.error(error)
+      console.error(error);
     },
-  })
+  });
 
   return {
     submit: mutation.mutate,
@@ -28,5 +28,5 @@ export const useContact = () => {
 
     isModalOpen: isModalOpen,
     closeModal: () => setIsModalOpen(false),
-  }
-}
+  };
+};

@@ -1,6 +1,6 @@
-import ContactForm from '@/components/forms/ContactForm'
-import SouHeader from '@/components/SouHeader'
-import SPLogoTransparent from '/sou-program-icon-transparent.svg'
+import ContactForm from '@/components/forms/ContactForm';
+import SouHeader from '@/components/SouHeader';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 export default function SectionContact() {
   return (
@@ -12,7 +12,7 @@ export default function SectionContact() {
         <img
           src={SPLogoTransparent}
           alt="Sou program logo"
-          className="absolute left-[45%] top-[-10%] z-20 h-[50rem] w-[50rem]"
+          className="absolute top-[-10%] left-[45%] z-20 h-[50rem] w-[50rem]"
         />
       </div>
 
@@ -45,5 +45,5 @@ export default function SectionContact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

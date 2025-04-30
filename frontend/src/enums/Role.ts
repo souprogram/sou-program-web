@@ -3,6 +3,6 @@ export const Role = {
   SOU_PODCAST: 'sou-podcast',
   MARKETING: 'marketing',
   DESIGNER: 'designer',
-} as const
+} as const;
 
-export type RoleType = (typeof Role)[keyof typeof Role]
+export type RoleType = (typeof Role)[keyof typeof Role];

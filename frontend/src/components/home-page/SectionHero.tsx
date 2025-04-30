@@ -1,10 +1,10 @@
-import Button from '@/components/ui/Button'
-import { useParallax } from '@/hooks/useParallax'
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
-import SPLogo from '/sou-program-icon.svg'
+import Button from '@/components/ui/Button';
+import { useParallax } from '@/hooks/useParallax';
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
+import SPLogo from '/sou-program-icon.svg';
 
 export default function SectionHero() {
-  const { parentRef: souImageRef, offsetY } = useParallax()
+  const { parentRef: souImageRef, offsetY } = useParallax();
 
   return (
     <section className="relative flex min-h-screen flex-col items-center gap-4 bg-neutral-900 py-16 md:py-32 lg:py-48">
@@ -20,7 +20,7 @@ export default function SectionHero() {
         </div>
       </div>
       <div className="z-10 mx-auto mt-24 max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <h1 className="pb-8 font-brioni text-5xl font-bold tracking-tight text-white sm:text-6xl">
+        <h1 className="font-brioni pb-8 text-5xl font-bold tracking-tight text-white sm:text-6xl">
           Još jedna studentska udruga.
         </h1>
 
@@ -32,5 +32,5 @@ export default function SectionHero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

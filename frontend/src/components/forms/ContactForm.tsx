@@ -1,14 +1,14 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Controller, useForm } from 'react-hook-form'
-import { ContactSchema, type ContactSchemaType } from '@/schemas/ContactSchema'
-import Button from '../ui/Button'
-import Input from '../ui/Input'
-import { TextArea } from '../ui/TextArea'
-import { useContact } from '@/hooks/useContact'
-import EmailSentSuccessModal from '../modals/EmailSentSuccessModal'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
+import { ContactSchema, type ContactSchemaType } from '@/schemas/ContactSchema';
+import Button from '../ui/Button';
+import Input from '../ui/Input';
+import { TextArea } from '../ui/TextArea';
+import { useContact } from '@/hooks/useContact';
+import EmailSentSuccessModal from '../modals/EmailSentSuccessModal';
 
 export default function ContactForm() {
-  const contactQuery = useContact()
+  const contactQuery = useContact();
 
   const {
     handleSubmit,
@@ -21,11 +21,11 @@ export default function ContactForm() {
       message: '',
     },
     resolver: zodResolver(ContactSchema),
-  })
+  });
 
   const submit = (data: ContactSchemaType) => {
-    contactQuery.submit(data)
-  }
+    contactQuery.submit(data);
+  };
 
   return (
     <form onSubmit={handleSubmit(submit)} className="mx-auto w-full max-w-screen-xl">
@@ -71,5 +71,5 @@ export default function ContactForm() {
 
       <EmailSentSuccessModal isOpen={contactQuery.isModalOpen} onClose={contactQuery.closeModal} />
     </form>
-  )
+  );
 }

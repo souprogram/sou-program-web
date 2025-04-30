@@ -1,9 +1,6 @@
 import JoinForm from '@/components/forms/JoinForm';
-import EventSuccessModal from '@/components/modals/EventSuccessModal';
 import SouHeader from '@/components/SouHeader';
-import { useJoin } from '@/hooks/useJoin';
 import { createFileRoute } from '@tanstack/react-router';
-import { useMemo } from 'react';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/join')({
@@ -11,20 +8,6 @@ export const Route = createFileRoute('/join')({
 });
 
 function JoinPage() {
-  const { submit, isSubmitting, isModalOpen, closeModal, error } = useJoin();
-
-  const memberExists = useMemo(() => {
-    if (!error) return false;
-
-    const responseData = error.response?.data as { error: { details: string } };
-    const errorMessage = responseData.error.details;
-
-    if (!errorMessage.includes('Key')) return false;
-    if (!errorMessage.includes('already exists.')) return false;
-
-    return true;
-  }, [error]);
-
   return (
     <section className="relative overflow-hidden bg-neutral-900 pb-16 md:pb-32">
       <div className="opacity-5">
@@ -40,13 +23,9 @@ function JoinPage() {
 
         <p className="mb-8 leading-relaxed text-gray-200"></p>
         <div className="max-w-screen-sm">
-          <JoinForm onSubmit={submit} isSubmitting={isSubmitting} />
-
-          {memberExists && <p className="mt-4 text-red-500">Već postoji član!</p>}
+          <JoinForm />
         </div>
       </div>
-
-      <EventSuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
   );
 }

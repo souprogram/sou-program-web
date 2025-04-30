@@ -1,9 +1,9 @@
-import * as z from 'zod'
-import { Role } from '../enums/Role'
-import { Study } from '../enums/Study'
-import { isValidPhoneNumber } from '../utils/isValidPhoneNumber'
-import { isValidZipCode } from '../utils/isValidZipCode'
-import { isValidOib } from '../utils/isValidOib'
+import * as z from 'zod';
+import { Role } from '../enums/Role';
+import { Study } from '../enums/Study';
+import { isValidPhoneNumber } from '../utils/isValidPhoneNumber';
+import { isValidZipCode } from '../utils/isValidZipCode';
+import { isValidOib } from '../utils/isValidOib';
 
 export const JoinSchema = z
   .object({
@@ -39,18 +39,18 @@ export const JoinSchema = z
   .refine(
     (data) => {
       if (data.isUNIPUStudent) {
-        return data.study !== undefined
+        return data.study !== undefined;
       }
-      return true
+      return true;
     },
     { message: 'Moraš odabrati studij', path: ['study'] },
-  )
+  );
 
-export type JoinSchemaType = z.infer<typeof JoinSchema>
+export type JoinSchemaType = z.infer<typeof JoinSchema>;
 
 export const memberListSearchSchema = z.object({
   table_view_access_key: z.string().nullish(),
-})
+});
 
 export const memberSchema = z.object({
   id: z.string().uuid(),
@@ -70,12 +70,12 @@ export const memberSchema = z.object({
   payment_status: z.boolean().nullish(),
   left_at: z.string().datetime({ offset: true }).nullish(),
   payment_date_due: z.string().datetime({ offset: true }).nullish(),
-})
+});
 
-export type Member = z.infer<typeof memberSchema>
+export type Member = z.infer<typeof memberSchema>;
 
 export const memberListSchema = z.object({
   data: z.array(memberSchema),
-})
+});
 
-export type MemberList = z.infer<typeof memberListSchema>
+export type MemberList = z.infer<typeof memberListSchema>;

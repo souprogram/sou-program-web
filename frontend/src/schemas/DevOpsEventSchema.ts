@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const DevOpsEventSchema = z.object({
   fullName: z
@@ -6,6 +6,6 @@ export const DevOpsEventSchema = z.object({
     .min(2, 'Moraš upisati najmanje 2 znaka')
     .max(50, 'Moraš upisati najviše 50 znakova'),
   email: z.string().email('Neispravan email'),
-})
+});
 
-export type DevOpsEventSchemaType = z.infer<typeof DevOpsEventSchema>
+export type DevOpsEventSchemaType = z.infer<typeof DevOpsEventSchema>;

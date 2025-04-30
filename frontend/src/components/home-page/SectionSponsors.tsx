@@ -1,5 +1,5 @@
-import SouHeader from '@/components/SouHeader'
-import SponsorMarqueeList from '@/components/SponsorMarqueeList'
+import SouHeader from '@/components/SouHeader';
+import SponsorMarqueeList from '@/components/SponsorMarqueeList';
 
 export default function SectionSponsors() {
   return (
@@ -12,5 +12,5 @@ export default function SectionSponsors() {
 
       <SponsorMarqueeList />
     </section>
-  )
+  );
 }

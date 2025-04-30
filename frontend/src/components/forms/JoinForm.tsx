@@ -1,15 +1,15 @@
-import { roleOptions, studyOptions } from '@/data/options'
-import { useJoin } from '@/hooks/useJoin'
-import { JoinSchema, type JoinSchemaType } from '@/schemas/JoinSchema'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useMemo, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
-import EventSuccessModal from '../modals/EventSuccessModal'
-import Button from '../ui/Button'
-import Checkbox from '../ui/Checkbox'
-import DateInput from '../ui/DateInput'
-import Input from '../ui/Input'
-import { MultiSelect, SingleSelect } from '../ui/Select'
+import { roleOptions, studyOptions } from '@/data/options';
+import { useJoin } from '@/hooks/useJoin';
+import { JoinSchema, type JoinSchemaType } from '@/schemas/JoinSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMemo, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import EventSuccessModal from '../modals/EventSuccessModal';
+import Button from '../ui/Button';
+import Checkbox from '../ui/Checkbox';
+import DateInput from '../ui/DateInput';
+import Input from '../ui/Input';
+import { MultiSelect, SingleSelect } from '../ui/Select';
 
 const defaultJoinFormValues = {
   name: '',
@@ -24,11 +24,11 @@ const defaultJoinFormValues = {
   zipCode: '',
   city: '',
   terms: false,
-}
+};
 
 export default function JoinForm() {
-  const joinQuery = useJoin()
-  const [isStudent, setIsStudent] = useState(false)
+  const joinQuery = useJoin();
+  const [isStudent, setIsStudent] = useState(false);
 
   const {
     handleSubmit,
@@ -37,39 +37,39 @@ export default function JoinForm() {
   } = useForm<JoinSchemaType>({
     defaultValues: defaultJoinFormValues,
     resolver: zodResolver(JoinSchema),
-  })
+  });
 
   const submit = (data: JoinSchemaType) => {
     if (!data.isUNIPUStudent) {
-      data.study = undefined
+      data.study = undefined;
     }
 
-    joinQuery.submit(data)
-  }
+    joinQuery.submit(data);
+  };
 
   const memberExists = useMemo(() => {
     if (!joinQuery.error) {
-      return false
+      return false;
     }
 
     // TODO: Fix typing
     /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     /* eslint-disable @typescript-eslint/no-unsafe-assignment */
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    const responseData = joinQuery.error.response?.data as any
+    const responseData = joinQuery.error.response?.data as any;
     /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    const errorMessage = responseData.error.details as string
+    const errorMessage = responseData.error.details as string;
 
     if (!errorMessage.includes('Key')) {
-      return false
+      return false;
     }
     if (!errorMessage.includes('already exists.')) {
-      return false
+      return false;
     }
 
-    return true
-  }, [joinQuery.error])
+    return true;
+  }, [joinQuery.error]);
 
   return (
     <form className="mx-auto w-full max-w-screen-xl" onSubmit={handleSubmit(submit)}>
@@ -111,8 +111,8 @@ export default function JoinForm() {
               id="isUNIPUStudent"
               label="Ja sam UNIPU student (Sveučilište Jurja Dobrile u Puli)"
               onChange={(event) => {
-                field.onChange(event.target.checked)
-                setIsStudent(event.target.checked)
+                field.onChange(event.target.checked);
+                setIsStudent(event.target.checked);
               }}
             />
           )}
@@ -213,7 +213,7 @@ export default function JoinForm() {
               id="terms"
               label="Prihvačam sve uvjete i odredbe Statuta."
               onChange={(event) => {
-                field.onChange(event.target.checked)
+                field.onChange(event.target.checked);
               }}
             />
           )}
@@ -230,5 +230,5 @@ export default function JoinForm() {
 
       <EventSuccessModal isOpen={joinQuery.isModalOpen} onClose={joinQuery.closeModal} />
     </form>
-  )
+  );
 }

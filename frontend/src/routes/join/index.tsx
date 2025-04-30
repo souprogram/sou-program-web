@@ -1,11 +1,11 @@
-import JoinForm from '@/components/forms/JoinForm'
-import SouHeader from '@/components/SouHeader'
-import { createFileRoute } from '@tanstack/react-router'
-import SPLogoTrasparent from '/sou-program-icon-transparent.svg'
+import JoinForm from '@/components/forms/JoinForm';
+import SouHeader from '@/components/SouHeader';
+import { createFileRoute } from '@tanstack/react-router';
+import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/join/')({
   component: JoinPage,
-})
+});
 
 function JoinPage() {
   return (
@@ -14,7 +14,7 @@ function JoinPage() {
         <img
           src={SPLogoTrasparent}
           alt="Sou program logo"
-          className="absolute inset-0 top-[15%] z-20 sm:left-[20%] sm:top-[-10%] sm:h-[100rem] sm:w-[100rem]"
+          className="absolute inset-0 top-[15%] z-20 sm:top-[-10%] sm:left-[20%] sm:h-[100rem] sm:w-[100rem]"
         />
       </div>
 
@@ -26,5 +26,5 @@ function JoinPage() {
         </div>
       </div>
     </section>
-  )
+  );
 }

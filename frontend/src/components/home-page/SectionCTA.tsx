@@ -1,10 +1,10 @@
-import SouHeader from '@/components/SouHeader'
-import Button from '@/components/ui/Button'
-import { useParallax } from '@/hooks/useParallax'
-import SPLogoTransparent from '/sou-program-icon-transparent.svg'
+import SouHeader from '@/components/SouHeader';
+import Button from '@/components/ui/Button';
+import { useParallax } from '@/hooks/useParallax';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 export default function SectionCTA() {
-  const { parentRef: souImageRef, offsetY } = useParallax(0.1)
+  const { parentRef: souImageRef, offsetY } = useParallax(0.1);
 
   return (
     <section className="bg-primary-600 relative overflow-hidden py-16 md:py-32">
@@ -34,5 +34,5 @@ export default function SectionCTA() {
         </div>
       </div>
     </section>
-  )
+  );
 }

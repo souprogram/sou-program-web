@@ -1,21 +1,21 @@
-import { forwardRef } from 'react'
-import { FieldError } from 'react-hook-form'
-import { twMerge } from 'tailwind-merge'
+import { forwardRef } from 'react';
+import { FieldError } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
 
 interface InputProps {
-  className?: string
-  id: string
-  label?: string
-  name?: string
-  type?: string
-  value?: string
-  placeholder?: string
-  required?: boolean
-  description?: string
-  error?: FieldError
-  disabled?: boolean
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
+  className?: string;
+  id: string;
+  label?: string;
+  name?: string;
+  type?: string;
+  value?: string;
+  placeholder?: string;
+  required?: boolean;
+  description?: string;
+  error?: FieldError;
+  disabled?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef(function Input(
@@ -68,7 +68,7 @@ const Input = forwardRef(function Input(
         </p>
       )}
     </div>
-  )
-})
+  );
+});
 
-export default Input
+export default Input;

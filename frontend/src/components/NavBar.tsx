@@ -59,14 +59,6 @@ export default function NavBar() {
 
           <div className="hidden items-center gap-2 sm:flex">
             <LinkButton to="/join" label="Učlani se" />
-<<<<<<< Updated upstream
-            {/* <LinkButton
-              to="/events/devops"
-              className="bg-gray-200 hover:bg-white"
-              label="Prijavi se na DevOps"
-            /> */}
-=======
->>>>>>> Stashed changes
           </div>
 
           <div className="flex sm:hidden">
@@ -123,29 +115,12 @@ export default function NavBar() {
         <Button
           className="z-30 mt-8 truncate"
           onClick={async () => {
-<<<<<<< Updated upstream
-            await navigate({ to: '/join' })
-            toggleMenu()
-=======
             await navigate({ to: '/join' });
             toggleMenu();
->>>>>>> Stashed changes
           }}
         >
           Učlani se
         </Button>
-<<<<<<< Updated upstream
-        {/* <Button
-          className="z-30 truncate bg-gray-200 hover:bg-white"
-          onClick={() => {
-            navigate({ to: '/events/devops' })
-            toggleMenu()
-          }}
-        >
-          Prijavi se na DevOps
-        </Button> */}
-=======
->>>>>>> Stashed changes
       </div>
     </nav>
   );

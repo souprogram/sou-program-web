@@ -1,13 +1,13 @@
-import { Role } from '@/enums/Role'
-import { SchoolGrade } from '@/enums/SchoolGrade'
-import { Study } from '@/enums/Study'
+import { Role } from '@/enums/Role';
+import { SchoolGrade } from '@/enums/SchoolGrade';
+import { Study } from '@/enums/Study';
 
 export const roleOptions = [
   { value: Role.SOU_LAB, label: 'Šou lab' },
   { value: Role.SOU_PODCAST, label: 'Šou podcast' },
   { value: Role.MARKETING, label: 'Marketing' },
   { value: Role.DESIGNER, label: 'Designer' },
-]
+];
 
 export const studyOptions = [
   { value: Study.FIPU, label: 'FIPU - Fakultet informatike u Puli' },
@@ -25,7 +25,7 @@ export const studyOptions = [
   { value: Study.FFPU, label: 'FFPU - Filozofski fakultet u Puli' },
   { value: Study.MFPU, label: 'MFPU - Medicinski fakultet u Puli' },
   { value: Study.DAK, label: 'DAK - Dizajn i audiovizualne komunikacije' },
-]
+];
 
 export const schoolGradeOptions = [
   { value: SchoolGrade.GRADE_4, label: '4. razred' },
@@ -33,4 +33,4 @@ export const schoolGradeOptions = [
   { value: SchoolGrade.GRADE_6, label: '6. razred' },
   { value: SchoolGrade.GRADE_7, label: '7. razred' },
   { value: SchoolGrade.GRADE_8, label: '8. razred' },
-]
+];

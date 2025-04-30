@@ -1,32 +1,32 @@
-import { useLocation } from '@tanstack/react-router'
-import { useEffect } from 'react'
+import { useLocation } from '@tanstack/react-router';
+import { useEffect } from 'react';
 
 export default function ScrollToTop() {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       if (location.hash) {
-        const elementId = location.hash.replace('#', '')
+        const elementId = location.hash.replace('#', '');
 
         const scrollToElement = () => {
-          const element = document.getElementById(elementId)
+          const element = document.getElementById(elementId);
 
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
           } else {
-            setTimeout(scrollToElement, 100)
+            setTimeout(scrollToElement, 100);
           }
-        }
-        
-        scrollToElement()
+        };
+
+        scrollToElement();
       } else {
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
       }
-    }
+    };
 
-    handleScroll()
-  }, [location])
+    handleScroll();
+  }, [location]);
 
-  return null
+  return null;
 }

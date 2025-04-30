@@ -1,6 +1,6 @@
-import { HiArrowLeft } from 'react-icons/hi'
-import { TransparentLinkButton } from './ui/LinkButton'
-import SPLogoTransparent from '/sou-program-icon-transparent.svg'
+import { HiArrowLeft } from 'react-icons/hi';
+import { TransparentLinkButton } from './ui/LinkButton';
+import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 
 export default function NoFoundComponent() {
   return (
@@ -21,5 +21,5 @@ export default function NoFoundComponent() {
         </div>
       </div>
     </div>
-  )
+  );
 }

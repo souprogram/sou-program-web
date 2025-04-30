@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { forwardRef, useState } from 'react'
-import { FieldError } from 'react-hook-form'
-import { twMerge } from 'tailwind-merge'
+import React, { forwardRef, useState } from 'react';
+import { FieldError } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
 
 interface DateInputProps {
-  id: string
-  name: string
-  value: string
-  label: string
-  error?: FieldError
-  disabled?: boolean
-  className?: string
-  description?: string
-  required?: boolean
-  onChange: (...event: any[]) => void
-  onBlur: (...event: any[]) => void
+  id: string;
+  name: string;
+  value: string;
+  label: string;
+  error?: FieldError;
+  disabled?: boolean;
+  className?: string;
+  description?: string;
+  required?: boolean;
+  onChange: (...event: any[]) => void;
+  onBlur: (...event: any[]) => void;
 }
 
 const DateInput = forwardRef(function DateInput(
@@ -33,34 +33,34 @@ const DateInput = forwardRef(function DateInput(
   }: DateInputProps,
   ref: React.Ref<HTMLDivElement>,
 ) {
-  const [day, setDay] = useState<string>(value ? value.split('-')[2] : '01')
-  const [month, setMonth] = useState<string>(value ? value.split('-')[1] : '01')
-  const [year, setYear] = useState<string>(value ? value.split('-')[0] : '2024')
+  const [day, setDay] = useState<string>(value ? value.split('-')[2] : '01');
+  const [month, setMonth] = useState<string>(value ? value.split('-')[1] : '01');
+  const [year, setYear] = useState<string>(value ? value.split('-')[0] : '2024');
 
   const handleChangeDay = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newDay = e.target.value
-    setDay(newDay)
-    updateDate(newDay, month, year)
-  }
+    const newDay = e.target.value;
+    setDay(newDay);
+    updateDate(newDay, month, year);
+  };
 
   const handleChangeMonth = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMonth = e.target.value
-    setMonth(newMonth)
-    updateDate(day, newMonth, year)
-  }
+    const newMonth = e.target.value;
+    setMonth(newMonth);
+    updateDate(day, newMonth, year);
+  };
 
   const handleChangeYear = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newYear = e.target.value
-    setYear(newYear)
-    updateDate(day, month, newYear)
-  }
+    const newYear = e.target.value;
+    setYear(newYear);
+    updateDate(day, month, newYear);
+  };
 
   const updateDate = (day: string, month: string, year: string) => {
-    const paddedDay = day.padStart(2, '0')
-    const paddedMonth = month.padStart(2, '0')
-    const fullDate = `${year}-${paddedMonth}-${paddedDay}`
-    onChange(fullDate)
-  }
+    const paddedDay = day.padStart(2, '0');
+    const paddedMonth = month.padStart(2, '0');
+    const fullDate = `${year}-${paddedMonth}-${paddedDay}`;
+    onChange(fullDate);
+  };
 
   return (
     <div className="w-full">
@@ -140,7 +140,7 @@ const DateInput = forwardRef(function DateInput(
         </p>
       )}
     </div>
-  )
-})
+  );
+});
 
-export default DateInput
+export default DateInput;
