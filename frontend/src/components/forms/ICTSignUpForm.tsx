@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from '@tanstack/react-router';
+import axios from 'axios';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import Button from '../ui/Button';
@@ -31,9 +32,17 @@ export default function ICTSignUpForm() {
     resolver: zodResolver(SignUpSchema),
   });
 
-  const submit = (data: SignUpSchemaType) => {
-    console.log('Form submitted:', data);
-    navigate({ to: '/ict-2025/competition' });
+  const submit = async (data: SignUpSchemaType) => {
+    const response = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/api/ict-2025/sign-up`,
+      data,
+    );
+
+    if (response.status !== 201) {
+      throw new Error('Greška prilikom slanja maila.');
+    }
+
+    navigate({ to: `/ict-2025/competition/${response.data.data.id}` });
   };
 
   return (

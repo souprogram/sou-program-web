@@ -4,14 +4,31 @@ import { generateCipherTask } from '@/utils/ceasarCipher';
 import { generateSolvableLightsOutBoard } from '@/utils/lightsOut';
 import { generateMathExpression } from '@/utils/mathExpression';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import axios from 'axios';
 import { useEffect, useMemo, useState } from 'react';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
-export const Route = createFileRoute('/ict-2025/competition')({
+export const Route = createFileRoute('/ict-2025/competition/$id')({
   component: RouteComponent,
+  loader: async ({ params: { id } }) => {
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/ict-2025/user/${id}`);
+    if (response.status !== 200) {
+      throw new Error('Greška prilikom učitavanja korisnika.');
+    }
+    return response.data.data;
+  },
+  errorComponent: () => {
+    return (
+      <div className="flex h-screen items-center justify-center bg-neutral-900">
+        <h1 className="text-2xl font-bold text-white">Greška prilikom učitavanja korisnika.</h1>
+      </div>
+    );
+  },
 });
 
 function RouteComponent() {
+  const { id } = Route.useParams();
+
   const navigate = useNavigate();
   const [task1Answer, setTask1Answer] = useState('');
   const [task2Answer, setTask2Answer] = useState('');
@@ -120,7 +137,7 @@ function RouteComponent() {
       localStorage.removeItem('cipherTask');
       localStorage.removeItem('mathTask');
       localStorage.removeItem('lightsGrid');
-      navigate({ to: '/ict-2025/finish' });
+      navigate({ to: `/ict-2025/finish/${id}` });
     }
   };
 
@@ -132,6 +149,7 @@ function RouteComponent() {
         localStorage.removeItem('competitionStartTime');
         localStorage.removeItem('mathTask');
         localStorage.removeItem('cipherTask');
+        localStorage.removeItem('lightsGrid');
       }
     };
   }, [allTasksCompleted]);

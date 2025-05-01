@@ -7,12 +7,14 @@ const JoinCommunityController = require('../controllers/JoinCommunityController'
 const SendEmailController = require('../controllers/SendEmailController');
 const RoboticsEventController = require('../controllers/RoboticsEventController');
 const DevOpsEventController = require('../controllers/DevOpsEventController');
+const ICT2025Controller = require('../controllers/ICT2025Controller');
 
 // Schemas
 const JoinSchema = require('../models/joinSchema');
 const EmailSchema = require('../models/emailSchema');
 const RoboticsEventSchema = require('../models/roboticsEventSchema');
 const DevOpsEventSchema = require('../models/devOpsEventSchema');
+const { ICT2025SignUpSchema, ICT2025FinishSchema } = require('../models/ICT2025SignUpSchema');
 
 const router = express.Router();
 
@@ -58,5 +60,26 @@ router.post(
   SchemaValidation.validate(DevOpsEventSchema),
   DevOpsEventController.post,
 );
+
+// ICT 2025
+router.post(
+  '/api/ict-2025/sign-up',
+  SchemaValidation.validate(ICT2025SignUpSchema),
+  ICT2025Controller.signUp,
+)
+router.put(
+  '/api/ict-2025/finish',
+  SchemaValidation.validate(ICT2025FinishSchema),
+  ICT2025Controller.update,
+);
+router.get(
+  '/api/ict-2025/user/:id',
+  ICT2025Controller.getUser,
+);
+router.get(
+  '/api/ict-2025/users',
+  ICT2025Controller.getUsers,
+);
+
 
 module.exports = router;
