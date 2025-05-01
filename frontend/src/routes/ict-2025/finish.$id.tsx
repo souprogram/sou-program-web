@@ -1,3 +1,4 @@
+import Button from '@/components/ui/Button';
 import { createFileRoute } from '@tanstack/react-router';
 import axios from 'axios';
 
@@ -41,12 +42,16 @@ function RouteComponent() {
           </h2>
           <div className="flex flex-col gap-4 rounded-lg bg-neutral-800 p-4 text-center leading-relaxed text-gray-200">
             <p className="font-poppins pb-2 lg:text-lg">Bravo! Riješio/la si sve u </p>
-            <span className="mx-auto rounded-lg bg-neutral-700 p-4 font-mono text-lg font-medium text-white">
+            <span className="mx-auto rounded-lg bg-amber-400 p-4 font-mono text-lg font-medium text-black">
               {formatTime(elapsedSeconds)}
             </span>
 
             <p className="font-poppins pb-2 lg:text-lg">Prati scoreboard za nagradu!</p>
           </div>
+
+          <Button to="/ict-2025/sign-up" className="w-fit">
+            Nazad na početak
+          </Button>
         </div>
       </div>
     </section>
