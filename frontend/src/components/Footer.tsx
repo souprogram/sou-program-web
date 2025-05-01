@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-base text-gray-400">
-            &copy; 2024 <span className="font-brioni">Šou program</span>
+            &copy; 2025 <span className="font-brioni">Šou program</span>
           </p>
         </div>
       </div>
