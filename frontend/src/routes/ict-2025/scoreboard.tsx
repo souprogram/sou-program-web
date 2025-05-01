@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const Route = createFileRoute('/ict-2025/scoreboard')({
   component: RouteComponent,
@@ -22,7 +23,22 @@ export const Route = createFileRoute('/ict-2025/scoreboard')({
 function RouteComponent() {
   const data = Route.useLoaderData();
 
-  const [first, ...rest] = data;
+  const [scores, setScores] = useState(data);
+
+  const [first, ...rest] = scores;
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/ict-2025/users`);
+      if (response.status !== 200) {
+        return;
+      }
+
+      setScores(response.data.data);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative h-full bg-neutral-900 pb-16 md:pb-32">
@@ -35,7 +51,6 @@ function RouteComponent() {
             {first && (
               <div className="flex items-center justify-between rounded-lg bg-amber-400 p-4 text-black">
                 <span>{first.username} 🏆</span>
-                {/* trophy emoji */}
                 <span className="font-mono">
                   {Math.floor(first.elapsed_time_seconds / 60)}:
                   {String(first.elapsed_time_seconds % 60).padStart(2, '0')}
