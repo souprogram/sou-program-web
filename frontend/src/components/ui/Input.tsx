@@ -14,6 +14,7 @@ interface InputProps {
   description?: string;
   error?: FieldError;
   disabled?: boolean;
+  autoComplete?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
@@ -33,6 +34,7 @@ const Input = forwardRef(function Input(
     onBlur,
     placeholder,
     error,
+    autoComplete,
   }: InputProps,
   ref: React.Ref<HTMLInputElement>,
 ) {
@@ -60,6 +62,7 @@ const Input = forwardRef(function Input(
         onBlur={onBlur}
         aria-describedby={`${name}-error`}
         aria-disabled={disabled}
+        autoComplete={autoComplete}
       />
       {description && <p className="mt-2 text-sm text-gray-400">{description}</p>}
       {error && (

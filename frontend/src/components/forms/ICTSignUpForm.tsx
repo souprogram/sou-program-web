@@ -52,14 +52,22 @@ export default function ICTSignUpForm() {
           <Controller
             name="name"
             control={control}
-            render={({ field }) => <Input {...field} id="name" label="Ime" error={errors.name} />}
+            render={({ field }) => (
+              <Input {...field} id="name" label="Ime" error={errors.name} autoComplete="off" />
+            )}
           />
 
           <Controller
             name="surname"
             control={control}
             render={({ field }) => (
-              <Input {...field} id="surname" label="Prezime" error={errors.surname} />
+              <Input
+                {...field}
+                id="surname"
+                label="Prezime"
+                error={errors.surname}
+                autoComplete="off"
+              />
             )}
           />
 
@@ -67,7 +75,7 @@ export default function ICTSignUpForm() {
             name="email"
             control={control}
             render={({ field }) => (
-              <Input {...field} id="email" label="Email" error={errors.email} />
+              <Input {...field} id="email" label="Email" error={errors.email} autoComplete="off" />
             )}
           />
 
@@ -81,6 +89,7 @@ export default function ICTSignUpForm() {
                 label="Username"
                 error={errors.username}
                 description="Ovo je bitno da se tvoje ime prikazuje na scoreboardu"
+                autoComplete="off"
               />
             )}
           />
