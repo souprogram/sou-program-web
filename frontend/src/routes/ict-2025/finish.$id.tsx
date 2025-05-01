@@ -21,7 +21,34 @@ export const Route = createFileRoute('/ict-2025/finish/$id')({
 
 function RouteComponent() {
   const data = Route.useLoaderData();
-  console.log(data);
+  const elapsedSeconds = data.elapsed_time_seconds;
 
-  return <div>Hello "/ict-2025/finish"!</div>;
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+      .toString()
+      .padStart(2, '0');
+
+    const secs = (seconds % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
+  };
+
+  return (
+    <section className="relative h-full bg-neutral-900 pb-16 md:pb-32">
+      <div className="overflow-hidden">
+        <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-24 lg:px-8">
+          <h2 className="font-brioni mb-4 text-4xl leading-none font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
+            ICT 2025 natjecanje
+          </h2>
+          <div className="flex flex-col gap-4 rounded-lg bg-neutral-800 p-4 text-center leading-relaxed text-gray-200">
+            <p className="font-poppins pb-2 lg:text-lg">Bravo! Riješio/la si sve u </p>
+            <span className="mx-auto rounded-lg bg-neutral-700 p-4 font-mono text-lg font-medium text-white">
+              {formatTime(elapsedSeconds)}
+            </span>
+
+            <p className="font-poppins pb-2 lg:text-lg">Prati scoreboard za nagradu!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

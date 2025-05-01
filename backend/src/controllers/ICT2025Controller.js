@@ -35,13 +35,22 @@ const ICT2025Controller = {
   update: async (req, res) => {
     try {
       const body = req.body;
+      const { id } = req.params;
+
+      const { data, error } = await db
+        .from(env.supabaseICT2025TableName)
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) throw error;
 
       const { error: updateError } = await db
         .from(env.supabaseICT2025TableName)
         .update({
           elapsed_time_seconds: body.elapsed_time_seconds,
         })
-        .eq('id', body.id);
+        .eq('id', id);
 
       if (updateError) throw updateError;
 

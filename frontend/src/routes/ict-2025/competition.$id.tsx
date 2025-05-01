@@ -128,7 +128,7 @@ function RouteComponent() {
     return correct;
   };
 
-  const checkAllAnswers = () => {
+  const checkAllAnswers = async () => {
     const allCorrect = isCorrect1 && isCorrect2 && isLightsSolved;
     if (allCorrect) {
       stopTimer();
@@ -137,6 +137,16 @@ function RouteComponent() {
       localStorage.removeItem('cipherTask');
       localStorage.removeItem('mathTask');
       localStorage.removeItem('lightsGrid');
+
+      const response = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/ict-2025/finish/${id}`,
+        { elapsed_time_seconds: elapsedSeconds },
+      );
+
+      if (response.status !== 200) {
+        throw new Error('Greška prilikom slanja rezultata.');
+      }
+
       navigate({ to: `/ict-2025/finish/${id}` });
     }
   };

@@ -68,7 +68,7 @@ router.post(
   ICT2025Controller.signUp,
 )
 router.put(
-  '/api/ict-2025/finish',
+  '/api/ict-2025/finish/:id',
   SchemaValidation.validate(ICT2025FinishSchema),
   ICT2025Controller.update,
 );

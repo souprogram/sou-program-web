@@ -14,7 +14,6 @@ const ICT2025SignUpSchema = z.object({
 });
 
 const ICT2025FinishSchema = z.object({
-  id: z.number({ required_error: 'Moraš upisati svoj ID' }),
   elapsed_time_seconds: z
     .number({ required_error: 'Moraš upisati vrijeme' })
     .min(0, 'Vrijeme mora biti veće od 0')
