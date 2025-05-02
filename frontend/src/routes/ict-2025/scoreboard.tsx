@@ -41,9 +41,9 @@ function RouteComponent() {
   }, []);
 
   return (
-    <section className="relative h-full bg-neutral-900 pb-16 md:pb-32">
+    <section className="relative h-full bg-neutral-900 pb-16">
       <div className="overflow-hidden">
-        <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-24 lg:px-8">
+        <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-16 lg:px-8">
           <h2 className="font-brioni mb-4 text-4xl leading-none font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
             ICT 2025 Scoreboard
           </h2>
@@ -54,10 +54,7 @@ function RouteComponent() {
                   <Rank rank={1} />
                   <span>{first.username} 🏆</span>
                 </div>
-                <span className="font-mono">
-                  {Math.floor(first.elapsed_time_seconds / 60)}:
-                  {String(first.elapsed_time_seconds % 60).padStart(2, '0')}
-                </span>
+                <Time seconds={first.elapsed_time_seconds} />
               </div>
             )}
             {rest &&
@@ -71,10 +68,7 @@ function RouteComponent() {
                       <Rank rank={index + 2} />
                       <span>{user.username}</span>
                     </div>
-                    <span className="font-mono">
-                      {Math.floor(user.elapsed_time_seconds / 60)}:
-                      {String(user.elapsed_time_seconds % 60).padStart(2, '0')}
-                    </span>
+                    <Time seconds={user.elapsed_time_seconds} />
                   </div>
                 ),
               )}
@@ -87,4 +81,16 @@ function RouteComponent() {
 
 const Rank = ({ rank }: { rank: number }) => {
   return <span className="rounded-full bg-amber-50 px-2.5 py-0.5 text-black">{rank}.</span>;
+};
+
+const Time = ({ seconds }: { seconds: number }) => {
+  if (!seconds) {
+    return <span className="font-mono">...</span>;
+  }
+
+  return (
+    <span className="font-mono">
+      {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}
+    </span>
+  );
 };

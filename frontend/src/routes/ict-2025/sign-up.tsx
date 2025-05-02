@@ -1,5 +1,6 @@
 import ICTSignUpForm from '@/components/forms/ICTSignUpForm';
 import { createFileRoute } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/ict-2025/sign-up')({
@@ -7,8 +8,12 @@ export const Route = createFileRoute('/ict-2025/sign-up')({
 });
 
 function RouteComponent() {
+  useEffect(() => {
+    localStorage.removeItem('competitionStartTime');
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-neutral-900 pb-16 md:pb-32">
+    <section className="relative overflow-hidden bg-neutral-900 pb-16">
       <div className="opacity-5">
         <img
           src={SPLogoTrasparent}
@@ -17,7 +22,7 @@ function RouteComponent() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-24 lg:px-8">
+      <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-16 lg:px-8">
         <h2 className="font-brioni mb-4 text-4xl leading-none font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
           ICT 2025 natjecanje
         </h2>
