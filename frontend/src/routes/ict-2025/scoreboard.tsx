@@ -50,7 +50,10 @@ function RouteComponent() {
           <div className="flex flex-col gap-2 rounded-lg text-lg text-gray-200">
             {first && (
               <div className="flex items-center justify-between rounded-lg bg-amber-400 p-4 text-black">
-                <span>{first.username} 🏆</span>
+                <div className="flex items-center gap-3">
+                  <Rank rank={1} />
+                  <span>{first.username} 🏆</span>
+                </div>
                 <span className="font-mono">
                   {Math.floor(first.elapsed_time_seconds / 60)}:
                   {String(first.elapsed_time_seconds % 60).padStart(2, '0')}
@@ -58,21 +61,30 @@ function RouteComponent() {
               </div>
             )}
             {rest &&
-              rest.map((user: { username: string; elapsed_time_seconds: number }) => (
-                <div
-                  key={user.username}
-                  className="flex items-center justify-between rounded-lg bg-neutral-800 p-4 text-white"
-                >
-                  <span>{user.username}</span>
-                  <span className="font-mono">
-                    {Math.floor(user.elapsed_time_seconds / 60)}:
-                    {String(user.elapsed_time_seconds % 60).padStart(2, '0')}
-                  </span>
-                </div>
-              ))}
+              rest.map(
+                (user: { username: string; elapsed_time_seconds: number }, index: number) => (
+                  <div
+                    key={user.username}
+                    className="flex items-center justify-between rounded-lg bg-neutral-800 p-4 text-white"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Rank rank={index + 2} />
+                      <span>{user.username}</span>
+                    </div>
+                    <span className="font-mono">
+                      {Math.floor(user.elapsed_time_seconds / 60)}:
+                      {String(user.elapsed_time_seconds % 60).padStart(2, '0')}
+                    </span>
+                  </div>
+                ),
+              )}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+const Rank = ({ rank }: { rank: number }) => {
+  return <span className="rounded-full bg-amber-50 px-2.5 py-0.5 text-black">{rank}.</span>;
+};
