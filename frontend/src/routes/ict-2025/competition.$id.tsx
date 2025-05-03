@@ -1,6 +1,7 @@
 import Button from '@/components/ui/Button';
 import { useCompetitionTimer } from '@/hooks/useCompetitionTimer';
 import { generateCipherTask } from '@/utils/ceasarCipher';
+import { generateJSTask } from '@/utils/jsTask';
 import { generateSolvableLightsOutBoard } from '@/utils/lightsOut';
 import { generateMathExpression } from '@/utils/mathExpression';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
@@ -34,6 +35,7 @@ function RouteComponent() {
   const [task2Answer, setTask2Answer] = useState('');
   const [showResults1, setShowResults1] = useState(false);
   const [showResults2, setShowResults2] = useState(false);
+  const [showResultsJS, setShowResultsJs] = useState(false);
   const [isCorrect1, setIsCorrect1] = useState(false);
   const [isCorrect2, setIsCorrect2] = useState(false);
 
@@ -103,6 +105,14 @@ function RouteComponent() {
     });
   };
 
+  const [jsTask] = useState(() => {
+    const savedTask = localStorage.getItem('jsTask');
+    return savedTask ? JSON.parse(savedTask) : generateJSTask();
+  });
+
+  const [userCode, setUserCode] = useState('');
+  const [isJSCorrect, setIsJSCorrect] = useState(false);
+
   // Save to localStorage whenever startTime changes
   useEffect(() => {
     if (!localStorage.getItem('competitionStartTime')) {
@@ -128,6 +138,26 @@ function RouteComponent() {
     return correct;
   };
 
+  const checkJSTask = () => {
+    try {
+      const fullCode = jsTask.code.replace('// Missing line', userCode);
+
+      const func = new Function('return (' + fullCode + ');')();
+
+      const result = func(jsTask.testCase.input);
+      const correct = JSON.stringify(result) === JSON.stringify(jsTask.testCase.output);
+
+      setIsJSCorrect(correct);
+      return correct;
+    } catch (error) {
+      console.error('Code evaluation failed:', error);
+      setIsJSCorrect(false);
+      return false;
+    } finally {
+      setShowResultsJs(true);
+    }
+  };
+
   const checkAllAnswers = async () => {
     const allCorrect = isCorrect1 && isCorrect2 && isLightsSolved;
     if (allCorrect) {
@@ -151,7 +181,7 @@ function RouteComponent() {
     }
   };
 
-  const allTasksCompleted = isCorrect1 && isCorrect2 && isLightsSolved;
+  const allTasksCompleted = isCorrect1 && isCorrect2 && isLightsSolved && isJSCorrect;
 
   useEffect(() => {
     return () => {
@@ -315,8 +345,53 @@ function RouteComponent() {
                 Reset?
               </Button>
             </div>
+          </div>
 
-            {isLightsSolved && <p className="text-green-400">Točno! ✔️</p>}
+          <div
+            className={`rounded-lg p-6 ${isJSCorrect ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
+          >
+            <h3 className="font-poppins mb-4 text-2xl font-bold text-white">
+              Zadatak 4: Dopuni funkciju
+            </h3>
+
+            <p className="mb-4">{jsTask.description}</p>
+
+            <div className="mb-4 rounded-md bg-neutral-700 p-4 font-mono">
+              <pre>{jsTask.code}</pre>
+            </div>
+
+            <div className="mb-4 flex items-center gap-2">
+              <input
+                id="task3"
+                type="text"
+                value={userCode}
+                onChange={(e) => setUserCode(e.target.value)}
+                className="flex-1 rounded-md bg-neutral-700 p-3 font-mono text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                autoComplete="off"
+                placeholder="Unesi kod koji nedostaje"
+              />
+            </div>
+
+            <div className="mb-4 rounded-md bg-neutral-700 p-4">
+              <p className="mb-2 text-sm text-neutral-400">Primjer:</p>
+              <div className="font-mono text-sm">
+                Input:{' '}
+                <span className="text-yellow-200">{JSON.stringify(jsTask.testCase.input)}</span>
+                <br />
+                Očekivani output:{' '}
+                <span className="text-green-200">{JSON.stringify(jsTask.testCase.output)}</span>
+              </div>
+            </div>
+
+            <Button onClick={checkJSTask} disabled={isJSCorrect}>
+              Provjeri
+            </Button>
+
+            {showResultsJS && (
+              <p className={`${isJSCorrect ? 'text-green-400' : 'text-red-400'}`}>
+                {isJSCorrect ? 'Točno! ✔️' : `Netočno. Pokušaj ponovo.`}
+              </p>
+            )}
           </div>
 
           <div className="flex items-center justify-end gap-4">
