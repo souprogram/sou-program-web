@@ -1,15 +1,24 @@
 export const generateSolvableLightsOutBoard = () => {
   const size = 5;
-
   const grid = Array(size)
     .fill(false)
     .map(() => Array<boolean>(size).fill(false));
 
-  // const moves = Math.floor(Math.random() ) + 5;
-  const moves = 5;
-  for (let i = 0; i < moves; i++) {
+  const moves = Math.floor(Math.random() * 2) + 5; // Randomly 5 or 6 moves
+  const usedPositions = new Set<string>(); // Track used (row,col) pairs
+
+  let movesApplied = 0;
+
+  while (movesApplied < moves) {
     const row = Math.floor(Math.random() * size);
     const col = Math.floor(Math.random() * size);
+    const positionKey = `${row},${col}`;
+
+    // Skip if this position was already used
+    if (usedPositions.has(positionKey)) continue;
+
+    usedPositions.add(positionKey);
+    movesApplied++;
 
     // Simulate a click
     grid[row][col] = !grid[row][col];
