@@ -42,6 +42,9 @@ export default function ICTSignUpForm() {
       throw new Error('Greška prilikom slanja maila.');
     }
 
+    localStorage.removeItem('competitionStartTime');
+    localStorage.removeItem('tasks');
+
     navigate({ to: `/ict-2025/competition/${response.data.data.id}` });
   };
 

@@ -1,12 +1,13 @@
+import { CaesarCipherTask } from '@/components/ict-2025/CaesarCypherTask';
+import { JSTask } from '@/components/ict-2025/JSTask';
+import { LightsOutTask } from '@/components/ict-2025/LightsOutTask';
+import { MathExpressionTask } from '@/components/ict-2025/MathExpressionTask';
+import { TimerDisplay } from '@/components/ict-2025/TimerDisplay';
 import Button from '@/components/ui/Button';
 import { useCompetitionTimer } from '@/hooks/useCompetitionTimer';
-import { generateCipherTask } from '@/utils/ceasarCipher';
-import { generateJSTask } from '@/utils/jsTask';
-import { generateSolvableLightsOutBoard } from '@/utils/lightsOut';
-import { generateMathExpression } from '@/utils/mathExpression';
+import { useTaskManager } from '@/hooks/useTaskManager';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import axios from 'axios';
-import { useEffect, useMemo, useState } from 'react';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/ict-2025/competition/$id')({
@@ -28,179 +29,69 @@ export const Route = createFileRoute('/ict-2025/competition/$id')({
 });
 
 function RouteComponent() {
-  const { id } = Route.useParams();
-
+  const params = Route.useParams();
   const navigate = useNavigate();
-  const [task1Answer, setTask1Answer] = useState('');
-  const [task2Answer, setTask2Answer] = useState('');
-  const [showResults1, setShowResults1] = useState(false);
-  const [showResults2, setShowResults2] = useState(false);
-  const [showResultsJS, setShowResultsJs] = useState(false);
-  const [isCorrect1, setIsCorrect1] = useState(false);
-  const [isCorrect2, setIsCorrect2] = useState(false);
-
-  // Initialize timer state with timestamp approach
-  const [startTime] = useState(() => {
-    const savedTime = localStorage.getItem('competitionStartTime');
-    return savedTime ? parseInt(savedTime) : Date.now();
-  });
 
   const { elapsedSeconds, stopTimer } = useCompetitionTimer();
 
-  // Initialize cipher task from localStorage or generate new one
-  const [cipherTask] = useState(() => {
-    const savedTask = localStorage.getItem('cipherTask');
-    return savedTask ? JSON.parse(savedTask) : generateCipherTask();
-  });
+  const { tasks, setTasks, isAllCompleted } = useTaskManager();
 
-  const [mathTask] = useState(() => {
-    const savedTask = localStorage.getItem('mathTask');
-    return savedTask ? JSON.parse(savedTask) : generateMathExpression();
-  });
+  const checkCypherTask = (answer: string) => {
+    const correct = answer.toLowerCase().trim() === tasks.cipher.task.word.toLowerCase();
+    const cipherNewData = { isCorrect: correct, showResult: true };
+    setTasks((prev) => ({ ...prev, cipher: { ...prev.cipher, ...cipherNewData } }));
 
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem('mathTask', JSON.stringify(mathTask));
-  }, [mathTask]);
-
-  const startGrid = useMemo(generateSolvableLightsOutBoard, []);
-
-  const [lightsGrid, setLightsGrid] = useState<boolean[][]>(() => {
-    const savedGrid = localStorage.getItem('lightsGrid');
-    return savedGrid ? JSON.parse(savedGrid) : startGrid;
-  });
-
-  const resetGrid = () => {
-    setLightsGrid(startGrid);
-  };
-
-  const [isLightsSolved, setIsLightsSolved] = useState(false);
-
-  // Check if lights are solved
-  useEffect(() => {
-    const solved = lightsGrid.every((row) => row.every((cell) => !cell));
-    setIsLightsSolved(solved);
-  }, [lightsGrid]);
-
-  // Save lights grid to localStorage
-  useEffect(() => {
-    localStorage.setItem('lightsGrid', JSON.stringify(lightsGrid));
-  }, [lightsGrid]);
-
-  // Toggle a light and its neighbors
-  const toggleLight = (row: number, col: number) => {
-    setLightsGrid((prev) => {
-      const newGrid = prev.map((r) => [...r]);
-
-      // Toggle clicked cell
-      newGrid[row][col] = !newGrid[row][col];
-
-      // Toggle neighbors
-      if (row > 0) newGrid[row - 1][col] = !newGrid[row - 1][col]; // top
-      if (row < 4) newGrid[row + 1][col] = !newGrid[row + 1][col]; // bottom
-      if (col > 0) newGrid[row][col - 1] = !newGrid[row][col - 1]; // left
-      if (col < 4) newGrid[row][col + 1] = !newGrid[row][col + 1]; // right
-
-      return newGrid;
-    });
-  };
-
-  const [jsTask] = useState(() => {
-    const savedTask = localStorage.getItem('jsTask');
-    return savedTask ? JSON.parse(savedTask) : generateJSTask();
-  });
-
-  const [userCode, setUserCode] = useState('');
-  const [isJSCorrect, setIsJSCorrect] = useState(false);
-
-  // Save to localStorage whenever startTime changes
-  useEffect(() => {
-    if (!localStorage.getItem('competitionStartTime')) {
-      localStorage.setItem('competitionStartTime', startTime.toString());
-    }
-  }, [startTime]);
-
-  useEffect(() => {
-    localStorage.setItem('cipherTask', JSON.stringify(cipherTask));
-  }, [cipherTask]);
-
-  const checkTask1 = () => {
-    const correct = task1Answer.toLowerCase().trim() === cipherTask.word.toLowerCase();
-    setIsCorrect1(correct);
-    setShowResults1(true);
     return correct;
   };
 
-  const checkTask2 = () => {
-    const correct = task2Answer.trim() === mathTask.answer;
-    setIsCorrect2(correct);
-    setShowResults2(true);
+  const checkMathTask = (answer: string) => {
+    const correct = answer.trim() === tasks.math.task.answer;
+    const mathNewData = { isCorrect: correct, showResult: true };
+    setTasks((prev) => ({ ...prev, math: { ...prev.math, ...mathNewData } }));
+
     return correct;
   };
 
-  const checkJSTask = () => {
+  const checkJSTask = (answer: string) => {
     try {
-      const fullCode = jsTask.code.replace('// Missing line', userCode);
+      const jsTask = tasks.js.task;
+      const fullCode = jsTask.code.replace('// Missing line', answer);
 
       const func = new Function('return (' + fullCode + ');')();
-
       const result = func(jsTask.testCase.input);
       const correct = JSON.stringify(result) === JSON.stringify(jsTask.testCase.output);
 
-      setIsJSCorrect(correct);
+      setTasks((prev) => ({
+        ...prev,
+        js: { ...prev.js, isCorrect: correct, showResult: true },
+      }));
       return correct;
     } catch (error) {
       console.error('Code evaluation failed:', error);
-      setIsJSCorrect(false);
+      setTasks((prev) => ({
+        ...prev,
+        js: { ...prev.js, isCorrect: false, showResult: true },
+      }));
       return false;
-    } finally {
-      setShowResultsJs(true);
     }
   };
 
   const checkAllAnswers = async () => {
-    const allCorrect = isCorrect1 && isCorrect2 && isLightsSolved;
-    if (allCorrect) {
-      stopTimer();
-      // Clear localStorage
-      localStorage.removeItem('competitionStartTime');
-      localStorage.removeItem('cipherTask');
-      localStorage.removeItem('mathTask');
-      localStorage.removeItem('lightsGrid');
+    if (!isAllCompleted) return;
 
-      const response = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/ict-2025/finish/${id}`,
-        { elapsed_time_seconds: elapsedSeconds },
-      );
+    stopTimer();
+    localStorage.removeItem('tasks');
 
-      if (response.status !== 200) {
-        throw new Error('Greška prilikom slanja rezultata.');
-      }
+    const response = await axios.put(
+      `${import.meta.env.VITE_BACKEND_URL}/api/ict-2025/finish/${params.id}`,
+      { elapsed_time_seconds: elapsedSeconds },
+    );
 
-      navigate({ to: `/ict-2025/finish/${id}` });
+    if (response.status !== 200) {
+      throw new Error('Greška prilikom slanja rezultata.');
     }
-  };
 
-  const allTasksCompleted = isCorrect1 && isCorrect2 && isLightsSolved && isJSCorrect;
-
-  useEffect(() => {
-    return () => {
-      if (!allTasksCompleted) {
-        localStorage.removeItem('competitionStartTime');
-        localStorage.removeItem('mathTask');
-        localStorage.removeItem('cipherTask');
-        localStorage.removeItem('lightsGrid');
-      }
-    };
-  }, [allTasksCompleted]);
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60)
-      .toString()
-      .padStart(2, '0');
-
-    const secs = (seconds % 60).toString().padStart(2, '0');
-    return `${mins}:${secs}`;
+    navigate({ to: `/ict-2025/finish/${params.id}` });
   };
 
   return (
@@ -218,196 +109,25 @@ function RouteComponent() {
           Natjecanje kreće sada!
         </h2>
         <div className="flex max-w-screen-sm flex-col gap-8 leading-relaxed text-gray-200">
-          {/* Task 1: Caesar Cipher */}
-          <div
-            className={`rounded-lg p-6 ${isCorrect1 ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
-          >
-            <h3 className="font-poppins mb-4 text-2xl font-bold text-white">
-              Zadatak 1: Caesar Cipher
-            </h3>
-            <p className="mb-4">
-              <strong>Opis:</strong> Cezarova šifra je tip šifre zamjene (substitucije), u kome se
-              svako slovo otvorenog teksta zamjenjuje odgovarajućim slovom abecede, pomaknutim za
-              određeni broj mjesta. Dekodiraj sljedeću riječ koristeći Caesar cipher. Ključ je pomak
-              u abecedi.
-            </p>
-            <p className="mb-4">
-              <strong>Primjer:</strong> Ako je ključ 3, slovo A postaje D, B postaje E itd.
-            </p>
-            <p className="mb-4">
-              <strong>Abeceda:</strong>{' '}
-              <span className="font-mono text-sm">
-                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-              </span>
-            </p>
-            <p className="mb-1">
-              <strong>Ključ:</strong> {cipherTask.key}
-            </p>
-            <p className="mb-4 text-sm text-neutral-400">Velika i mala slova nisu bitna.</p>
-            <div className="mb-5 rounded-md bg-neutral-700 p-3 font-mono text-xl font-bold">
-              {cipherTask.encrypted}
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <input
-                  id="task1"
-                  type="text"
-                  value={task1Answer}
-                  onChange={(e) => setTask1Answer(e.target.value)}
-                  className="flex-1 rounded-md bg-neutral-700 p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  disabled={showResults1 && isCorrect1}
-                  autoComplete="off"
-                />
-                {!(showResults1 && isCorrect1) && (
-                  <Button onClick={checkTask1} disabled={!task1Answer.trim()}>
-                    Provjeri
-                  </Button>
-                )}
-              </div>
-              {showResults1 && (
-                <p className={`${isCorrect1 ? 'text-green-400' : 'text-red-400'}`}>
-                  {isCorrect1 ? 'Točno! ✔️' : `Netočno. Pokušaj ponovo.`}
-                </p>
-              )}
-            </div>
-          </div>
+          <CaesarCipherTask task={tasks.cipher} onCheck={checkCypherTask} />
 
-          {/* Task 2: Math Expression */}
-          <div
-            className={`rounded-lg p-6 ${isCorrect2 ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
-          >
-            <h3 className="font-poppins mb-4 text-2xl font-bold text-white">
-              Zadatak 2: Matematički izraz
-            </h3>
-            <p className="mb-4">Izračunaj sljedeći izraz:</p>
-            <div className="mb-5 rounded-md bg-neutral-700 p-3 font-mono text-xl font-bold">
-              {mathTask.expression}
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <input
-                  id="task2"
-                  type="text"
-                  value={task2Answer}
-                  onChange={(e) => setTask2Answer(e.target.value.toLowerCase())}
-                  className="flex-1 rounded-md bg-neutral-700 p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  disabled={showResults2 && isCorrect2}
-                  autoComplete="off"
-                />
-                {!(showResults2 && isCorrect2) && (
-                  <Button onClick={checkTask2} disabled={!task2Answer.trim()}>
-                    Provjeri
-                  </Button>
-                )}
-              </div>
-              {showResults2 && (
-                <p className={`${isCorrect2 ? 'text-green-400' : 'text-red-400'}`}>
-                  {isCorrect2 ? 'Točno! ✔️' : `Netočno. Pokušaj ponovo.`}
-                </p>
-              )}
-            </div>
-          </div>
+          <MathExpressionTask task={tasks.math} onCheck={checkMathTask} />
 
-          {/* Task 3: Lights Out */}
-          <div
-            className={`rounded-lg p-6 ${isLightsSolved ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
-          >
-            <h3 className="font-poppins mb-4 text-2xl font-bold text-white">
-              Zadatak 3: Lights Out
-            </h3>
-            <p className="mb-4">
-              <strong>Pravila:</strong> Klikom na kvadratić, gasite ili palite njega i susjedne
-              kvadratiće. Cilj je ugasiti sva svijetla{' '}
-              <span className="text-neutral-400">(svi kvadratići sivi).</span>
-            </p>
+          <LightsOutTask
+            task={tasks.lights}
+            setTask={(task) => setTasks((prev) => ({ ...prev, lights: task }))}
+          />
 
-            <div className="mb-5 flex flex-row items-start justify-center gap-x-4">
-              <div className="grid grid-cols-5 gap-2">
-                {lightsGrid.map((row, rowIndex) =>
-                  row.map((isOn, colIndex) => (
-                    <button
-                      key={`${rowIndex}-${colIndex}`}
-                      onClick={() => toggleLight(rowIndex, colIndex)}
-                      disabled={isLightsSolved}
-                      className={`h-12 w-12 rounded-md ${isOn ? 'bg-yellow-400' : 'bg-neutral-700'} ${!isLightsSolved ? 'hover:opacity-80' : ''}`}
-                      aria-label={`Toggle light at row ${rowIndex + 1}, column ${colIndex + 1}`}
-                    />
-                  )),
-                )}
-              </div>
-
-              {/* reset button */}
-              <Button
-                onClick={resetGrid}
-                className={`mb-4 bg-neutral-400 hover:bg-neutral-500`}
-                disabled={isLightsSolved}
-              >
-                Reset?
-              </Button>
-            </div>
-          </div>
-
-          <div
-            className={`rounded-lg p-6 ${isJSCorrect ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
-          >
-            <h3 className="font-poppins mb-4 text-2xl font-bold text-white">
-              Zadatak 4: Dopuni funkciju
-            </h3>
-
-            <p className="mb-4">{jsTask.description}</p>
-
-            <div className="mb-4 rounded-md bg-neutral-700 p-4 font-mono">
-              <pre>{jsTask.code}</pre>
-            </div>
-
-            <div className="mb-4 flex items-center gap-2">
-              <input
-                id="task3"
-                type="text"
-                value={userCode}
-                onChange={(e) => setUserCode(e.target.value)}
-                className="flex-1 rounded-md bg-neutral-700 p-3 font-mono text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                autoComplete="off"
-                placeholder="Unesi kod koji nedostaje"
-              />
-            </div>
-
-            <div className="mb-4 rounded-md bg-neutral-700 p-4">
-              <p className="mb-2 text-sm text-neutral-400">Primjer:</p>
-              <div className="font-mono text-sm">
-                Input:{' '}
-                <span className="text-yellow-200">{JSON.stringify(jsTask.testCase.input)}</span>
-                <br />
-                Očekivani output:{' '}
-                <span className="text-green-200">{JSON.stringify(jsTask.testCase.output)}</span>
-              </div>
-            </div>
-
-            <Button onClick={checkJSTask} disabled={isJSCorrect}>
-              Provjeri
-            </Button>
-
-            {showResultsJS && (
-              <p className={`${isJSCorrect ? 'text-green-400' : 'text-red-400'}`}>
-                {isJSCorrect ? 'Točno! ✔️' : `Netočno. Pokušaj ponovo.`}
-              </p>
-            )}
-          </div>
+          <JSTask task={tasks.js} onCheck={checkJSTask} />
 
           <div className="flex items-center justify-end gap-4">
-            <div className="flex items-center gap-2 rounded-lg bg-neutral-800 px-4 py-2">
-              <ClockIcon />
-              <span className="font-mono text-lg font-medium text-white">
-                {formatTime(elapsedSeconds)}
-              </span>
-            </div>
-
+            <TimerDisplay seconds={elapsedSeconds} />
             <Button
               onClick={checkAllAnswers}
-              disabled={!allTasksCompleted}
-              className={allTasksCompleted ? 'bg-green-600 hover:bg-green-700' : ''}
+              disabled={!isAllCompleted}
+              className={isAllCompleted ? 'bg-green-600 hover:bg-green-700' : ''}
             >
-              {allTasksCompleted ? 'Završi natjecanje →' : 'Provjeri odgovore'}
+              {isAllCompleted ? 'Završi natjecanje →' : 'Provjeri odgovore'}
             </Button>
           </div>
         </div>
@@ -415,20 +135,3 @@ function RouteComponent() {
     </section>
   );
 }
-
-const ClockIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5 text-blue-400"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
-  </svg>
-);

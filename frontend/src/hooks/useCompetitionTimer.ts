@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { usePersistedState } from './usePersistedState';
+import { useLocalStorage } from './useLocalStorage';
 
 export const useCompetitionTimer = () => {
-  const [startTime] = usePersistedState('competitionStartTime', Date.now());
+  const [startTime] = useLocalStorage('competitionStartTime', Date.now());
   const [isRunning, setIsRunning] = useState(true);
 
   const [elapsedSeconds, setElapsedSeconds] = useState(() =>

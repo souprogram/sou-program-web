@@ -1,6 +1,5 @@
 import ICTSignUpForm from '@/components/forms/ICTSignUpForm';
 import { createFileRoute } from '@tanstack/react-router';
-import { useEffect } from 'react';
 import SPLogoTrasparent from '/sou-program-icon-transparent.svg';
 
 export const Route = createFileRoute('/ict-2025/sign-up')({
@@ -8,10 +7,6 @@ export const Route = createFileRoute('/ict-2025/sign-up')({
 });
 
 function RouteComponent() {
-  useEffect(() => {
-    localStorage.removeItem('competitionStartTime');
-  }, []);
-
   return (
     <section className="relative overflow-hidden bg-neutral-900 pb-16">
       <div className="opacity-5">
