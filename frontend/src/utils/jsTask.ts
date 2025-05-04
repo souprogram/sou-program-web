@@ -137,7 +137,7 @@ export const generateJSTask = (): CompetitionTasks['js']['task'] => {
       testCases: [
         { input: ['Hello World'], output: 'HelloWorld' },
         { input: ['NoSpacesHere'], output: 'NoSpacesHere' },
-        { input: ['  Trim  Me  '], output: 'TrimMe' },
+        { input: ['     Trim  Me    '], output: 'TrimMe' },
       ],
     },
     {

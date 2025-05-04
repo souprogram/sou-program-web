@@ -9,15 +9,15 @@ export const useTaskManager = () => {
   const initialGrid = generateSolvableLightsOutBoard();
 
   const [tasks, setTasks] = useLocalStorage<CompetitionTasks>('tasks', {
-    cipher: { isCorrect: false, showResult: false, task: generateCipherTask() },
-    math: { isCorrect: false, showResult: false, task: generateMathExpression() },
-    js: { isCorrect: false, showResult: false, task: generateJSTask() },
+    cipher: { isSolved: false, task: generateCipherTask() },
+    math: { isSolved: false, task: generateMathExpression() },
+    js: { isSolved: false, task: generateJSTask() },
     lights: { isSolved: false, grid: initialGrid, initialGrid },
   });
 
   const isAllCompleted = useMemo(
     () =>
-      tasks.cipher.isCorrect && tasks.math.isCorrect && tasks.js.isCorrect && tasks.lights.isSolved,
+      tasks.cipher.isSolved && tasks.math.isSolved && tasks.js.isSolved && tasks.lights.isSolved,
     [tasks],
   );
 
