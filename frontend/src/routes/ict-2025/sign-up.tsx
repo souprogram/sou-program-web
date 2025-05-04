@@ -19,13 +19,9 @@ function RouteComponent() {
 
       <div className="relative z-10 mx-auto flex max-w-screen-lg flex-col gap-4 px-4 pt-8 sm:px-6 sm:pt-16 lg:px-8">
         <h2 className="font-brioni mb-4 text-4xl leading-none font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
-          ICT 2025 natjecanje
+          <span className="text-primary-600">Let'sGrow! 2025</span> Natjecanje
         </h2>
         <div className="flex max-w-screen-sm flex-col gap-4 leading-relaxed text-gray-200">
-          <p className="font-poppins pb-2 lg:text-lg">
-            Prijavi se da sudjeluješ u natjecanju ICT 2025!
-          </p>
-
           <ICTSignUpForm />
         </div>
       </div>

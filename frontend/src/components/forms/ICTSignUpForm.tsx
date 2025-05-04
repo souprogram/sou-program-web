@@ -51,7 +51,7 @@ export default function ICTSignUpForm() {
   return (
     <form onSubmit={handleSubmit(submit)} className="max-w-screen-xl">
       <div className="flex flex-col space-y-8">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <Controller
             name="name"
             control={control}
