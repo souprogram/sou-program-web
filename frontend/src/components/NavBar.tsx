@@ -1,17 +1,18 @@
+import { useParallax } from '@/hooks/useParallax';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { useParallax } from '@/hooks/useParallax';
 import Button from './ui/Button';
 import { LinkButton } from './ui/LinkButton';
 import SPLogoTransparent from '/sou-program-icon-transparent.svg';
 import spLogo from '/sou-program-logo-bez-pozadine.png';
-import { Link, useNavigate } from '@tanstack/react-router';
 
 const links = [
   { label: 'Tko smo mi?', to: '/#what-we-do' },
   { label: 'Eventi', to: '/#events' },
   { label: 'Natjecanja', to: '/#competitions' },
   { label: 'Kontakt', to: '/#contact' },
+  { label: `Let'sGrow 2025 Scoreboard`, to: '/ict-2025/scoreboard' },
 ];
 
 export default function NavBar() {
