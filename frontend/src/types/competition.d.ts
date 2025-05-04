@@ -14,7 +14,7 @@ type JSTask = {
   code: string;
   functionName: string;
   testCases: {
-    input: number | string | boolean | any[];
+    input: (number | string | boolean | any[])[];
     output: number | string | boolean | any[];
   }[];
 };

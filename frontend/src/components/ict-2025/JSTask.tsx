@@ -1,5 +1,5 @@
 import Button from '@/components/ui/Button';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export const JSTask = ({
   task,
@@ -24,8 +24,8 @@ export const JSTask = ({
       for (let i = 0; i < task.task.testCases.length; i++) {
         const testCase = task.task.testCases[i];
 
-        const input = Array.isArray(testCase.input) ? testCase.input : [testCase.input];
-        const output = func(...input);
+        console.log(func);
+        const output = func(...testCase.input);
 
         if (JSON.stringify(output) !== JSON.stringify(testCase.output)) {
           setUserOutput({
@@ -57,6 +57,15 @@ export const JSTask = ({
     }
   };
 
+  const displayInput = useMemo(() => {
+    return task.task.testCases[0].input.reduce((acc, val) => {
+      if (Array.isArray(val)) {
+        return acc + `[${val.join(', ')}]`;
+      }
+      return acc !== '' ? acc + ', ' + JSON.stringify(val) : JSON.stringify(val);
+    }, '');
+  }, []);
+
   return (
     <div
       className={`rounded-lg p-6 ${task.isSolved ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
@@ -83,8 +92,7 @@ export const JSTask = ({
       <div className="mb-4 rounded-md bg-neutral-700 p-4">
         <p className="mb-2 text-sm text-neutral-400">Primjer:</p>
         <div className="font-mono text-sm">
-          Input:{' '}
-          <span className="text-yellow-200">{JSON.stringify(task.task.testCases[0].input)}</span>
+          Input: <span className="text-yellow-200">{displayInput}</span>
           <br />
           Očekivani output:{' '}
           <span className="text-green-200">{JSON.stringify(task.task.testCases[0].output)}</span>
