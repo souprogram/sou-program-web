@@ -25,7 +25,11 @@ function RouteComponent() {
 
   const [scores, setScores] = useState(data);
 
-  const [first, ...rest] = scores;
+  const [first, second, third, ...rest] = scores;
+
+  const isBeforeLast = (index: number) => {
+    return index === rest.length - 2;
+  };
 
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -65,15 +69,33 @@ function RouteComponent() {
                 <Time seconds={first.elapsed_time_seconds} />
               </div>
             )}
+            {second && (
+              <div className="flex items-center justify-between rounded-lg bg-gray-400 p-4 text-black">
+                <div className="flex items-center gap-3">
+                  <Rank rank={2} />
+                  <span>{second.username}</span>
+                </div>
+                <Time seconds={second.elapsed_time_seconds} />
+              </div>
+            )}
+            {third && (
+              <div className="flex items-center justify-between rounded-lg bg-yellow-600 p-4 text-black">
+                <div className="flex items-center gap-3">
+                  <Rank rank={3} />
+                  <span>{third.username}</span>
+                </div>
+                <Time seconds={third.elapsed_time_seconds} />
+              </div>
+            )}
             {rest &&
               rest.map(
                 (user: { username: string; elapsed_time_seconds: number }, index: number) => (
                   <div
                     key={user.username}
-                    className="flex items-center justify-between rounded-lg bg-neutral-800 p-4 text-white"
+                    className={`flex items-center justify-between rounded-lg p-4 text-white ${isBeforeLast(index) ? 'bg-neutral-600' : 'bg-neutral-800'}`}
                   >
                     <div className="flex items-center gap-3">
-                      <Rank rank={index + 2} />
+                      <Rank rank={index + 4} />
                       <span>{user.username}</span>
                     </div>
                     <Time seconds={user.elapsed_time_seconds} />
