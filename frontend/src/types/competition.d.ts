@@ -1,8 +1,3 @@
-type TaskState = {
-  isCorrect: boolean;
-  showResult: boolean;
-};
-
 type CipherTask = {
   word: string;
   key: number;
@@ -14,25 +9,23 @@ type MathTask = {
   answer: string;
 };
 
-type TJSTask = {
+type JSTask = {
   description: string;
   code: string;
   functionName: string;
-  testCase: {
+  testCases: {
     input: number | string | boolean | any[];
     output: number | string | boolean | any[];
-  };
-};
-
-type LightsTask = {
-  isSolved: boolean;
-  grid: boolean[][];
-  initialGrid: boolean[][];
+  }[];
 };
 
 type CompetitionTasks = {
-  cipher: TaskState & { task: CipherTask };
-  math: TaskState & { task: MathTask };
-  js: TaskState & { task: JSTask };
-  lights: LightsTask;
+  cipher: { isSolved: boolean; task: CipherTask };
+  math: { isSolved: boolean; task: MathTask };
+  js: { isSolved: boolean; task: JSTask };
+  lights: {
+    isSolved: boolean;
+    grid: boolean[][];
+    initialGrid: boolean[][];
+  };
 };

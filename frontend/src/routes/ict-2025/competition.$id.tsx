@@ -36,46 +36,6 @@ function RouteComponent() {
 
   const { tasks, setTasks, isAllCompleted } = useTaskManager();
 
-  const checkCypherTask = (answer: string) => {
-    const correct = answer.toLowerCase().trim() === tasks.cipher.task.word.toLowerCase();
-    const cipherNewData = { isCorrect: correct, showResult: true };
-    setTasks((prev) => ({ ...prev, cipher: { ...prev.cipher, ...cipherNewData } }));
-
-    return correct;
-  };
-
-  const checkMathTask = (answer: string) => {
-    const correct = answer.trim() === tasks.math.task.answer;
-    const mathNewData = { isCorrect: correct, showResult: true };
-    setTasks((prev) => ({ ...prev, math: { ...prev.math, ...mathNewData } }));
-
-    return correct;
-  };
-
-  const checkJSTask = (answer: string) => {
-    try {
-      const jsTask = tasks.js.task;
-      const fullCode = jsTask.code.replace('// Missing line', answer);
-
-      const func = new Function('return (' + fullCode + ');')();
-      const result = func(jsTask.testCase.input);
-      const correct = JSON.stringify(result) === JSON.stringify(jsTask.testCase.output);
-
-      setTasks((prev) => ({
-        ...prev,
-        js: { ...prev.js, isCorrect: correct, showResult: true },
-      }));
-      return correct;
-    } catch (error) {
-      console.error('Code evaluation failed:', error);
-      setTasks((prev) => ({
-        ...prev,
-        js: { ...prev.js, isCorrect: false, showResult: true },
-      }));
-      return false;
-    }
-  };
-
   const checkAllAnswers = async () => {
     if (!isAllCompleted) return;
 
@@ -109,16 +69,22 @@ function RouteComponent() {
           Natjecanje kreće sada!
         </h2>
         <div className="flex max-w-screen-sm flex-col gap-8 leading-relaxed text-gray-200">
-          <CaesarCipherTask task={tasks.cipher} onCheck={checkCypherTask} />
+          <CaesarCipherTask
+            task={tasks.cipher}
+            setTask={(task) => setTasks((prev) => ({ ...prev, cipher: task }))}
+          />
 
-          <MathExpressionTask task={tasks.math} onCheck={checkMathTask} />
+          <MathExpressionTask
+            task={tasks.math}
+            setTask={(task) => setTasks((prev) => ({ ...prev, math: task }))}
+          />
 
           <LightsOutTask
             task={tasks.lights}
             setTask={(task) => setTasks((prev) => ({ ...prev, lights: task }))}
           />
 
-          <JSTask task={tasks.js} onCheck={checkJSTask} />
+          <JSTask task={tasks.js} setTask={(task) => setTasks((prev) => ({ ...prev, js: task }))} />
 
           <div className="flex items-center justify-end gap-4">
             <TimerDisplay seconds={elapsedSeconds} />

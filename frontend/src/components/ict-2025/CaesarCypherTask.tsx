@@ -3,20 +3,25 @@ import { useState } from 'react';
 
 export const CaesarCipherTask = ({
   task,
-  onCheck,
+  setTask,
 }: {
   task: CompetitionTasks['cipher'];
-  onCheck: (answer: string) => boolean;
+  setTask: (task: CompetitionTasks['cipher']) => void;
 }) => {
   const [answer, setAnswer] = useState('');
+  const [showResult, setShowResult] = useState(false);
 
-  const handleCheck = () => {
-    onCheck(answer);
+  const checkCypherTask = (answer: string) => {
+    const isSolved = answer.toLowerCase().trim() === task.task.word.toLowerCase();
+    setTask({ ...task, isSolved });
+    setShowResult(true);
+
+    return isSolved;
   };
 
   return (
     <div
-      className={`rounded-lg p-6 ${task.isCorrect ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
+      className={`rounded-lg p-6 ${task.isSolved ? 'border border-green-500 bg-green-300/10' : 'bg-neutral-800'}`}
     >
       <h3 className="font-poppins mb-4 text-2xl font-bold text-white">Zadatak 1: Caesar Cipher</h3>
       <p className="mb-4">
@@ -47,18 +52,18 @@ export const CaesarCipherTask = ({
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             className="flex-1 rounded-md bg-neutral-700 p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            disabled={task.showResult && task.isCorrect}
+            disabled={task.isSolved}
             autoComplete="off"
           />
-          {!(task.showResult && task.isCorrect) && (
-            <Button onClick={handleCheck} disabled={!answer.trim()}>
+          {!task.isSolved && (
+            <Button onClick={() => checkCypherTask(answer)} disabled={!answer.trim()}>
               Provjeri
             </Button>
           )}
         </div>
-        {task.showResult && (
-          <p className={`${task.isCorrect ? 'text-green-400' : 'text-red-400'}`}>
-            {task.isCorrect ? 'Točno! ✔️' : `Netočno. Pokušaj ponovo.`}
+        {showResult && (
+          <p className={`${task.isSolved ? 'text-green-400' : 'text-red-400'}`}>
+            {task.isSolved ? 'Točno! ✔️' : `Netočno. Pokušaj ponovo.`}
           </p>
         )}
       </div>
