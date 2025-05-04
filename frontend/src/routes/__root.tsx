@@ -13,7 +13,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootComponent() {
   return (
     <>
-      <div className="relative flex min-h-dvh flex-col text-gray-300">
+      <div className="font-poppins relative flex min-h-dvh flex-col text-gray-300">
         <ScrollToTop />
         <NavBar />
 
