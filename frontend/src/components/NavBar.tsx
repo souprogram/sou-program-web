@@ -12,7 +12,6 @@ const links = [
   { label: 'Eventi', to: '/#events' },
   { label: 'Natjecanja', to: '/#competitions' },
   { label: 'Kontakt', to: '/#contact' },
-  { label: `Let'sGrow 2025 Scoreboard`, to: '/ict-2025/scoreboard' },
 ];
 
 export default function NavBar() {
