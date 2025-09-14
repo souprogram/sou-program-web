@@ -1,0 +1,17 @@
+### Get all workshop registrations
+GET http://localhost:3000/api/workshop-registrations
+
+### Get workshop registrations for a specific workshop
+GET http://localhost:3000/api/workshop-registrations?workshop_id=36e29f3a-7641-4280-9f76-273371b2564e
+
+### Create a new workshop registration
+POST http://localhost:3000/api/workshop-registrations
+Content-Type: application/json
+
+{
+  "workshop_id": "36e29f3a-7641-4280-9f76-273371b2564e",
+  "form_data": {
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  }
+}
