@@ -33,6 +33,16 @@ const eventsData = [
     location: 'FET, dvorana 402',
     link: '/events/devops' as const,
   },
+  {
+    id: 3,
+    title: 'Radionica robotike i 3D modeliranja',
+    description:
+      'Glavni cilj radionice je upoznati buduće mlade inženjere/ke i znatiželjne mozgove s osnovama STEM-a. 💻 Tijekom 9 interaktivnih termina, klinci će učiti osnove programiranja, tehničkog crtanja i robotike te ono najvažnije kako složiti vlastiti autić na daljinsko upravljanje! 🤓 🛻',
+    date: '19. 10. 2025. - 14. 11. 2025.',
+    time: '10:00 - 11:30',
+    location: 'Mornarička bolnica, Pula',
+    link: '/events/robotics-3d-modeling' as const,
+  },
 ] satisfies TEvent[];
 
 export default function SectionEvents() {

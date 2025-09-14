@@ -61,25 +61,36 @@ export type Database = {
           updated_at?: string | null
           workshop_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "workshop_registrations_workshop_id_fkey"
+            columns: ["workshop_id"]
+            isOneToOne: false
+            referencedRelation: "workshops"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       workshops: {
         Row: {
           created_at: string
           id: string
           name: string
+          title: string
           updated_at: string | null
         }
         Insert: {
           created_at?: string
           id?: string
           name: string
+          title?: string
           updated_at?: string | null
         }
         Update: {
           created_at?: string
           id?: string
           name?: string
+          title?: string
           updated_at?: string | null
         }
         Relationships: []

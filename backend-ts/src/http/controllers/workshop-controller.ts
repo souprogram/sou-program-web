@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import supabase from "../../lib/supabase";
 
 export default class WorkshopController {
-  static async list(req: Request, res: Response) {
+  static async index(req: Request, res: Response) {
     const { data, error } = await supabase.from("workshops").select("*");
 
     if (error) {

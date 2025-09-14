@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const WorkshopRegistrationListRequestSchema = z.object({
+export const WorkshopRegistrationIndexRequestSchema = z.object({
   workshop_id: z.uuid().optional(),
 });
 

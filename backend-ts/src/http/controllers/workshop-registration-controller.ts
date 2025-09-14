@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import supabase from "../../lib/supabase";
 import {
-  WorkshopRegistrationListRequestSchema,
+  WorkshopRegistrationIndexRequestSchema,
   WorkshopRegistrationPostRequestSchema,
 } from "../requests/workshop-registration-request";
 
 export default class WorkshopRegistrationController {
-  static async list(req: Request, res: Response) {
-    const validation = WorkshopRegistrationListRequestSchema.safeParse(
+  static async index(req: Request, res: Response) {
+    const validation = WorkshopRegistrationIndexRequestSchema.safeParse(
       req.query
     );
 

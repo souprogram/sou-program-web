@@ -1,8 +1,10 @@
+import cors from "cors";
 import express from "express";
 import apiRoutes from "./routes/api";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send(Date.now().toString());
