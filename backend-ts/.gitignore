@@ -6,3 +6,5 @@
 
 .supabase
 supabase/.temp
+
+*.local.http

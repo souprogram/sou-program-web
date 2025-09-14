@@ -1,7 +1,7 @@
 import { Router } from "express";
-import WorkshopController from "../controllers/workshop-controller";
-import WorkshopRegistrationController from "../controllers/workshop-registration-controller";
-import MailController from "../controllers/mail-controller";
+import WorkshopController from "../http/controllers/workshop-controller";
+import WorkshopRegistrationController from "../http/controllers/workshop-registration-controller";
+import MailController from "../http/controllers/mail-controller";
 
 const router = Router();
 

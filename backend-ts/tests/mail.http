@@ -1,0 +1,22 @@
+### Send a mail to user
+POST http://localhost:3000/api/mail
+Content-Type: application/json
+
+{
+  "to": "user@example.com",
+  "subject": "Test Email",
+  "text": "Ovo je mail poslan sa backend-a.",
+  "html": "<h1>Ovo je mail poslan sa backend-a.</h1>"
+}
+
+### Send a mail with custom sender
+POST http://localhost:3000/api/mail
+Content-Type: application/json
+
+{
+  "from": "sender@example.com",
+  "to": "recipient@example.com",
+  "subject": "Test Email",
+  "text": "Ovo je mail poslan sa backend-a.",
+  "html": "<h1>Ovo je mail poslan sa backend-a.</h1>"
+}
