@@ -21,7 +21,7 @@ export default class MailController {
       await mailService.sendMail(mailOptions);
       return res.status(200).json({ message: "Email sent successfully" });
     } catch (error) {
-      return res.status(500).json({ error: error });
+      return res.status(500).json({ error: "Internal server error" });
     }
   }
 }

@@ -6,7 +6,7 @@ export default class WorkshopController {
     const { data, error } = await supabase.from("workshops").select("*");
 
     if (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: "Internal server error" });
     }
 
     return res.json({ data });

@@ -26,7 +26,7 @@ export default class WorkshopRegistrationController {
     const { data, error } = await query;
 
     if (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: "Internal server error" });
     }
 
     return res.json({ data });
@@ -50,7 +50,7 @@ export default class WorkshopRegistrationController {
       .single();
 
     if (error) {
-      return res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: "Internal server error" });
     }
 
     return res.status(201).json({ data });
